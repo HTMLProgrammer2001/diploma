@@ -7,6 +7,12 @@
             <h1>
                 Изменить пользователя
             </h1>
+
+            <ol class="breadcrumb">
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
+                <li><a href="{{route('departments.index')}}">Пользователи</a></li>
+                <li><a href="{{route('departments.create')}}">Изменить</a></li>
+            </ol>
         </section>
 
         <!-- Main content -->

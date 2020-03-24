@@ -118,4 +118,8 @@ class User extends Authenticatable
             $this->save();
         }
     }
+
+    public function canEnter(){
+        return $this->role <= User::ROLE_USER;
+    }
 }

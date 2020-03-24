@@ -7,6 +7,12 @@
             <h1>
                 Добавить пользователя
             </h1>
+
+            <ol class="breadcrumb">
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
+                <li><a href="{{route('departments.index')}}">Пользователи</a></li>
+                <li><a href="{{route('departments.create')}}">Добавить</a></li>
+            </ol>
         </section>
 
         <!-- Main content -->

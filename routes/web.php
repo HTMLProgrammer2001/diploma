@@ -13,12 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LoginController@index')->name('login');
+Route::post('/', 'LoginController@login');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
-    Route::get('/', 'HomeController@index');
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function(){
+    Route::get('/', 'HomeController@index')->name('admin');
 
     Route::resource('/users', 'UsersController');
     Route::resource('/commissions', 'CommissionsController');
