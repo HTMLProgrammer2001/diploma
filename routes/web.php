@@ -21,4 +21,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
     Route::get('/', 'HomeController@index');
 
     Route::resource('/users', 'UsersController');
+    Route::resource('/commissions', 'CommissionsController');
+    Route::resource('/departments', 'DepartmentsController');
 });
