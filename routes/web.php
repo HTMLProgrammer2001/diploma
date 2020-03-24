@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'LoginController@index')->name('login');
 Route::post('/', 'LoginController@login');
 
+Route::get('logout', 'LoginController@logout')->name('logout');
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function(){
     Route::get('/', 'HomeController@index')->name('admin');
 

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -73,7 +74,11 @@ class User extends Authenticatable
     }
 
     public function getFullName(){
-        return $this->name . ' ' . $this->surname . ' ' . $this->patronymic;
+        return $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
+    }
+
+    public function getShortName(){
+        return $this->surname . ' ' . substr($this->name, 0, 1);
     }
 
     public  function uploadAvatar($image){

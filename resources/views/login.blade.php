@@ -15,12 +15,12 @@
         @csrf
 
         <div class="box">
-            <div class="box-header with-border">
+            <div class="box-header with-border text-center">
                 <h3>
                     Авторизация
                 </h3>
             </div>
-            <div class="box-body">
+            <div class="box-body" style="display: flex; justify-content: center">
                 @if(session('loginError'))
                     <div class="alert alert-danger">
                         {{session('loginError')}}

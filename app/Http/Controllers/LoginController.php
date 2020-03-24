@@ -28,4 +28,10 @@ class LoginController extends Controller
         else
             return back()->with('loginError', 'Email or password are not match');
     }
+
+    public function logout(){
+        if(Auth::user())
+            Auth::logout();
+        return redirect()->route('login');
+    }
 }

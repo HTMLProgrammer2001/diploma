@@ -48,7 +48,7 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <img src="{{$user->getAvatar()}}" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Support Team
@@ -119,17 +119,16 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <img src="{{$user->getAvatar()}}" class="user-image" alt="User Image">
+                            <span class="hidden-xs">{{$user->getShortName()}}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="{{$user->getAvatar()}}" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    {{$user->getShortName() . ', ' . $user->getRoleString()}}
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -153,7 +152,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -176,35 +175,25 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="{{$user->getAvatar()}}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>{{$user->getShortName()}}</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
-            <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-                </div>
-            </form>
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="#">
+                    <a href="{{route('admin')}}">
                         <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
-                <li><a href="#"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
-                <li><a href="#"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
+                <li><a href="#"><i class="fa fa-sticky-note-o"></i> <span>Публикации</span></a></li>
+                <li><a href="{{route('commissions.index')}}"><i class="fa fa-list-ul"></i> <span>Коммиссии</span></a></li>
+                <li><a href="{{route('departments.index')}}"><i class="fa fa-tags"></i> <span>Отделения</span></a></li>
                 <li>
                     <a href="#">
                         <i class="fa fa-commenting"></i> <span>Комментарии</span>
@@ -213,9 +202,7 @@
             </span>
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
-                <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
-
+                <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -229,7 +216,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.3.7
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com/">Almsaeed Studio</a>.</strong> All rights
+        <strong>Copyright &copy; 2020 <a href="http://almsaeedstudio.com/">Yuri Prosyazhny</a>.</strong> All rights
         reserved.
     </footer>
 
