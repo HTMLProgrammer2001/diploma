@@ -7,14 +7,10 @@ use App\Department;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $users = User::all();
@@ -23,11 +19,6 @@ class UsersController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $departments = Department::all();
@@ -58,46 +49,40 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $departments = Department::all();
+        $commissions = Commission::all();
+
+        return view('admin.users.edit', compact('departments', 'commissions', 'user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'surname' => 'required',
+            'patronymic' => 'required',
+            'email' => Rule::unique('users')->ignore($user->id),
+            'password' => 'nullable|confirmed|min:8',
+            'avatar' => 'nullable|image',
+            'department' => 'nullable|exists:departments,id',
+            'commission' => 'nullable|exists:commissions,id'
+        ]);
+
+        $user->fill($request->all());
+        $user->generatePassword($request->get('password'));
+        $user->uploadAvatar($request->file('avatar'));
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
