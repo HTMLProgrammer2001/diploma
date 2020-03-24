@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -75,5 +74,48 @@ class User extends Authenticatable
 
     public function getFullName(){
         return $this->name . ' ' . $this->surname . ' ' . $this->patronymic;
+    }
+
+    public  function uploadAvatar($image){
+        if(!$image)
+            return;
+
+        $this->deleteAvatar();
+
+        //generate new name
+        $random = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890';
+        $newFileName = substr(str_shuffle($random), 0, 10) . '.' . $image->extension();
+
+        $image->storeAs('public', $newFileName);
+        $this->avatar = $newFileName;
+        $this->save();
+    }
+
+    public function deleteAvatar(){
+        if($this->avatar)
+            \Storage::delete('public/' . $this->avatar);
+
+        $this->avatar = null;
+        $this->save();
+    }
+
+    public function getAvatar(){
+        if($this->avatar)
+            return '/storage/' . $this->avatar;
+        else
+            return '/img/default-50x50.gif';
+    }
+
+    public function remove(){
+        $this->deleteAvatar();
+
+        $this->delete();
+    }
+
+    public function generatePassword($password){
+        if($password){
+            $this->password = bcrypt($password);
+            $this->save();
+        }
     }
 }

@@ -5,13 +5,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Blank page
-                <small>it all starts here</small>
+                Пользователи
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Examples</a></li>
-                <li class="active">Blank page</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i>Главная</a></li>
+                <li><a href="{{route('users.index')}}">Пользователи</a></li>
             </ol>
         </section>
 
@@ -26,7 +24,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="create.html" class="btn btn-success">Добавить</a>
+                        <a href="{{route('users.create')}}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
@@ -39,25 +37,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Рахим</td>
-                            <td>rahim@marlindev.ru</td>
-                            <td>
-                                <img src="../assets/dist/img/photo1.png" alt="" class="img-responsive" width="150">
-                            </td>
-                            <td><a href="edit.html" class="fa fa-pencil"></a> <a href="#" class="fa fa-remove"></a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Джеймс</td>
-                            <td>james@example.com</td>
-                            <td>
-                                <img src="../assets/dist/img/photo2.png" alt="" class="img-responsive" width="150">
-                            </td>
-                            <td><a href="edit.html" class="fa fa-pencil"></a> <a href="#" class="fa fa-remove"></a></td>
-                        </tr>
-                        </tfoot>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->getFullName()}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>
+                                        <img src="{{$user->getAvatar()}}" alt="" class="img-responsive" width="150">
+                                    </td>
+                                    <td>
+                                        <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
+                                        <a href="#" class="fa fa-remove"></a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <!-- /.box-body -->

@@ -13,7 +13,7 @@
         <section class="content">
 
             <!-- Default box -->
-            <form action="{{route('users.store')}}" method="post">
+            <form action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 @include('admin.errors')
@@ -52,8 +52,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="ava">Аватар</label>
-                            <input type="file" id="ava" name="ava">
+                            <label for="avatar">Аватар</label>
+                            <input type="file" id="avatar" name="avatar">
 
                             <p class="help-block">Изображения в форматах jpeg или png</p>
                         </div>
@@ -64,7 +64,7 @@
                                 <option value="" selected>Нет</option>
 
                                 @foreach($departments as $department)
-                                    <option value="{{$department->id}}" selected>{{$department->name}}</option>
+                                    <option value="{{$department->id}}">{{$department->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -75,7 +75,7 @@
                                 <option value="" selected>Нет</option>
 
                                 @foreach($commissions as $commission)
-                                    <option value="{{$commission->id}}" selected>{{$commission->name}}</option>
+                                    <option value="{{$commission->id}}">{{$commission->name}}</option>
                                 @endforeach
                             </select>
                         </div>

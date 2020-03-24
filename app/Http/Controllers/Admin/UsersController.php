@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Commission;
 use App\Department;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = User::all();
+        return view('admin.users.index', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -38,14 +42,20 @@ class UsersController extends Controller
            'name' => 'required',
            'surname' => 'required',
            'patronymic' => 'required',
-           'email' => 'required|email',
+           'email' => 'required|email|unique:users,email',
            'password' => 'required|confirmed|min:8',
-           'avatar' => 'nullable|image|mimes:jpeg,png',
-           'department' => 'nullable|exists:department',
-           'commission' => 'nullable|exists:commission'
+           'avatar' => 'nullable|image',
+           'department' => 'nullable|exists:departments,id',
+           'commission' => 'nullable|exists:commissions,id'
         ]);
 
-        echo 'ok';
+        $user = new User();
+        $user->fill($request->all());
+        $user->generatePassword($request->get('password'));
+        $user->uploadAvatar($request->file('avatar'));
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
