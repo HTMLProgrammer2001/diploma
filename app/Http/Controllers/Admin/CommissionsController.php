@@ -38,9 +38,6 @@ class CommissionsController extends Controller
 
     public function show(Commission $commission)
     {
-        $commission->delete();
-
-        return redirect()->route('commissions.index');
     }
 
     public function edit(Commission $commission)
@@ -66,5 +63,7 @@ class CommissionsController extends Controller
     public function destroy(Commission $commission)
     {
         $commission->delete();
+
+        return redirect()->route('commissions.index');
     }
 }

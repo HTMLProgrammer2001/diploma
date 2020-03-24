@@ -44,7 +44,7 @@
                                     <form action="{{route('commissions.destroy', $commission->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete">
+                                        <label for="delete" onclick="return confirm('Are you sure?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 

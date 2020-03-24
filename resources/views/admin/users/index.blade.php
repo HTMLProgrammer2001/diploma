@@ -47,7 +47,15 @@
                                     </td>
                                     <td>
                                         <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
-                                        <a href="#" class="fa fa-remove"></a></td>
+                                        <form action="{{route('users.destroy', $user->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete" onclick="return confirm('Are you sure?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
+
+                                            <button type="submit" id="delete" class="hidden"></button>
+                                        </form>
                                 </tr>
                             @endforeach
                         </tbody>

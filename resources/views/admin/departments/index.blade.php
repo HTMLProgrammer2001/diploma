@@ -41,10 +41,10 @@
                                 <td style="display: flex">
                                     <a href="{{route('departments.edit', $department->id)}}" class="fa fa-pencil"></a>
 
-                                    <form action="{{route('departments.destroy', $department->id)}}">
+                                    <form action="{{route('departments.destroy', $department->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete">
+                                        <label for="delete" onclick="return confirm('Are you sure?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 

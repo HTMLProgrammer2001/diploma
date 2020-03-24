@@ -38,9 +38,6 @@ class DepartmentsController extends Controller
 
     public function show(Department $department)
     {
-        $department->delete();
-
-        return redirect()->route('departments.index');
     }
 
     public function edit(Department $department)

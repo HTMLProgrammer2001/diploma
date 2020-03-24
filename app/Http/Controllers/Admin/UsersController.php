@@ -49,9 +49,8 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        //
     }
 
     public function edit(User $user)
@@ -83,8 +82,10 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->remove();
+
+        return redirect()->route('users.index');
     }
 }
