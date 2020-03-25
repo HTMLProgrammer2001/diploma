@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'patronymic', 'email'
+        'name', 'surname', 'patronymic', 'email', 'birthday'
     ];
 
     /**
@@ -46,14 +47,48 @@ class User extends Authenticatable
 
     //Relations
     public function department(){
-        $this->belongsTo(Department::class);
+        return $this->belongsTo(Department::class);
     }
 
     public function commission(){
-        $this->belongsTo(Commission::class);
+        return $this->belongsTo(Commission::class);
+    }
+
+    //accessors
+    public function setBirthdayAttribute($date){
+        $formattedDate = Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
+        $this->attributes['birthday'] = $formattedDate;
+    }
+
+    public function getBirthdayAttribute(){
+        if(!$this->attributes['birthday'])
+            return null;
+
+        $formattedDate = Carbon::createFromFormat('Y-m-d', $this->attributes['birthday'])->format('m/d/Y');
+        return $formattedDate;
     }
 
     //Helper methods
+    public function setDepartment($department){
+        $this->department_id = $department;
+        $this->save();
+    }
+
+    public function getDepartmentID(){
+        if($this->department)
+            return $this->department->id;
+    }
+
+    public function setCommission($commission){
+        $this->commission_id = $commission;
+        $this->save();
+    }
+
+    public function getCommissionID(){
+        if($this->commission)
+            return $this->commission->id;
+    }
+
     public function getRoleString(){
         switch ($this->role){
             case self::ROLE_ADMIN:
@@ -88,8 +123,7 @@ class User extends Authenticatable
         $this->deleteAvatar();
 
         //generate new name
-        $random = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890';
-        $newFileName = substr(str_shuffle($random), 0, 10) . '.' . $image->extension();
+        $newFileName = Str::random(10) . '.' . $image->extension();
 
         $image->storeAs('public', $newFileName);
         $this->avatar = $newFileName;
@@ -117,6 +151,7 @@ class User extends Authenticatable
         $this->delete();
     }
 
+    //generate secret values
     public function generatePassword($password){
         if($password){
             $this->password = bcrypt($password);
@@ -124,6 +159,23 @@ class User extends Authenticatable
         }
     }
 
+    public function cryptPassport($passport){
+        if(!$passport)
+            return;
+
+        $this->passport = encrypt($passport);
+        $this->save();
+    }
+
+    public function cryptCode($code){
+        if(!$code)
+            return;
+
+        $this->code = encrypt($code);
+        $this->save();
+    }
+
+    //check if user has access to admin page
     public function canEnter(){
         return $this->role <= User::ROLE_USER;
     }

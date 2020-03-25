@@ -37,12 +37,25 @@ class UsersController extends Controller
            'password' => 'required|confirmed|min:8',
            'avatar' => 'nullable|image',
            'department' => 'nullable|exists:departments,id',
-           'commission' => 'nullable|exists:commissions,id'
+           'commission' => 'nullable|exists:commissions,id',
+           'birthday' => 'nullable|date',
+           'passport' => 'nullable',
+           'code' => 'nullable'
         ]);
 
+        //create user
         $user = new User();
         $user->fill($request->all());
+
+        //generate secret values
         $user->generatePassword($request->get('password'));
+        $user->cryptPassport($request->get('passport'));
+        $user->cryptCode($request->get('code'));
+
+        //relationships
+        $user->setDepartment($request->get('department'));
+        $user->setCommission($request->get('commission'));
+
         $user->uploadAvatar($request->file('avatar'));
         $user->save();
 
@@ -71,12 +84,27 @@ class UsersController extends Controller
             'password' => 'nullable|confirmed|min:8',
             'avatar' => 'nullable|image',
             'department' => 'nullable|exists:departments,id',
-            'commission' => 'nullable|exists:commissions,id'
+            'commission' => 'nullable|exists:commissions,id',
+            'birthday' => 'nullable|date',
+            'passport' => 'nullable',
+            'code' => 'nullable',
+            'role' => 'required|numeric|between:0, 50'
         ]);
 
         $user->fill($request->all());
+
+        //generate secret values
         $user->generatePassword($request->get('password'));
+        $user->cryptPassport($request->get('passport'));
+        $user->cryptCode($request->get('code'));
+
+        //relationships
+        $user->setDepartment($request->get('department'));
+        $user->setCommission($request->get('commission'));
+
         $user->uploadAvatar($request->file('avatar'));
+
+        $user->role = $request->get('role');
         $user->save();
 
         return redirect()->route('users.index');

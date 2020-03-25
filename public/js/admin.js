@@ -3068,3 +3068,11 @@ function _init(){
 
   }
 })(jQuery, $.AdminLTE);
+
+$(document).ready(function () {
+    $('#calendar').datepicker({
+        dateFormat: 'Y-m-d'
+    });
+
+    $('.select2').select2();
+});

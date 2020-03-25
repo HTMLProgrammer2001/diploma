@@ -9,6 +9,6 @@ class Department extends Model
     protected $fillable = ['name'];
 
     public function users(){
-        $this->hasMany(User::class);
+        return $this->hasMany(User::class);
     }
 }
