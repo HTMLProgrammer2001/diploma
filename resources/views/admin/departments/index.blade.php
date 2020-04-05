@@ -44,11 +44,11 @@
                                     <form action="{{route('departments.destroy', $department->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete" onclick="return confirm('Are you sure?')">
+                                        <label for="delete_{{$department->id}}" onclick="return confirm('Are you sure?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 
-                                        <button type="submit" id="delete" class="hidden"></button>
+                                        <button type="submit" id="delete_{{$department->id}}" class="hidden"></button>
                                     </form>
                                 </td>
                             </tr>

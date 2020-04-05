@@ -54,6 +54,10 @@ class User extends Authenticatable
         return $this->belongsTo(Commission::class);
     }
 
+    public function publications(){
+        return $this->belongsToMany(Publication::class, 'users_publications', 'user_id');
+    }
+
     //accessors
     public function setBirthdayAttribute($date){
         if(!$date)

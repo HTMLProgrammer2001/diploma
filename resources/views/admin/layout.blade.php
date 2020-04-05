@@ -81,28 +81,13 @@
                                     {{$user->getShortName() . ', ' . $user->getRoleString()}}
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="{{route('profile.show')}}" class="btn btn-default btn-flat">Профиль</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{route('logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{route('logout')}}" class="btn btn-default btn-flat">Выйти</a>
                                 </div>
                             </li>
                         </ul>
@@ -135,23 +120,12 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
-                <li class="header">MAIN NAVIGATION</li>
-                <li class="treeview">
-                    <a href="{{route('admin')}}">
-                        <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
-                    </a>
-                </li>
-                <li><a href="#"><i class="fa fa-sticky-note-o"></i> <span>Публикации</span></a></li>
+                <li class="header">Навигационное меню</li>
+                <li class="treeview"><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> <span>Админ-панель</span></a></li>
+                <li><a href="{{route('profile.show')}}"><i class="fa fa-user"></i> <span>Профиль</span></a></li>
+                <li><a href="{{route('publications.index')}}"><i class="fa fa-sticky-note-o"></i> <span>Публикации</span></a></li>
                 <li><a href="{{route('commissions.index')}}"><i class="fa fa-list-ul"></i> <span>Коммиссии</span></a></li>
                 <li><a href="{{route('departments.index')}}"><i class="fa fa-tags"></i> <span>Отделения</span></a></li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-commenting"></i> <span>Комментарии</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-green">5</small>
-            </span>
-                    </a>
-                </li>
                 <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
             </ul>
         </section>
@@ -368,6 +342,15 @@
 <!-- ./wrapper -->
 
 <script src="/js/admin.js"></script>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script src="/plugins/ckfinder/ckfinder.js"></script>
+<script>
+	$(document).ready(function(){
+		var editor = CKEDITOR.replaceAll();
+		CKFinder.setupCKEditor( editor );
+	})
+
+</script>
 <!-- page script -->
 <script>
     $(function () {

@@ -46,6 +46,6 @@ class ProfileController extends Controller
         $user->uploadAvatar($request->file('avatar'));
         $user->save();
 
-        return redirect()->route('profile.index');
+        return redirect()->route('profile.show');
     }
 }

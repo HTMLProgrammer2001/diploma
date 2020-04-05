@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="department">Дата рождения</label>
+                                <label for="birthday">Дата рождения</label>
                                 <input type="text" class="form-control pull-right" value="{{old('birthday')}}" name="birthday" id="calendar" autocomplete="off">
                             </div>
 

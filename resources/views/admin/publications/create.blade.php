@@ -1,0 +1,74 @@
+@extends('admin.layout')
+
+@section('content')
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Добавить публикацию
+            </h1>
+
+            <ol class="breadcrumb">
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
+                <li><a href="{{route('publications.index')}}">Публикации</a></li>
+                <li><a href="{{route('publications.create')}}">Добавить</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Default box -->
+            <form action="{{route('publications.store')}}" method="post">
+                @include('admin.errors')
+                @csrf
+
+                <div class="box">
+                    <div class="box-header with-border">
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="title">Заголовок*</label>
+                                <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date_of_publication">Дата выхода</label>
+
+                                <input type="text" class="form-control pull-right"
+                                       value="{{old('date_of_publication')}}" name="date_of_publication"
+                                       id="calendar" autocomplete="off">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="authors">Авторы*</label>
+
+                                <select class="form-control select2" id="authors" name="authors[]" multiple="multiple"
+                                        data-placeholder="Выберите авторов">
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->getShortName()}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Описание*</label>
+                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <a href="{{url()->previous()}}">
+                            <button type="button" class="btn btn-default">Назад</button>
+                        </a>
+
+                        <button class="btn btn-success pull-right">Добавить</button>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+            </form>
+            <!-- /.box -->
+        </section>
+        <!-- /.content -->
+    </div>
+@endsection

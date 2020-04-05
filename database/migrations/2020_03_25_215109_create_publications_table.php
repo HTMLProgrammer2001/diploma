@@ -15,8 +15,6 @@ class CreatePublicationsTable extends Migration
     {
         Schema::create('Publications', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('author_id');
             $table->string('title');
             $table->text('description');
             $table->date('date_of_publication');

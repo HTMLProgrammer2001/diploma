@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::resource('/users', 'UsersController');
     Route::resource('/commissions', 'CommissionsController');
     Route::resource('/departments', 'DepartmentsController');
+    Route::resource('/publications', 'PublicationsController');
 
     Route::get('/profile', 'ProfileController@index')->name('profile.show');
     Route::get('/profile/update', 'ProfileController@edit')->name('profile.edit');

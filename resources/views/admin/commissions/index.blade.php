@@ -41,14 +41,14 @@
                                 <td style="display: flex">
                                     <a href="{{route('commissions.edit', $commission->id)}}" class="fa fa-pencil"></a>
 
-                                    <form action="{{route('commissions.destroy', $commission->id)}}">
+                                    <form action="{{route('commissions.destroy', $commission->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete" onclick="return confirm('Are you sure?')">
+                                        <label for="delete_{{$commission->id}}" onclick="return confirm('Are you sure?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 
-                                        <button type="submit" id="delete" class="hidden"></button>
+                                        <button type="submit" id="delete_{{$commission->id}}" class="hidden"></button>
                                     </form>
                                 </td>
                             </tr>

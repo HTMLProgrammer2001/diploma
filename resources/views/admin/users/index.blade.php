@@ -50,11 +50,11 @@
                                         <form action="{{route('users.destroy', $user->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <label for="delete" onclick="return confirm('Are you sure?')">
+                                            <label for="delete_{{$user->id}}" onclick="return confirm('Are you sure?')">
                                                 <a class="fa fa-remove"></a>
                                             </label>
 
-                                            <button type="submit" id="delete" class="hidden"></button>
+                                            <button type="submit" id="delete_{{$user->id}}" class="hidden"></button>
                                         </form>
                                 </tr>
                             @endforeach
