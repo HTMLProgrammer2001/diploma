@@ -56,8 +56,12 @@ class User extends Authenticatable
 
     //accessors
     public function setBirthdayAttribute($date){
-        $formattedDate = Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
-        $this->attributes['birthday'] = $formattedDate;
+        if(!$date)
+            $this->attributes['birthday'] = null;
+        else{
+            $formattedDate = Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
+            $this->attributes['birthday'] = $formattedDate;
+        }
     }
 
     public function getBirthdayAttribute(){
@@ -69,6 +73,13 @@ class User extends Authenticatable
     }
 
     //Helper methods
+    public function getBirthdayString(){
+        if($this->birthday)
+            return $this->birthday;
+        else
+            return 'Не установлено';
+    }
+
     public function setDepartment($department){
         $this->department_id = $department;
         $this->save();
@@ -79,6 +90,13 @@ class User extends Authenticatable
             return $this->department->id;
     }
 
+    public function getDepartmentName(){
+        if($this->department)
+            return $this->department->name;
+        else
+            return 'Не установлено';
+    }
+
     public function setCommission($commission){
         $this->commission_id = $commission;
         $this->save();
@@ -87,6 +105,13 @@ class User extends Authenticatable
     public function getCommissionID(){
         if($this->commission)
             return $this->commission->id;
+    }
+
+    public function getCommissionName(){
+        if($this->commission)
+            return $this->commission->name;
+        else
+            return 'Не установлено';
     }
 
     public function getRoleString(){
@@ -173,10 +198,5 @@ class User extends Authenticatable
 
         $this->code = encrypt($code);
         $this->save();
-    }
-
-    //check if user has access to admin page
-    public function canEnter(){
-        return $this->role <= User::ROLE_USER;
     }
 }

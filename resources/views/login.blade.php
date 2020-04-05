@@ -20,7 +20,7 @@
                     Авторизация
                 </h3>
             </div>
-            <div class="box-body" style="display: flex; justify-content: center">
+            <div class="box-body" style="display: flex; align-items: center; flex-direction: column">
                 @if(session('loginError'))
                     <div class="alert alert-danger">
                         {{session('loginError')}}

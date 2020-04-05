@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Commission;
 use App\Department;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
@@ -27,22 +28,8 @@ class UsersController extends Controller
         return view('admin.users.create', compact('departments', 'commissions'));
     }
 
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-        $this->validate($request, [
-           'name' => 'required',
-           'surname' => 'required',
-           'patronymic' => 'required',
-           'email' => 'required|email|unique:users,email',
-           'password' => 'required|confirmed|min:8',
-           'avatar' => 'nullable|image',
-           'department' => 'nullable|exists:departments,id',
-           'commission' => 'nullable|exists:commissions,id',
-           'birthday' => 'nullable|date',
-           'passport' => 'nullable',
-           'code' => 'nullable'
-        ]);
-
         //create user
         $user = new User();
         $user->fill($request->all());
@@ -74,21 +61,10 @@ class UsersController extends Controller
         return view('admin.users.edit', compact('departments', 'commissions', 'user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'surname' => 'required',
-            'patronymic' => 'required',
-            'email' => Rule::unique('users')->ignore($user->id),
-            'password' => 'nullable|confirmed|min:8',
-            'avatar' => 'nullable|image',
-            'department' => 'nullable|exists:departments,id',
-            'commission' => 'nullable|exists:commissions,id',
-            'birthday' => 'nullable|date',
-            'passport' => 'nullable',
-            'code' => 'nullable',
-            'role' => 'required|numeric|between:0, 50'
+            'email' => Rule::unique('users')->ignore($user->id)
         ]);
 
         $user->fill($request->all());

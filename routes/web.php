@@ -22,10 +22,14 @@ Route::get('/test', function(){
 
 Route::get('logout', 'LoginController@logout')->name('logout');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function(){
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', 'HomeController@index')->name('admin');
 
     Route::resource('/users', 'UsersController');
     Route::resource('/commissions', 'CommissionsController');
     Route::resource('/departments', 'DepartmentsController');
+
+    Route::get('/profile', 'ProfileController@index')->name('profile.show');
+    Route::get('/profile/update', 'ProfileController@edit')->name('profile.edit');
+    Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
 });
