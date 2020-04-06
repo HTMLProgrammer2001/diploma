@@ -26,7 +26,8 @@ class PublicationCreateRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'date_of_publication' => 'nullable',
-            'authors' => 'required|array'
+            'authors' => 'required|array',
+            'another_authors' => 'nullable|string'
         ];
     }
 }

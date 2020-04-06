@@ -51,6 +51,12 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="another_authors">Авторы не с колледжа</label>
+                                <input type="text" class="form-control" id="another_authors" name="another_authors"
+                                       value="{{old('another_authors')}}">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="description">Описание*</label>
                                 <textarea name="description" id="description" cols="30" rows="10"></textarea>
                             </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publication extends Model
 {
-    public $fillable = ['title', 'description'];
+    public $fillable = ['title', 'description', 'another_authors'];
 
     //relations
     public function authors(){
@@ -46,6 +46,11 @@ class Publication extends Model
         foreach ($this->authors as $author)
             $names[] = $author->getShortName();
 
-        return implode(', ', $names);
+        $authorsStr = implode(', ', $names);
+
+        if($this->another_authors)
+            $authorsStr .= ', ' . $this->another_authors;
+
+        return $authorsStr;
     }
 }

@@ -41,34 +41,30 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Имя</th>
-                                <th>E-mail</th>
-                                <th>Аватар</th>
+                                <th>Название</th>
+                                <th>Авторы</th>
                                 <th>Действия</th>
                             </tr>
                             </thead>
                             <tbody>
-{{--                            @foreach($users as $user)--}}
-{{--                                <tr>--}}
-{{--                                    <td>{{$user->id}}</td>--}}
-{{--                                    <td>{{$user->getFullName()}}</td>--}}
-{{--                                    <td>{{$user->email}}</td>--}}
-{{--                                    <td>--}}
-{{--                                        <img src="{{$user->getAvatar()}}" alt="" class="img-responsive" width="150">--}}
-{{--                                    </td>--}}
-{{--                                    <td>--}}
-{{--                                        <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>--}}
-{{--                                        <form action="{{route('users.destroy', $user->id)}}" method="post">--}}
-{{--                                            @csrf--}}
-{{--                                            @method('DELETE')--}}
-{{--                                            <label for="delete" onclick="return confirm('Are you sure?')">--}}
-{{--                                                <a class="fa fa-remove"></a>--}}
-{{--                                            </label>--}}
+                            @foreach($user->publications as $publication)
+                                <tr>
+                                    <td>{{$publication->id}}</td>
+                                    <td>{{$publication->title}}</td>
+                                    <td>{{$publication->getAuthorsString()}}</td>
+                                    <td>
+                                        <a href="{{route('publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
+                                        <form action="{{route('publications.destroy', $publication->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete" onclick="return confirm('Are you sure?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
 
-{{--                                            <button type="submit" id="delete" class="hidden"></button>--}}
-{{--                                        </form>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
+                                            <button type="submit" id="delete" class="hidden"></button>
+                                        </form>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
