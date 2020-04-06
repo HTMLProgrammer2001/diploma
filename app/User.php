@@ -58,6 +58,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Publication::class, 'users_publications', 'user_id');
     }
 
+    public function internships(){
+        return $this->hasMany(Internship::class);
+    }
+
     //accessors
     public function setBirthdayAttribute($date){
         if(!$date)
