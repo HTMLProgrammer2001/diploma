@@ -17,7 +17,7 @@ Route::get('/', 'LoginController@index')->name('login');
 Route::post('/', 'LoginController@login');
 
 Route::get('/test', function(){
-    dd(Hash::make('200120072017'));
+    return \App\User::paginate(2)->toArray();
 });
 
 Route::get('logout', 'LoginController@logout')->name('logout');
@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::resource('/departments', 'DepartmentsController');
     Route::resource('/publications', 'PublicationsController');
     Route::resource('/places', 'PlacesController');
+    Route::resource('/categories', 'CategoriesController');
 
     Route::get('/profile', 'ProfileController@index')->name('profile.show');
     Route::get('/profile/update', 'ProfileController@edit')->name('profile.edit');
