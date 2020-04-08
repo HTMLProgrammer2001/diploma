@@ -93,6 +93,13 @@ class Internship extends Model
         return null;
     }
 
+    public function getPlaceName(){
+        if($this->place)
+            return $this->place->name;
+
+        return null;
+    }
+
     public function getUserID(){
         if($this->user)
             return $this->user->id;

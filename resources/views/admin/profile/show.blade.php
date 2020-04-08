@@ -67,6 +67,41 @@
                             @endforeach
                             </tbody>
                         </table>
+
+                        <h3>Стажировки</h3>
+
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Тема</th>
+                                <th>Место</th>
+                                <th>Дата</th>
+                                <th>Действия</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($user->internships as $internship)
+                                <tr>
+                                    <td>{{$internship->id}}</td>
+                                    <td>{{$internship->title}}</td>
+                                    <td>{{$internship->getPlaceName()}}</td>
+                                    <td>{{$internship->to}}</td>
+                                    <td>
+                                        <a href="{{route('internships.edit', $internship->id)}}" class="fa fa-pencil"></a>
+                                        <form action="{{route('internships.destroy', $internship->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete" onclick="return confirm('Are you sure?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
+
+                                            <button type="submit" id="delete" class="hidden"></button>
+                                        </form>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
