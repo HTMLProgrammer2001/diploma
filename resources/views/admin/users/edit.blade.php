@@ -10,8 +10,8 @@
 
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('departments.index')}}">Пользователи</a></li>
-                <li><a href="{{route('departments.create')}}">Изменить</a></li>
+                <li><a href="{{route('users.index')}}">Пользователи</a></li>
+                <li><a href="{{route('users.edit', $user->id)}}">Изменить</a></li>
             </ol>
         </section>
 
@@ -88,7 +88,8 @@
 
                                 <div class="form-group">
                                     <label for="department">Дата рождения</label>
-                                    <input type="text" class="form-control pull-right" value="{{$user->birthday}}" name="birthday" id="calendar" autocomplete="off">
+                                    <input type="text" class="form-control pull-right calendar"
+                                           value="{{$user->birthday}}" name="birthday" autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
@@ -104,20 +105,10 @@
                                 <div class="form-group">
                                     <label for="role">Роль</label>
                                     <select class="form-control select2" id="role" name="role">
-                                        <option value="{{App\User::ROLE_USER}}"
-                                                {{$user->role == App\User::ROLE_USER ? ' selected' : ''}}>Пользователь</option>
-
-                                        <option value="{{App\User::ROLE_COMMISSION_DIRECTORY}}"
-                                                {{$user->role == App\User::ROLE_COMMISSION_DIRECTORY ? ' selected' : ''}}>Глава цикловой коммиссии</option>
-
-                                        <option value="{{App\User::ROLE_DEPARTMENT_DIRECTORY}}"
-                                                {{$user->role == App\User::ROLE_DEPARTMENT_DIRECTORY ? ' selected' : ''}}>Глава отделения</option>
-
-                                        <option value="{{App\User::ROLE_MODERATOR}}"
-                                                {{$user->role == App\User::ROLE_MODERATOR ? ' selected' : ''}}>Модератор</option>
-
-                                        <option value="{{App\User::ROLE_ADMIN}}"
-                                                {{$user->role == App\User::ROLE_ADMIN ? ' selected' : ''}}>Администратор</option>
+                                        @foreach(\App\User::getRolesArray() as $key => $name)
+                                            <option value="{{$key}}"
+                                                    {{$user->role == $key ? ' selected' : ''}}>{{$name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                         </div>

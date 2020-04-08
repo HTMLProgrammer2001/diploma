@@ -91,17 +91,20 @@
 
                             <div class="form-group">
                                 <label for="birthday">Дата рождения</label>
-                                <input type="text" class="form-control pull-right" value="{{old('birthday')}}" name="birthday" id="calendar" autocomplete="off">
+                                <input type="text" class="form-control pull-right calendar"
+                                       value="{{old('birthday')}}" name="birthday" id="birthday" autocomplete="off">
                             </div>
 
                             <div class="form-group">
                                 <label for="patronymic">Номер паспорта</label>
-                                <input type="text" class="form-control" id="patronymic" name="passport" value="{{old('passport')}}">
+                                <input type="text" class="form-control" id="patronymic"
+                                       name="passport" value="{{old('passport')}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="patronymic">Идентификационный код</label>
-                                <input type="text" class="form-control" id="patronymic" name="code" value="{{old('code')}}">
+                                <input type="text" class="form-control" id="patronymic"
+                                       name="code" value="{{old('code')}}">
                             </div>
                         </div>
                     </div>

@@ -138,7 +138,20 @@ class User extends Authenticatable
 
             case self::ROLE_USER:
                 return 'Користувач';
+
+            default:
+                return null;
         }
+    }
+
+    public static function getRolesArray(){
+        return [
+          self::ROLE_ADMIN => 'Адміністратор',
+          self::ROLE_MODERATOR => 'Модератор',
+          self::ROLE_DEPARTMENT_DIRECTORY => 'Голова відділу',
+          self::ROLE_COMMISSION_DIRECTORY => 'Голова циклової комісії',
+          self::ROLE_USER => 'Користувач',
+        ];
     }
 
     public function getFullName(){

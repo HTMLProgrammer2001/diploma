@@ -34,9 +34,9 @@
                             <div class="form-group">
                                 <label for="date_of_publication">Дата выхода</label>
 
-                                <input type="text" class="form-control pull-right"
+                                <input type="text" class="form-control pull-right calendar"
                                        value="{{old('date_of_publication')}}" name="date_of_publication"
-                                       id="calendar" autocomplete="off">
+                                       id="date_of_publication" autocomplete="off">
                             </div>
 
                             <div class="form-group">
