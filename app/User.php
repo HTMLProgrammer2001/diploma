@@ -62,6 +62,10 @@ class User extends Authenticatable
         return $this->hasMany(Internship::class);
     }
 
+    public function qualifications(){
+        return $this->hasMany(Qualification::class);
+    }
+
     //accessors
     public function setBirthdayAttribute($date){
         if(!$date)

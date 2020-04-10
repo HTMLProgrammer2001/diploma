@@ -128,6 +128,7 @@
                 <li><a href="{{route('departments.index')}}"><i class="fa fa-tags"></i> <span>Отделения</span></a></li>
                 <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
                 <li><a href="{{route('internships.index')}}"><i class="fa fa-map-marker"></i> <span>Стажировки</span></a></li>
+                <li><a href="{{route('qualifications.index')}}"><i class="fa fa-map-marker"></i> <span>Повышения квалификации</span></a></li>
                 <li><a href="{{route('places.index')}}"><i class="fa fa-map-marker"></i> <span>Места стажировки</span></a></li>
                 <li><a href="{{route('categories.index')}}"><i class="fa fa-list"></i> <span>Категории стажировки</span></a></li>
             </ul>
