@@ -5,13 +5,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Добавить пользователя
+                Додати користувача
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('users.index')}}">Пользователи</a></li>
-                <li><a href="{{route('users.create')}}">Добавить</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('users.index')}}">Користувачі</a></li>
+                <li><a href="{{route('users.create')}}">Додати</a></li>
             </ol>
         </section>
 
@@ -29,17 +29,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name">Имя*</label>
+                                <label for="name">Ім'я*</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="surname">Фамилия*</label>
+                                <label for="surname">Прізвище*</label>
                                 <input type="text" class="form-control" id="surname" name="surname" value="{{old('surname')}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="patronymic">Отчество*</label>
+                                <label for="patronymic">По-батькові*</label>
                                 <input type="text" class="form-control" id="patronymic" name="patronymic" value="{{old('patronymic')}}">
                             </div>
 
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password_confirmation">Подтвердите пароль*</label>
+                                <label for="password_confirmation">Повторіть пароль*</label>
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="">
                             </div>
                         </div>
@@ -64,13 +64,13 @@
                                 <label for="avatar">Аватар</label>
                                 <input type="file" id="avatar" name="avatar">
 
-                                <p class="help-block">Изображения в форматах jpeg или png</p>
+                                <p class="help-block">Зображення в форматах jpeg чи png</p>
                             </div>
 
                             <div class="form-group">
-                                <label for="department">Отделение</label>
-                                <select class="form-control custom-select" id=department" name="department" value="{{old('department')}}">
-                                    <option value="" selected>Нет</option>
+                                <label for="department">Відділення</label>
+                                <select class="form-control  select2" id=department" name="department" value="{{old('department')}}">
+                                    <option value="" selected>Немає</option>
 
                                     @foreach($departments as $department)
                                         <option value="{{$department->id}}">{{$department->name}}</option>
@@ -79,9 +79,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="commission">Цикловая коммиссия</label>
-                                <select class="form-control custom-select" id=commission" name="commission" value="{{old('commission')}}">
-                                    <option value="" selected>Нет</option>
+                                <label for="commission">Циклова комісія</label>
+                                <select class="form-control select2" id=commission" name="commission" value="{{old('commission')}}">
+                                    <option value="" selected>Немає</option>
 
                                     @foreach($commissions as $commission)
                                         <option value="{{$commission->id}}">{{$commission->name}}</option>
@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="birthday">Дата рождения</label>
+                                <label for="birthday">Дата народження</label>
                                 <input type="text" class="form-control pull-right calendar"
                                        value="{{old('birthday')}}" name="birthday" id="birthday" autocomplete="off">
                             </div>
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="patronymic">Идентификационный код</label>
+                                <label for="patronymic">Ідентифікаційний код</label>
                                 <input type="text" class="form-control" id="patronymic"
                                        name="code" value="{{old('code')}}">
                             </div>
@@ -115,7 +115,7 @@
                         <button type="button" class="btn btn-default">Назад</button>
                     </a>
 
-                    <button class="btn btn-success pull-right">Добавить</button>
+                    <button class="btn btn-success pull-right">Додати</button>
                 </div>
                 <!-- /.box-footer-->
                 </div>

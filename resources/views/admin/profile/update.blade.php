@@ -5,13 +5,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Изменить профиль
+                Редагувати профіль
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('profile.show')}}">Профиль</a></li>
-                <li><a href="{{route('profile.edit')}}">Изменить</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('profile.show')}}">Профіль</a></li>
+                <li><a href="{{route('profile.edit')}}">Редагувати</a></li>
             </ol>
         </section>
 
@@ -30,17 +30,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Имя</label>
+                                    <label for="name">Ім'я</label>
                                     <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="surname">Фамилия</label>
+                                    <label for="surname">Прізвище</label>
                                     <input type="text" class="form-control" id="surname" name="surname" value="{{$user->surname}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="patronymic">Отчество</label>
+                                    <label for="patronymic">По-батькові</label>
                                     <input type="text" class="form-control" id="patronymic" name="patronymic" value="{{$user->patronymic}}">
                                 </div>
 
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password_confirmation">Подтвердите пароль</label>
+                                    <label for="password_confirmation">Повторіть пароль</label>
                                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="">
                                 </div>
                             </div>
@@ -63,9 +63,9 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="department">Отделение</label>
+                                    <label for="department">Відділ</label>
                                     <select class="form-control select2" id="department" name="department" value="{{$user->getDepartmentID()}}">
-                                        <option value="">Нет</option>
+                                        <option value="">Немає</option>
 
                                         @foreach($departments as $department)
                                             <option value="{{$department->id}}"
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="commission">Цикловая коммиссия</label>
+                                    <label for="commission">Циклова комісія</label>
                                     <select class="form-control select2" id="commission" name="commission">
                                         <option value="">Нет</option>
 
@@ -87,7 +87,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="department">Дата рождения</label>
+                                    <label for="department">Дата народження</label>
                                     <input type="text" class="form-control pull-right" value="{{$user->birthday}}" name="birthday" id="calendar" autocomplete="off">
                                 </div>
 
@@ -97,7 +97,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="patronymic">Идентификационный код</label>
+                                    <label for="patronymic">Ідентифікаційний код</label>
                                     <input type="text" class="form-control" id="patronymic" name="code" value="">
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                             <img src="{{$user->getAvatar()}}" alt="" class="img-responsive" width="150" style="margin: 20px">
                             <input type="file" id="avatar" name="avatar">
 
-                            <p class="help-block">Изображения в форматах jpeg или png</p>
+                            <p class="help-block">Зображеняя в форматах jpeg чи png</p>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -117,7 +117,7 @@
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
-                        <button class="btn btn-warning pull-right">Изменить</button>
+                        <button class="btn btn-warning pull-right">Редагувати</button>
                     </div>
                     <!-- /.box-footer-->
                 </div>

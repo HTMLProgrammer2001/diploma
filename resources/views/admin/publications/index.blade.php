@@ -4,11 +4,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Публикации
+                Публікації
             </h1>
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('publications.index')}}">Публикации</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('publications.index')}}">Публікації</a></li>
             </ol>
         </section>
 
@@ -17,21 +17,18 @@
 
             <!-- Default box -->
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Листинг сущности</h3>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('publications.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('publications.create')}}" class="btn btn-success">Додати</a>
                     </div>
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Название</th>
-                            <th>Авторы</th>
-                            <th>Действия</th>
+                            <th>Назва</th>
+                            <th>Автори</th>
+                            <th>Дії</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,7 +43,7 @@
                                     <form action="{{route('publications.destroy', $publication->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete_{{$publication->id}}" onclick="return confirm('Are you sure?')">
+                                        <label for="delete_{{$publication->id}}" onclick="return confirm('Ви впевнені?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 

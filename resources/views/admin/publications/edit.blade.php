@@ -4,13 +4,13 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Редактировать публикацию
+                Редагувати публікацію
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('publications.index')}}">Публикации</a></li>
-                <li><a href="{{route('publications.edit', $publication->id)}}">Редактировать</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('publications.index')}}">Публікації</a></li>
+                <li><a href="{{route('publications.edit', $publication->id)}}">Редагувати</a></li>
             </ol>
         </section>
 
@@ -28,12 +28,12 @@
                     <div class="box-body">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="title">Заголовок*</label>
+                                <label for="title">Назва*</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{$publication->title}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="date_of_publication">Дата выхода</label>
+                                <label for="date_of_publication">Дата виходу</label>
 
                                 <input type="text" class="form-control pull-right calendar"
                                        value="{{$publication->date_of_publication}}" name="date_of_publication"
@@ -41,10 +41,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="authors">Авторы*</label>
+                                <label for="authors">Автори*</label>
 
                                 <select class="form-control select2" id="authors" name="authors[]" multiple="multiple"
-                                        data-placeholder="Выберите авторов">
+                                        data-placeholder="Оберіть авторів">
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}"
                                                 {{$publication->authors->find($user->id) ? ' selected' : ''}}>
@@ -55,13 +55,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="another_authors">Авторы не с колледжа</label>
+                                <label for="another_authors">Автори не з коледжу</label>
                                 <input type="text" class="form-control" id="another_authors" name="another_authors"
                                        value="{{$publication->another_authors}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Описание*</label>
+                                <label for="description">Опис*</label>
                                 <textarea name="description" id="description" cols="30" rows="10">
                                     {{ $publication->description }}
                                 </textarea>
@@ -74,7 +74,7 @@
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
-                        <button class="btn btn-success pull-right">Изменить</button>
+                        <button class="btn btn-success pull-right">Редагувати</button>
                     </div>
                     <!-- /.box-footer-->
                 </div>

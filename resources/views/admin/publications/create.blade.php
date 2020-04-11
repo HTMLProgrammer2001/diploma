@@ -4,13 +4,13 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Добавить публикацию
+                Додати публікацію
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('publications.index')}}">Публикации</a></li>
-                <li><a href="{{route('publications.create')}}">Добавить</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('publications.index')}}">Публікації</a></li>
+                <li><a href="{{route('publications.create')}}">Додати</a></li>
             </ol>
         </section>
 
@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="date_of_publication">Дата выхода</label>
+                                <label for="date_of_publication">Дата виходу</label>
 
                                 <input type="text" class="form-control pull-right calendar"
                                        value="{{old('date_of_publication')}}" name="date_of_publication"
@@ -40,10 +40,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="authors">Авторы*</label>
+                                <label for="authors">Автори*</label>
 
                                 <select class="form-control select2" id="authors" name="authors[]" multiple="multiple"
-                                        data-placeholder="Выберите авторов">
+                                        data-placeholder="Оберіть авторів">
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}">{{$user->getShortName()}}</option>
                                     @endforeach
@@ -51,13 +51,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="another_authors">Авторы не с колледжа</label>
+                                <label for="another_authors">Автори не з коледжу</label>
                                 <input type="text" class="form-control" id="another_authors" name="another_authors"
                                        value="{{old('another_authors')}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Описание*</label>
+                                <label for="description">Опис*</label>
                                 <textarea name="description" id="description" cols="30" rows="10"></textarea>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
-                        <button class="btn btn-success pull-right">Добавить</button>
+                        <button class="btn btn-success pull-right">Додати</button>
                     </div>
                     <!-- /.box-footer-->
                 </div>

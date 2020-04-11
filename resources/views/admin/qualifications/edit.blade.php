@@ -4,13 +4,13 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Редактировать квалификацию
+                Редагувати підвищення кваліфікації
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('qualifications.index')}}">Квалификации</a></li>
-                <li><a href="{{route('qualifications.edit', $qualification->id)}}">Редактировать</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('qualifications.index')}}">Підвищення кваліфікації</a></li>
+                <li><a href="{{route('qualifications.edit', $qualification->id)}}">Редагувати</a></li>
             </ol>
         </section>
 
@@ -28,9 +28,9 @@
                     <div class="box-body">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="user">Преподаватель*</label>
-                                <select class="form-control custom-select" id="user" name="user">
-                                    <option value="" selected>Нет</option>
+                                <label for="user">Користувач*</label>
+                                <select class="form-control select2" id="user" name="user">
+                                    <option value="" selected>Немає</option>
 
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}"
@@ -42,9 +42,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name">Квалификация*</label>
-                                <select class="form-control custom-select" id="name" name="name">
-                                    <option value="">Нет</option>
+                                <label for="name">Кваліфікація*</label>
+                                <select class="form-control select2" id="name" name="name">
+                                    <option value="">Немає</option>
 
                                     @foreach($qualificationNames as $qualificationName)
                                         <option value="{{$qualificationName}}"
@@ -56,14 +56,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="date">Дата квалификации*</label>
+                                <label for="date">Дата підвищення кваліфікації*</label>
                                 <input type="text" class="form-control pull-right calendar"
                                        value="{{$qualification->date}}"
                                        name="date" id="date" autocomplete="off">
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Описание</label>
+                                <label for="description">Опис</label>
                                 <textarea name="description" id="description" cols="30" rows="10">
                                     {!! $qualification->description !!}
                                 </textarea>
@@ -76,7 +76,7 @@
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
-                        <button class="btn btn-success pull-right">Изменить</button>
+                        <button class="btn btn-success pull-right">Редагувати</button>
                     </div>
                     <!-- /.box-footer-->
                 </div>

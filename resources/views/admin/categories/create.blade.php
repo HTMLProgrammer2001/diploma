@@ -4,13 +4,13 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Добавить категорию стажировки
+                Додати категорію стажувань
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('categories.index')}}">Категории стажировок</a></li>
-                <li><a href="{{route('categories.create')}}">Добавить</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('categories.index')}}">Категорії стажувань</a></li>
+                <li><a href="{{route('categories.create')}}">Додати</a></li>
             </ol>
         </section>
 
@@ -27,7 +27,7 @@
                     <div class="box-body">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name">Название*</label>
+                                <label for="name">Назва*</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
-                        <button class="btn btn-success pull-right">Добавить</button>
+                        <button class="btn btn-success pull-right">Додати</button>
                     </div>
                     <!-- /.box-footer-->
                 </div>

@@ -5,11 +5,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Стажировки
+                Стажування
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('internships.index')}}">Стажировки</a></li>
+                <li><a href="#"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('internships.index')}}">Стажування</a></li>
             </ol>
         </section>
 
@@ -18,23 +18,20 @@
 
             <!-- Default box -->
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Листинг сущности</h3>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('internships.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('internships.create')}}" class="btn btn-success">Додати</a>
                     </div>
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Пользователь</th>
-                            <th>Категория</th>
+                            <th>Користувач</th>
+                            <th>Категорія</th>
                             <th>Тема</th>
-                            <th>Количество часов</th>
-                            <th>Действия</th>
+                            <th>Кількість годин</th>
+                            <th>Дії</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -50,7 +47,7 @@
                                     <form action="{{route('internships.destroy', $internship->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete_{{$internship->id}}" onclick="return confirm('Are you sure?')">
+                                        <label for="delete_{{$internship->id}}" onclick="return confirm('Ви впевнені?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 

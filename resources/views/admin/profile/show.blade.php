@@ -5,12 +5,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Профиль пользователя {{$user->getFullName()}}
+                Профіль користувача {{$user->getFullName()}}
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('profile.show')}}">Профиль</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('profile.show')}}">Профіль</a></li>
             </ol>
         </section>
 
@@ -26,24 +26,24 @@
                             </div>
 
                             <div class="col-sm-7 col-sm-offset-1">
-                                <div>Имя: {{$user->getFullName()}}</div>
-                                <div>Дата рождения: {{$user->getBirthdayString()}}</div>
+                                <div>Ім'я: {{$user->getFullName()}}</div>
+                                <div>Дата народження: {{$user->getBirthdayString()}}</div>
                                 <div>Email: {{$user->email}}</div>
                                 <div>Роль: {{$user->getRoleString()}}</div>
-                                <div>Отделение: {{$user->getDepartmentName()}}</div>
-                                <div>Цикловая коммиссия: {{$user->getCommissionName()}}</div>
+                                <div>Відділ: {{$user->getDepartmentName()}}</div>
+                                <div>Циклова комісія: {{$user->getCommissionName()}}</div>
                             </div>
                         </div>
 
-                        <h3>Публикации</h3>
+                        <h3>Публікації</h3>
 
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table class="custom-table table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Название</th>
-                                <th>Авторы</th>
-                                <th>Действия</th>
+                                <th>Назва</th>
+                                <th>Автори</th>
+                                <th>Дії</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -57,7 +57,7 @@
                                         <form action="{{route('publications.destroy', $publication->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <label for="delete" onclick="return confirm('Are you sure?')">
+                                            <label for="delete" onclick="return confirm('Ви впевнені?')">
                                                 <a class="fa fa-remove"></a>
                                             </label>
 
@@ -68,16 +68,16 @@
                             </tbody>
                         </table>
 
-                        <h3>Стажировки</h3>
+                        <h3>Стажування</h3>
 
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table class="custom-table table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Тема</th>
-                                <th>Место</th>
+                                <th>Місце</th>
                                 <th>Дата</th>
-                                <th>Действия</th>
+                                <th>Дії</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -92,7 +92,7 @@
                                         <form action="{{route('internships.destroy', $internship->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <label for="delete" onclick="return confirm('Are you sure?')">
+                                            <label for="delete" onclick="return confirm('Ви впевнені?')">
                                                 <a class="fa fa-remove"></a>
                                             </label>
 
@@ -110,7 +110,7 @@
                         </a>
 
                         <a href="{{route('profile.edit')}}">
-                            <button class="btn btn-warning pull-right">Изменить</button>
+                            <button class="btn btn-warning pull-right">Редагувати</button>
                         </a>
                     </div>
                     <!-- /.box-footer-->

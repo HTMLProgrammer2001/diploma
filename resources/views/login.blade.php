@@ -17,7 +17,7 @@
         <div class="box">
             <div class="box-header with-border text-center">
                 <h3>
-                    Авторизация
+                    Авторизація
                 </h3>
             </div>
             <div class="box-body" style="display: flex; align-items: center; flex-direction: column">
@@ -43,7 +43,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                <button class="btn btn-success pull-right">Войти</button>
+                <button class="btn btn-success pull-right">Ввійти</button>
             </div>
             <!-- /.box-footer-->
         </div>

@@ -4,11 +4,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Места стажировки
+                Місця стажування
             </h1>
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('places.index')}}">Места стажировки</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('places.index')}}">Місця стажування</a></li>
             </ol>
         </section>
 
@@ -17,21 +17,18 @@
 
             <!-- Default box -->
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Листинг сущности</h3>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('places.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('places.create')}}" class="btn btn-success">Додати</a>
                     </div>
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Название учреждения</th>
-                            <th>Адрес учреждения</th>
-                            <th>Действия</th>
+                            <th>Назва закладу</th>
+                            <th>Адреса закладу</th>
+                            <th>Дії</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,7 +43,7 @@
                                     <form action="{{route('places.destroy', $place->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete_{{$place->id}}" onclick="return confirm('Are you sure?')">
+                                        <label for="delete_{{$place->id}}" onclick="return confirm('Ви впевнені?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 

@@ -4,13 +4,13 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Редактировать коммиссию
+                Редагувати комісію
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('commissions.index')}}">Коммиссии</a></li>
-                <li><a href="{{route('commissions.create')}}">Редактировать</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('commissions.index')}}">Комісії</a></li>
+                <li><a href="{{route('commissions.create')}}">Редагувати</a></li>
             </ol>
         </section>
 
@@ -28,7 +28,7 @@
                     <div class="box-body">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="name">Название*</label>
+                                <label for="name">Назва*</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{$commission->name}}">
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
-                        <button class="btn btn-warning pull-right">Изменить</button>
+                        <button class="btn btn-warning pull-right">Редагувати</button>
                     </div>
                     <!-- /.box-footer-->
                 </div>

@@ -4,11 +4,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Коммиссии
+                Комісії
             </h1>
             <ol class="breadcrumb">
-                <li><a href="/admin"><i class="fa fa-dashboard"></i>Главная</a></li>
-                <li><a href="{{route('commissions.index')}}">Коммиссии</a></li>
+                <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
+                <li><a href="{{route('commissions.index')}}">Комісії</a></li>
             </ol>
         </section>
 
@@ -17,20 +17,17 @@
 
             <!-- Default box -->
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Листинг сущности</h3>
-                </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{route('commissions.create')}}" class="btn btn-success">Добавить</a>
+                        <a href="{{route('commissions.create')}}" class="btn btn-success">Додати</a>
                     </div>
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Название</th>
-                            <th>Действия</th>
+                            <th>Назва</th>
+                            <th>Дії</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,7 +41,7 @@
                                     <form action="{{route('commissions.destroy', $commission->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="delete_{{$commission->id}}" onclick="return confirm('Are you sure?')">
+                                        <label for="delete_{{$commission->id}}" onclick="return confirm('Ви впевнені?')">
                                             <a class="fa fa-remove"></a>
                                         </label>
 
