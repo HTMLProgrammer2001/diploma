@@ -32,6 +32,7 @@
                                 <div>Роль: {{$user->getRoleString()}}</div>
                                 <div>Відділ: {{$user->getDepartmentName()}}</div>
                                 <div>Циклова комісія: {{$user->getCommissionName()}}</div>
+                                <div>Кваліфікація: {{$user->getQualificationName()}}</div>
                             </div>
                         </div>
 
@@ -53,20 +54,28 @@
                                     <td>{{$publication->title}}</td>
                                     <td>{{$publication->getAuthorsString()}}</td>
                                     <td>
-                                        <a href="{{route('publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
-                                        <form action="{{route('publications.destroy', $publication->id)}}" method="post">
+                                        <a href="{{route('profile.publications.edit', $publication->id)}}"
+                                           class="fa fa-pencil"></a>
+                                        <form action="{{route('profile.publications.destroy', $publication->id)}}"
+                                              method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <label for="delete" onclick="return confirm('Ви впевнені?')">
+                                            <label for="delete_{{$publication->id}}"
+                                                   onclick="return confirm('Ви впевнені?')">
                                                 <a class="fa fa-remove"></a>
                                             </label>
 
-                                            <button type="submit" id="delete" class="hidden"></button>
+                                            <button type="submit" id="delete_{{$publication->id}}"
+                                                    class="hidden"></button>
                                         </form>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+
+                        <a href="{{route('profile.publications.create')}}">
+                            <button class="btn btn-success margin-bottom">Додати</button>
+                        </a>
 
                         <h3>Стажування</h3>
 
@@ -88,20 +97,69 @@
                                     <td>{{$internship->getPlaceName()}}</td>
                                     <td>{{$internship->to}}</td>
                                     <td>
-                                        <a href="{{route('internships.edit', $internship->id)}}" class="fa fa-pencil"></a>
-                                        <form action="{{route('internships.destroy', $internship->id)}}" method="post">
+                                        <a href="{{route('profile.internships.edit', $internship->id)}}"
+                                           class="fa fa-pencil"></a>
+                                        <form action="{{route('profile.internships.destroy', $internship->id)}}"
+                                              method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <label for="delete" onclick="return confirm('Ви впевнені?')">
+                                            <label for="delete_{{$internship->id}}"
+                                                   onclick="return confirm('Ви впевнені?')">
                                                 <a class="fa fa-remove"></a>
                                             </label>
 
-                                            <button type="submit" id="delete" class="hidden"></button>
+                                            <button type="submit" id="delete_{{$internship->id}}"
+                                                    class="hidden"></button>
                                         </form>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+
+                        <b>Годин з останнього підвищення кваліфікації: {{$user->getInternshipHours()}}</b>
+
+                        <a href="{{route('profile.internships.create')}}" class="btn-block" style="margin-top: 20px">
+                            <button class="btn btn-success margin-bottom">Додати</button>
+                        </a>
+
+                        <h3>Підвищення кваліфікацій</h3>
+
+                        <table class="custom-table table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Кваліфікація</th>>
+                                <th>Дата</th>
+                                <th>Дії</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($user->qualifications as $qualification)
+                                <tr>
+                                    <td>{{$qualification->id}}</td>
+                                    <td>{{$qualification->name}}</td>
+                                    <td>{{$qualification->date}}</td>
+                                    <td>
+                                        <form action="{{route('profile.qualifications.destroy', $qualification->id)}}"
+                                              method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete_{{$qualification->id}}"
+                                                   onclick="return confirm('Ви впевнені?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
+
+                                            <button type="submit" id="delete_{{$qualification->id}}"
+                                                    class="hidden"></button>
+                                        </form>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+                        <a href="{{route('profile.qualifications.create')}}" class="btn-block">
+                            <button class="btn btn-success margin-bottom">Додати</button>
+                        </a>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">

@@ -80,7 +80,8 @@ class User extends Authenticatable
         if(!$this->attributes['birthday'])
             return null;
 
-        $formattedDate = Carbon::createFromFormat('Y-m-d', $this->attributes['birthday'])->format('m/d/Y');
+        $formattedDate = Carbon::createFromFormat('Y-m-d', $this->attributes['birthday'])
+            ->format('m/d/Y');
         return $formattedDate;
     }
 
@@ -89,7 +90,7 @@ class User extends Authenticatable
         if($this->birthday)
             return $this->birthday;
         else
-            return 'Не установлено';
+            return 'Не встановлено';
     }
 
     public function setDepartment($department){
@@ -106,7 +107,7 @@ class User extends Authenticatable
         if($this->department)
             return $this->department->name;
         else
-            return 'Не установлено';
+            return 'Не встановлено';
     }
 
     public function setCommission($commission){
@@ -123,7 +124,7 @@ class User extends Authenticatable
         if($this->commission)
             return $this->commission->name;
         else
-            return 'Не установлено';
+            return 'Не встановлено';
     }
 
     public function getRoleString(){
@@ -164,6 +165,24 @@ class User extends Authenticatable
 
     public function getShortName(){
         return $this->surname . ' ' . substr($this->name, 0, 1);
+    }
+
+    public function getQualificationDate(){
+        $qualification = $this->qualifications()->orderBy('date', 'desc')->first();
+
+        return $qualification ? $qualification->attributes['date'] : '1970-01-01';
+    }
+
+    public function getQualificationName(){
+        $qualification = $this->qualifications()->orderBy('date', 'desc')->first();
+
+        return $qualification ? $qualification->name : 'Не встановлено';
+    }
+
+    public function getInternshipHours(){
+        return $this->internships()
+            ->whereDate('from', '>', $this->getQualificationDate())
+            ->sum('hours');
     }
 
     public  function uploadAvatar($image){

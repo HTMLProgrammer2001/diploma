@@ -51,6 +51,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        return view('admin.profile.show', compact('user'));
     }
 
     public function edit(User $user)

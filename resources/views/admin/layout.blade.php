@@ -90,14 +90,18 @@
                 <li class="header">Навігаційне меню</li>
                 <li class="treeview"><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> <span>Адмін панель</span></a></li>
                 <li><a href="{{route('profile.show')}}"><i class="fa fa-user"></i> <span>Профіль</span></a></li>
-                <li><a href="{{route('publications.index')}}"><i class="fa fa-sticky-note-o"></i> <span>Публікації</span></a></li>
-                <li><a href="{{route('commissions.index')}}"><i class="fa fa-list-ul"></i> <span>Циклові комісії</span></a></li>
-                <li><a href="{{route('departments.index')}}"><i class="fa fa-tags"></i> <span>Відділення</span></a></li>
-                <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> <span>Користувачі</span></a></li>
-                <li><a href="{{route('internships.index')}}"><i class="fa fa-map-marker"></i> <span>Стажування</span></a></li>
-                <li><a href="{{route('qualifications.index')}}"><i class="fa fa-map-marker"></i> <span>Підвищення кваліфікації</span></a></li>
-                <li><a href="{{route('places.index')}}"><i class="fa fa-map-marker"></i> <span>Місця стажування</span></a></li>
-                <li><a href="{{route('categories.index')}}"><i class="fa fa-list"></i> <span>Категорії стажування</span></a></li>
+
+                @can('moderate')
+                    <li><a href="{{route('publications.index')}}"><i class="fa fa-sticky-note-o"></i> <span>Публікації</span></a></li>
+                    <li><a href="{{route('commissions.index')}}"><i class="fa fa-list-ul"></i> <span>Циклові комісії</span></a></li>
+                    <li><a href="{{route('departments.index')}}"><i class="fa fa-tags"></i> <span>Відділення</span></a></li>
+                    <li><a href="{{route('users.index')}}"><i class="fa fa-users"></i> <span>Користувачі</span></a></li>
+                    <li><a href="{{route('internships.index')}}"><i class="fa fa-map-marker"></i> <span>Стажування</span></a></li>
+                    <li><a href="{{route('qualifications.index')}}"><i class="fa fa-map-marker"></i> <span>Підвищення кваліфікації</span></a></li>
+                    <li><a href="{{route('places.index')}}"><i class="fa fa-map-marker"></i> <span>Місця стажування</span></a></li>
+                    <li><a href="{{route('categories.index')}}"><i class="fa fa-list"></i> <span>Категорії стажування</span></a></li>
+                @endcan
+
             </ul>
         </section>
         <!-- /.sidebar -->

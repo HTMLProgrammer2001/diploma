@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 
-class AdminMiddleware
+class ModeratorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +16,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!$request->user() || !$request->user()->canEnter())
+        if($request->user()->role > User::ROLE_MODERATOR)
             return abort(404);
 
         return $next($request);

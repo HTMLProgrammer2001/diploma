@@ -43,6 +43,7 @@
                                         <img src="{{$user->getAvatar()}}" alt="" class="img-responsive" width="150">
                                     </td>
                                     <td>
+                                        <a href="{{route('users.show', $user->id)}}" class="fa fa-eye"></a>
                                         <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
                                         <form action="{{route('users.destroy', $user->id)}}" method="post">
                                             @csrf
