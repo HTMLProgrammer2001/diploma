@@ -8,7 +8,6 @@ use App\InternCategory;
 use App\Internship;
 use App\Place;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class InternshipsController extends Controller

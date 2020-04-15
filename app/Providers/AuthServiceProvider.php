@@ -31,5 +31,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('moderate', function(User $user){
            return $user->role <= User::ROLE_MODERATOR;
         });
+
+        Gate::define('view', function(User $user){
+            return $user->role <= User::ROLE_COMMISSION_DIRECTORY;
+        });
     }
 }

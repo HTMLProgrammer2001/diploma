@@ -91,7 +91,7 @@
                 <li class="treeview"><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> <span>Адмін панель</span></a></li>
                 <li><a href="{{route('profile.show')}}"><i class="fa fa-user"></i> <span>Профіль</span></a></li>
 
-                @can('moderate')
+                @can('view')
                     <li><a href="{{route('publications.index')}}"><i class="fa fa-sticky-note-o"></i> <span>Публікації</span></a></li>
                     <li><a href="{{route('commissions.index')}}"><i class="fa fa-list-ul"></i> <span>Циклові комісії</span></a></li>
                     <li><a href="{{route('departments.index')}}"><i class="fa fa-tags"></i> <span>Відділення</span></a></li>

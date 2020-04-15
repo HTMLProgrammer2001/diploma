@@ -26,7 +26,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('/', 'HomeController@index')->name('admin');
 
     //Admin and moderator only controllers
-    Route::group(['middleware' => 'admin'], function(){
+    Route::group(['middleware' => 'can:moderate'], function(){
         Route::resource('users', 'UsersController');
         Route::resource('commissions', 'CommissionsController');
         Route::resource('departments', 'DepartmentsController');
@@ -35,6 +35,25 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::resource('categories', 'CategoriesController');
         Route::resource('internships', 'InternshipsController');
         Route::resource('qualifications', 'QualificationsController');
+    });
+
+    //for administration of college
+    Route::group(['middleware' => 'can:view'], function(){
+        Route::resource('users', 'UsersController')->only('index', 'show');
+        Route::resource('commissions', 'CommissionsController')
+            ->only('index', 'show');
+        Route::resource('departments', 'DepartmentsController')
+            ->only('index', 'show');
+        Route::resource('publications', 'PublicationsController')
+            ->only('index', 'show');
+        Route::resource('places', 'PlacesController')
+            ->only('index', 'show');
+        Route::resource('categories', 'CategoriesController')
+            ->only('index', 'show');
+        Route::resource('internships', 'InternshipsController')
+            ->only('index', 'show');
+        Route::resource('qualifications', 'QualificationsController')
+            ->only('index', 'show');
     });
 
     //user profile routes

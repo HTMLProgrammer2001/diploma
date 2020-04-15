@@ -20,9 +20,13 @@
             <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('users.create')}}" class="btn btn-success">Додати</a>
-                    </div>
+
+                    @can('moderate')
+                        <div class="form-group">
+                            <a href="{{route('users.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+                    @endcan
+
                     <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
