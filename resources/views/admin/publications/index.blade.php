@@ -19,9 +19,13 @@
             <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('publications.create')}}" class="btn btn-success">Додати</a>
-                    </div>
+
+                    @can('moderate')
+                        <div class="form-group">
+                            <a href="{{route('publications.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+                    @endcan
+
                     <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -38,17 +42,22 @@
                                 <td>{{$publication->title}}</td>
                                 <td>{{$publication->getAuthorsString()}}</td>
                                 <td style="display: flex">
-                                    <a href="{{route('publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
 
-                                    <form action="{{route('publications.destroy', $publication->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <label for="delete_{{$publication->id}}" onclick="return confirm('Ви впевнені?')">
-                                            <a class="fa fa-remove"></a>
-                                        </label>
+                                    @can('moderate')
+                                        <a href="{{route('publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
 
-                                        <button type="submit" id="delete_{{$publication->id}}" class="hidden"></button>
-                                    </form>
+                                        <form action="{{route('publications.destroy', $publication->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <label for="delete_{{$publication->id}}" onclick="return confirm('Ви впевнені?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
+
+                                            <button type="submit" id="delete_{{$publication->id}}" class="hidden"></button>
+                                        </form>
+                                    @endcan
+
                                 </td>
                             </tr>
                         @endforeach

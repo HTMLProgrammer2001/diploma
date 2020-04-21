@@ -20,9 +20,11 @@
             <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('qualifications.create')}}" class="btn btn-success">Додати</a>
-                    </div>
+                    @can('moderate')
+                        <div class="form-group">
+                            <a href="{{route('qualifications.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+                    @endcan
                     <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -41,16 +43,19 @@
                                 <td>{{$qualification->name}}</td>
                                 <td>{{$qualification->date}}</td>
                                 <td>
-                                    <a href="{{route('qualifications.edit', $qualification->id)}}" class="fa fa-pencil"></a>
-                                    <form action="{{route('qualifications.destroy', $qualification->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <label for="delete_{{$qualification->id}}" onclick="return confirm('Ви впевнені?')">
-                                            <a class="fa fa-remove"></a>
-                                        </label>
+                                    @can('moderate')
+                                        <a href="{{route('qualifications.edit', $qualification->id)}}" class="fa fa-pencil"></a>
 
-                                        <button type="submit" id="delete_{{$qualification->id}}" class="hidden"></button>
-                                    </form>
+                                        <form action="{{route('qualifications.destroy', $qualification->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete_{{$qualification->id}}" onclick="return confirm('Ви впевнені?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
+
+                                            <button type="submit" id="delete_{{$qualification->id}}" class="hidden"></button>
+                                        </form>
+                                    @endcan
                             </tr>
                         @endforeach
                         </tbody>

@@ -19,9 +19,13 @@
             <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('places.create')}}" class="btn btn-success">Додати</a>
-                    </div>
+
+                    @can('moderate')
+                        <div class="form-group">
+                            <a href="{{route('places.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+                    @endcan
+
                     <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -38,17 +42,21 @@
                                 <td>{{$place->name}}</td>
                                 <td>{{$place->address}}</td>
                                 <td style="display: flex">
-                                    <a href="{{route('places.edit', $place->id)}}" class="fa fa-pencil"></a>
 
-                                    <form action="{{route('places.destroy', $place->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <label for="delete_{{$place->id}}" onclick="return confirm('Ви впевнені?')">
-                                            <a class="fa fa-remove"></a>
-                                        </label>
+                                    @can('moderate')
+                                        <a href="{{route('places.edit', $place->id)}}" class="fa fa-pencil"></a>
 
-                                        <button type="submit" id="delete_{{$place->id}}" class="hidden"></button>
-                                    </form>
+                                        <form action="{{route('places.destroy', $place->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete_{{$place->id}}" onclick="return confirm('Ви впевнені?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
+
+                                            <button type="submit" id="delete_{{$place->id}}" class="hidden"></button>
+                                        </form>
+                                    @endcan
+
                                 </td>
                             </tr>
                         @endforeach

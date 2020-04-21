@@ -19,9 +19,13 @@
             <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('categories.create')}}" class="btn btn-success">Додати</a>
-                    </div>
+
+                    @can('moderate')
+                        <div class="form-group">
+                            <a href="{{route('categories.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+                    @endcan
+
                     <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -36,17 +40,19 @@
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
                                 <td style="display: flex">
-                                    <a href="{{route('categories.edit', $category->id)}}" class="fa fa-pencil"></a>
+                                    @can('moderate')
+                                        <a href="{{route('categories.edit', $category->id)}}" class="fa fa-pencil"></a>
 
-                                    <form action="{{route('categories.destroy', $category->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <label for="delete_{{$category->id}}" onclick="return confirm('Ви впевнені?')">
-                                            <a class="fa fa-remove"></a>
-                                        </label>
+                                        <form action="{{route('categories.destroy', $category->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete_{{$category->id}}" onclick="return confirm('Ви впевнені?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
 
-                                        <button type="submit" id="delete_{{$category->id}}" class="hidden"></button>
-                                    </form>
+                                            <button type="submit" id="delete_{{$category->id}}" class="hidden"></button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

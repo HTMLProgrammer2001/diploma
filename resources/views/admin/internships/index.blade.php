@@ -20,9 +20,13 @@
             <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="form-group">
-                        <a href="{{route('internships.create')}}" class="btn btn-success">Додати</a>
-                    </div>
+
+                    @can('moderate')
+                        <div class="form-group">
+                            <a href="{{route('internships.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+                    @endcan
+
                     <table class="custom-table table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -43,16 +47,18 @@
                                 <td>{{$internship->title}}</td>
                                 <td>{{$internship->hours}}</td>
                                 <td>
-                                    <a href="{{route('internships.edit', $internship->id)}}" class="fa fa-pencil"></a>
-                                    <form action="{{route('internships.destroy', $internship->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <label for="delete_{{$internship->id}}" onclick="return confirm('Ви впевнені?')">
-                                            <a class="fa fa-remove"></a>
-                                        </label>
+                                    @can('moderate')
+                                        <a href="{{route('internships.edit', $internship->id)}}" class="fa fa-pencil"></a>
+                                        <form action="{{route('internships.destroy', $internship->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <label for="delete_{{$internship->id}}" onclick="return confirm('Ви впевнені?')">
+                                                <a class="fa fa-remove"></a>
+                                            </label>
 
-                                        <button type="submit" id="delete_{{$internship->id}}" class="hidden"></button>
-                                    </form>
+                                            <button type="submit" id="delete_{{$internship->id}}" class="hidden"></button>
+                                        </form>
+                                    @endcan
                             </tr>
                         @endforeach
                         </tbody>

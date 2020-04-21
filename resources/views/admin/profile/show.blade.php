@@ -36,130 +36,158 @@
                             </div>
                         </div>
 
-                        <h3>Публікації</h3>
 
-                        <table class="custom-table table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Назва</th>
-                                <th>Автори</th>
-                                <th>Дії</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($user->publications as $publication)
-                                <tr>
-                                    <td>{{$publication->id}}</td>
-                                    <td>{{$publication->title}}</td>
-                                    <td>{{$publication->getAuthorsString()}}</td>
-                                    <td>
-                                        <a href="{{route('profile.publications.edit', $publication->id)}}"
-                                           class="fa fa-pencil"></a>
-                                        <form action="{{route('profile.publications.destroy', $publication->id)}}"
-                                              method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <label for="delete_{{$publication->id}}"
-                                                   onclick="return confirm('Ви впевнені?')">
-                                                <a class="fa fa-remove"></a>
-                                            </label>
+                        <ul class="nav nav-tabs" id="profile_tab" role="tablist">
+                            <li class="nav-item active">
+                                <a class="nav-link" id="publications_tab" data-toggle="tab"
+                                   href="#publications" role="tab">Публикации</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="internships_tab" data-toggle="tab"
+                                   href="#internships" role="tab">Стажировки</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="qualifications_tab" data-toggle="tab"
+                                   href="#qualifications" role="tab">Квалификации</a>
+                            </li>
+                        </ul>
 
-                                            <button type="submit" id="delete_{{$publication->id}}"
-                                                    class="hidden"></button>
-                                        </form>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                        <div class="tab-content" id="profile_tab_content">
+                            <div class="tab-pane fade show active in" id="publications" role="tabpanel"
+                                 aria-labelledby="home-tab">
+                                    <h3>Публікації</h3>
 
-                        <a href="{{route('profile.publications.create')}}">
-                            <button class="btn btn-success margin-bottom">Додати</button>
-                        </a>
+                                    <table class="custom-table table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Назва</th>
+                                                <th>Автори</th>
+                                                <th>Дії</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($user->publications as $publication)
+                                                <tr>
+                                                    <td>{{$publication->id}}</td>
+                                                    <td>{{$publication->title}}</td>
+                                                    <td>{{$publication->getAuthorsString()}}</td>
+                                                    <td>
+                                                        <a href="{{route('profile.publications.edit', $publication->id)}}"
+                                                        class="fa fa-pencil"></a>
+                                                        <form action="{{route('profile.publications.destroy', $publication->id)}}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <label for="delete_{{$publication->id}}"
+                                                                onclick="return confirm('Ви впевнені?')">
 
-                        <h3>Стажування</h3>
+                                                                <a class="fa fa-remove"></a>
+                                                            </label>
 
-                        <table class="custom-table table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Тема</th>
-                                <th>Місце</th>
-                                <th>Дата кінця</th>
-                                <th>Дії</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($user->internships as $internship)
-                                <tr>
-                                    <td>{{$internship->id}}</td>
-                                    <td>{{$internship->title}}</td>
-                                    <td>{{$internship->getPlaceName()}}</td>
-                                    <td>{{$internship->to}}</td>
-                                    <td>
-                                        <a href="{{route('profile.internships.edit', $internship->id)}}"
-                                           class="fa fa-pencil"></a>
-                                        <form action="{{route('profile.internships.destroy', $internship->id)}}"
-                                              method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <label for="delete_{{$internship->id}}"
-                                                   onclick="return confirm('Ви впевнені?')">
-                                                <a class="fa fa-remove"></a>
-                                            </label>
+                                                            <button type="submit" id="delete_{{$publication->id}}"
+                                                                class="hidden"></button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
 
-                                            <button type="submit" id="delete_{{$internship->id}}"
-                                                    class="hidden"></button>
-                                        </form>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                    <a href="{{route('profile.publications.create')}}">
+                                        <button class="btn btn-success margin-bottom">Додати</button>
+                                    </a>
+                            </div>
 
-                        <b>Годин з останнього підвищення кваліфікації: {{$user->getInternshipHours()}}</b>
+                            <div class="tab-pane fade" id="internships" role="tabpanel">
+                                <h3>Стажування</h3>
 
-                        <a href="{{route('profile.internships.create')}}" class="btn-block" style="margin-top: 20px">
-                            <button class="btn btn-success margin-bottom">Додати</button>
-                        </a>
+                                <table class="custom-table table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Тема</th>
+                                            <th>Місце</th>
+                                            <th>Дата кінця</th>
+                                            <th>Дії</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($user->internships as $internship)
+                                            <tr>
+                                                <td>{{$internship->id}}</td>
+                                                <td>{{$internship->title}}</td>
+                                                <td>{{$internship->getPlaceName()}}</td>
+                                                <td>{{$internship->to}}</td>
+                                                <td>
+                                                    <a href="{{route('profile.internships.edit', $internship->id)}}"
+                                                        class="fa fa-pencil"></a>
+                                                    <form action="{{route('profile.internships.destroy', $internship->id)}}"
+                                                          method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <label for="delete_{{$internship->id}}"
+                                                           onclick="return confirm('Ви впевнені?')">
+                                                            <a class="fa fa-remove"></a>
+                                                        </label>
 
-                        <h3>Підвищення кваліфікацій</h3>
+                                                        <button type="submit" id="delete_{{$internship->id}}"
+                                                            class="hidden"></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
 
-                        <table class="custom-table table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Кваліфікація</th>>
-                                <th>Дата</th>
-                                <th>Дії</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($user->qualifications as $qualification)
-                                <tr>
-                                    <td>{{$qualification->id}}</td>
-                                    <td>{{$qualification->name}}</td>
-                                    <td>{{$qualification->date}}</td>
-                                    <td>
-                                        <form action="{{route('profile.qualifications.destroy', $qualification->id)}}"
-                                              method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <label for="delete_{{$qualification->id}}"
-                                                   onclick="return confirm('Ви впевнені?')">
-                                                <a class="fa fa-remove"></a>
-                                            </label>
+                                <b>Годин з останнього підвищення кваліфікації: {{$user->getInternshipHours()}}</b>
 
-                                            <button type="submit" id="delete_{{$qualification->id}}"
-                                                    class="hidden"></button>
-                                        </form>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                <a href="{{route('profile.internships.create')}}" class="btn-block" style="margin-top: 20px">
+                                    <button class="btn btn-success margin-bottom">Додати</button>
+                                </a>
+                            </div>
 
-                        <a href="{{route('profile.qualifications.create')}}" class="btn-block">
-                            <button class="btn btn-success margin-bottom">Додати</button>
-                        </a>
+                            <div class="tab-pane fade" id="qualifications" role="tabpanel">
+                                <h3>Підвищення кваліфікацій</h3>
+
+                                <table class="custom-table table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Кваліфікація</th>>
+                                        <th>Дата</th>
+                                        <th>Дії</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($user->qualifications as $qualification)
+                                        <tr>
+                                            <td>{{$qualification->id}}</td>
+                                            <td>{{$qualification->name}}</td>
+                                            <td>{{$qualification->date}}</td>
+                                            <td>
+                                                <form action="{{route('profile.qualifications.destroy', $qualification->id)}}"
+                                                      method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <label for="delete_{{$qualification->id}}"
+                                                           onclick="return confirm('Ви впевнені?')">
+                                                        <a class="fa fa-remove"></a>
+                                                    </label>
+
+                                                    <button type="submit" id="delete_{{$qualification->id}}"
+                                                            class="hidden"></button>
+                                                </form>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+
+                                <a href="{{route('profile.qualifications.create')}}" class="btn-block">
+                                    <button class="btn btn-success margin-bottom">Додати</button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
