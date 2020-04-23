@@ -27,7 +27,9 @@ class PublicationCreateRequest extends FormRequest
             'title' => 'required|string|max:255',
             'date_of_publication' => 'nullable',
             'authors' => 'required|array',
-            'another_authors' => 'nullable|string'
+            'another_authors' => 'nullable|string',
+            'publisher' => 'nullable|string',
+            'url' => 'nullable|url'
         ];
     }
 }

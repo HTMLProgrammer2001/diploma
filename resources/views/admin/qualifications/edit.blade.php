@@ -4,12 +4,12 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Редагувати підвищення кваліфікації
+                Редагувати встановлення категорії
             </h1>
 
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('qualifications.index')}}">Підвищення кваліфікації</a></li>
+                <li><a href="{{route('qualifications.index')}}">Встановлення категорій</a></li>
                 <li><a href="{{route('qualifications.edit', $qualification->id)}}">Редагувати</a></li>
             </ol>
         </section>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name">Кваліфікація*</label>
+                                <label for="name">Категорія*</label>
                                 <select class="form-control select2" id="name" name="name">
                                     <option value="">Немає</option>
 
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="date">Дата підвищення кваліфікації*</label>
+                                <label for="date">Дата Встановлення категорії*</label>
                                 <input type="text" class="form-control pull-right calendar"
                                        value="{{$qualification->date}}"
                                        name="date" id="date" autocomplete="off">

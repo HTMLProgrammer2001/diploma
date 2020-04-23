@@ -29,7 +29,20 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label for="title">Назва*</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{$publication->title}}">
+                                <input type="text" class="form-control" id="title" name="title"
+                                       value="{{$publication->title}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="publisher">Видавець</label>
+                                <input type="text" class="form-control" id="publisher" name="publisher"
+                                       value="{{$publication->publisher}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="url">URL</label>
+                                <input type="text" class="form-control" id="url" name="url"
+                                       value="{{$publication->url}}">
                             </div>
 
                             <div class="form-group">

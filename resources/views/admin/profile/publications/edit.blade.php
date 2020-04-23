@@ -34,6 +34,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="publisher">Видавець</label>
+                                <input type="text" class="form-control" id="publisher" name="publisher"
+                                       value="{{$publication->publisher}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="url">URL</label>
+                                <input type="text" class="form-control" id="url" name="url"
+                                       value="{{$publication->url}}">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="date_of_publication">Дата виходу</label>
 
                                 <input type="text" class="form-control pull-right calendar"

@@ -27,8 +27,19 @@
                     <div class="box-body">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="title">Заголовок*</label>
+                                <label for="title">Назва*</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="publisher">Видавець</label>
+                                <input type="text" class="form-control" id="publisher" name="publisher"
+                                       value="{{old('publisher')}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="url">URL</label>
+                                <input type="text" class="form-control" id="url" name="url" value="{{old('url')}}">
                             </div>
 
                             <div class="form-group">

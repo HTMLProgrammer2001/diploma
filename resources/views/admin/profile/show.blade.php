@@ -20,7 +20,7 @@
             <!-- Default box -->
                 <div class="box">
                     <div class="box-body">
-                        <div class="row">
+                        <div class="row margin-bottom">
                             <div class="col-sm-3">
                                 <img src="{{$user->getAvatar()}}" alt="" style="max-width: 100%;">
                             </div>
@@ -40,15 +40,15 @@
                         <ul class="nav nav-tabs" id="profile_tab" role="tablist">
                             <li class="nav-item active">
                                 <a class="nav-link" id="publications_tab" data-toggle="tab"
-                                   href="#publications" role="tab">Публикации</a>
+                                   href="#publications" role="tab">Публікації</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="internships_tab" data-toggle="tab"
-                                   href="#internships" role="tab">Стажировки</a>
+                                   href="#internships" role="tab">Стажування</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="qualifications_tab" data-toggle="tab"
-                                   href="#qualifications" role="tab">Квалификации</a>
+                                   href="#qualifications" role="tab">Встановлення/Підтвердження кваліфікацій</a>
                             </li>
                         </ul>
 
@@ -148,7 +148,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="qualifications" role="tabpanel">
-                                <h3>Підвищення кваліфікацій</h3>
+                                <h3>Встановлення/Підтвердження кваліфікацій</h3>
 
                                 <table class="custom-table table table-bordered table-striped">
                                     <thead>

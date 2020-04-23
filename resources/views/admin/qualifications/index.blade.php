@@ -5,11 +5,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Підвищення кваліфікацій
+                Встановлення категорій
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('internships.index')}}">Підвищення кваліфікацій</a></li>
+                <li><a href="{{route('internships.index')}}">Встановлення категорій</a></li>
             </ol>
         </section>
 
@@ -44,16 +44,20 @@
                                 <td>{{$qualification->date}}</td>
                                 <td>
                                     @can('moderate')
-                                        <a href="{{route('qualifications.edit', $qualification->id)}}" class="fa fa-pencil"></a>
+                                        <a href="{{route('qualifications.edit', $qualification->id)}}"
+                                           class="fa fa-pencil"></a>
 
-                                        <form action="{{route('qualifications.destroy', $qualification->id)}}" method="post">
+                                        <form action="{{route('qualifications.destroy', $qualification->id)}}"
+                                              method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <label for="delete_{{$qualification->id}}" onclick="return confirm('Ви впевнені?')">
+                                            <label for="delete_{{$qualification->id}}"
+                                                   onclick="return confirm('Ви впевнені?')">
                                                 <a class="fa fa-remove"></a>
                                             </label>
 
-                                            <button type="submit" id="delete_{{$qualification->id}}" class="hidden"></button>
+                                            <button type="submit" id="delete_{{$qualification->id}}" class="hidden">
+                                            </button>
                                         </form>
                                     @endcan
                             </tr>
