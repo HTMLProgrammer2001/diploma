@@ -10,14 +10,15 @@ use App\Http\Controllers\Controller;
 
 class PublicationsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function paginate(){
+        $publications = Publication::paginate(env('PAGINATE_SiZE', 10));
+
+        return view('admin.publications.paginate', compact('publications'));
+    }
+
     public function index()
     {
-        $publications = Publication::all();
+        $publications = Publication::paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.publications.index', compact('publications'));
     }
@@ -67,7 +68,7 @@ class PublicationsController extends Controller
      */
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     /**

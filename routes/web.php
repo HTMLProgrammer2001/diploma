@@ -27,6 +27,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('/departments/paginate', 'DepartmentsController@paginate')
         ->name('departments.paginate');
 
+    Route::get('/publications/paginate', 'PublicationsController@paginate')
+        ->name('publications.paginate');
+
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
         Route::resource('users', 'UsersController');
