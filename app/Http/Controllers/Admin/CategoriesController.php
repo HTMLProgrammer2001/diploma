@@ -8,14 +8,15 @@ use App\InternCategory;
 
 class CategoriesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function paginate(){
+        $categories = InternCategory::paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.categories.paginate', compact('categories'));
+    }
+
     public function index()
     {
-        $categories = InternCategory::all();
+        $categories = InternCategory::paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.categories.index', compact('categories'));
     }

@@ -35,6 +35,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('/users/paginate', 'UsersController@paginate')
         ->name('users.paginate');
 
+    Route::get('/categories/paginate', 'CategoriesController@paginate')
+        ->name('categories.paginate');
+
+    Route::get('/internships/paginate', 'InternshipsController@paginate')
+        ->name('internships.paginate');
+
+    Route::get('/qualifications/paginate', 'QualificationsController@paginate')
+        ->name('qualifications.paginate');
+
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
         Route::resource('users', 'UsersController');

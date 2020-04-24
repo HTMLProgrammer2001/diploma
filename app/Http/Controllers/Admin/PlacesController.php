@@ -8,14 +8,15 @@ use Illuminate\Http\Request;
 
 class PlacesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function paginate(){
+        $places = Place::paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.places.paginate', compact('places'));
+    }
+
     public function index()
     {
-        $places = Place::all();
+        $places = Place::paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.places.index', compact('places'));
     }

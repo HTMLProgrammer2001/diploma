@@ -27,7 +27,7 @@
                         </div>
                     @endcan
 
-                    <table class="custom-table table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -38,36 +38,18 @@
                             <th>Дії</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        @foreach($internships as $internship)
-                            <tr>
-                                <td>{{$internship->id}}</td>
-                                <td>{{$internship->getUserShortName()}}</td>
-                                <td>{{$internship->getCategoryName()}}</td>
-                                <td>{{$internship->title}}</td>
-                                <td>{{$internship->hours}}</td>
-                                <td>
-                                    @can('moderate')
-                                        <a href="{{route('internships.edit', $internship->id)}}" class="fa fa-pencil"></a>
-                                        <form action="{{route('internships.destroy', $internship->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <label for="delete_{{$internship->id}}" onclick="return confirm('Ви впевнені?')">
-                                                <a class="fa fa-remove"></a>
-                                            </label>
-
-                                            <button type="submit" id="delete_{{$internship->id}}" class="hidden"></button>
-                                        </form>
-                                    @endcan
-                            </tr>
-                        @endforeach
-                        </tbody>
+                        <tbody class="wrap-content"></tbody>
                     </table>
+
+                    <div class="pull-right paginator">
+                        {{$internships->onEachSide(5)->links()}}
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
 
+            <script src="/js/internships.js"></script>
         </section>
         <!-- /.content -->
     </div>

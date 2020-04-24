@@ -10,14 +10,15 @@ use App\Http\Controllers\Controller;
 
 class QualificationsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function paginate(){
+        $qualifications = Qualification::paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.qualifications.paginate', compact('qualifications'));
+    }
+
     public function index()
     {
-        $qualifications = Qualification::all();
+        $qualifications = Qualification::paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.qualifications.index', compact('qualifications'));
     }

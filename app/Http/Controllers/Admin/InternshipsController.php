@@ -12,14 +12,15 @@ use Illuminate\Http\Request;
 
 class InternshipsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function paginate(){
+        $internships = Internship::paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.internships.paginate', compact('internships'));
+    }
+
     public function index()
     {
-        $internships = Internship::all();
+        $internships = Internship::paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.internships.index', compact('internships'));
     }
