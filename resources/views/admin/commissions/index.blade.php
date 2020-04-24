@@ -63,26 +63,5 @@
         <!-- /.content -->
     </div>
 
-    <script>
-        $(document).ready(() => {
-			getData("{{route('commissions.paginate')}}", 1, '.wrap-content');
-        });
-
-        $('.page-link').on('click', (e) => {
-        	e.preventDefault();
-
-            //active page click
-        	if($(e.target).hasClass('active'))
-        		return;
-
-        	//change items in list
-        	getData("{{route('commissions.paginate')}}", $(e.target).text(), '.wrap-content');
-
-        	//remove old active item class
-        	$(e.target).closest('.paginator').find('.active').toggleClass('active');
-
-        	//add active class to this item
-        	$(e.target).closest('.page-item').addClass('active');
-        });
-    </script>
+    <script src="/js/commissions.js"></script>
 @endsection

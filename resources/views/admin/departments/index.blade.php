@@ -26,7 +26,7 @@
                         </div>
                     @endcan
 
-                    <table class="custom-table table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -34,37 +34,17 @@
                             <th>Дії</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        @foreach($departments as $department)
-                            <tr>
-                                <td>{{$department->id}}</td>
-                                <td>{{$department->name}}</td>
-                                <td style="display: flex">
-
-                                    @can('moderate')
-                                        <a href="{{route('departments.edit', $department->id)}}" class="fa fa-pencil"></a>
-
-                                        <form action="{{route('departments.destroy', $department->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <label for="delete_{{$department->id}}" onclick="return confirm('Ви впевнені?')">
-                                                <a class="fa fa-remove"></a>
-                                            </label>
-
-                                            <button type="submit" id="delete_{{$department->id}}" class="hidden"></button>
-                                        </form>
-                                    @endcan
-
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
+                        <tbody class = "wrap-content"></tbody>
                     </table>
+
+                    <div class="pull-right paginator">
+                        {{$departments->onEachSide(5)->links()}}
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
+            <script src="/js/departments.js"></script>
         </section>
         <!-- /.content -->
     </div>

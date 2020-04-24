@@ -11,7 +11,7 @@ class CommissionsController extends Controller
 {
     public function paginate()
     {
-        $commissions = Commission::paginate(10);
+        $commissions = Commission::paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.commissions.paginate', compact('commissions'));
     }

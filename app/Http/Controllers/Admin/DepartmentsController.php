@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 
 class DepartmentsController extends Controller
 {
+    public function paginate()
+    {
+        $departments = Department::paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.departments.paginate', compact('departments'));
+    }
+
     public function index()
     {
-        $departments = Department::all();
+        $departments = Department::paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.departments.index', [
             'departments' => $departments
