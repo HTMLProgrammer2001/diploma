@@ -39,7 +39,7 @@
                     </table>
 
                     <div class="pull-right paginator">
-                        {{$publications->links()}}
+                        {{$publications->onEachSide(5)->links()}}
                     </div>
                 </div>
                 <!-- /.box-body -->

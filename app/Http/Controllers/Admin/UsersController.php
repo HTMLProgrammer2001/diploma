@@ -12,9 +12,15 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
+    public function paginate(){
+        $users = User::paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.users.paginate', compact('users'));
+    }
+
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(env('PAGINATE_SIZE', 10));
         return view('admin.users.index', [
             'users' => $users
         ]);

@@ -21,6 +21,8 @@ Route::get('logout', 'LoginController@logout')->name('logout');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', 'HomeController@index')->name('admin');
 
+
+    //paginators
     Route::get('/commissions/paginate', 'CommissionsController@paginate')
         ->name('commissions.paginate');
 
@@ -29,6 +31,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     Route::get('/publications/paginate', 'PublicationsController@paginate')
         ->name('publications.paginate');
+
+    Route::get('/users/paginate', 'UsersController@paginate')
+        ->name('users.paginate');
 
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
