@@ -26,7 +26,21 @@
                         </div>
                     @endcan
 
-                    <table class="custom-table table table-bordered table-striped">
+                    <div class="pull-right">
+                        <form action="{{route('commissions.index')}}" class="form-inline">
+                            <input type="text" name="title" class="form-control"
+                                   placeholder="Пошук по назві"/>
+
+                            <button class="btn btn-info">Пошук</button>
+                        </form>
+                    </div>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -34,32 +48,12 @@
                             <th>Дії</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        @foreach($commissions as $commission)
-                            <tr>
-                                <td>{{$commission->id}}</td>
-                                <td>{{$commission->name}}</td>
-                                <td style="display: flex">
-
-                                    @can('moderate')
-                                        <a href="{{route('commissions.edit', $commission->id)}}" class="fa fa-pencil"></a>
-
-                                        <form action="{{route('commissions.destroy', $commission->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <label for="delete_{{$commission->id}}" onclick="return confirm('Ви впевнені?')">
-                                                <a class="fa fa-remove"></a>
-                                            </label>
-
-                                            <button type="submit" id="delete_{{$commission->id}}" class="hidden"></button>
-                                        </form>
-                                    @endcan
-
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
+                        <tbody class="wrap-content"></tbody>
                     </table>
+
+                    <div class="pull-right paginator">
+                        {{$commissions->onEachSide(5)->links()}}
+                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -68,4 +62,27 @@
         </section>
         <!-- /.content -->
     </div>
+
+    <script>
+        $(document).ready(() => {
+			getData("{{route('commissions.paginate')}}", 1, '.wrap-content');
+        });
+
+        $('.page-link').on('click', (e) => {
+        	e.preventDefault();
+
+            //active page click
+        	if($(e.target).hasClass('active'))
+        		return;
+
+        	//change items in list
+        	getData("{{route('commissions.paginate')}}", $(e.target).text(), '.wrap-content');
+
+        	//remove old active item class
+        	$(e.target).closest('.paginator').find('.active').toggleClass('active');
+
+        	//add active class to this item
+        	$(e.target).closest('.page-item').addClass('active');
+        });
+    </script>
 @endsection

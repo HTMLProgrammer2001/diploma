@@ -16,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'LoginController@index')->name('login');
 Route::post('/', 'LoginController@login');
 
-Route::get('/test', function(){
-    dd(\Illuminate\Support\Facades\Auth::user()->can('create', \App\Publication::class));
-});
-
 Route::get('logout', 'LoginController@logout')->name('logout');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', 'HomeController@index')->name('admin');
+
+    Route::get('/commissions/paginate', 'CommissionsController@paginate')
+        ->name('commissions.paginate');
 
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
@@ -39,6 +38,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     //for administration of college
     Route::group(['middleware' => 'can:view'], function(){
+
         Route::resource('users', 'UsersController')->only('index', 'show');
         Route::resource('commissions', 'CommissionsController')
             ->only('index', 'show');

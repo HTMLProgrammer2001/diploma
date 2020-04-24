@@ -5,15 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Commission;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CommissionsController extends Controller
 {
+    public function paginate()
+    {
+        $commissions = Commission::paginate(10);
+
+        return view('admin.commissions.paginate', compact('commissions'));
+    }
+
     public function index()
     {
-        $commissions = Commission::all();
+        $commissions = Commission::paginate(10);
 
-        return view('admin.commissions.index', [
-            'commissions' => $commissions
+        return \view('admin.commissions.index', [
+           'commissions' => $commissions
         ]);
     }
 
