@@ -13,8 +13,11 @@ class ProfileController extends Controller
 {
     public function index(Request $request){
         $user = $request->user();
+        $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
+        $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
+        $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
 
-        return view('admin.profile.show', compact('user'));
+        return view('admin.profile.show', compact('user', 'publications', 'qualifications', 'internships'));
     }
 
     public function edit(Request $request){

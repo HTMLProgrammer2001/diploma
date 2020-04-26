@@ -44,6 +44,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('/qualifications/paginate', 'QualificationsController@paginate')
         ->name('qualifications.paginate');
 
+    Route::get('/places/paginate', 'PlacesController@paginate')
+        ->name('places.paginate');
+
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
         Route::resource('users', 'UsersController');
@@ -78,6 +81,18 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     //user profile routes
     Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function(){
+        Route::get('/publications/paginate', 'PublicationsController@paginate')
+            ->name('profile.publications.paginate');
+
+        Route::get('/internships/paginate', 'InternshipsController@paginate')
+            ->name('profile.internships.paginate');
+
+        Route::get('/qualifications/paginate', 'QualificationsController@paginate')
+            ->name('profile.qualifications.paginate');
+
+        Route::get('/publications/paginate', 'PublicationsController@paginate')
+            ->name('profile.publications.paginate');
+
         //user profile page routes
         Route::get('/', 'ProfileController@index')->name('profile.show');
         Route::get('/update', 'ProfileController@edit')->name('profile.edit');

@@ -15,6 +15,16 @@ class QualificationsController extends Controller
         $this->authorizeResource(Qualification::class, 'qualification');
     }
 
+    public function paginate(){
+        $user = Auth::user();
+        $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.qualifications.paginate', [
+           'qualifications' => $qualifications,
+           'isProfile' => true
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *

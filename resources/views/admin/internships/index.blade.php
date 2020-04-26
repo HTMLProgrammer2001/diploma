@@ -49,7 +49,10 @@
             </div>
             <!-- /.box -->
 
-            <script src="/js/internships.js"></script>
+            <script src="/js/pagination.js"></script>
+            <script>
+				paginate('.paginator', '.wrap-content', '{{route('internships.paginate')}}');
+            </script>
         </section>
         <!-- /.content -->
     </div>

@@ -46,7 +46,10 @@
             </div>
             <!-- /.box -->
 
-            <script src="/js/qualifications.js"></script>
+            <script src="/js/pagination.js"></script>
+            <script>
+				paginate('.paginator', '.wrap-content', '{{route('qualifications.paginate')}}');
+            </script>
         </section>
         <!-- /.content -->
     </div>

@@ -63,5 +63,8 @@
         <!-- /.content -->
     </div>
 
-    <script src="/js/commissions.js"></script>
+    <script src="/js/pagination.js"></script>
+    <script>
+		paginate('.paginator', '.wrap-content', '{{route('commissions.paginate')}}');
+    </script>
 @endsection

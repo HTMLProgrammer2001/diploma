@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\PublicationCreateRequest;
 use App\Publication;
 use App\User;
+use Guzzle\Http\Message\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PublicationsController extends Controller
@@ -14,6 +15,16 @@ class PublicationsController extends Controller
     {
         //sync to publication policy
         $this->authorizeResource(Publication::class, 'publication');
+    }
+
+    public function paginate(){
+        $user = Auth::user();
+        $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.publications.paginate', [
+            'publications' => $publications,
+            'isProfile' => true
+        ]);
     }
 
     /**

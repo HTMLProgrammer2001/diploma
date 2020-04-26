@@ -53,11 +53,11 @@
                         </ul>
 
                         <div class="tab-content" id="profile_tab_content">
-                            <div class="tab-pane fade show active in" id="publications" role="tabpanel"
+                            <div class="tab-pane fade active in" id="publications" role="tabpanel"
                                  aria-labelledby="home-tab">
                                     <h3>Публікації</h3>
 
-                                    <table class="custom-table table table-bordered table-striped">
+                                    <table class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -66,35 +66,14 @@
                                                 <th>Дії</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @foreach($user->publications as $publication)
-                                                <tr>
-                                                    <td>{{$publication->id}}</td>
-                                                    <td>{{$publication->title}}</td>
-                                                    <td>{{$publication->getAuthorsString()}}</td>
-                                                    <td>
-                                                        <a href="{{route('profile.publications.edit', $publication->id)}}"
-                                                        class="fa fa-pencil"></a>
-                                                        <form action="{{route('profile.publications.destroy', $publication->id)}}"
-                                                            method="post">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <label for="delete_{{$publication->id}}"
-                                                                onclick="return confirm('Ви впевнені?')">
-
-                                                                <a class="fa fa-remove"></a>
-                                                            </label>
-
-                                                            <button type="submit" id="delete_{{$publication->id}}"
-                                                                class="hidden"></button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
+                                        <tbody id="publications_content"></tbody>
                                     </table>
 
-                                    <a href="{{route('profile.publications.create')}}">
+                                    <div class="pull-right" id="publications_paginate">
+                                        {{$publications->onEachSide(5)->links()}}
+                                    </div>
+
+                                    <a href="{{route('profile.publications.create')}}" class="pull-left">
                                         <button class="btn btn-success margin-bottom">Додати</button>
                                     </a>
                             </div>
@@ -102,7 +81,7 @@
                             <div class="tab-pane fade" id="internships" role="tabpanel">
                                 <h3>Стажування</h3>
 
-                                <table class="custom-table table table-bordered table-striped">
+                                <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -112,37 +91,16 @@
                                             <th>Дії</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach($user->internships as $internship)
-                                            <tr>
-                                                <td>{{$internship->id}}</td>
-                                                <td>{{$internship->title}}</td>
-                                                <td>{{$internship->getPlaceName()}}</td>
-                                                <td>{{$internship->to}}</td>
-                                                <td>
-                                                    <a href="{{route('profile.internships.edit', $internship->id)}}"
-                                                        class="fa fa-pencil"></a>
-                                                    <form action="{{route('profile.internships.destroy', $internship->id)}}"
-                                                          method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <label for="delete_{{$internship->id}}"
-                                                           onclick="return confirm('Ви впевнені?')">
-                                                            <a class="fa fa-remove"></a>
-                                                        </label>
-
-                                                        <button type="submit" id="delete_{{$internship->id}}"
-                                                            class="hidden"></button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
+                                    <tbody id="internships_content"></tbody>
                                 </table>
 
                                 <b>Годин з останнього підвищення кваліфікації: {{$user->getInternshipHours()}}</b>
 
-                                <a href="{{route('profile.internships.create')}}" class="btn-block" style="margin-top: 20px">
+                                <div class="pull-right paginator" id="internships_paginate">
+                                    {{$internships->onEachSide(5)->links()}}
+                                </div>
+
+                                <a href="{{route('profile.internships.create')}}" class="btn-block pull-left" style="margin-top: 20px">
                                     <button class="btn btn-success margin-bottom">Додати</button>
                                 </a>
                             </div>
@@ -150,7 +108,7 @@
                             <div class="tab-pane fade" id="qualifications" role="tabpanel">
                                 <h3>Встановлення/Підтвердження кваліфікацій</h3>
 
-                                <table class="custom-table table table-bordered table-striped">
+                                <table class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -206,4 +164,11 @@
         </section>
         <!-- /.content -->
     </div>
+
+    <script src="/js/pagination.js"></script>
+    <script>
+		paginate('#publications_paginate', '#publications_content', '{{route('profile.publications.paginate')}}');
+		paginate('#internships_paginate', '#internships_content', '{{route('profile.internships.paginate')}}');
+		paginate('#qualifications_paginate', '#qualifications_content', '{{route('profile.qualifications.paginate')}}');
+    </script>
 @endsection

@@ -48,7 +48,10 @@
             </div>
             <!-- /.box -->
 
-            <script src="/js/users.js"></script>
+            <script src="/js/pagination.js"></script>
+            <script>
+				paginate('.paginator', '.wrap-content', '{{route('users.paginate')}}');
+            </script>
         </section>
         <!-- /.content -->
     </div>

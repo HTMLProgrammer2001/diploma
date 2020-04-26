@@ -45,7 +45,11 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <script src="/js/publications.js"></script>
+
+            <script src="/js/pagination.js"></script>
+            <script>
+				paginate('.paginator', '.wrap-content', '{{route('publications.paginate')}}');
+            </script>
         </section>
         <!-- /.content -->
     </div>

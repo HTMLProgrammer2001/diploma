@@ -17,6 +17,16 @@ class InternshipsController extends Controller
         $this->authorizeResource(Internship::class, 'internship');
     }
 
+    public function paginate(){
+        $user = Auth::user();
+        $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.internships.paginate', [
+            'internships' => $internships,
+            'isProfile' => true
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *

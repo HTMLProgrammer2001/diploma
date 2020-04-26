@@ -180,19 +180,6 @@
 </script>
 <!-- page script -->
 <script>
-	function getData(url, page, table){
-		$(table).empty().html('Загрузка...');
-
-		$.ajax({
-			url: url + '?page=' + page,
-			type: 'get',
-			responseType: 'html'
-		})
-			.done((data) => {
-				$(table).empty().html(data);
-			});
-	}
-
     $(function () {
         $("#example1").DataTable();
     });
