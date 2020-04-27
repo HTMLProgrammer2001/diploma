@@ -47,6 +47,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('/places/paginate', 'PlacesController@paginate')
         ->name('places.paginate');
 
+    Route::get('/honors/paginate', 'HonorsController@paginate')
+        ->name('honors.paginate');
+
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
         Route::resource('users', 'UsersController');
@@ -57,25 +60,36 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::resource('categories', 'CategoriesController');
         Route::resource('internships', 'InternshipsController');
         Route::resource('qualifications', 'QualificationsController');
+        Route::resource('honors', 'HonorsController');
     });
 
     //for administration of college
     Route::group(['middleware' => 'can:view'], function(){
+        Route::resource('users', 'UsersController')
+            ->only('index', 'show');
 
-        Route::resource('users', 'UsersController')->only('index', 'show');
         Route::resource('commissions', 'CommissionsController')
             ->only('index', 'show');
+
         Route::resource('departments', 'DepartmentsController')
             ->only('index', 'show');
+
         Route::resource('publications', 'PublicationsController')
             ->only('index', 'show');
+
         Route::resource('places', 'PlacesController')
             ->only('index', 'show');
+
         Route::resource('categories', 'CategoriesController')
             ->only('index', 'show');
+
         Route::resource('internships', 'InternshipsController')
             ->only('index', 'show');
+
         Route::resource('qualifications', 'QualificationsController')
+            ->only('index', 'show');
+
+        Route::resource('honors', 'HonorsController')
             ->only('index', 'show');
     });
 

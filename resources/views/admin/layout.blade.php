@@ -149,6 +149,13 @@
                             <span>Категорії стажування</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{route('honors.index')}}">
+                            <i class="fa fa-list"></i>
+                            <span>Нагороди</span>
+                        </a>
+                    </li>
                 @endcan
 
             </ul>
@@ -179,11 +186,6 @@
 
 </script>
 <!-- page script -->
-<script>
-    $(function () {
-        $("#example1").DataTable();
-    });
-</script>
 </body>
 
 </html>
