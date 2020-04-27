@@ -38,10 +38,10 @@
                         </thead>
                         <tbody class="wrap-content"></tbody>
                     </table>
-                </div>
 
-                <div class="pull-right paginator">
-                    {{$honors->onEachSide(5)->links()}}
+                        <div class="pull-right paginator">
+                            {{$honors->onEachSide(5)->links()}}
+                        </div>
                 </div>
                 <!-- /.box-body -->
             </div>
