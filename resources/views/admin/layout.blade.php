@@ -156,6 +156,13 @@
                             <span>Нагороди</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{route('rebukes.index')}}">
+                            <i class="fa fa-list"></i>
+                            <span>Догани</span>
+                        </a>
+                    </li>
                 @endcan
 
             </ul>

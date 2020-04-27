@@ -50,6 +50,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::get('/honors/paginate', 'HonorsController@paginate')
         ->name('honors.paginate');
 
+    Route::get('/rebukes/paginate', 'RebukesController@paginate')
+        ->name('rebukes.paginate');
+
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
         Route::resource('users', 'UsersController');
@@ -61,6 +64,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::resource('internships', 'InternshipsController');
         Route::resource('qualifications', 'QualificationsController');
         Route::resource('honors', 'HonorsController');
+        Route::resource('rebukes', 'RebukesController');
     });
 
     //for administration of college
@@ -90,6 +94,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
             ->only('index', 'show');
 
         Route::resource('honors', 'HonorsController')
+            ->only('index', 'show');
+
+        Route::resource('rebukes', 'RebukesController')
             ->only('index', 'show');
     });
 

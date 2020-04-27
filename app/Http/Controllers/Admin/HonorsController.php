@@ -6,7 +6,6 @@ use App\Honor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HonorsRequest;
 use App\User;
-use Illuminate\Http\Request;
 
 class HonorsController extends Controller
 {
@@ -63,7 +62,7 @@ class HonorsController extends Controller
         //fill values
         $honor->fill($request->all());
         $honor->date_presentation = $request->get('date_presentation');
-        $honor->changeActive(true);
+        $honor->changeActive($request->get('active') ?? false);
 
         //set owner of honor
         $honor->setUser($request->get('user'));

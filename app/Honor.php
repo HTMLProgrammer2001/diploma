@@ -49,7 +49,7 @@ class Honor extends Model
     }
 
     public function changeActive($value){
-        $this->active = $value;
+        $this->active = !!$value;
     }
 
     public function setUser($user_id){

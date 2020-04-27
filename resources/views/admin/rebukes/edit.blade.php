@@ -5,13 +5,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Редагувати нагороду
+                Редагувати догану
             </h1>
 
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('honors.index')}}">Нагороди</a></li>
-                <li><a href="{{route('honors.edit', $honor->id)}}">Редагувати</a></li>
+                <li><a href="{{route('rebukes.index')}}">Догани</a></li>
+                <li><a href="{{route('rebukes.edit', $rebuke->id)}}">Редагувати</a></li>
             </ol>
         </section>
 
@@ -19,7 +19,7 @@
         <section class="content">
 
             <!-- Default box -->
-            <form action="{{route('honors.update', $honor->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('rebukes.update', $rebuke->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -36,35 +36,35 @@
 
                                         @foreach($users as $user)
                                             <option value="{{$user->id}}"
-                                                    {{$user->id == $honor->getUserID() ? 'selected' : ''}}
+                                                    {{$user->id == $rebuke->getUserID() ? 'selected' : ''}}
                                             >{{$user->getFullName()}}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Назва нагороди*</label>
+                                    <label for="title">Назва догани*</label>
                                     <input type="text" class="form-control" id="title" name="title"
-                                           value="{{$honor->title}}">
+                                           value="{{$rebuke->title}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="order">Номер нагороди*</label>
+                                    <label for="order">Номер догани*</label>
                                     <input type="text" class="form-control" id="order" name="order"
-                                           value="{{$honor->order}}">
+                                           value="{{$rebuke->order}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="date_presentation">Дата вручення*</label>
+                                    <label for="date_presentation">Дата отримання*</label>
                                     <input type="text" class="form-control pull-right calendar"
-                                           value="{{$honor->date_presentation}}"
+                                           value="{{$rebuke->date_presentation}}"
                                            name="date_presentation" id="date_presentation" autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="is_active">Дійсний статус*</label>
                                     <input type="checkbox" class="checkbox"
-                                           {{$honor->active ? 'checked' : ''}}
+                                           {{$rebuke->active ? 'checked' : ''}}
                                            name="active" id="active" autocomplete="off">
                                 </div>
                             </div>
