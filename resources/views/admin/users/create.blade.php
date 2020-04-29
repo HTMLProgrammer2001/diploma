@@ -106,6 +106,17 @@
                                 <input type="text" class="form-control" id="patronymic"
                                        name="code" value="{{old('code')}}">
                             </div>
+
+                            <div class="form-group">
+                                <label for="rank">Розряд</label>
+                                <select class="form-control select2" id="rank" name="rank" value="{{old('rank')}}">
+                                    <option value="" selected>Немає</option>
+
+                                    @foreach($ranks as $rank)
+                                        <option value="{{$rank->id}}">{{$rank->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

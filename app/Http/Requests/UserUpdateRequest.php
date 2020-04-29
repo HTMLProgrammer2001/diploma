@@ -35,7 +35,8 @@ class UserUpdateRequest extends FormRequest
             'birthday' => 'nullable|date',
             'passport' => 'nullable',
             'code' => 'nullable',
-            'role' => 'required|numeric|between:0, 50'
+            'role' => 'required|numeric|between:0, 50',
+            'rank' => 'nullable|exists:ranks,id'
         ];
     }
 }

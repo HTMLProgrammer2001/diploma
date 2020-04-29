@@ -34,7 +34,8 @@ class ProfileUpdateRequest extends FormRequest
             'commission' => 'nullable|exists:commissions,id',
             'birthday' => 'nullable|date',
             'passport' => 'nullable',
-            'code' => 'nullable'
+            'code' => 'nullable',
+            'rank' => 'nullable|exists:ranks,id'
         ];
     }
 }

@@ -111,6 +111,19 @@
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="rank">Розряд</label>
+                                    <select class="form-control select2" id="rank" name="rank" value="{{old('rank')}}">
+                                        <option value="" selected>Немає</option>
+
+                                        @foreach($ranks as $rank)
+                                            <option value="{{$rank->id}}"
+                                                    {{$user->getRankID() == $rank->id ? 'selected' : ''}}
+                                            >{{$rank->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                         </div>
                         </div>
 

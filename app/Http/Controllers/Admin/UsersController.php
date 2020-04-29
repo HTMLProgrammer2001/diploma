@@ -6,6 +6,7 @@ use App\Commission;
 use App\Department;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Rank;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -30,8 +31,9 @@ class UsersController extends Controller
     {
         $departments = Department::all();
         $commissions = Commission::all();
+        $ranks = Rank::all();
 
-        return view('admin.users.create', compact('departments', 'commissions'));
+        return view('admin.users.create', compact('departments', 'commissions', 'ranks'));
     }
 
     public function store(UserCreateRequest $request)
@@ -48,6 +50,7 @@ class UsersController extends Controller
         //relationships
         $user->setDepartment($request->get('department'));
         $user->setCommission($request->get('commission'));
+        $user->setRank($request->get('rank'));
 
         $user->uploadAvatar($request->file('avatar'));
         $user->save();
@@ -69,8 +72,9 @@ class UsersController extends Controller
     {
         $departments = Department::all();
         $commissions = Commission::all();
+        $ranks = Rank::all();
 
-        return view('admin.users.edit', compact('departments', 'commissions', 'user'));
+        return view('admin.users.edit', compact('departments', 'commissions', 'user', 'ranks'));
     }
 
     public function update(UserUpdateRequest $request, User $user)
@@ -89,6 +93,7 @@ class UsersController extends Controller
         //relationships
         $user->setDepartment($request->get('department'));
         $user->setCommission($request->get('commission'));
+        $user->setRank($request->get('rank'));
 
         $user->uploadAvatar($request->file('avatar'));
 

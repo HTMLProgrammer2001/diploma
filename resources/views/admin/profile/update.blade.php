@@ -100,6 +100,19 @@
                                     <label for="patronymic">Ідентифікаційний код</label>
                                     <input type="text" class="form-control" id="patronymic" name="code" value="">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="rank">Розряд</label>
+                                    <select class="form-control select2" id="rank" name="rank">
+                                        <option value="">Нет</option>
+
+                                        @foreach($ranks as $rank)
+                                            <option value="{{$rank->id}}"
+                                                    {{$user->getRankID() == $rank->id ? ' selected' : ''}}>
+                                                {{$rank->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

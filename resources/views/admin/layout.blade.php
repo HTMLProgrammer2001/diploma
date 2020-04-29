@@ -164,6 +164,13 @@
                             <span>Догани</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{route('ranks.index')}}">
+                            <i class="fa fa-list"></i>
+                            <span>Розряди</span>
+                        </a>
+                    </li>
                 @endcan
 
             </ul>

@@ -70,6 +70,10 @@ class User extends Authenticatable
         return $this->hasMany(Honor::class);
     }
 
+    public function rank(){
+        return $this->belongsTo(Rank::class);
+    }
+
     //accessors
     public function setBirthdayAttribute($date){
         if(!$date)
@@ -129,6 +133,25 @@ class User extends Authenticatable
             return $this->commission->name;
         else
             return 'Не встановлено';
+    }
+
+    public function setRank($id){
+        if($id)
+            $this->rank_id = $id;
+
+        $this->save();
+    }
+
+    public function getRankID(){
+        if($this->rank)
+            return $this->rank->id;
+    }
+
+    public function getRankName(){
+        if(!$this->rank)
+            return 'Не встановлено';
+
+        return $this->rank->name;
     }
 
     public function getRoleString(){

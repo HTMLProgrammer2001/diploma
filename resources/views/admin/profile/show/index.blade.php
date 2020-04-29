@@ -33,6 +33,7 @@
                                 <div>Відділ: {{$user->getDepartmentName()}}</div>
                                 <div>Циклова комісія: {{$user->getCommissionName()}}</div>
                                 <div>Кваліфікація: {{$user->getQualificationName()}}</div>
+                                <div>Розряд: {{$user->getRankName()}}</div>
                             </div>
                         </div>
                         

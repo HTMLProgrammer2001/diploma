@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Profile;
 use App\Commission;
 use App\Department;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Rank;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -25,8 +26,9 @@ class ProfileController extends Controller
         $user = $request->user();
         $departments = Department::all();
         $commissions = Commission::all();
+        $ranks = Rank::all();
 
-        return view('admin.profile.update', compact('user', 'departments', 'commissions'));
+        return view('admin.profile.update', compact('user', 'departments', 'commissions', 'ranks'));
     }
 
     public function update(ProfileUpdateRequest $request){
@@ -46,10 +48,11 @@ class ProfileController extends Controller
         //relationships
         $user->setDepartment($request->get('department'));
         $user->setCommission($request->get('commission'));
+        $user->setRank($request->get('rank'));
 
         $user->uploadAvatar($request->file('avatar'));
         $user->save();
 
-        return redirect()->route('profile.show.index');
+        return redirect()->route('profile.show');
     }
 }
