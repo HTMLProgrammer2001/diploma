@@ -1,5 +1,5 @@
 @foreach($publications as $publication)
-    <tr>
+    <tr class="crud-item">
         <td>{{$publication->id}}</td>
         <td>{{$publication->title}}</td>
         <td>{{$publication->getAuthorsString()}}</td>
@@ -7,30 +7,14 @@
             @if($isProfile ?? false)
                 <a href="{{route('profile.publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
 
-                <form action="{{route('profile.publications.destroy', $publication->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-
-                    <label for="delete_{{$publication->id}}" onclick="return confirm('Ви впевнені?')">
-                        <a class="fa fa-remove"></a>
-                    </label>
-
-                    <button type="submit" id="delete_{{$publication->id}}" class="hidden"></button>
-                </form>
+                <a class="fa fa-remove deleteItem" data-url="{{route('profile.publications.destroy',
+                    $publication->id)}}"></a>
             @else
                 @can('moderate')
                     <a href="{{route('publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
 
-                    <form action="{{route('publications.destroy', $publication->id)}}" method="post">
-                        @csrf
-                        @method('DELETE')
-
-                        <label for="delete_{{$publication->id}}" onclick="return confirm('Ви впевнені?')">
-                            <a class="fa fa-remove"></a>
-                        </label>
-
-                        <button type="submit" id="delete_{{$publication->id}}" class="hidden"></button>
-                    </form>
+                    <a class="fa fa-remove deleteItem" data-url="{{route('publications.destroy',
+                    $publication->id)}}"></a>
                 @endcan
             @endif
 

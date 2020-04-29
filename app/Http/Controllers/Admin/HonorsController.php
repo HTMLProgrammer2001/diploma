@@ -75,6 +75,8 @@ class HonorsController extends Controller
     {
         $honor->delete();
 
-        return redirect()->route('honors.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

@@ -109,6 +109,8 @@ class QualificationsController extends Controller
     {
         $qualification->delete();
 
-        return redirect()->route('qualifications.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

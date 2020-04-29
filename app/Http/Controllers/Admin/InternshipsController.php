@@ -78,6 +78,8 @@ class InternshipsController extends Controller
     {
         $internship->delete();
 
-        return redirect()->route('internships.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

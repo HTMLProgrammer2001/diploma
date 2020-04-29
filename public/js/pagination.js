@@ -1,4 +1,4 @@
-function paginate(paginator, content, url){
+function paginate(paginator, content, url, callback){
 	getData(url, 1, content);
 
 	$(paginator).find('.page-link').on('click', (e) => {
@@ -28,6 +28,9 @@ function paginate(paginator, content, url){
 		})
 			.done((data) => {
 				$(table).empty().html(data);
+
+				if(callback)
+					callback(data);
 			});
 	}
 }

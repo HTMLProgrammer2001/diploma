@@ -48,8 +48,11 @@
             <!-- /.box -->
 
             <script src="/js/pagination.js"></script>
+            <script src="/js/remover.js"></script>
             <script>
-				paginate('.paginator', '.wrap-content', '{{route('honors.paginate')}}');
+				paginate('.paginator', '.wrap-content', '{{route('honors.paginate')}}', () => {
+					remover('.deleteItem', '.crud-item');
+				});
             </script>
         </section>
         <!-- /.content -->

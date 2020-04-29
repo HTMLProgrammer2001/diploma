@@ -1,5 +1,5 @@
 @foreach($rebukes as $rebuke)
-    <tr>
+    <tr class="crud-item">
         <td>{{$rebuke->id}}</td>
         <td>{{$rebuke->getUserName()}}</td>
         <td>{{$rebuke->title}}</td>
@@ -25,16 +25,7 @@
             @else
                 @can('moderate')
                     <a href="{{route('rebukes.edit', $rebuke->id)}}" class="fa fa-pencil"></a>
-
-                    <form action="{{route('rebukes.destroy', $rebuke->id)}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <label for="delete_{{$rebuke->id}}" onclick="return confirm('Ви впевнені?')">
-                            <a class="fa fa-remove"></a>
-                        </label>
-
-                        <button type="submit" id="delete_{{$rebuke->id}}" class="hidden"></button>
-                    </form>
+                    <a class="fa fa-remove deleteItem" data-url="{{route('rebukes.destroy', $rebuke->id)}}"></a>
                 @endcan
             @endif
 

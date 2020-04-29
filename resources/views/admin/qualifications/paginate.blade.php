@@ -1,5 +1,5 @@
 @foreach($qualifications as $qualification)
-    <tr>
+    <tr class="crud-item">
         <td>{{$qualification->id}}</td>
         <td>{{$qualification->getUserShortName()}}</td>
         <td>{{$qualification->name}}</td>
@@ -9,34 +9,15 @@
                 <a href="{{route('profile.qualifications.edit', $qualification->id)}}"
                    class="fa fa-pencil"></a>
 
-                <form action="{{route('profile.qualifications.destroy', $qualification->id)}}"
-                      method="post">
-                    @csrf
-                    @method('DELETE')
-                    <label for="delete_{{$qualification->id}}"
-                           onclick="return confirm('Ви впевнені?')">
-                        <a class="fa fa-remove"></a>
-                    </label>
-
-                    <button type="submit" id="delete_{{$qualification->id}}" class="hidden">
-                    </button>
-                </form>
+                <a class="fa fa-remove deleteItem" data-url="{{route('profile.qualifications.destroy',
+                    $qualification->id)}}"></a>
             @else
                 @can('moderate')
                     <a href="{{route('qualifications.edit', $qualification->id)}}"
                         class="fa fa-pencil"></a>
 
-                    <form action="{{route('qualifications.destroy', $qualification->id)}}"
-                          method="post">
-                        @csrf
-                        @method('DELETE')
-                        <label for="delete_{{$qualification->id}}"
-                               onclick="return confirm('Ви впевнені?')">
-                            <a class="fa fa-remove"></a>
-                        </label>
-
-                        <button type="submit" id="delete_{{$qualification->id}}" class="hidden"></button>
-                    </form>
+                    <a class="fa fa-remove deleteItem" data-url="{{route('qualifications.destroy',
+                    $qualification->id)}}"></a>
                 @endcan
             @endif
     </tr>

@@ -106,6 +106,8 @@ class PlacesController extends Controller
     {
         $place->delete();
 
-        return redirect()->route('places.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

@@ -27,21 +27,11 @@ class PublicationsController extends Controller
         ]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return abort(404);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $curUser = Auth::user();
@@ -50,12 +40,6 @@ class PublicationsController extends Controller
         return view('admin.profile.publications.create', compact('curUser', 'users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(PublicationCreateRequest $request)
     {
         //check if current user in authors
@@ -77,23 +61,11 @@ class PublicationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return abort(404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Publication $publication)
     {
 
@@ -102,13 +74,6 @@ class PublicationsController extends Controller
         return view('admin.profile.publications.edit', compact('users', 'publication'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(PublicationCreateRequest $request, Publication $publication)
     {
         //check if current user in authors
@@ -126,16 +91,12 @@ class PublicationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Publication $publication)
     {
         $publication->delete();
 
-        return redirect()->route('profile.show');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

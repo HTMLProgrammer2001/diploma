@@ -57,7 +57,12 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return view('admin.profile.show', compact('user'));
+        $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
+        $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
+        $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
+
+        return view('admin.profile.show.index',
+            compact('user', 'publications', 'internships', 'qualifications'));
     }
 
     public function edit(User $user)
@@ -97,6 +102,8 @@ class UsersController extends Controller
     {
         $user->remove();
 
-        return redirect()->route('users.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

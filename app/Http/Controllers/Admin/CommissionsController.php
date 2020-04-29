@@ -72,6 +72,8 @@ class CommissionsController extends Controller
     {
         $commission->delete();
 
-        return redirect()->route('commissions.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

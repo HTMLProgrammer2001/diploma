@@ -17,7 +17,8 @@ class ProfileController extends Controller
         $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
         $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
 
-        return view('admin.profile.show', compact('user', 'publications', 'qualifications', 'internships'));
+        return view('admin.profile.show.index',
+            compact('user', 'publications', 'qualifications', 'internships'));
     }
 
     public function edit(Request $request){
@@ -49,6 +50,6 @@ class ProfileController extends Controller
         $user->uploadAvatar($request->file('avatar'));
         $user->save();
 
-        return redirect()->route('profile.show');
+        return redirect()->route('profile.show.index');
     }
 }

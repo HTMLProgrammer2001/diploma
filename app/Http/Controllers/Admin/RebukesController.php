@@ -75,6 +75,8 @@ class RebukesController extends Controller
     {
         $rebuke->delete();
 
-        return redirect()->route('rebukes.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

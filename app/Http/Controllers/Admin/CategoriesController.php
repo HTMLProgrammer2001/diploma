@@ -101,6 +101,8 @@ class CategoriesController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('categories.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }

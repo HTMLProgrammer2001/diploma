@@ -71,6 +71,8 @@ class DepartmentsController extends Controller
     {
         $department->delete();
 
-        return redirect()->route('departments.index');
+        return response()->json([
+            'status' => 'OK'
+        ]);
     }
 }
