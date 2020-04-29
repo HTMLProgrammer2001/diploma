@@ -5,6 +5,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>Користувач</th>>
             <th>Кваліфікація</th>>
             <th>Дата</th>
             <th>Дії</th>
@@ -13,11 +14,15 @@
         <tbody id = "qualifications_content"></tbody>
     </table>
 
-    <div class="pull-right paginator" id="qualifications_paginate">
-        {{$qualifications->onEachSide(5)->links()}}
-    </div>
+    <b>Термін наступного підтвердження: {{$user->getNextQualificationDate()}}</b>
 
-    <a href="{{route('profile.qualifications.create')}}" class="btn-block">
-        <button class="btn btn-success margin-bottom">Додати</button>
-    </a>
+    <div style="margin-top: 20px">
+        <div class="pull-right paginator" id="qualifications_paginate">
+            {{$qualifications->onEachSide(5)->links()}}
+        </div>
+
+        <a href="{{route('profile.qualifications.create')}}" class="btn-block pull-left">
+            <button class="btn btn-success margin-bottom">Додати</button>
+        </a>
+    </div>
 </div>

@@ -200,6 +200,12 @@ class User extends Authenticatable
         return $qualification ? $qualification->attributes['date'] : '1970-01-01';
     }
 
+    public function getNextQualificationDate(){
+        $lastDate = $this->getQualificationDate();
+
+        return Carbon::createFromFormat('Y-m-d', $lastDate)->addYears(5)->format('m/d/Y');
+    }
+
     public function getQualificationName(){
         $qualification = $this->qualifications()->orderBy('date', 'desc')->first();
 

@@ -5,9 +5,11 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>Користувач</th>
+            <th>Категорія</th>
             <th>Тема</th>
-            <th>Місце</th>
-            <th>Дата кінця</th>
+            <th>Кількість годин</th>
+            <th>Дата закінчення</th>
             <th>Дії</th>
         </tr>
         </thead>
@@ -16,11 +18,13 @@
 
     <b>Годин з останнього підвищення кваліфікації: {{$user->getInternshipHours()}}</b>
 
-    <div class="pull-right paginator" id="internships_paginate">
-        {{$internships->onEachSide(5)->links()}}
-    </div>
+    <div style="margin-top: 20px">
+        <div class="pull-right paginator" id="internships_paginate">
+            {{$internships->onEachSide(5)->links()}}
+        </div>
 
-    <a href="{{route('profile.internships.create')}}" class="btn-block pull-left" style="margin-top: 20px">
-        <button class="btn btn-success margin-bottom">Додати</button>
-    </a>
+        <a href="{{route('profile.internships.create')}}" class="btn-block pull-left">
+            <button class="btn btn-success margin-bottom">Додати</button>
+        </a>
+    </div>
 </div>

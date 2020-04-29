@@ -5,6 +5,7 @@
         <td>{{$internship->getCategoryName()}}</td>
         <td>{{$internship->title}}</td>
         <td>{{$internship->hours}}</td>
+        <td>{{$internship->to}}</td>
         <td>
 
             @if($isProfile ?? false)
