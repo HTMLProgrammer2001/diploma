@@ -8,10 +8,10 @@
         <td style="display: flex">
 
             @if($isProfile ?? false)
-                <a href="{{route('profile.educations.edit', $education->id)}}"
+                <a href="#"
                    class="fa fa-pencil"></a>
 
-                <a class="fa fa-remove deleteItem" data-url="{{route('profile.educations.destroy', $education->id)}}"></a>
+                <a class="fa fa-remove deleteItem" data-url="#"></a>
             @else
                 @can('moderate')
                     <a href="{{route('educations.edit', $education->id)}}" class="fa fa-pencil"></a>

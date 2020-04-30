@@ -74,6 +74,10 @@ class User extends Authenticatable
         return $this->belongsTo(Rank::class);
     }
 
+    public function educations(){
+        return $this->hasMany(Education::class);
+    }
+
     //accessors
     public function setBirthdayAttribute($date){
         if(!$date)

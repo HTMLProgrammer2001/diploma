@@ -50,6 +50,21 @@
                                 <a class="nav-link" id="qualifications_tab" data-toggle="tab"
                                    href="#qualifications" role="tab">Встановлення/Підтвердження кваліфікацій</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="honors_tab" data-toggle="tab"
+                                   href="#honors" role="tab">Нагороди</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="rebukes_tab" data-toggle="tab"
+                                   href="#rebukes" role="tab">Догани</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="educations_tab" data-toggle="tab"
+                                   href="#educations" role="tab">Освіта</a>
+                            </li>
                         </ul>
 
                         <div class="tab-content" id="profile_tab_content">
@@ -58,6 +73,7 @@
                             @include('admin.profile.show.qualifications')
                             @include('admin.profile.show.rebukes')
                             @include('admin.profile.show.honors')
+                            @include('admin.profile.show.educations')
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -89,6 +105,9 @@
 		});
 		paginate('#qualifications_paginate', '#qualifications_content', '{{route('profile.qualifications.paginate')}}', () => {
 			remover('#qualifications_content .deleteItem', '#qualifications_content .crud-item');
+		});
+		paginate('#educations_paginate', '#educations_content', '{{route('profile.educations.paginate')}}', () => {
+			remover('#educations_content .deleteItem', '#educations_content .crud-item');
 		});
     </script>
 @endsection

@@ -128,6 +128,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::get('/publications/paginate', 'PublicationsController@paginate')
             ->name('profile.publications.paginate');
 
+        Route::get('/educations/paginate', 'EducationsController@paginate')
+            ->name('profile.educations.paginate');
+
         //user profile page routes
         Route::get('/', 'ProfileController@index')->name('profile.show');
         Route::get('/update', 'ProfileController@edit')->name('profile.edit');
