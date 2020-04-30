@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQualificationsTable extends Migration
+class AddUserToEducation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateQualificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualifications', function (Blueprint $table) {
-            $table->id();
-            $table->date('date');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('educations', function (Blueprint $table) {
+            $table->integer('user_id');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateQualificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qualifications');
+        Schema::table('educations', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 }

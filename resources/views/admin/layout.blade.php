@@ -171,6 +171,13 @@
                             <span>Розряди</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{route('educations.index')}}">
+                            <i class="fa fa-list"></i>
+                            <span>Освіти</span>
+                        </a>
+                    </li>
                 @endcan
 
             </ul>
