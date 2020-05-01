@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PublicationCreateRequest;
+use App\Http\Requests\PublicationRequest;
 use App\Publication;
 use App\User;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class PublicationsController extends Controller
         return view('admin.publications.create', compact('users'));
     }
 
-    public function store(PublicationCreateRequest $request)
+    public function store(PublicationRequest $request)
     {
         $publication = new Publication();
 
@@ -61,7 +61,7 @@ class PublicationsController extends Controller
         return view('admin.publications.edit', compact('publication', 'users'));
     }
 
-    public function update(PublicationCreateRequest $request, Publication $publication)
+    public function update(PublicationRequest $request, Publication $publication)
     {
         //fill
         $publication->fill($request->all());

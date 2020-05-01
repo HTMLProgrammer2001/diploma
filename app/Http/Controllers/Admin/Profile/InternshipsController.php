@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Profile\InternshipsRequest;
+use App\Http\Requests\InternshipsRequest;
 use App\InternCategory;
 use App\Internship;
 use App\Place;

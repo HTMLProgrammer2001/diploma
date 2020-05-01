@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Profile;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Request;
 
-class QualificationRequest extends FormRequest
+class PublicationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +25,12 @@ class QualificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'date' => 'required',
-            'description' => 'nullable|string'
+            'title' => 'required|string|max:255',
+            'date_of_publication' => 'nullable',
+            'authors' => 'required|array',
+            'another_authors' => 'nullable|string',
+            'publisher' => 'nullable|string',
+            'url' => 'nullable|url'
         ];
     }
 }

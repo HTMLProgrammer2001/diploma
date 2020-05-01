@@ -21,9 +21,11 @@ class ProfileController extends Controller
         $honors = $user->honors()->paginate(env('PAGINATE_SIZE', 10));
         $rebukes = $user->rebukes()->paginate(env('PAGINATE_SIZE', 10));
 
+        $isProfile = true;
+
         return view('admin.profile.show.index',
             compact('user', 'publications', 'qualifications', 'internships', 'educations', 'honors',
-                'rebukes'));
+                'rebukes', 'isProfile'));
     }
 
     public function edit(Request $request){

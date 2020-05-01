@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Profile\PublicationCreateRequest;
+use App\Http\Requests\PublicationRequest;
 use App\Publication;
 use App\User;
-use Guzzle\Http\Message\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PublicationsController extends Controller
@@ -40,7 +39,7 @@ class PublicationsController extends Controller
         return view('admin.profile.publications.create', compact('curUser', 'users'));
     }
 
-    public function store(PublicationCreateRequest $request)
+    public function store(PublicationRequest $request)
     {
         //check if current user in authors
         if(!in_array($request->user()->id, $request->get('authors')))
@@ -74,7 +73,7 @@ class PublicationsController extends Controller
         return view('admin.profile.publications.edit', compact('users', 'publication'));
     }
 
-    public function update(PublicationCreateRequest $request, Publication $publication)
+    public function update(PublicationRequest $request, Publication $publication)
     {
         //check if current user in authors
         if(!in_array($request->user()->id, $request->get('authors')))

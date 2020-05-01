@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Request;
 
 class QualificationRequest extends FormRequest
 {
@@ -23,11 +24,15 @@ class QualificationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [];
+
+        if(!Request::is('admin/profile/*'))
+            $rules = ['user' => 'required|exists:users,id'];
+
+        return array_merge($rules, [
             'name' => 'required|string',
             'date' => 'required',
             'description' => 'nullable|string',
-            'user' => 'required|exists:users,id'
-        ];
+        ]);
     }
 }

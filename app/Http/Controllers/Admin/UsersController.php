@@ -63,9 +63,15 @@ class UsersController extends Controller
         $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
         $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
         $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
+        $rebukes = $user->rebukes()->paginate(env('PAGINATE_SIZE', 10));
+        $honors = $user->honors()->paginate(env('PAGINATE_SIZE', 10));
+        $educations = $user->educations()->paginate(env('PAGINATE_SIZE', 10));
+
+        $isProfile = false;
 
         return view('admin.profile.show.index',
-            compact('user', 'publications', 'internships', 'qualifications'));
+            compact('user', 'publications', 'internships', 'qualifications', 'rebukes', 'honors',
+                'educations', 'isProfile'));
     }
 
     public function edit(User $user)

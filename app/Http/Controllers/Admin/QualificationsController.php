@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\QualificationRequest;
 use App\Qualification;
 use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class QualificationsController extends Controller

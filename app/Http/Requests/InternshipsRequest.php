@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Request;
 
 class InternshipsRequest extends FormRequest
 {
@@ -23,8 +24,12 @@ class InternshipsRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'user' => 'required|exists:users,id',
+        $rules = [];
+
+        if(!Request::is('admin/profile/*'))
+            $rules = ['user' => 'required|exists:users,id'];
+
+        return array_merge($rules, [
             'category' => 'required|exists:internship_categories,id',
             'place' => 'required|exists:places,id',
             'title' => 'required|between:10,255',
@@ -32,6 +37,6 @@ class InternshipsRequest extends FormRequest
             'to' => 'required',
             'code' => 'nullable',
             'hours' => 'required'
-        ];
+        ]);
     }
 }

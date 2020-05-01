@@ -82,9 +82,15 @@
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
-                        <a href="{{route('profile.edit')}}">
-                            <button class="btn btn-warning pull-right">Редагувати</button>
-                        </a>
+                        @if($isProfile)
+                            <a href="{{route('profile.edit')}}">
+                                <button class="btn btn-warning pull-right">Редагувати</button>
+                            </a>
+                        @else
+                            <a href="{{route('users.edit', $user->id)}}">
+                                <button class="btn btn-warning pull-right">Редагувати</button>
+                            </a>
+                        @endif
                     </div>
                     <!-- /.box-footer-->
                 </div>

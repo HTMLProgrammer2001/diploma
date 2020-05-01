@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Profile\QualificationRequest;
+use App\Http\Requests\QualificationRequest;
 use App\Qualification;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class QualificationsController extends Controller
