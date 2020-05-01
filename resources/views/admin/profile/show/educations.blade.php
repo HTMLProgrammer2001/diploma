@@ -20,7 +20,7 @@
             {{$educations->onEachSide(5)->links()}}
         </div>
 
-        <a href="#" class="btn-block pull-left">
+        <a href="{{route('profile.educations.create')}}" class="btn-block pull-left">
             <button class="btn btn-success margin-bottom">Додати</button>
         </a>
     </div>

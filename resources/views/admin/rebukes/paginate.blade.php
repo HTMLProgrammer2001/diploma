@@ -7,21 +7,7 @@
         <td style="display: flex">
 
             @if($isProfile ?? false)
-                <a href="{{route('profile.rebukes.edit', $rebuke->id)}}"
-                   class="fa fa-pencil"></a>
-
-                <form action="{{route('profile.rebukes.destroy', $rebuke->id)}}"
-                      method="post">
-                    @csrf
-                    @method('DELETE')
-                    <label for="delete_{{$rebuke->id}}"
-                           onclick="return confirm('Ви впевнені?')">
-                        <a class="fa fa-remove"></a>
-                    </label>
-
-                    <button type="submit" id="delete_{{$rebuke->id}}" class="hidden">
-                    </button>
-                </form>
+                <div></div>
             @else
                 @can('moderate')
                     <a href="{{route('rebukes.edit', $rebuke->id)}}" class="fa fa-pencil"></a>

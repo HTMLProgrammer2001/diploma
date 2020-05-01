@@ -109,5 +109,11 @@
 		paginate('#educations_paginate', '#educations_content', '{{route('profile.educations.paginate')}}', () => {
 			remover('#educations_content .deleteItem', '#educations_content .crud-item');
 		});
+		paginate('#honors_paginate', '#honors_content', '{{route('profile.honors.paginate')}}', () => {
+			remover('#honors_content .deleteItem', '#honors_content .crud-item');
+		});
+		paginate('#rebukes_paginate', '#rebukes_content', '{{route('profile.rebukes.paginate')}}', () => {
+			remover('#rebukes_content .deleteItem', '#rebukes_content .crud-item');
+		});
     </script>
 @endsection

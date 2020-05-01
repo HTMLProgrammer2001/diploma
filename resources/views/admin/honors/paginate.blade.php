@@ -7,10 +7,7 @@
         <td style="display: flex">
 
             @if($isProfile ?? false)
-                <a href="{{route('profile.honors.edit', $honor->id)}}"
-                   class="fa fa-pencil"></a>
-
-                <a class="fa fa-remove deleteItem" data-url="{{route('profile.honors.destroy', $honor->id)}}"></a>
+                <div></div>
             @else
                 @can('moderate')
                     <a href="{{route('honors.edit', $honor->id)}}" class="fa fa-pencil"></a>

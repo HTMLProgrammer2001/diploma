@@ -70,6 +70,10 @@ class User extends Authenticatable
         return $this->hasMany(Honor::class);
     }
 
+    public function rebukes(){
+        return $this->hasMany(Rebuke::class);
+    }
+
     public function rank(){
         return $this->belongsTo(Rank::class);
     }

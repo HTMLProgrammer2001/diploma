@@ -6,16 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HonorsPaginateController extends Controller
+class RebukesPaginateController extends Controller
 {
     public function __invoke(Request $request)
     {
         $user = Auth::user();
+        $rebukes = $user->rebukes()->paginate(env('PAGINATE_SIZE', 10));
 
-        $honors = $user->honors()->paginate(env('PAGINATE_SIZE', 10));
-
-        return view('admin.honors.paginate', [
-            'honors' => $honors,
+        return view('admin.rebukes.paginate', [
+            'rebukes' => $rebukes,
             'isProfile' => true
         ]);
     }

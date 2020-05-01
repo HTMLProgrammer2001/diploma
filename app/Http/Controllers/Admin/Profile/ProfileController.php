@@ -18,9 +18,12 @@ class ProfileController extends Controller
         $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
         $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
         $educations = $user->educations()->paginate(env('PAGINATE_SIZE', 10));
+        $honors = $user->honors()->paginate(env('PAGINATE_SIZE', 10));
+        $rebukes = $user->rebukes()->paginate(env('PAGINATE_SIZE', 10));
 
         return view('admin.profile.show.index',
-            compact('user', 'publications', 'qualifications', 'internships', 'educations'));
+            compact('user', 'publications', 'qualifications', 'internships', 'educations', 'honors',
+                'rebukes'));
     }
 
     public function edit(Request $request){

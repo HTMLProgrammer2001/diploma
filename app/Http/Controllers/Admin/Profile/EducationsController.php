@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Profile;
 
+use App\Education;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\EducationsRequest;
 use Illuminate\Support\Facades\Auth;
 
 class EducationsController extends Controller
@@ -16,5 +17,29 @@ class EducationsController extends Controller
             'educations' => $educations,
             'isProfile' => true
         ]);
+    }
+
+    public function create(){
+        return view('admin.profile.educations.create');
+    }
+
+    public function store(EducationsRequest $request){
+        $education = new Education($request->all());
+
+        $education->setUser($request->user()->id);
+        $education->save();
+
+        return redirect()->route('profile.show');
+    }
+
+    public function edit(Education $education){
+        return view('admin.profile.educations.edit', compact('education'));
+    }
+
+    public function update(Education $education, EducationsRequest $request){
+        $education->fill($request->all());
+        $education->save();
+
+        return redirect()->route('profile.show');
     }
 }

@@ -125,11 +125,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::get('/qualifications/paginate', 'QualificationsController@paginate')
             ->name('profile.qualifications.paginate');
 
-        Route::get('/publications/paginate', 'PublicationsController@paginate')
-            ->name('profile.publications.paginate');
-
         Route::get('/educations/paginate', 'EducationsController@paginate')
             ->name('profile.educations.paginate');
+
+        Route::get('/rebukes/paginate', 'RebukesPaginateController')
+            ->name('profile.rebukes.paginate');
+
+        Route::get('/honors/paginate', 'HonorsPaginateController')
+            ->name('profile.honors.paginate');
 
         //user profile page routes
         Route::get('/', 'ProfileController@index')->name('profile.show');
@@ -148,5 +151,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::resource('qualifications', 'QualificationsController', [
             'as' => 'profile'
         ]);
+
+        Route::resource('educations', 'EducationsController', [
+            'as' => 'profile'
+        ])->only('create', 'store', 'edit', 'update');
     });
 });
