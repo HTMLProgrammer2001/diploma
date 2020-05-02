@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Commission;
 use App\Department;
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserRequest;
 use App\Rank;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -36,7 +35,7 @@ class UsersController extends Controller
         return view('admin.users.create', compact('departments', 'commissions', 'ranks'));
     }
 
-    public function store(UserCreateRequest $request)
+    public function store(UserRequest $request)
     {
         //create user
         $user = new User();
@@ -79,11 +78,14 @@ class UsersController extends Controller
         $departments = Department::all();
         $commissions = Commission::all();
         $ranks = Rank::all();
+        $roles = User::getRolesArray();
+        $pedagogicals = User::getPedagogicalTitles();
 
-        return view('admin.users.edit', compact('departments', 'commissions', 'user', 'ranks'));
+        return view('admin.users.edit', compact('departments', 'commissions', 'user',
+            'ranks', 'roles', 'pedagogicals'));
     }
 
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         $this->validate($request, [
             'email' => Rule::unique('users')->ignore($user->id)

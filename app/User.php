@@ -17,7 +17,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'surname', 'patronymic', 'email', 'birthday'
+        'name', 'surname', 'patronymic', 'email', 'birthday', 'pedagogical_title', 'address', 'phone',
+            'hiring_year', 'experience'
     ];
 
     /**
@@ -102,6 +103,10 @@ class User extends Authenticatable
     }
 
     //Helper methods
+    public static function getPedagogicalTitles(){
+        return ['Старший викладач', 'Викладач-методист'];
+    }
+
     public function getBirthdayString(){
         if($this->birthday)
             return $this->birthday;

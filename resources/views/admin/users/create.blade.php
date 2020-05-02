@@ -47,7 +47,9 @@
                                 <label for="email">E-mail*</label>
                                 <input type="text" class="form-control" id="email" name="email" value="{{old('email')}}">
                             </div>
+                        </div>
 
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="password">Пароль*</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="">
@@ -56,15 +58,6 @@
                             <div class="form-group">
                                 <label for="password_confirmation">Повторіть пароль*</label>
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="avatar">Аватар</label>
-                                <input type="file" id="avatar" name="avatar">
-
-                                <p class="help-block">Зображення в форматах jpeg чи png</p>
                             </div>
 
                             <div class="form-group">
@@ -85,35 +78,6 @@
 
                                     @foreach($commissions as $commission)
                                         <option value="{{$commission->id}}">{{$commission->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="birthday">Дата народження</label>
-                                <input type="text" class="form-control pull-right calendar"
-                                       value="{{old('birthday')}}" name="birthday" id="birthday" autocomplete="off">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="patronymic">Номер паспорта</label>
-                                <input type="text" class="form-control" id="patronymic"
-                                       name="passport" value="{{old('passport')}}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="patronymic">Ідентифікаційний код</label>
-                                <input type="text" class="form-control" id="patronymic"
-                                       name="code" value="{{old('code')}}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="rank">Розряд</label>
-                                <select class="form-control select2" id="rank" name="rank" value="{{old('rank')}}">
-                                    <option value="" selected>Немає</option>
-
-                                    @foreach($ranks as $rank)
-                                        <option value="{{$rank->id}}">{{$rank->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
