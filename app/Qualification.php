@@ -14,24 +14,6 @@ class Qualification extends Model
         return $this->belongsTo(User::class);
     }
 
-    //accessors
-    public function setDateAttribute($date){
-        if(!$date)
-            $this->attributes['date'] = null;
-        else{
-            $formattedDate = Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
-            $this->attributes['date'] = $formattedDate;
-        }
-    }
-
-    public function getDateAttribute(){
-        if(!$this->attributes['date'])
-            return null;
-
-        $formattedDate = Carbon::createFromFormat('Y-m-d', $this->attributes['date'])->format('m/d/Y');
-        return $formattedDate;
-    }
-
     //helpers
     public function setUser($id){
         if(!$id)

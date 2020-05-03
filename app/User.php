@@ -83,25 +83,6 @@ class User extends Authenticatable
         return $this->hasMany(Education::class);
     }
 
-    //accessors
-    public function setBirthdayAttribute($date){
-        if(!$date)
-            $this->attributes['birthday'] = null;
-        else{
-            $formattedDate = Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
-            $this->attributes['birthday'] = $formattedDate;
-        }
-    }
-
-    public function getBirthdayAttribute(){
-        if(!$this->attributes['birthday'])
-            return null;
-
-        $formattedDate = Carbon::createFromFormat('Y-m-d', $this->attributes['birthday'])
-            ->format('m/d/Y');
-        return $formattedDate;
-    }
-
     //Helper methods
     public static function getPedagogicalTitles(){
         return ['Старший викладач', 'Викладач-методист'];

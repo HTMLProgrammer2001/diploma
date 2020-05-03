@@ -12,10 +12,25 @@
                 @can('moderate')
                     <a href="{{route('honors.edit', $honor->id)}}" class="fa fa-pencil"></a>
 
-                    <a class="fa fa-remove deleteItem" data-url="{{route('honors.destroy', $honor->id)}}"></a>
+                    <a class="fa fa-remove delete-honor" data-url="{{route('honors.destroy', $honor->id)}}"></a>
                 @endcan
             @endif
 
         </td>
     </tr>
 @endforeach
+
+<tr>
+    <td colspan="10">
+        <div class="pull-right honors-paginator">
+            {{$honors->onEachSide(3)->links()}}
+        </div>
+    </td>
+</tr>
+
+<script>
+	paginate('.honors-paginator', '.honors-content', '{{route('honors.paginate')}}', () => {
+		remover('.delete-honor', '.crud-item');
+	});
+</script>
+

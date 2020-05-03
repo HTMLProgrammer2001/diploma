@@ -11,12 +11,10 @@
             <th>Дії</th>
         </tr>
         </thead>
-        <tbody id="publications_content"></tbody>
+        <tbody class="publication-content">
+            @include('admin.publications.paginate')
+        </tbody>
     </table>
-
-    <div class="pull-right" id="publications_paginate">
-        {{$publications->onEachSide(5)->links()}}
-    </div>
 
     <a href="{{route('profile.publications.create')}}" class="pull-left">
         <button class="btn btn-success margin-bottom">Додати</button>

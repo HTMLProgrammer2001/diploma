@@ -11,12 +11,8 @@
             <th>Дії</th>
         </tr>
         </thead>
-        <tbody id="honors_content"></tbody>
+        <tbody class="honors-content">
+            @include('admin.honors.paginate')
+        </tbody>
     </table>
-
-    <div style="margin-top: 20px">
-        <div class="pull-right paginator" id="honors_paginate">
-            {{$honors->onEachSide(5)->links()}}
-        </div>
-    </div>
 </div>

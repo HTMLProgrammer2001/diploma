@@ -11,12 +11,8 @@
             <th>Дії</th>
         </tr>
         </thead>
-        <tbody id="rebukes_content"></tbody>
+        <tbody class="rebukes-content">
+            @include('admin.rebukes.paginate')
+        </tbody>
     </table>
-
-    <div style="margin-top: 20px">
-        <div class="pull-right paginator" id="rebukes_paginate">
-            {{$rebukes->onEachSide(5)->links()}}
-        </div>
-    </div>
 </div>

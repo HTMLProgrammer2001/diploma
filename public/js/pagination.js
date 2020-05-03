@@ -1,5 +1,5 @@
 function paginate(paginator, content, url, callback){
-	getData(url, 1, content);
+	callback();
 
 	$(paginator).find('.page-link').on('click', (e) => {
 		e.preventDefault();

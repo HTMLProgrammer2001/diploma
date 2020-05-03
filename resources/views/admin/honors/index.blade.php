@@ -36,24 +36,14 @@
                             <th>Дії</th>
                         </tr>
                         </thead>
-                        <tbody class="wrap-content"></tbody>
+                        <tbody class="honors-content">
+                            @include('admin.honors.paginate')
+                        </tbody>
                     </table>
-
-                        <div class="pull-right paginator">
-                            {{$honors->onEachSide(5)->links()}}
-                        </div>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
-            <script src="/js/pagination.js"></script>
-            <script src="/js/remover.js"></script>
-            <script>
-				paginate('.paginator', '.wrap-content', '{{route('honors.paginate')}}', () => {
-					remover('.deleteItem', '.crud-item');
-				});
-            </script>
         </section>
         <!-- /.content -->
     </div>

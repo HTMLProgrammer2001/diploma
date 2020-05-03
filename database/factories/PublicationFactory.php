@@ -9,7 +9,7 @@ $factory->define(Publication::class, function (Faker $faker) {
     return [
         'title' => $faker->words(3, true),
         'description' => $faker->text(),
-        'date_of_publication' => $faker->date('m/d/Y'),
+        'date_of_publication' => $faker->date(),
         'another_authors' => $faker->name,
         'publisher' => $faker->company,
         'url' => $faker->url

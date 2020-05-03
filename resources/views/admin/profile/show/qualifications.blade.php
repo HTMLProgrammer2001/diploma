@@ -11,16 +11,14 @@
             <th>Дії</th>
         </tr>
         </thead>
-        <tbody id = "qualifications_content"></tbody>
+        <tbody class = "qualifications-content">
+            @include('admin.qualifications.paginate')
+        </tbody>
     </table>
 
     <b>Термін наступного підтвердження: {{$user->getNextQualificationDate()}}</b>
 
     <div style="margin-top: 20px">
-        <div class="pull-right paginator" id="qualifications_paginate">
-            {{$qualifications->onEachSide(5)->links()}}
-        </div>
-
         <a href="{{route('profile.qualifications.create')}}" class="btn-block pull-left">
             <button class="btn btn-success margin-bottom">Додати</button>
         </a>

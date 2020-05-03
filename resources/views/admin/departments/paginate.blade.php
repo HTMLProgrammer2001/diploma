@@ -14,3 +14,17 @@
         </td>
     </tr>
 @endforeach
+
+<tr>
+    <td colspan="10">
+        <div class="pull-right departments-paginator">
+            {{$departments->onEachSide(3)->links()}}
+        </div>
+    </td>
+</tr>
+
+<script>
+	paginate('.departments-paginator', '.departments-content', '{{route('departments.paginate')}}', () => {
+		remover('.delete-department', '.crud-item');
+	});
+</script>

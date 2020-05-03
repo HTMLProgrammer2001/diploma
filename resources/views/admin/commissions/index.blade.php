@@ -48,12 +48,10 @@
                             <th>Дії</th>
                         </tr>
                         </thead>
-                        <tbody class="wrap-content"></tbody>
+                        <tbody class="commissions-content">
+                            @include('admin.commissions.paginate')
+                        </tbody>
                     </table>
-
-                    <div class="pull-right paginator">
-                        {{$commissions->onEachSide(5)->links()}}
-                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -62,12 +60,4 @@
         </section>
         <!-- /.content -->
     </div>
-
-    <script src="/js/pagination.js"></script>
-    <script src="/js/remover.js"></script>
-    <script>
-		paginate('.paginator', '.wrap-content', '{{route('commissions.paginate')}}', () => {
-			remover('.deleteItem', '.crud-item');
-		});
-    </script>
 @endsection

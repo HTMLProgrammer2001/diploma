@@ -35,24 +35,14 @@
                             <th>Дії</th>
                         </tr>
                         </thead>
-                        <tbody class="wrap-content"></tbody>
+                        <tbody class="places-content">
+                            @include('admin.places.paginate')
+                        </tbody>
                     </table>
-                </div>
-
-                <div class="pull-right paginator">
-                    {{$places->onEachSide(5)->links()}}
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
-            <script src="/js/pagination.js"></script>
-            <script src="/js/remover.js"></script>
-            <script>
-				paginate('.paginator', '.wrap-content', '{{route('places.paginate')}}', () => {
-					remover('.deleteItem', '.crud-item');
-				});
-            </script>
         </section>
         <!-- /.content -->
     </div>

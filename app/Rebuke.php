@@ -14,25 +14,6 @@ class Rebuke extends Model
         return $this->belongsTo(User::class);
     }
 
-    //accessors
-    public function setDatePresentationAttribute($date){
-        if(!$date)
-            $this->attributes['date_presentation'] = null;
-        else{
-            $formattedDate = Carbon::createFromFormat('m/d/Y', $date)->format('Y-m-d');
-            $this->attributes['date_presentation'] = $formattedDate;
-        }
-    }
-
-    public function getDatePresentationAttribute(){
-        if(!$this->attributes['date_presentation'])
-            return null;
-
-        $formattedDate = Carbon::createFromFormat('Y-m-d', $this->attributes['date_presentation'])
-            ->format('m/d/Y');
-        return $formattedDate;
-    }
-
     //helpers
     public function getUserName(){
         if(!$this->user)

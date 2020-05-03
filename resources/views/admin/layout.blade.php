@@ -11,9 +11,12 @@
 
     <link rel="stylesheet" href="/css/admin.css">
     <script
-            src="https://code.jquery.com/jquery-3.5.0.min.js"
-            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
             crossorigin="anonymous"></script>
+
+    <script src="/js/pagination.js"></script>
+    <script src="/js/remover.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -200,13 +203,6 @@
 <!-- ./wrapper -->
 
 <script src="/js/admin.js"></script>
-<script src="/plugins/ckeditor/ckeditor.js"></script>
-<script>
-	$(document).ready(function(){
-		CKEDITOR.replaceAll();
-	})
-
-</script>
 <!-- page script -->
 </body>
 

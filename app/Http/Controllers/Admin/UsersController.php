@@ -12,6 +12,7 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
+
     public function paginate(){
         $users = User::paginate(env('PAGINATE_SIZE', 10));
 
@@ -38,6 +39,7 @@ class UsersController extends Controller
     public function store(UserRequest $request)
     {
         //create user
+
         $user = new User();
         $user->fill($request->all());
 
@@ -103,6 +105,7 @@ class UsersController extends Controller
         $user->setCommission($request->get('commission'));
         $user->setRank($request->get('rank'));
 
+        //avatar
         $user->uploadAvatar($request->file('avatar'));
 
         $user->role = $request->get('role');

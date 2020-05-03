@@ -13,16 +13,14 @@
             <th>Дії</th>
         </tr>
         </thead>
-        <tbody id="internships_content"></tbody>
+        <tbody class="internships-content">
+            @include('admin.internships.paginate')
+        </tbody>
     </table>
 
     <b>Годин з останнього підвищення кваліфікації: {{$user->getInternshipHours()}}</b>
 
     <div style="margin-top: 20px">
-        <div class="pull-right paginator" id="internships_paginate">
-            {{$internships->onEachSide(5)->links()}}
-        </div>
-
         <a href="{{route('profile.internships.create')}}" class="btn-block pull-left">
             <button class="btn btn-success margin-bottom">Додати</button>
         </a>

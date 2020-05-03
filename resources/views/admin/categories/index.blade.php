@@ -34,24 +34,14 @@
                             <th>Дії</th>
                         </tr>
                         </thead>
-                        <tbody class="wrap-content"></tbody>
+                        <tbody class="categories-content">
+                            @include('admin.categories.paginate')
+                        </tbody>
                     </table>
-
-                    <div class="pull-right paginator">
-                        {{$categories->onEachSide(5)->links()}}
-                    </div>
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
-            <script src="/js/pagination.js"></script>
-            <script src="/js/remover.js"></script>
-            <script>
-				paginate('.paginator', '.wrap-content', '{{route('categories.paginate')}}', () => {
-					remover('.deleteItem', '.crud-item');
-				});
-            </script>
         </section>
         <!-- /.content -->
     </div>

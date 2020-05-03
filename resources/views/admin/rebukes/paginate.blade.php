@@ -11,10 +11,25 @@
             @else
                 @can('moderate')
                     <a href="{{route('rebukes.edit', $rebuke->id)}}" class="fa fa-pencil"></a>
-                    <a class="fa fa-remove deleteItem" data-url="{{route('rebukes.destroy', $rebuke->id)}}"></a>
+                    <a class="fa fa-remove delete-rebuke"
+                       data-url="{{route('rebukes.destroy', $rebuke->id)}}"></a>
                 @endcan
             @endif
 
         </td>
     </tr>
 @endforeach
+
+<tr>
+    <td colspan="5">
+        <div class="pull-right rebukes_paginator">
+            {{$rebukes->onEachSide(3)->links()}}
+        </div>
+    </td>
+</tr>
+
+<script>
+	paginate('.rebukes_paginator', '.rebuke-content', '{{route('rebukes.paginate')}}', () => {
+		remover('.delete-rebuke', '.crud-item');
+	});
+</script>

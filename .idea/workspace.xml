@@ -3,12 +3,615 @@
   <component name="ChangeListManager">
     <list default="true" id="3928da75-97ac-4069-84af-e8aab5331d72" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Honor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Honor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserCreateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserUpdateRequest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Internship.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Internship.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Publication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Publication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Qualification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Qualification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Rebuke.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rebuke.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/HonorFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/HonorFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/InternshipFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/InternshipFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/PublicationFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PublicationFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/QualificationFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/QualificationFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/RebukeFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/RebukeFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/boxed-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/credit/american-express.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/credit/mastercard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/credit/paypal2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/credit/visa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/photo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/photo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/photo3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/photo4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user1-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user2-160x160.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user3-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user4-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user5-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user6-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user7-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/user8-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/CHANGES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/adapters/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/build-config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/ckeditor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/contents.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/af.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/az.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/bg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/bn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/bs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/cs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/cy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/da.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/de-ch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/de.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/el.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/en-au.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/en-ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/en-gb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/eo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/et.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/eu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/fa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/fi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/fo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/fr-ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/fr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/gl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/gu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/he.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/hi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/hr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/hu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/id.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/is.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/it.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ja.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ka.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/km.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ko.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ku.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/lt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/lv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/mk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/mn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/nb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/nl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/no.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/oc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/pl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/pt-br.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/pt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ro.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/si.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/sk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/sl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/sq.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/sr-latn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/sr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/sv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/th.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/tr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/tt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/ug.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/uk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/vi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/zh-cn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/lang/zh.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/af.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/az.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/bg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/cs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/cy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/da.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/de-ch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/de.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/el.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/en-gb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/eo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/et.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/eu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/fa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/fi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/fo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/fr-ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/fr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/gl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/gu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/he.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/hi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/hr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/hu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/id.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/it.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ja.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/km.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ko.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ku.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/lt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/lv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/mk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/mn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/nb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/nl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/no.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/oc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/pl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/pt-br.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/pt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ro.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/si.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/sk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/sl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/sq.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/sr-latn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/sr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/sv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/th.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/tr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/tt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/ug.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/uk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/vi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/zh-cn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/a11yhelp/dialogs/lang/zh.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/about/dialogs/about.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/about/dialogs/hidpi/logo_ckeditor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/about/dialogs/logo_ckeditor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/clipboard/dialogs/paste.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/dialog/dialogDefinition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/icons_hidpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/image/dialogs/image.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/image/images/noimage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/link/dialogs/anchor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/link/dialogs/link.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/link/images/anchor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/link/images/hidpi/anchor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/magicline/images/hidpi/icon-rtl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/magicline/images/hidpi/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/magicline/images/icon-rtl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/magicline/images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/pastefromword/filter/default.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/scayt/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/scayt/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/scayt/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/scayt/dialogs/options.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/scayt/dialogs/toolbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/_translationstatus.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/af.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/az.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/bg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/cs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/cy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/da.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/de-ch.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/de.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/el.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/en-gb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/eo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/et.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/eu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/fa.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/fi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/fr-ca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/fr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/gl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/he.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/hr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/hu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/id.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/it.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/ja.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/km.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/ko.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/ku.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/lt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/lv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/nb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/nl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/no.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/oc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/pl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/pt-br.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/pt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/si.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/sk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/sl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/sq.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/sv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/th.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/tr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/tt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/ug.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/uk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/vi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/zh-cn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/lang/zh.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/specialchar/dialogs/specialchar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/table/dialogs/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/tabletools/dialogs/tableCell.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/dialogs/ciframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/dialogs/tmpFrameset.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/dialogs/wsc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/dialogs/wsc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/dialogs/wsc_ie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/dialog.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/dialog_ie.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/dialog_ie8.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/dialog_iequirks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/editor.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/editor_gecko.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/editor_ie.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/editor_ie8.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/editor_iequirks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/icons_hidpi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/hidpi/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/hidpi/lock-open.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/hidpi/lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/hidpi/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/lock-open.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/images/spinner.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/skins/moono-lisa/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckeditor/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/bg.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/bs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/ca.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/cs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/cy.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/da.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/de-ch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/de.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/el.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/en.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/eo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/es-mx.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/es.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/et.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/eu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/fa.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/fi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/fr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/gu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/he.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/hi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/hr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/hu.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/it.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/ja.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/ko.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/ku.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/lt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/lv.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/nb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/nl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/nn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/no.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/pl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/pt-br.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/ro.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/ru.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/sk.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/sl.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/sr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/sv.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/tr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/uk.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/vi.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/zh-cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/lang/zh-tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/caman.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/action-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/action-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/alert-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/alert-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-d-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-d-l-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-d-l-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-d-r-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-d-r-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-d-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-l-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-l-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-r-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-r-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-u-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-u-l-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-u-l-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-u-r-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-u-r-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/arrow-u-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/audio-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/audio-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/back-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/back-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/bars-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/bars-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/bullets-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/bullets-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/calendar-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/calendar-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/camera-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/camera-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-d-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-d-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-l-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-l-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-r-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-r-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-u-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/carat-u-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/check-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/check-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/clock-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/clock-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/cloud-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/cloud-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/comment-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/comment-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/delete-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/delete-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/edit-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/edit-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/eye-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/eye-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/forbidden-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/forbidden-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/forward-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/forward-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/gear-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/gear-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/grid-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/grid-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/heart-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/heart-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/home-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/home-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/info-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/info-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/location-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/location-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/lock-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/lock-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/mail-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/mail-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/minus-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/minus-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/navigation-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/navigation-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/phone-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/phone-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/plus-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/plus-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/power-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/power-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/recycle-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/recycle-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/refresh-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/refresh-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/search-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/search-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/shop-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/shop-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/star-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/star-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/tag-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/tag-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/user-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/user-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/video-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/images/icons-png/video-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/plugins/ckfinder/libs/jquery.mobile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/css/ionicons.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/css/skins/_all-skins.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/css/skins/skin-blue.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/admin/dist/css/skin-blue.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/boxed-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/credit/american-express.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/credit/mastercard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/credit/paypal2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/credit/visa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/photo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/photo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/photo3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/photo4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user1-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user2-160x160.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user3-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user4-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user5-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user6-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user7-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/img/user8-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/js/demo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/admin/dist/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/js/pages/dashboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/dist/js/pages/dashboard2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/ionicons/2.0.1/css/ionicons.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/bootstrap-slider/bootstrap-slider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/bootstrap-slider/slider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/chartjs/Chart.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/colorpicker/bootstrap-colorpicker.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/colorpicker/bootstrap-colorpicker.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/colorpicker/img/alpha-horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/colorpicker/img/alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/colorpicker/img/hue-horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/colorpicker/img/hue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/colorpicker/img/saturation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/datatables/dataTables.bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/datatables/dataTables.bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/datatables/jquery.dataTables.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/fastclick/fastclick.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/fastclick/fastclick.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/flot/jquery.flot.categories.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/flot/jquery.flot.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/flot/jquery.flot.pie.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/flot/jquery.flot.resize.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/fullcalendar/fullcalendar.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/fullcalendar/fullcalendar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/fullcalendar/fullcalendar.print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/_all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/aero.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/aero@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/blue.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/blue@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/flat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/flat@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/green@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/grey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/grey@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/orange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/orange@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/pink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/pink@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/purple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/purple@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/red@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/flat/yellow@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/futurico/futurico.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/futurico/futurico.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/futurico/futurico@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/icheck.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/line/_all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/line/line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/line/line@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/_all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/aero.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/aero@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/blue@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/green@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/grey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/grey@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/orange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/orange@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/pink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/pink@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/purple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/purple@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/red@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/minimal/yellow@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/polaris/polaris.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/polaris/polaris.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/polaris/polaris@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/_all.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/aero.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/aero@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/blue.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/blue@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/green@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/grey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/grey@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/orange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/orange@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/pink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/pink@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/purple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/purple@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/red@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/square@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/iCheck/square/yellow@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/ionslider/img/sprite-skin-nice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/ionslider/ion.rangeSlider.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/ionslider/ion.rangeSlider.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/ionslider/ion.rangeSlider.skinNice.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/jQuery/jquery-2.2.3.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/knob/jquery.knob.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/morris/morris.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/morris/morris.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/pace/pace.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/pace/pace.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/plugins/sparkline/jquery.sparkline.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/commissions/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/commissions/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/commissions/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/commissions/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/departments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/departments/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/departments/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/departments/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/educations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/educations/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/honors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/honors/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/internships/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/internships/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/places/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/places/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/places/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/places/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/show/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/show/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/show/internships.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/show/internships.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/show/publications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/show/publications.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/show/qualifications.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/show/qualifications.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/show/rebukes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/show/rebukes.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/publications/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/publications/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/publications/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/publications/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/publications/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/publications/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/qualifications/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/qualifications/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/ranks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/ranks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/ranks/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/ranks/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/rebukes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/rebukes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,46 +625,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/users/edit.blade.php">
+        <entry file="file://$PROJECT_DIR$/public/js/pagination.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="78" column="64" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
-              <folding>
-                <element signature="e#2481#2780#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="84" column="43" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
-              <folding>
-                <element signature="e#46#65#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
-              <folding>
-                <element signature="e#37#50#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="24">
+              <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -74,6 +641,7 @@
       <find>#date</find>
       <find>datep</find>
       <find>.show</find>
+      <find>opts</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -82,57 +650,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/admin/ranks/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/ranks/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/ranks/edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/ranks/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/RanksController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/UserUpdateRequest.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/update.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/ProfileUpdateRequest.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/internships/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/internships.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/qualifications.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_04_10_203907_create_qualifications_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_04_30_152850_create_educations_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/educations/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/layout.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_04_30_160940_add_user_to_education.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/EducationsController.php" />
-        <option value="$PROJECT_DIR$/app/Education.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/educations/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/educations/edit.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesPaginateController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsPaginateController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/rebukes.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/educations/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/educations/edit.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/EducationsRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/InternshipsRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/InternshipsController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/PublicationsController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/QualificationRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/QualificationsController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/QualificationsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/PublicationRequest.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2020_05_01_175158_add_user_personal_info.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/ProfileController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/UserCreateRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" />
+        <option value="$PROJECT_DIR$/resources/assets/admin/dist/js/pages/dashboard.js" />
+        <option value="$PROJECT_DIR$/webpack.mix.js" />
+        <option value="$PROJECT_DIR$/resources/views/admin/publications/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/publications/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Honor.php" />
+        <option value="$PROJECT_DIR$/app/Internship.php" />
+        <option value="$PROJECT_DIR$/app/Publication.php" />
+        <option value="$PROJECT_DIR$/app/Qualification.php" />
+        <option value="$PROJECT_DIR$/app/Rebuke.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/admin/dist/js/index.js" />
+        <option value="$PROJECT_DIR$/resources/views/admin/layout.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/users/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/rebukes/index.blade.php" />
+        <option value="$PROJECT_DIR$/database/factories/HonorFactory.php" />
+        <option value="$PROJECT_DIR$/database/factories/InternshipFactory.php" />
+        <option value="$PROJECT_DIR$/database/factories/PublicationFactory.php" />
+        <option value="$PROJECT_DIR$/database/factories/QualificationFactory.php" />
+        <option value="$PROJECT_DIR$/database/factories/RebukeFactory.php" />
+        <option value="$PROJECT_DIR$/database/factories/RankFactory.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/ranks/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/ranks/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/qualifications/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/publications/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/places/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/places/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/internships/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/honors/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/educations/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/departments/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/commissions/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/departments/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/commissions/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/categories/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/internships.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/publications.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/qualifications.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile/show/rebukes.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/pagination.js" />
       </list>
     </option>
   </component>
@@ -262,28 +830,13 @@
             <path>
               <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
               <item name="Diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
               <item name="Diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Diploma" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Diploma" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -295,23 +848,23 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\assets\admin\plugins" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\admin\plugins" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\assets\admin\dist\css" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\views\admin\profile\show" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Policies\" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\views\admin" />
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Http\Controllers\Admin" />
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\views\admin\profile" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\views\admin\profile\show" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Policies\" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Http\Controllers\Admin\Profile" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Http\Controllers\Admin" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Policies\Profile" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -336,7 +889,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28366113" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2927383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -349,8 +902,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.6649573" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49546143" visible="true" weight="0.2974359" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5045386" side_tool="true" weight="0.52136755" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.494705" visible="true" weight="0.056410257" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.505295" side_tool="true" weight="0.13846155" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -358,12 +911,12 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27382752" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2927383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.5777778" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -371,8 +924,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.6649573" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49621785" visible="true" weight="0.102564104" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50378215" side_tool="true" weight="0.2871795" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49546143" visible="true" weight="0.4034188" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5045386" side_tool="true" weight="0.52136755" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -435,368 +988,346 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Internship.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="264">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/qualifications.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Place.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_10_203907_create_qualifications_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EducationController.php" />
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_26_212900_createhonors_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
+        <state relative-caret-position="144">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_30_152850_create_educations_table.php">
+    <entry file="file://$PROJECT_DIR$/app/Publication.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
+        <state relative-caret-position="-120">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Qualification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-213">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Rank.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Rebuke.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4187">
+          <caret line="85" column="4" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/admin/dist/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-464">
-          <caret line="173" selection-start-line="173" selection-end-line="173" />
+        <state relative-caret-position="-4261">
+          <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_04_30_160940_add_user_to_education.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/paginate.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+        <state relative-caret-position="337">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/EducationsController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-          <folding>
-            <element signature="e#46#64#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="265">
+          <caret line="48" column="15" lean-forward="true" selection-start-line="48" selection-start-column="15" selection-end-line="48" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Education.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/rebukes/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/CommissionFactory.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/HonorFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/InternCategory.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/InternshipFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/PlaceFactory.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/PublicationFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/QualificationFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
-          <caret line="8" column="74" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/RebukeFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-377" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/factories/RankFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/ranks/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/ranks/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="15" selection-start-line="15" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/qualifications/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/publications/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="38" column="65" selection-start-line="38" selection-start-column="65" selection-end-line="38" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/places/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="38" column="59" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/places/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/internships/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/honors/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/departments/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="17" selection-start-line="17" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/departments/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="37" column="55" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/commissions/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/commissions/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="17" selection-start-line="17" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" selection-start-line="22" selection-end-line="34" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="57" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="116" column="10" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/internships.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="5" column="12" selection-end-line="30" />
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/publications.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="37" selection-end-column="29" />
+        <state relative-caret-position="109">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/honors/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/qualifications.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+        <state relative-caret-position="72">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsPaginateController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesPaginateController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/rebukes/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/rebukes.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        <state relative-caret-position="312">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/create.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/js/pagination.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
-          <caret line="51" column="24" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/internships/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/educations/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-573">
-          <caret line="33" column="34" lean-forward="true" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="62" column="72" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/educations/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="156" column="54" selection-start-line="156" selection-start-column="54" selection-end-line="156" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-490">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#54#72#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="18" column="65" lean-forward="true" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Profile/InternshipsRequest.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/InternshipsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1064">
-          <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
-          <folding>
-            <element signature="e#54#90#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/EducationsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding>
-            <element signature="e#37#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/PublicationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="75" column="45" selection-start-line="75" selection-start-column="45" selection-end-line="75" selection-end-column="45" />
-          <folding>
-            <element signature="e#54#90#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Profile/QualificationRequest.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/InternshipsRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="31" column="36" lean-forward="true" selection-start-line="26" selection-start-column="8" selection-end-line="31" selection-end-column="36" />
-          <folding>
-            <element signature="e#37#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/QualificationRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding>
-            <element signature="e#37#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/QualificationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="4" column="42" lean-forward="true" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/publications/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-960" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/QualificationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1283">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#54#90#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/PublicationRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-          <folding>
-            <element signature="e#37#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserUpdateRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_05_01_175158_add_user_personal_info.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/ProfileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="84" column="43" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
-          <folding>
-            <element signature="e#46#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="72" column="62" selection-start-line="72" selection-start-column="62" selection-end-line="72" selection-end-column="62" />
-          <folding>
-            <element signature="e#37#50#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="78" column="64" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
-          <folding>
-            <element signature="e#2481#2780#0#HTML" />
-          </folding>
+          <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
         </state>
       </provider>
     </entry>

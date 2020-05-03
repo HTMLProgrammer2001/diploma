@@ -22,18 +22,34 @@
                     <div class="box-body">
                         <div class="row margin-bottom">
                             <div class="col-sm-3">
-                                <img src="{{$user->getAvatar()}}" alt="" style="max-width: 100%;">
+                                <img src="{{$user->getAvatar()}}" alt="" style="width: 100%;">
                             </div>
 
                             <div class="col-sm-7 col-sm-offset-1">
                                 <div>Ім'я: {{$user->getFullName()}}</div>
                                 <div>Дата народження: {{$user->getBirthdayString()}}</div>
                                 <div>Email: {{$user->email}}</div>
+
+                                @if($user->address)
+                                    <div>Адреса: {{$user->address}}</div>
+                                @endif
+
+                                @if($user->phone)
+                                    <div>Номер телефона: {{$user->phone}}</div>
+                                @endif
+
                                 <div>Роль: {{$user->getRoleString()}}</div>
                                 <div>Відділ: {{$user->getDepartmentName()}}</div>
                                 <div>Циклова комісія: {{$user->getCommissionName()}}</div>
                                 <div>Кваліфікація: {{$user->getQualificationName()}}</div>
                                 <div>Розряд: {{$user->getRankName()}}</div>
+
+                                @if($user->hiring_year)
+                                    <div>Рік прийняття на роботу: {{$user->hiring_year}}</div>
+                                @endif
+
+                                <div>Педагогічне звання: {{$user->pedagogical_title}}</div>
+                                <div>Стаж: {{$user->experience}}</div>
                             </div>
                         </div>
                         
@@ -99,27 +115,4 @@
         </section>
         <!-- /.content -->
     </div>
-
-    <script src="/js/pagination.js"></script>
-    <script src="/js/remover.js"></script>
-    <script>
-		paginate('#publications_paginate', '#publications_content', '{{route('profile.publications.paginate')}}', () => {
-			remover('#publications_content .deleteItem', '#publications_content .crud-item');
-		});
-		paginate('#internships_paginate', '#internships_content', '{{route('profile.internships.paginate')}}', () => {
-			remover('#internships_content .deleteItem', '#internships_content .crud-item');
-		});
-		paginate('#qualifications_paginate', '#qualifications_content', '{{route('profile.qualifications.paginate')}}', () => {
-			remover('#qualifications_content .deleteItem', '#qualifications_content .crud-item');
-		});
-		paginate('#educations_paginate', '#educations_content', '{{route('profile.educations.paginate')}}', () => {
-			remover('#educations_content .deleteItem', '#educations_content .crud-item');
-		});
-		paginate('#honors_paginate', '#honors_content', '{{route('profile.honors.paginate')}}', () => {
-			remover('#honors_content .deleteItem', '#honors_content .crud-item');
-		});
-		paginate('#rebukes_paginate', '#rebukes_content', '{{route('profile.rebukes.paginate')}}', () => {
-			remover('#rebukes_content .deleteItem', '#rebukes_content .crud-item');
-		});
-    </script>
 @endsection
