@@ -3,20 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlacesRequest;
 use App\Place;
+use App\Repositories\Interfaces\PlaceRepositoryInterface;
 use Illuminate\Http\Request;
 
 class PlacesController extends Controller
 {
+    private $placeRep;
+
+    public function __construct(PlaceRepositoryInterface $placeRep)
+    {
+        $this->placeRep = $placeRep;
+    }
+
     public function paginate(){
-        $places = Place::paginate(env('PAGINATE_SIZE', 10));
+        $places = $this->placeRep->paginate();
 
         return view('admin.places.paginate', compact('places'));
     }
 
     public function index()
     {
-        $places = Place::paginate(env('PAGINATE_SIZE', 10));
+        $places = $this->placeRep->paginate();
 
         return view('admin.places.index', compact('places'));
     }
@@ -31,19 +40,8 @@ class PlacesController extends Controller
         return view('admin.places.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(PlacesRequest $request)
     {
-        $this->validate($request, [
-           'name' => 'required|string',
-           'address' => 'required|string'
-        ]);
-
         //create new place
         $place = new Place();
         $place->fill($request->all());
@@ -53,42 +51,18 @@ class PlacesController extends Controller
         return redirect()->route('places.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Place $place)
     {
         return view('admin.places.edit', compact('place'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Place $place)
+    public function update(PlacesRequest $request, Place $place)
     {
-        $this->validate($request, [
-           'name' => 'required|string',
-           'address' => 'required|string'
-        ]);
-
         //edit place
         $place->fill($request->all());
         $place->save();
@@ -96,12 +70,6 @@ class PlacesController extends Controller
         return redirect()->route('places.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Place $place)
     {
         $place->delete();

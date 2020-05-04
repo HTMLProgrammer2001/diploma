@@ -7,28 +7,45 @@ use App\Http\Requests\InternshipsRequest;
 use App\InternCategory;
 use App\Internship;
 use App\Place;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Interfaces\InternshipRepositoryInterface;
+use App\Repositories\Interfaces\PlaceRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
 
 class InternshipsController extends Controller
 {
+    private $categoryRep, $internshipRep, $userRep, $placeRep;
+
+    public function __construct(CategoryRepositoryInterface $categoryRep,
+                                InternshipRepositoryInterface $internshipRep,
+                                UserRepositoryInterface $userRep,
+                                PlaceRepositoryInterface $placeRep)
+    {
+        $this->categoryRep = $categoryRep;
+        $this->internshipRep = $internshipRep;
+        $this->userRep = $userRep;
+        $this->placeRep = $placeRep;
+    }
+
     public function paginate(){
-        $internships = Internship::paginate(env('PAGINATE_SIZE', 10));
+        $internships = $this->internshipRep->paginate();
 
         return view('admin.internships.paginate', compact('internships'));
     }
 
     public function index()
     {
-        $internships = Internship::paginate(env('PAGINATE_SIZE', 10));
+        $internships = $this->internshipRep->paginate();
 
         return view('admin.internships.index', compact('internships'));
     }
 
     public function create()
     {
-        $users = User::all();
-        $categories = InternCategory::all();
-        $places = Place::all();
+        $users = $this->userRep->getForCombo();
+        $categories = $this->categoryRep->getForCombo();
+        $places = $this->placeRep->getForCombo();
 
         return view('admin.internships.create', compact('users', 'categories', 'places'));
     }
@@ -55,9 +72,9 @@ class InternshipsController extends Controller
 
     public function edit(Internship $internship)
     {
-        $users = User::all();
-        $categories = InternCategory::all();
-        $places = Place::all();
+        $users = $this->userRep->getForCombo();
+        $categories = $this->categoryRep->getForCombo();
+        $places = $this->placeRep->getForCombo();
 
         return view('admin.internships.edit', compact('users', 'categories', 'places', 'internship'));
     }

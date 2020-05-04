@@ -4,21 +4,29 @@ namespace App\Http\Controllers\Admin;
 
 use App\Commission;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommissionsRequest;
+use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class CommissionsController extends Controller
 {
+    private $commissionRep;
+
+    public function __construct(CommissionRepositoryInterface $commissionRep)
+    {
+        $this->commissionRep = $commissionRep;
+    }
+
     public function paginate()
     {
-        $commissions = Commission::paginate(env('PAGINATE_SIZE', 10));
+        $commissions = $this->commissionRep->paginate();
 
         return view('admin.commissions.paginate', compact('commissions'));
     }
 
     public function index()
     {
-        $commissions = Commission::paginate(10);
+        $commissions = $this->commissionRep->paginate();
 
         return \view('admin.commissions.index', [
            'commissions' => $commissions
@@ -30,12 +38,8 @@ class CommissionsController extends Controller
         return view('admin.commissions.create');
     }
 
-    public function store(Request $request)
+    public function store(CommissionsRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
         //create new commission
         $commission = new Commission;
         $commission->fill($request->all());
@@ -55,12 +59,8 @@ class CommissionsController extends Controller
         ]);
     }
 
-    public function update(Request $request, Commission $commission)
+    public function update(CommissionsRequest $request, Commission $commission)
     {
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
         //create new commission
         $commission->name = $request->get('name');
         $commission->save();

@@ -5,12 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RebukesRequest;
 use App\Rebuke;
+use App\Repositories\Interfaces\RebukeRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
 
 class RebukesController extends Controller
 {
+    private $rebukeRep, $userRep;
+
+    public function __construct(RebukeRepositoryInterface $rebukeRep, UserRepositoryInterface $userRep)
+    {
+        $this->userRep = $userRep;
+        $this->rebukeRep = $rebukeRep;
+    }
+
     public function paginate(){
-        $rebukes = Rebuke::paginate(env('PAGINATE_SIZE', 10));
+        $rebukes = $this->rebukeRep->paginate();
         $isProfile = false;
 
         return view('admin.rebukes.paginate', compact('rebukes', 'isProfile'));
@@ -18,14 +28,14 @@ class RebukesController extends Controller
 
     public function index()
     {
-        $rebukes = Rebuke::paginate(env('PAGINATE_SIZE', 10));
+        $rebukes = $this->rebukeRep->paginate();
 
         return view('admin.rebukes.index', compact('rebukes'));
     }
 
     public function create()
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
 
         return view('admin.rebukes.create', compact('users'));
     }
@@ -53,7 +63,7 @@ class RebukesController extends Controller
 
     public function edit(Rebuke $rebuke)
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
         return view('admin.rebukes.edit', compact('users', 'rebuke'));
     }
 

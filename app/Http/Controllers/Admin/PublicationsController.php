@@ -4,28 +4,39 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\PublicationRequest;
 use App\Publication;
+use App\Repositories\Interfaces\PublicationRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PublicationsController extends Controller
 {
+    private $publicationRep, $userRep;
+
+    public function __construct(PublicationRepositoryInterface $publicationRep,
+                                UserRepositoryInterface $userRep)
+    {
+        $this->publicationRep = $publicationRep;
+        $this->userRep = $userRep;
+    }
+
     public function paginate(){
-        $publications = Publication::paginate(env('PAGINATE_SiZE', 10));
+        $publications = $this->publicationRep->paginate();
 
         return view('admin.publications.paginate', compact('publications'));
     }
 
     public function index()
     {
-        $publications = Publication::paginate(env('PAGINATE_SIZE', 10));
+        $publications = $this->publicationRep->paginate();
 
         return view('admin.publications.index', compact('publications'));
     }
 
     public function create()
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
 
         return view('admin.publications.create', compact('users'));
     }
@@ -56,7 +67,7 @@ class PublicationsController extends Controller
 
     public function edit(Publication $publication)
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
 
         return view('admin.publications.edit', compact('publication', 'users'));
     }

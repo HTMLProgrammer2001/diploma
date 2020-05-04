@@ -5,12 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Honor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HonorsRequest;
+use App\Repositories\Interfaces\HonorRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
 
 class HonorsController extends Controller
 {
+    private $honorRep, $userRep;
+
+    public function __construct(HonorRepositoryInterface $honorRep, UserRepositoryInterface $userRep)
+    {
+        $this->honorRep = $honorRep;
+        $this->userRep = $userRep;
+    }
+
     public function paginate(){
-        $honors = Honor::paginate(env('PAGINATE_SIZE', 10));
+        $honors = $this->honorRep->paginate();
         $isProfile = false;
 
         return view('admin.honors.paginate', compact('honors', 'isProfile'));
@@ -18,14 +28,14 @@ class HonorsController extends Controller
 
     public function index()
     {
-        $honors = Honor::paginate(env('PAGINATE_SIZE', 10));
+        $honors = $this->honorRep->paginate();
 
         return view('admin.honors.index', compact('honors'));
     }
 
     public function create()
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
 
         return view('admin.honors.create', compact('users'));
     }
@@ -53,7 +63,7 @@ class HonorsController extends Controller
 
     public function edit(Honor $honor)
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
         return view('admin.honors.edit', compact('users', 'honor'));
     }
 

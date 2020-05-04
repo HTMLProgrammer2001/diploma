@@ -5,26 +5,36 @@ namespace App\Http\Controllers\Admin;
 use App\Education;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EducationsRequest;
+use App\Repositories\Interfaces\EducationRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
 
 class EducationsController extends Controller
 {
+    private $educationRep, $userRep;
+
+    public function __construct(EducationRepositoryInterface $educationRep, UserRepositoryInterface $userRep)
+    {
+        $this->educationRep = $educationRep;
+        $this->userRep = $userRep;
+    }
+
     public function paginate(){
-        $educations = Education::paginate(env('PAGINATE_SIZE', 10));
+        $educations = $this->educationRep->paginate();
 
         return view('admin.educations.paginate', compact('educations'));
     }
 
     public function index()
     {
-        $educations = Education::paginate(env('PAGINATE_SIZE', 10));
+        $educations = $this->educationRep->paginate();
 
         return view('admin.educations.index', compact('educations'));
     }
 
     public function create()
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
 
         return view('admin.educations.create', compact('users'));
     }
@@ -51,7 +61,7 @@ class EducationsController extends Controller
 
     public function edit(Education $education)
     {
-        $users = User::all();
+        $users = $this->userRep->getForCombo();
 
         return view('admin.educations.edit', compact('education', 'users'));
     }

@@ -4,20 +4,29 @@ namespace App\Http\Controllers\Admin;
 
 use App\Department;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DepartmentsRequest;
+use App\Repositories\Interfaces\DepartmentRepositoryInterface;
 use Illuminate\Http\Request;
 
 class DepartmentsController extends Controller
 {
+    private $departmentRep;
+
+    public function __construct(DepartmentRepositoryInterface $departmentRep)
+    {
+        $this->departmentRep = $departmentRep;
+    }
+
     public function paginate()
     {
-        $departments = Department::paginate(env('PAGINATE_SIZE', 10));
+        $departments = $this->departmentRep->paginate();
 
         return view('admin.departments.paginate', compact('departments'));
     }
 
     public function index()
     {
-        $departments = Department::paginate(env('PAGINATE_SIZE', 10));
+        $departments = $this->departmentRep->paginate();
 
         return view('admin.departments.index', [
             'departments' => $departments
@@ -29,12 +38,8 @@ class DepartmentsController extends Controller
         return view('admin.departments.create');
     }
 
-    public function store(Request $request)
+    public function store(DepartmentsRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
         //create new department
         $department = new Department();
         $department->fill($request->all());
@@ -54,12 +59,8 @@ class DepartmentsController extends Controller
         ]);
     }
 
-    public function update(Request $request, Department $department)
+    public function update(DepartmentsRequest $request, Department $department)
     {
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
         //create new commission
         $department->name = $request->get('name');
         $department->save();

@@ -3,20 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RanksRequest;
+use App\Repositories\Interfaces\RankRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Rank;
 
 class RanksController extends Controller
 {
+    private $rankRep;
+
+    public function __construct(RankRepositoryInterface $rankRep)
+    {
+        $this->rankRep = $rankRep;
+    }
+
     public function paginate(){
-        $ranks = Rank::paginate(env('PAGINATE_SIZE', 10));
+        $ranks = $this->rankRep->paginate();
 
         return view('admin.ranks.paginate', compact('ranks'));
     }
 
     public function index()
     {
-        $ranks = Rank::paginate(env('PAGINATE_SIZE', 10));
+        $ranks = $this->rankRep->paginate();
 
         return view('admin.ranks.index', compact('ranks'));
     }
@@ -26,12 +35,8 @@ class RanksController extends Controller
         return view('admin.ranks.create');
     }
 
-    public function store(Request $request)
+    public function store(RanksRequest $request)
     {
-        $this->validate($request, [
-           'name' => 'required|string'
-        ]);
-
         $rank = new Rank();
         $rank->fill($request->all());
         $rank->save();
@@ -49,12 +54,8 @@ class RanksController extends Controller
         return view('admin.ranks.edit', compact('rank'));
     }
 
-    public function update(Request $request, Rank $rank)
+    public function update(RanksRequest $request, Rank $rank)
     {
-        $this->validate($request, [
-           'name' => 'required|string'
-        ]);
-
         $rank->fill($request->all());
         $rank->save();
 

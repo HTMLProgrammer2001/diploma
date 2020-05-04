@@ -3,20 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoriesRequest;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
 use App\InternCategory;
 
 class CategoriesController extends Controller
 {
+    private $categoryRep;
+
+    public function __construct(CategoryRepositoryInterface $categoryRep)
+    {
+        $this->categoryRep = $categoryRep;
+    }
+
     public function paginate(){
-        $categories = InternCategory::paginate(env('PAGINATE_SIZE', 10));
+        $categories = $this->categoryRep->paginate();
 
         return view('admin.categories.paginate', compact('categories'));
     }
 
     public function index()
     {
-        $categories = InternCategory::paginate(env('PAGINATE_SIZE', 10));
+        $categories = $this->categoryRep->paginate();
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -26,12 +35,8 @@ class CategoriesController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store(Request $request)
+    public function store(CategoriesRequest $request)
     {
-        $this->validate($request, [
-           'name' => 'required|string'
-        ]);
-
         $category = new InternCategory();
         $category->fill($request->all());
         $category->save();
@@ -49,12 +54,8 @@ class CategoriesController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function update(Request $request, InternCategory $category)
+    public function update(CategoriesRequest $request, InternCategory $category)
     {
-        $this->validate($request, [
-           'name' => 'required|string'
-        ]);
-
         $category->fill($request->all());
         $category->save();
 

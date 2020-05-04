@@ -6,22 +6,39 @@ use App\Commission;
 use App\Department;
 use App\Http\Requests\UserRequest;
 use App\Rank;
+use App\Repositories\CommissionRepository;
+use App\Repositories\Interfaces\CommissionRepositoryInterface;
+use App\Repositories\Interfaces\DepartmentRepositoryInterface;
+use App\Repositories\Interfaces\RankRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
+    private $commissionRep, $departmentRep, $rankRep, $userRep;
+
+    public function __construct(CommissionRepositoryInterface $commissionRep,
+                                DepartmentRepositoryInterface $departmentRep,
+                                RankRepositoryInterface $rankRep,
+                                UserRepositoryInterface $userRep)
+    {
+        $this->commissionRep = $commissionRep;
+        $this->departmentRep = $departmentRep;
+        $this->rankRep = $rankRep;
+        $this->userRep = $userRep;
+    }
 
     public function paginate(){
-        $users = User::paginate(env('PAGINATE_SIZE', 10));
+        $users = $this->userRep->paginate();
 
         return view('admin.users.paginate', compact('users'));
     }
 
     public function index()
     {
-        $users = User::paginate(env('PAGINATE_SIZE', 10));
+        $users = $this->userRep->paginate();
         return view('admin.users.index', [
             'users' => $users
         ]);
@@ -29,9 +46,9 @@ class UsersController extends Controller
 
     public function create()
     {
-        $departments = Department::all();
-        $commissions = Commission::all();
-        $ranks = Rank::all();
+        $departments = $this->departmentRep->getForCombo();
+        $commissions = $this->commissionRep->getForCombo();
+        $ranks = $this->rankRep->getForCombo();
 
         return view('admin.users.create', compact('departments', 'commissions', 'ranks'));
     }
@@ -77,11 +94,11 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
-        $departments = Department::all();
-        $commissions = Commission::all();
-        $ranks = Rank::all();
-        $roles = User::getRolesArray();
-        $pedagogicals = User::getPedagogicalTitles();
+        $departments = $this->departmentRep->getForCombo();
+        $commissions = $this->commissionRep->getForCombo();
+        $ranks = $this->rankRep->getForCombo();
+        $roles = $this->userRep->getRoles();
+        $pedagogicals = $this->userRep->getPedagogicalTitles();
 
         return view('admin.users.edit', compact('departments', 'commissions', 'user',
             'ranks', 'roles', 'pedagogicals'));
@@ -89,10 +106,6 @@ class UsersController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
-        $this->validate($request, [
-            'email' => Rule::unique('users')->ignore($user->id)
-        ]);
-
         $user->fill($request->all());
 
         //generate secret values
