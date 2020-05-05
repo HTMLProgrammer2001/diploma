@@ -42,14 +42,8 @@ class EducationsController extends Controller
     public function store(EducationsRequest $request)
     {
         //create education
-        $education = new Education();
-
-        //fill values
-        $education->fill($request->all());
-        //set teacher
-        $education->setUser($request->get('user'));
-
-        $education->save();
+        $data = $request->all();
+        $this->educationRep->create($data);
 
         return redirect()->route('educations.index');
     }
@@ -66,19 +60,17 @@ class EducationsController extends Controller
         return view('admin.educations.edit', compact('education', 'users'));
     }
 
-    public function update(EducationsRequest $request, Education $education)
+    public function update(EducationsRequest $request, $education_id)
     {
-        $education->fill($request->all());
-
-        $education->setUser($request->get('user'));
-        $education->save();
+        $data = $request->all();
+        $this->educationRep->update($education_id, $data);
 
         return redirect()->route('educations.index');
     }
 
-    public function destroy(Education $education)
+    public function destroy($education_id)
     {
-        $education->delete();
+        $this->educationRep->destroy($education_id);
 
         return response()->json([
             'status' => 'OK'

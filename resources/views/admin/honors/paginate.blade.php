@@ -29,8 +29,8 @@
 </tr>
 
 <script>
-	paginate('.honors-paginator', '.honors-content', '{{route('honors.paginate')}}', () => {
-		remover('.delete-honor', '.crud-item');
-	});
+	paginate('.honors-paginator', '.honors-content', '{{route('honors.paginate')}}');
+
+	remover('.delete-honor', '.crud-item');
 </script>
 

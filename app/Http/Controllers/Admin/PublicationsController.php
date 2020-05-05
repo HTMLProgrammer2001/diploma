@@ -6,8 +6,6 @@ use App\Http\Requests\PublicationRequest;
 use App\Publication;
 use App\Repositories\Interfaces\PublicationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PublicationsController extends Controller
@@ -43,19 +41,9 @@ class PublicationsController extends Controller
 
     public function store(PublicationRequest $request)
     {
-        $publication = new Publication();
-
-        //fill
-        $publication->fill($request->all());
-
-        //set date
-        $publication->date_of_publication = $request->get('date_of_publication');
-
-        $publication->save();
-
-        //set authors
-        $publication->setAuthors($request->get('authors'));
-        $publication->save();
+        //create publication
+        $data = $request->all();
+        $this->publicationRep->create($data);
 
         return redirect()->route('publications.index');
     }
@@ -72,26 +60,18 @@ class PublicationsController extends Controller
         return view('admin.publications.edit', compact('publication', 'users'));
     }
 
-    public function update(PublicationRequest $request, Publication $publication)
+    public function update(PublicationRequest $request, $publication_id)
     {
-        //fill
-        $publication->fill($request->all());
-
-        //set date
-        $publication->date_of_publication = $request->get('date_of_publication');
-
-        $publication->save();
-
-        //set authors
-        $publication->setAuthors($request->get('authors'));
-        $publication->save();
+        //update
+        $data = $request->all();
+        $this->publicationRep->update($publication_id, $data);
 
         return redirect()->route('publications.index');
     }
 
-    public function destroy(Publication $publication)
+    public function destroy($publication_id)
     {
-        $publication->delete();
+        $this->publicationRep->destroy($publication_id);
 
         return response()->json([
             'status' => 'OK'

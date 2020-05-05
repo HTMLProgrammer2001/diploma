@@ -9,6 +9,29 @@ use App\Repositories\Interfaces\CommissionRepositoryInterface;
 
 class CommissionRepository implements CommissionRepositoryInterface
 {
+    public function create($data)
+    {
+        $commission = new Commission();
+        $commission->fill($data);
+        $commission->save();
+
+        return $commission;
+    }
+
+    public function update($id, $data)
+    {
+        $commission = Commission::findOrFail($id);
+        $commission->fill($data);
+        $commission->save();
+
+        return $commission;
+    }
+
+    public function destroy($id)
+    {
+        Commission::destroy($id);
+    }
+
     public function all(){
         return Commission::all();
     }

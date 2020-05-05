@@ -9,6 +9,8 @@ use App\Rank;
 use App\Repositories\CommissionRepository;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
+use App\Repositories\Interfaces\InternshipRepositoryInterface;
+use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RankRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
@@ -17,17 +19,21 @@ use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
-    private $commissionRep, $departmentRep, $rankRep, $userRep;
+    private $commissionRep, $departmentRep, $rankRep, $userRep, $qualificationRep, $internshipRep;
 
     public function __construct(CommissionRepositoryInterface $commissionRep,
                                 DepartmentRepositoryInterface $departmentRep,
                                 RankRepositoryInterface $rankRep,
-                                UserRepositoryInterface $userRep)
+                                UserRepositoryInterface $userRep,
+                                QualificationRepositoryInterface $qualificationRep,
+                                InternshipRepositoryInterface $internshipRep)
     {
         $this->commissionRep = $commissionRep;
         $this->departmentRep = $departmentRep;
         $this->rankRep = $rankRep;
         $this->userRep = $userRep;
+        $this->qualificationRep = $qualificationRep;
+        $this->internshipRep = $internshipRep;
     }
 
     public function paginate(){
@@ -87,9 +93,13 @@ class UsersController extends Controller
 
         $isProfile = false;
 
+        $userQualification = $this->qualificationRep->getQualificationNameOf($user->id);
+        $internshipHours = $this->internshipRep->getInternshipHoursOf($user->id);
+        $nextQualification = $this->qualificationRep->getNextQualificationDateOf($user->id);
+
         return view('admin.profile.show.index',
             compact('user', 'publications', 'internships', 'qualifications', 'rebukes', 'honors',
-                'educations', 'isProfile'));
+                'educations', 'isProfile', 'userQualification', 'internshipHours', 'nextQualification'));
     }
 
     public function edit(User $user)

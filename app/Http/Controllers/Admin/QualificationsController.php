@@ -43,13 +43,9 @@ class QualificationsController extends Controller
 
     public function store(QualificationRequest $request)
     {
-        $qualification = new Qualification();
-        $qualification->fill($request->all());
-
-        $qualification->date = $request->get('date');
-        $qualification->setUser($request->get('user'));
-
-        $qualification->save();
+        //create qualification
+        $data = $request->all();
+        $this->qualificationRep->create($data);
 
         return redirect()->route('qualifications.index');
     }
@@ -67,21 +63,18 @@ class QualificationsController extends Controller
         return view('admin.qualifications.edit', compact('qualification', 'users', 'qualificationNames'));
     }
 
-    public function update(QualificationRequest $request, Qualification $qualification)
+    public function update(QualificationRequest $request, $qualification_id)
     {
-        $qualification->fill($request->all());
-
-        $qualification->date = $request->get('date');
-        $qualification->setUser($request->get('user'));
-
-        $qualification->save();
+        //edit qualification
+        $data = $request->all();
+        $this->qualificationRep->update($qualification_id, $data);
 
         return redirect()->route('qualifications.index');
     }
 
-    public function destroy(Qualification $qualification)
+    public function destroy($qualification_id)
     {
-        $qualification->delete();
+        $this->qualificationRep->destroy($qualification_id);
 
         return response()->json([
             'status' => 'OK'

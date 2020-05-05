@@ -30,11 +30,6 @@ class PlacesController extends Controller
         return view('admin.places.index', compact('places'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.places.create');
@@ -43,10 +38,8 @@ class PlacesController extends Controller
     public function store(PlacesRequest $request)
     {
         //create new place
-        $place = new Place();
-        $place->fill($request->all());
-
-        $place->save();
+        $data = $request->all();
+        $this->placeRep->create($data);
 
         return redirect()->route('places.index');
     }
@@ -61,18 +54,18 @@ class PlacesController extends Controller
         return view('admin.places.edit', compact('place'));
     }
 
-    public function update(PlacesRequest $request, Place $place)
+    public function update(PlacesRequest $request, $place_id)
     {
         //edit place
-        $place->fill($request->all());
-        $place->save();
+        $data = $request->all();
+        $this->placeRep->update($place_id, $data);
 
         return redirect()->route('places.index');
     }
 
-    public function destroy(Place $place)
+    public function destroy($place_id)
     {
-        $place->delete();
+        $this->placeRep->destroy($place_id);
 
         return response()->json([
             'status' => 'OK'

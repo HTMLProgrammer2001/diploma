@@ -9,6 +9,29 @@ use App\Repositories\Interfaces\RankRepositoryInterface;
 
 class RankRepository implements RankRepositoryInterface
 {
+    public function create($data)
+    {
+        $rank = new Rank();
+        $rank->fill($data);
+        $rank->save();
+
+        return $rank;
+    }
+
+    public function update($id, $data)
+    {
+        $rank = Rank::findOrFail($id);
+        $rank->fill($data);
+        $rank->save();
+
+        return $rank;
+    }
+
+    public function destroy($id)
+    {
+        Rank::destroy($id);
+    }
+
     public function all()
     {
         return Rank::all();

@@ -4,9 +4,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface HonorRepositoryInterface
+interface HonorRepositoryInterface extends BaseRepositoryInterface
 {
     public function all();
-
-    public function paginate(?int $size);
 }

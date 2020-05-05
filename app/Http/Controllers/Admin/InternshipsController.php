@@ -52,15 +52,9 @@ class InternshipsController extends Controller
 
     public function store(InternshipsRequest $request)
     {
-        $internship = new Internship();
-
-        $internship->fill($request->all());
-
-        $internship->setCategory($request->get('category'));
-        $internship->setUser($request->get('user'));
-        $internship->setPlace($request->get('place'));
-
-        $internship->save();
+        //create internship
+        $data = $request->all();
+        $this->internshipRep->create($data);
 
         return redirect()->route('internships.index');
     }
@@ -79,21 +73,18 @@ class InternshipsController extends Controller
         return view('admin.internships.edit', compact('users', 'categories', 'places', 'internship'));
     }
 
-    public function update(InternshipsRequest $request, Internship $internship)
+    public function update(InternshipsRequest $request, $internship_id)
     {
-        $internship->fill($request->all());
-        $internship->setPlace($request->get('place'));
-        $internship->setUser($request->get('user'));
-        $internship->setCategory($request->get('category'));
-
-        $internship->save();
+        //update internship
+        $data = $request->all();
+        $this->internshipRep->update($internship_id, $data);
 
         return redirect()->route('internships.index');
     }
 
-    public function destroy(Internship $internship)
+    public function destroy($internship_id)
     {
-        $internship->delete();
+        $this->internshipRep->destroy($internship_id);
 
         return response()->json([
             'status' => 'OK'

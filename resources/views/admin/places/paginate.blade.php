@@ -25,7 +25,7 @@
 </tr>
 
 <script>
-	paginate('.places-paginator', '.places-content', '{{route('places.paginate')}}', () => {
-		remover('.delete-place', '.crud-item');
-	});
+	paginate('.places-paginator', '.places-content', '{{route('places.paginate')}}');
+
+	remover('.delete-place', '.crud-item');
 </script>

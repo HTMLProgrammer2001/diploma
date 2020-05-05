@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RanksRequest;
 use App\Repositories\Interfaces\RankRepositoryInterface;
-use Illuminate\Http\Request;
 use App\Rank;
 
 class RanksController extends Controller
@@ -37,16 +36,16 @@ class RanksController extends Controller
 
     public function store(RanksRequest $request)
     {
-        $rank = new Rank();
-        $rank->fill($request->all());
-        $rank->save();
+        //create rank
+        $data = $request->all();
+        $this->rankRep->create($data);
 
         return redirect()->route('ranks.index');
     }
 
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     public function edit(Rank $rank)
@@ -54,17 +53,17 @@ class RanksController extends Controller
         return view('admin.ranks.edit', compact('rank'));
     }
 
-    public function update(RanksRequest $request, Rank $rank)
+    public function update(RanksRequest $request, $rank_id)
     {
-        $rank->fill($request->all());
-        $rank->save();
+        $data = $request->all();
+        $this->rankRep->update($rank_id, $data);
 
         return redirect()->route('ranks.index');
     }
 
-    public function destroy(Rank $rank)
+    public function destroy($rank_id)
     {
-        $rank->delete();
+        $this->rankRep->destroy($rank_id);
 
         return response()->json([
             'status' => 'OK'

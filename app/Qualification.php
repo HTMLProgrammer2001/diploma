@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Qualification extends Model
 {
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'date'];
 
     //relations
     public function user(){

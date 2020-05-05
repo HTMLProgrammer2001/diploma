@@ -9,6 +9,29 @@ use App\Repositories\Interfaces\PlaceRepositoryInterface;
 
 class PlaceRepository implements PlaceRepositoryInterface
 {
+    public function create($data)
+    {
+        $place = new Place();
+        $place->fill($data);
+        $place->save();
+
+        return $place;
+    }
+
+    public function update($id, $data)
+    {
+        $place = Place::findOrFail($id);
+        $place->fill($data);
+        $place->save();
+
+        return $place;
+    }
+
+    public function destroy($id)
+    {
+        Place::destroy($id);
+    }
+
     public function all()
     {
         return Place::all();

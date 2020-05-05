@@ -188,30 +188,6 @@ class User extends Authenticatable
         return $this->surname . ' ' . substr($this->name, 0, 1);
     }
 
-    public function getQualificationDate(){
-        $qualification = $this->qualifications()->orderBy('date', 'desc')->first();
-
-        return $qualification ? $qualification->attributes['date'] : '1970-01-01';
-    }
-
-    public function getNextQualificationDate(){
-        $lastDate = $this->getQualificationDate();
-
-        return Carbon::createFromFormat('Y-m-d', $lastDate)->addYears(5)->format('m/d/Y');
-    }
-
-    public function getQualificationName(){
-        $qualification = $this->qualifications()->orderBy('date', 'desc')->first();
-
-        return $qualification ? $qualification->name : 'Не встановлено';
-    }
-
-    public function getInternshipHours(){
-        return $this->internships()
-            ->whereDate('from', '>', $this->getQualificationDate())
-            ->sum('hours');
-    }
-
     public  function uploadAvatar($image){
         if(!$image)
             return;

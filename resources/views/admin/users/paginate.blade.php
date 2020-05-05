@@ -26,7 +26,7 @@
 </tr>
 
 <script>
-	paginate('.user-paginator', '.user-content', '{{route('users.paginate')}}', () => {
-		remover('.user-delete', '.crud-item');
-	});
+	paginate('.user-paginator', '.user-content', '{{route('users.paginate')}}');
+
+	remover('.user-delete', '.crud-item');
 </script>

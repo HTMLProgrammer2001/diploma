@@ -7,7 +7,7 @@
             @can('moderate')
                 <a href="{{route('departments.edit', $department->id)}}" class="fa fa-pencil"></a>
 
-                <a class="fa fa-remove deleteItem" data-url="{{route('departments.destroy',
+                <a class="fa fa-remove delete-department" data-url="{{route('departments.destroy',
                     $department->id)}}"></a>
             @endcan
 
@@ -24,7 +24,7 @@
 </tr>
 
 <script>
-	paginate('.departments-paginator', '.departments-content', '{{route('departments.paginate')}}', () => {
-		remover('.delete-department', '.crud-item');
-	});
+	paginate('.departments-paginator', '.departments-content', '{{route('departments.paginate')}}');
+
+	remover('.delete-department', '.crud-item');
 </script>

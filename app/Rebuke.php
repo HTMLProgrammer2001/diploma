@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rebuke extends Model
 {
-    public $fillable = ['order', 'title'];
+    public $fillable = ['order', 'title', 'date_presentation'];
 
     //relations
     public function user(){

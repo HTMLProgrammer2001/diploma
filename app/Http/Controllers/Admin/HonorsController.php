@@ -42,16 +42,9 @@ class HonorsController extends Controller
 
     public function store(HonorsRequest $request)
     {
-        $honor = new Honor();
-
-        //fill values
-        $honor->fill($request->all());
-        $honor->date_presentation = $request->get('date_presentation');
-        $honor->changeActive(true);
-
-        //set owner of honor
-        $honor->setUser($request->get('user'));
-        $honor->save();
+        //create new honor
+        $data = $request->all();
+        $this->honorRep->create($data);
 
         return redirect()->route('honors.index');
     }
@@ -67,23 +60,18 @@ class HonorsController extends Controller
         return view('admin.honors.edit', compact('users', 'honor'));
     }
 
-    public function update(HonorsRequest $request, Honor $honor)
+    public function update(HonorsRequest $request, $honor_id)
     {
-        //fill values
-        $honor->fill($request->all());
-        $honor->date_presentation = $request->get('date_presentation');
-        $honor->changeActive($request->get('active') ?? false);
-
-        //set owner of honor
-        $honor->setUser($request->get('user'));
-        $honor->save();
+        //edit honor
+        $data = $request->all();
+        $this->honorRep->update($honor_id, $data);
 
         return redirect()->route('honors.index');
     }
 
-    public function destroy(Honor $honor)
+    public function destroy($honor_id)
     {
-        $honor->delete();
+        $this->honorRep->destroy($honor_id);
 
         return response()->json([
             'status' => 'OK'

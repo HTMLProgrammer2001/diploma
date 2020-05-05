@@ -31,7 +31,7 @@
 </tr>
 
 <script>
-	paginate('.publications-paginator', '.publications-content', '{{route('publications.paginate')}}', () => {
-		remover('.delete-publication', '.crud-item');
-	});
+	paginate('.publications-paginator', '.publications-content', '{{route('publications.paginate')}}');
+
+	remover('.delete-publication', '.crud-item');
 </script>

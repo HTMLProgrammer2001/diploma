@@ -4,11 +4,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface CommissionRepositoryInterface
+interface CommissionRepositoryInterface extends BaseRepositoryInterface
 {
-    public function all();
-
-    public function paginate(?int $size);
-
     public function getForCombo();
 }

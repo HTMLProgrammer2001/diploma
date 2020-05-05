@@ -29,7 +29,7 @@
 </tr>
 
 <script>
-	paginate('.rebukes_paginator', '.rebuke-content', '{{route('rebukes.paginate')}}', () => {
-		remover('.delete-rebuke', '.crud-item');
-	});
+	paginate('.rebukes_paginator', '.rebuke-content', '{{route('rebukes.paginate')}}');
+
+	remover('.delete-rebuke', '.crud-item');
 </script>

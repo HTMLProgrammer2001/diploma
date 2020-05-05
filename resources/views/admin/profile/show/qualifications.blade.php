@@ -16,7 +16,7 @@
         </tbody>
     </table>
 
-    <b>Термін наступного підтвердження: {{$user->getNextQualificationDate()}}</b>
+    <b>Термін наступного підтвердження: {{$nextQualification}}</b>
 
     <div style="margin-top: 20px">
         <a href="{{route('profile.qualifications.create')}}" class="btn-block pull-left">

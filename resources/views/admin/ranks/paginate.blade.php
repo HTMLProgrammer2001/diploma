@@ -22,7 +22,7 @@
 </tr>
 
 <script>
-	paginate('.ranks_paginator', '.ranks-content', '{{route('ranks.paginate')}}', () => {
-		remover('.delete-rank', '.crud-item');
-	});
+	paginate('.ranks_paginator', '.ranks-content', '{{route('ranks.paginate')}}');
+
+	remover('.delete-rank', '.crud-item');
 </script>

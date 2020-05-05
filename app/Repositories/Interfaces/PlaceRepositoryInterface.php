@@ -4,11 +4,9 @@
 namespace App\Repositories\Interfaces;
 
 
-interface PlaceRepositoryInterface
+interface PlaceRepositoryInterface extends BaseRepositoryInterface
 {
     public function all();
-
-    public function paginate(?int $size);
 
     public function getForCombo();
 }

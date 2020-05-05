@@ -22,7 +22,7 @@
 </tr>
 
 <script>
-	paginate('.categories-paginator', '.categories-content', '{{route('categories.paginate')}}', () => {
-		remover('.delete-category', '.crud-item');
-	});
+	paginate('.categories-paginator', '.categories-content', '{{route('categories.paginate')}}');
+
+	remover('.delete-category', '.crud-item');
 </script>

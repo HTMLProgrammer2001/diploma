@@ -4,9 +4,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface RebukeRepositoryInterface
+interface RebukeRepositoryInterface extends BaseRepositoryInterface
 {
     public function all();
-
-    public function paginate(?int $size);
 }

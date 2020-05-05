@@ -29,7 +29,7 @@
 </tr>
 
 <script>
-	paginate('.qualifications-paginator', '.qualifications-content', '{{route('qualifications.paginate')}}', () => {
-		remover('.delete-qualification', '.crud-item');
-	});
+	paginate('.qualifications-paginator', '.qualifications-content', '{{route('qualifications.paginate')}}');
+
+	remover('.delete-qualification', '.crud-item');
 </script>

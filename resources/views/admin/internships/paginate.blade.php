@@ -31,7 +31,6 @@
 </tr>
 
 <script>
-	paginate('.internships-paginator', '.internships-content', '{{route('internships.paginate')}}', () => {
-		remover('.delete-internship', '.crud-item');
-	});
+	paginate('.internships-paginator', '.internships-content', '{{route('internships.paginate')}}', () => {});
+	remover('.delete-internship', '.crud-item');
 </script>

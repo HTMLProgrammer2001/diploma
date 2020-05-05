@@ -27,7 +27,7 @@
 
                             <div class="col-sm-7 col-sm-offset-1">
                                 <div>Ім'я: {{$user->getFullName()}}</div>
-                                <div>Дата народження: {{$user->getBirthdayString()}}</div>
+                                <div>Дата народження: {{$user->birthday}}</div>
                                 <div>Email: {{$user->email}}</div>
 
                                 @if($user->address)
@@ -41,7 +41,7 @@
                                 <div>Роль: {{$user->getRoleString()}}</div>
                                 <div>Відділ: {{$user->getDepartmentName()}}</div>
                                 <div>Циклова комісія: {{$user->getCommissionName()}}</div>
-                                <div>Кваліфікація: {{$user->getQualificationName()}}</div>
+                                <div>Кваліфікація: {{$userQualification}}</div>
                                 <div>Розряд: {{$user->getRankName()}}</div>
 
                                 @if($user->hiring_year)

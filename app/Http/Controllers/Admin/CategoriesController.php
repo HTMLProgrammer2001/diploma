@@ -37,16 +37,16 @@ class CategoriesController extends Controller
 
     public function store(CategoriesRequest $request)
     {
-        $category = new InternCategory();
-        $category->fill($request->all());
-        $category->save();
+        //create new commission
+        $data = $request->all();
+        $this->categoryRep->create($data);
 
         return redirect()->route('categories.index');
     }
 
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     public function edit(InternCategory $category)
@@ -54,17 +54,17 @@ class CategoriesController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function update(CategoriesRequest $request, InternCategory $category)
+    public function update(CategoriesRequest $request, $category_id)
     {
-        $category->fill($request->all());
-        $category->save();
+        $data = $request->all();
+        $this->categoryRep->update($category_id, $data);
 
         return redirect()->route('categories.index');
     }
 
-    public function destroy(InternCategory $category)
+    public function destroy($category_id)
     {
-        $category->delete();
+        $this->categoryRep->destroy($category_id);
 
         return response()->json([
             'status' => 'OK'

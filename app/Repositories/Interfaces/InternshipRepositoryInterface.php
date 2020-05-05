@@ -4,9 +4,9 @@
 namespace App\Repositories\Interfaces;
 
 
-interface InternshipRepositoryInterface
+interface InternshipRepositoryInterface extends BaseRepositoryInterface
 {
     public function all();
 
-    public function paginate(?int $size);
+    public function getInternshipHoursOf(int $user_id): int;
 }

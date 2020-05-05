@@ -42,16 +42,8 @@ class RebukesController extends Controller
 
     public function store(RebukesRequest $request)
     {
-        $rebuke = new Rebuke();
-
-        //fill values
-        $rebuke->fill($request->all());
-        $rebuke->date_presentation = $request->get('date_presentation');
-        $rebuke->changeActive(true);
-
-        //set owner of honor
-        $rebuke->setUser($request->get('user'));
-        $rebuke->save();
+        $data = $request->all();
+        $this->rebukeRep->create($data);
 
         return redirect()->route('rebukes.index');
     }
@@ -67,23 +59,17 @@ class RebukesController extends Controller
         return view('admin.rebukes.edit', compact('users', 'rebuke'));
     }
 
-    public function update(RebukesRequest $request, Rebuke $rebuke)
+    public function update(RebukesRequest $request, $rebuke_id)
     {
-        //fill values
-        $rebuke->fill($request->all());
-        $rebuke->date_presentation = $request->get('date_presentation');
-        $rebuke->changeActive($request->get('active'));
-
-        //set owner of honor
-        $rebuke->setUser($request->get('user'));
-        $rebuke->save();
+        $data = $request->all();
+        $this->rebukeRep->update($rebuke_id, $data);
 
         return redirect()->route('rebukes.index');
     }
 
-    public function destroy(Rebuke $rebuke)
+    public function destroy($rebuke_id)
     {
-        $rebuke->delete();
+        $this->rebukeRep->destroy($rebuke_id);
 
         return response()->json([
             'status' => 'OK'

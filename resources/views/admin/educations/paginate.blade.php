@@ -33,7 +33,7 @@
 </tr>
 
 <script>
-	paginate('.educations-paginator', '.educations-content', '{{route('educations.paginate')}}', () => {
-		remover('.delete-education', '.crud-item');
-	});
+	paginate('.educations-paginator', '.educations-content', '{{route('educations.paginate')}}');
+
+	remover('.delete-education', '.crud-item');
 </script>

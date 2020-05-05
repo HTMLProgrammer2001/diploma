@@ -9,9 +9,27 @@ use App\Repositories\Interfaces\CategoryRepositoryInterface;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
-    public function all()
+    public function create($data)
     {
-        return InternCategory::all();
+        $category = new InternCategory();
+        $category->fill($data);
+        $category->save();
+
+        return $category;
+    }
+
+    public function update($id, $data)
+    {
+        $category = InternCategory::findOrFail($id);
+        $category->fill($data);
+        $category->save();
+
+        return $category;
+    }
+
+    public function destroy($id)
+    {
+        InternCategory::destroy($id);
     }
 
     public function paginate(?int $size = null)

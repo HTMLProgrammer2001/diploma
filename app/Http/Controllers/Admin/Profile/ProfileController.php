@@ -6,12 +6,32 @@ use App\Commission;
 use App\Department;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Rank;
+use App\Repositories\Interfaces\CommissionRepositoryInterface;
+use App\Repositories\Interfaces\DepartmentRepositoryInterface;
+use App\Repositories\Interfaces\InternshipRepositoryInterface;
+use App\Repositories\Interfaces\QualificationRepositoryInterface;
+use App\Repositories\Interfaces\RankRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
+    private $departmentRep, $commissionRep, $rankRep, $qualificationRep, $internshipRep;
+
+    public function __construct(DepartmentRepositoryInterface $departmentRep,
+                                CommissionRepositoryInterface $commissionRep,
+                                RankRepositoryInterface $rankRep,
+                                QualificationRepositoryInterface $qualificationRep,
+                                InternshipRepositoryInterface $internshipRep)
+    {
+        $this->departmentRep = $departmentRep;
+        $this->commissionRep = $commissionRep;
+        $this->rankRep = $rankRep;
+        $this->qualificationRep = $qualificationRep;
+        $this->internshipRep = $internshipRep;
+    }
+
     public function index(Request $request){
         $user = $request->user();
         $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
@@ -23,26 +43,27 @@ class ProfileController extends Controller
 
         $isProfile = true;
 
+        $userQualification = $this->qualificationRep->getQualificationNameOf($user->id);
+        $internshipHours = $this->internshipRep->getInternshipHoursOf($user->id);
+        $nextQualification = $this->qualificationRep->getNextQualificationDateOf($user->id);
+
         return view('admin.profile.show.index',
             compact('user', 'publications', 'qualifications', 'internships', 'educations', 'honors',
-                'rebukes', 'isProfile'));
+                'rebukes', 'isProfile', 'userQualification', 'internshipHours', 'nextQualification'));
     }
 
     public function edit(Request $request){
         $user = $request->user();
-        $departments = Department::all();
-        $commissions = Commission::all();
-        $ranks = Rank::all();
+        $departments = $this->departmentRep->getForCombo();
+        $commissions = $this->commissionRep->getForCombo();
+        $ranks = $this->rankRep->getForCombo();
 
-        return view('admin.profile.update', compact('user', 'departments', 'commissions', 'ranks'));
+        return view('admin.profile.update', compact('user', 'departments', 'commissions',
+            'ranks'));
     }
 
     public function update(ProfileUpdateRequest $request){
         $user = $request->user();
-
-        $this->validate($request, [
-            'email' => Rule::unique('users')->ignore($user->id)
-        ]);
 
         $user->fill($request->all());
 

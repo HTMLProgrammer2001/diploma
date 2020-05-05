@@ -41,9 +41,8 @@ class DepartmentsController extends Controller
     public function store(DepartmentsRequest $request)
     {
         //create new department
-        $department = new Department();
-        $department->fill($request->all());
-        $department->save();
+        $data = $request->all();
+        $this->departmentRep->create($data);
 
         return redirect()->route('departments.index');
     }
@@ -59,18 +58,18 @@ class DepartmentsController extends Controller
         ]);
     }
 
-    public function update(DepartmentsRequest $request, Department $department)
+    public function update(DepartmentsRequest $request, $department_id)
     {
-        //create new commission
-        $department->name = $request->get('name');
-        $department->save();
+        //update department
+        $data = $request->all();
+        $this->departmentRep->update($department_id, $data);
 
         return redirect()->route('departments.index');
     }
 
-    public function destroy(Department $department)
+    public function destroy($department_id)
     {
-        $department->delete();
+        $this->departmentRep->destroy($department_id);
 
         return response()->json([
             'status' => 'OK'

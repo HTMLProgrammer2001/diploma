@@ -18,7 +18,7 @@
         </tbody>
     </table>
 
-    <b>Годин з останнього підвищення кваліфікації: {{$user->getInternshipHours()}}</b>
+    <b>Годин з останнього підвищення кваліфікації: {{$internshipHours}}</b>
 
     <div style="margin-top: 20px">
         <a href="{{route('profile.internships.create')}}" class="btn-block pull-left">

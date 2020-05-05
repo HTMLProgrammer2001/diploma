@@ -4,9 +4,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface PublicationRepositoryInterface
+interface PublicationRepositoryInterface extends BaseRepositoryInterface
 {
     public function all();
-
-    public function paginate(?int $size);
 }

@@ -14,7 +14,7 @@ class UserRepository implements UserRepositoryInterface
         return User::all();
     }
 
-    public function paginate(?int $size)
+    public function paginate(?int $size = null)
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 

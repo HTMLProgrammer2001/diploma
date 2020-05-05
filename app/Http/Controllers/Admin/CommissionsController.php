@@ -41,9 +41,7 @@ class CommissionsController extends Controller
     public function store(CommissionsRequest $request)
     {
         //create new commission
-        $commission = new Commission;
-        $commission->fill($request->all());
-        $commission->save();
+        $this->commissionRep->create($request);
 
         return redirect()->route('commissions.index');
     }
@@ -59,18 +57,17 @@ class CommissionsController extends Controller
         ]);
     }
 
-    public function update(CommissionsRequest $request, Commission $commission)
+    public function update(CommissionsRequest $request, $commission_id)
     {
-        //create new commission
-        $commission->name = $request->get('name');
-        $commission->save();
+        //update commission
+        $this->commissionRep->update($commission_id, $request);
 
         return redirect()->route('commissions.index');
     }
 
-    public function destroy(Commission $commission)
+    public function destroy($commission_id)
     {
-        $commission->delete();
+        $this->commissionRep->destroy($commission_id);
 
         return response()->json([
             'status' => 'OK'

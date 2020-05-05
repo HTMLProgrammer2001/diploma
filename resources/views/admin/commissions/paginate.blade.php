@@ -24,7 +24,6 @@
 </tr>
 
 <script>
-	paginate('.commissions-paginator', '.commissions-content', '{{route('commissions.paginate')}}', () => {
-		remover('.delete-commission', '.crud-item');
-	});
+	paginate('.commissions-paginator', '.commissions-content', '{{route('commissions.paginate')}}');
+	remover('.delete-commission', '.crud-item');
 </script>
