@@ -188,39 +188,11 @@ class User extends Authenticatable
         return $this->surname . ' ' . substr($this->name, 0, 1);
     }
 
-    public  function uploadAvatar($image){
-        if(!$image)
-            return;
-
-        $this->deleteAvatar();
-
-        //generate new name
-        $newFileName = Str::random(10) . '.' . $image->extension();
-
-        $image->storeAs('public', $newFileName);
-        $this->avatar = $newFileName;
-        $this->save();
-    }
-
-    public function deleteAvatar(){
-        if($this->avatar)
-            \Storage::delete('public/' . $this->avatar);
-
-        $this->avatar = null;
-        $this->save();
-    }
-
     public function getAvatar(){
         if($this->avatar)
-            return '/storage/' . $this->avatar;
+            return '/storage/avatars/' . $this->avatar;
         else
-            return '/img/default-50x50.gif';
-    }
-
-    public function remove(){
-        $this->deleteAvatar();
-
-        $this->delete();
+            return '/storage/avatars/default.gif';
     }
 
     //generate secret values

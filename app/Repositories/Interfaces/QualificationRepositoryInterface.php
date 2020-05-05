@@ -10,9 +10,9 @@ interface QualificationRepositoryInterface extends BaseRepositoryInterface
 
     public function getQualificationNames(): array;
 
-    public function getLastQualificationDateOf(int $user_id): string;
+    public function getLastQualificationDateOf(int $user_id);
 
-    public function getNextQualificationDateOf(int $user_id): string;
+    public function getNextQualificationDateOf(int $user_id);
 
-    public function getQualificationNameOf(int $user_id): string;
+    public function getQualificationNameOf(int $user_id);
 }

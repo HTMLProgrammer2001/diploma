@@ -5,10 +5,67 @@ namespace App\Repositories;
 
 
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Services\Interfaces\AvatarServiceInterface;
 use App\User;
 
 class UserRepository implements UserRepositoryInterface
 {
+    private $avatarService;
+
+    public function __construct(AvatarServiceInterface $avatarService)
+    {
+        $this->avatarService = $avatarService;
+    }
+
+    public function create($data)
+    {
+        $user = new User();
+        $user->fill($data);
+
+        //generate secret values
+        $user->generatePassword($data['password']);
+
+        //relationships
+        $user->setDepartment($data['department']);
+        $user->setCommission($data['commission']);
+
+        $user->avatar = $this->avatarService->uploadAvatar($data['avatar'] ?? false);
+        $user->save();
+    }
+
+    public function update($id, $data)
+    {
+        $user = User::findOrFail($id);
+        $user->fill($data);
+
+        //generate secret values
+        $user->generatePassword($data['password']);
+        $user->cryptPassport($data['passport']);
+        $user->cryptCode($data['code']);
+
+        //relationships
+        $user->setDepartment($data['department']);
+        $user->setCommission($data['commission']);
+        $user->setRank($data['rank']);
+
+        //set new avatar
+        $this->avatarService->deleteAvatar($user->avatar ?? false);
+        $user->avatar = $this->avatarService->uploadAvatar($data['avatar'] ?? false);
+
+        if($data['role'])
+            $user->role = $data['role'];
+
+        $user->save();
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $this->avatarService->deleteAvatar($user->avatar);
+
+        User::destroy($id);
+    }
+
     public function all()
     {
         return User::all();

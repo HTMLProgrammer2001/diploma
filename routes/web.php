@@ -154,6 +154,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
         Route::resource('educations', 'EducationsController', [
             'as' => 'profile'
-        ])->only('create', 'store', 'edit', 'update');
+        ]);
     });
 });

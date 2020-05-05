@@ -4,11 +4,9 @@
 namespace App\Repositories\Interfaces;
 
 
-interface UserRepositoryInterface
+interface UserRepositoryInterface extends BaseRepositoryInterface
 {
     public function all();
-
-    public function paginate(?int $size);
 
     public function getForCombo();
 

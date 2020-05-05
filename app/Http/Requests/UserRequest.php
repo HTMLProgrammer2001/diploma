@@ -41,7 +41,7 @@ class UserRequest extends FormRequest
         // edit
         if($this->getMethod() == 'PUT'){
             //get user that edit
-            $user = Request::route()->parameter('user');
+            $user = User::findOrFail(Request::route()->parameter('user'));
 
             $rules = array_merge($rules, [
                 'hiring_year' => 'nullable|integer',

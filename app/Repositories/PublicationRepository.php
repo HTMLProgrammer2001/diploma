@@ -13,6 +13,8 @@ class PublicationRepository implements PublicationRepositoryInterface
     {
         $publication = new Publication();
         $publication->fill($data);
+        $publication->save();
+
         $publication->setAuthors($data['authors']);
         $publication->save();
 
@@ -23,6 +25,8 @@ class PublicationRepository implements PublicationRepositoryInterface
     {
         $publication = Publication::findOrFail($id);
         $publication->fill($data);
+        $publication->save();
+
         $publication->setAuthors($data['authors']);
         $publication->save();
 

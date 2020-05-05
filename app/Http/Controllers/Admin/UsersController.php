@@ -2,31 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Commission;
-use App\Department;
 use App\Http\Requests\UserRequest;
-use App\Rank;
-use App\Repositories\CommissionRepository;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
 use App\Repositories\Interfaces\InternshipRepositoryInterface;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RankRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Services\Interfaces\AvatarServiceInterface;
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
-    private $commissionRep, $departmentRep, $rankRep, $userRep, $qualificationRep, $internshipRep;
+    private $commissionRep, $departmentRep, $rankRep, $userRep, $qualificationRep, $internshipRep,
+            $avatarService;
 
     public function __construct(CommissionRepositoryInterface $commissionRep,
                                 DepartmentRepositoryInterface $departmentRep,
                                 RankRepositoryInterface $rankRep,
                                 UserRepositoryInterface $userRep,
                                 QualificationRepositoryInterface $qualificationRep,
-                                InternshipRepositoryInterface $internshipRep)
+                                InternshipRepositoryInterface $internshipRep,
+                                AvatarServiceInterface $avatarService)
     {
         $this->commissionRep = $commissionRep;
         $this->departmentRep = $departmentRep;
@@ -34,6 +32,7 @@ class UsersController extends Controller
         $this->userRep = $userRep;
         $this->qualificationRep = $qualificationRep;
         $this->internshipRep = $internshipRep;
+        $this->avatarService = $avatarService;
     }
 
     public function paginate(){
@@ -62,22 +61,9 @@ class UsersController extends Controller
     public function store(UserRequest $request)
     {
         //create user
-
-        $user = new User();
-        $user->fill($request->all());
-
-        //generate secret values
-        $user->generatePassword($request->get('password'));
-        $user->cryptPassport($request->get('passport'));
-        $user->cryptCode($request->get('code'));
-
-        //relationships
-        $user->setDepartment($request->get('department'));
-        $user->setCommission($request->get('commission'));
-        $user->setRank($request->get('rank'));
-
-        $user->uploadAvatar($request->file('avatar'));
-        $user->save();
+        $data = $request->all();
+        $data['avatar'] = $request->file('avatar');
+        $this->userRep->create($data);
 
         return redirect()->route('users.index');
     }
@@ -114,32 +100,18 @@ class UsersController extends Controller
             'ranks', 'roles', 'pedagogicals'));
     }
 
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request, $user_id)
     {
-        $user->fill($request->all());
-
-        //generate secret values
-        $user->generatePassword($request->get('password'));
-        $user->cryptPassport($request->get('passport'));
-        $user->cryptCode($request->get('code'));
-
-        //relationships
-        $user->setDepartment($request->get('department'));
-        $user->setCommission($request->get('commission'));
-        $user->setRank($request->get('rank'));
-
-        //avatar
-        $user->uploadAvatar($request->file('avatar'));
-
-        $user->role = $request->get('role');
-        $user->save();
+        $data = $request->all();
+        $data['avatar'] = $request->file('avatar');
+        $this->userRep->update($user_id, $data);
 
         return redirect()->route('users.index');
     }
 
-    public function destroy(User $user)
+    public function destroy($user_id)
     {
-        $user->remove();
+        $this->userRep->destroy($user_id);
 
         return response()->json([
             'status' => 'OK'

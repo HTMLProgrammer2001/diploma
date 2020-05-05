@@ -7,14 +7,28 @@ use App\Http\Requests\InternshipsRequest;
 use App\InternCategory;
 use App\Internship;
 use App\Place;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Interfaces\InternshipRepositoryInterface;
+use App\Repositories\Interfaces\PlaceRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class InternshipsController extends Controller
 {
-    public function __construct()
+    private $placeRep, $userRep, $categoryRep, $intershipRep;
+
+    public function __construct(PlaceRepositoryInterface $placeRep,
+                                UserRepositoryInterface $userRep,
+                                CategoryRepositoryInterface $categoryRep,
+                                InternshipRepositoryInterface $internshipRep)
     {
         $this->authorizeResource(Internship::class, 'internship');
+
+        $this->userRep = $userRep;
+        $this->placeRep = $placeRep;
+        $this->categoryRep = $categoryRep;
+        $this->intershipRep = $internshipRep;
     }
 
     public function paginate(){
@@ -36,9 +50,9 @@ class InternshipsController extends Controller
     {
         $curUser = Auth::user();
 
-        $users = User::all();
-        $places = Place::all();
-        $categories = InternCategory::all();
+        $users = $this->userRep->getForCombo();
+        $places = $this->placeRep->getForCombo();
+        $categories = $this->categoryRep->getForCombo();
 
         return view('admin.profile.internships.create',
             compact('curUser', 'users', 'places', 'categories'));
@@ -46,17 +60,9 @@ class InternshipsController extends Controller
 
     public function store(InternshipsRequest $request)
     {
-        $internship = new Internship();
-        $internship->fill($request->all());
-
-        $internship->from = $request->get('from');
-        $internship->to = $request->get('to');
-
-        $internship->setUser(Auth::user()->id);
-        $internship->setCategory($request->get('category'));
-        $internship->setPlace($request->get('place'));
-
-        $internship->save();
+        $data = $request->all();
+        $data['user'] = Auth::user()->id;
+        $this->intershipRep->create($data);
 
         return redirect()->route('profile.show');
     }
@@ -68,33 +74,26 @@ class InternshipsController extends Controller
 
     public function edit(Internship $internship)
     {
-        $places = Place::all();
-        $categories = InternCategory::all();
-        $users = User::all();
+        $places = $this->placeRep->getForCombo();
+        $categories = $this->categoryRep->getForCombo();
+        $users = $this->userRep->getForCombo();
 
         return view('admin.profile.internships.edit',
             compact('internship', 'places', 'users', 'categories'));
     }
 
-    public function update(InternshipsRequest $request, Internship $internship)
+    public function update(InternshipsRequest $request, $internship_id)
     {
-        $internship->fill($request->all());
-
-        $internship->from = $request->get('from');
-        $internship->to = $request->get('to');
-        $internship->save();
-
-        $internship->setCategory($request->get('category'));
-        $internship->setPlace($request->get('place'));
-
-        $internship->save();
+        $data = $request->all();
+        $data['user'] = Auth::user()->id;
+        $this->intershipRep->update($internship_id, $data);
 
         return redirect()->route('profile.show');
     }
 
-    public function destroy(Internship $internship)
+    public function destroy($internship_id)
     {
-        $internship->delete();
+        $this->intershipRep->destroy($internship_id);
 
         return response()->json([
             'status' => 'OK'

@@ -37,16 +37,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
-    }
-
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
         //register my repositories
         $this->app->singleton(CommissionRepositoryInterface::class, CommissionRepository::class);
         $this->app->singleton(DepartmentRepositoryInterface::class, DepartmentRepository::class);
@@ -61,5 +51,15 @@ class RepositoryServiceProvider extends ServiceProvider
             QualificationRepository::class);
         $this->app->singleton(PublicationRepositoryInterface::class, PublicationRepository::class);
         $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+
     }
 }

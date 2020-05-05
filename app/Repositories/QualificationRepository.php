@@ -42,7 +42,7 @@ class QualificationRepository implements QualificationRepositoryInterface
         return Qualification::all();
     }
 
-    public function paginate(?int $size)
+    public function paginate(?int $size = null)
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
@@ -54,7 +54,7 @@ class QualificationRepository implements QualificationRepositoryInterface
         return Qualification::getQualificationNames();
     }
 
-    public function getLastQualificationDateOf(int $user_id): string
+    public function getLastQualificationDateOf(int $user_id)
     {
         $date = Qualification::query()->where('user_id', $user_id)
             ->orderBy('date', 'desc')->pluck('date')->first();
@@ -62,7 +62,7 @@ class QualificationRepository implements QualificationRepositoryInterface
         return $date ?? null;
     }
 
-    public function getNextQualificationDateOf(int $user_id): string
+    public function getNextQualificationDateOf(int $user_id)
     {
         $lastDate = $this->getLastQualificationDateOf($user_id);
 
@@ -73,7 +73,7 @@ class QualificationRepository implements QualificationRepositoryInterface
                 ->addYears(5)->format('Y-m-d');
     }
 
-    public function getQualificationNameOf(int $user_id): string
+    public function getQualificationNameOf(int $user_id)
     {
         $name = Qualification::query()->where('user_id', $user_id)
             ->orderBy('date', 'desc')->pluck('name')->first();

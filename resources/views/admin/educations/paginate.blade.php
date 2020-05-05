@@ -11,7 +11,7 @@
                 <a href="{{route('profile.educations.edit', $education->id)}}"
                    class="fa fa-pencil"></a>
 
-                <a class="fa fa-remove delete-education" data-url="{{route('educations.destroy', $education->id)}}"></a>
+                <a class="fa fa-remove delete-education" data-url="{{route('profile.educations.destroy', $education->id)}}"></a>
             @else
                 @can('moderate')
                     <a href="{{route('educations.edit', $education->id)}}" class="fa fa-pencil"></a>

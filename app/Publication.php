@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publication extends Model
 {
-    public $fillable = ['title', 'description', 'another_authors', 'url', 'publisher', 'data_of_publication'];
+    public $fillable = ['title', 'description', 'another_authors', 'url', 'publisher', 'date_of_publication'];
 
     //relations
     public function authors(){
