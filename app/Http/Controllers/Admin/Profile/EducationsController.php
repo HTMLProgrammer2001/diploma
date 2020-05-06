@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Profile;
 
-use App\Education;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EducationsRequest;
 use App\Repositories\Interfaces\EducationRepositoryInterface;
@@ -20,8 +19,8 @@ class EducationsController extends Controller
     }
 
     public function paginate(){
-        $user = Auth::user();
-        $educations = $user->educations()->paginate(env('PAGINATE_SIZE', 10));
+        $user_id = Auth::user()->id;
+        $educations = $this->educationRep->paginateForUser($user_id);
 
         return view('admin.educations.paginate', [
             'educations' => $educations,
@@ -41,7 +40,12 @@ class EducationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function edit(Education $education){
+    public function edit($education_id){
+        $education = $this->educationRep->getById($education_id);
+
+        if(!$education)
+            return abort(404);
+
         return view('admin.profile.educations.edit', compact('education'));
     }
 

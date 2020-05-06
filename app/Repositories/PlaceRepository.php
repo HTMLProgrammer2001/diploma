@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\PlaceRepositoryInterface;
 
 class PlaceRepository implements PlaceRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Place::find($id);
+    }
+
     public function create($data)
     {
         $place = new Place();

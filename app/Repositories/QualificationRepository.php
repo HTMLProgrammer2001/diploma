@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class QualificationRepository implements QualificationRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Qualification::find($id);
+    }
+
     public function create($data)
     {
         $qualification = new Qualification();
@@ -47,6 +52,13 @@ class QualificationRepository implements QualificationRepositoryInterface
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
         return Qualification::paginate($size);
+    }
+
+    public function paginateForUser($user_id, ?int $size = null)
+    {
+        $size = $size ?? config('app.PAGINATE_SIZE', 10);
+
+        return Qualification::query()->where('user_id', $user_id)->paginate($size);
     }
 
     public function getQualificationNames(): array

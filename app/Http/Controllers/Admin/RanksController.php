@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RanksRequest;
 use App\Repositories\Interfaces\RankRepositoryInterface;
-use App\Rank;
 
 class RanksController extends Controller
 {
@@ -48,8 +47,13 @@ class RanksController extends Controller
         return abort(404);
     }
 
-    public function edit(Rank $rank)
+    public function edit($rank_id)
     {
+        $rank = $this->rankRep->getById($rank_id);
+
+        if(!$rank)
+            return abort(404);
+
         return view('admin.ranks.edit', compact('rank'));
     }
 

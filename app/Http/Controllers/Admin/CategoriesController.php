@@ -44,13 +44,18 @@ class CategoriesController extends Controller
         return redirect()->route('categories.index');
     }
 
-    public function show($id)
+    public function show()
     {
         return abort(404);
     }
 
-    public function edit(InternCategory $category)
+    public function edit($category_id)
     {
+        $category = $this->categoryRep->getById($category_id);
+
+        if(!$category)
+            return abort(404);
+
         return view('admin.categories.edit', compact('category'));
     }
 

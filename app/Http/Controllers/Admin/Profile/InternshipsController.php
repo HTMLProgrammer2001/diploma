@@ -16,24 +16,24 @@ use Illuminate\Support\Facades\Auth;
 
 class InternshipsController extends Controller
 {
-    private $placeRep, $userRep, $categoryRep, $intershipRep;
+    private $placeRep, $userRep, $categoryRep, $internshipRep;
 
     public function __construct(PlaceRepositoryInterface $placeRep,
                                 UserRepositoryInterface $userRep,
                                 CategoryRepositoryInterface $categoryRep,
                                 InternshipRepositoryInterface $internshipRep)
     {
-        $this->authorizeResource(Internship::class, 'internship');
+        //$this->authorizeResource(Internship::class, 'internship');
 
         $this->userRep = $userRep;
         $this->placeRep = $placeRep;
         $this->categoryRep = $categoryRep;
-        $this->intershipRep = $internshipRep;
+        $this->internshipRep = $internshipRep;
     }
 
     public function paginate(){
-        $user = Auth::user();
-        $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
+        $user_id = Auth::user()->id;
+        $internships = $this->internshipRep->paginateForUser($user_id);
 
         return view('admin.internships.paginate', [
             'internships' => $internships,
@@ -62,18 +62,23 @@ class InternshipsController extends Controller
     {
         $data = $request->all();
         $data['user'] = Auth::user()->id;
-        $this->intershipRep->create($data);
+        $this->internshipRep->create($data);
 
         return redirect()->route('profile.show');
     }
 
-    public function show($id)
+    public function show()
     {
         return abort(404);
     }
 
-    public function edit(Internship $internship)
+    public function edit($internship_id)
     {
+        $internship = $this->internshipRep->getById($internship_id);
+
+        if(!$internship)
+            return abort(404);
+
         $places = $this->placeRep->getForCombo();
         $categories = $this->categoryRep->getForCombo();
         $users = $this->userRep->getForCombo();
@@ -86,14 +91,14 @@ class InternshipsController extends Controller
     {
         $data = $request->all();
         $data['user'] = Auth::user()->id;
-        $this->intershipRep->update($internship_id, $data);
+        $this->internshipRep->update($internship_id, $data);
 
         return redirect()->route('profile.show');
     }
 
     public function destroy($internship_id)
     {
-        $this->intershipRep->destroy($internship_id);
+        $this->internshipRep->destroy($internship_id);
 
         return response()->json([
             'status' => 'OK'

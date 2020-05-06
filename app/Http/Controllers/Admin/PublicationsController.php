@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\PublicationRequest;
-use App\Publication;
 use App\Repositories\Interfaces\PublicationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
@@ -53,8 +52,13 @@ class PublicationsController extends Controller
         return abort(404);
     }
 
-    public function edit(Publication $publication)
+    public function edit($publication_id)
     {
+        $publication = $this->publicationRep->getById($publication_id);
+
+        if(!$publication)
+            return abort(404);
+
         $users = $this->userRep->getForCombo();
 
         return view('admin.publications.edit', compact('publication', 'users'));

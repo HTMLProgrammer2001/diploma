@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\RankRepositoryInterface;
 
 class RankRepository implements RankRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Rank::find($id);
+    }
+
     public function create($data)
     {
         $rank = new Rank();

@@ -5,18 +5,23 @@ namespace App\Http\Controllers\Admin\Profile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QualificationRequest;
 use App\Qualification;
+use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
 class QualificationsController extends Controller
 {
-    public function __construct()
+    private $qualificationRep;
+
+    public function __construct(QualificationRepositoryInterface $qualificationRep)
     {
-        $this->authorizeResource(Qualification::class, 'qualification');
+        //$this->authorizeResource(Qualification::class, 'qualification');
+
+        $this->qualificationRep = $qualificationRep;
     }
 
     public function paginate(){
-        $user = Auth::user();
-        $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
+        $user_id = Auth::user()->id;
+        $qualifications = $this->qualificationRep->paginateForUser($user_id);
 
         return view('admin.qualifications.paginate', [
            'qualifications' => $qualifications,
@@ -32,7 +37,7 @@ class QualificationsController extends Controller
     public function create()
     {
         $curUser = Auth::user();
-        $qualificationNames = Qualification::getQualificationNames();
+        $qualificationNames = $this->qualificationRep->getQualificationNames();
 
         return view('admin.profile.qualifications.create',
             compact('curUser', 'qualificationNames'));
@@ -40,34 +45,30 @@ class QualificationsController extends Controller
 
     public function store(QualificationRequest $request)
     {
-        $qualification = new Qualification();
-        $qualification->fill($request->all());
-        $qualification->date = $request->get('date');
-
-        $qualification->setUser($request->user()->id);
-        $qualification->save();
+        $data = $request->all();
+        $this->qualificationRep->create($data);
 
         return redirect()->route('profile.show');
     }
 
-    public function show($id)
+    public function show()
     {
         return abort(404);
     }
 
-    public function edit(Qualification $qualification)
+    public function edit()
     {
         return abort(404);
     }
 
-    public function update(QualificationRequest $request, Qualification $qualification)
+    public function update()
     {
         return abort(404);
     }
 
-    public function destroy(Qualification $qualification)
+    public function destroy($qualification_id)
     {
-        $qualification->delete();
+        $this->qualificationRep->destroy($qualification_id);
 
         return response()->json([
             'status' => 'OK'

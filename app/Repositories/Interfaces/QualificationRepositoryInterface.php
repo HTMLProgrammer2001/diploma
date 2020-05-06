@@ -8,6 +8,8 @@ interface QualificationRepositoryInterface extends BaseRepositoryInterface
 {
     public function all();
 
+    public function paginateForUser($user_id, ?int $size = null);
+
     public function getQualificationNames(): array;
 
     public function getLastQualificationDateOf(int $user_id);

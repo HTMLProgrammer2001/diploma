@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Education;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EducationsRequest;
 use App\Repositories\Interfaces\EducationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\User;
 
 class EducationsController extends Controller
 {
@@ -48,13 +46,18 @@ class EducationsController extends Controller
         return redirect()->route('educations.index');
     }
 
-    public function show($id)
+    public function show()
     {
         return abort(404);
     }
 
-    public function edit(Education $education)
+    public function edit($education_id)
     {
+        $education = $this->educationRep->getById($education_id);
+
+        if(!$education)
+            return abort(404);
+
         $users = $this->userRep->getForCombo();
 
         return view('admin.educations.edit', compact('education', 'users'));

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\QualificationRequest;
-use App\Qualification;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\User;
 use App\Http\Controllers\Controller;
 
 class QualificationsController extends Controller
@@ -55,12 +53,18 @@ class QualificationsController extends Controller
         return abort(404);
     }
 
-    public function edit(Qualification $qualification)
+    public function edit($qualification_id)
     {
+        $qualification = $this->qualificationRep->getById($qualification_id);
+
+        if(!$qualification)
+            return abort(404);
+
         $users = $this->userRep->getForCombo();
         $qualificationNames = $this->qualificationRep->getQualificationNames();
 
-        return view('admin.qualifications.edit', compact('qualification', 'users', 'qualificationNames'));
+        return view('admin.qualifications.edit', compact('qualification', 'users',
+            'qualificationNames'));
     }
 
     public function update(QualificationRequest $request, $qualification_id)

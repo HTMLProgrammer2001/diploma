@@ -17,6 +17,11 @@ class InternshipRepository implements InternshipRepositoryInterface
         $this->qualificationRep = $qualificationRep;
     }
 
+    public function getById(int $id)
+    {
+        return Internship::find($id);
+    }
+
     public function create($data)
     {
         $internship = new Internship();
@@ -75,5 +80,12 @@ class InternshipRepository implements InternshipRepositoryInterface
             ->whereDate('from', '>', $from)->sum('hours');
 
         return $hours;
+    }
+
+    public function paginateForUser($user_id, ?int $size = null)
+    {
+        $size = $size ?? config('app.PAGINATE_SIZE', 10);
+
+        return Internship::query()->where('user_id', $user_id)->paginate($size);
     }
 }

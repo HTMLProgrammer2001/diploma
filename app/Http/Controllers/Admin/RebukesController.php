@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RebukesRequest;
-use App\Rebuke;
 use App\Repositories\Interfaces\RebukeRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\User;
 
 class RebukesController extends Controller
 {
@@ -53,8 +51,13 @@ class RebukesController extends Controller
         return abort(404);
     }
 
-    public function edit(Rebuke $rebuke)
+    public function edit($rebuke_id)
     {
+        $rebuke = $this->rebukeRep->getById($rebuke_id);
+
+        if(!$rebuke)
+            return abort(404);
+
         $users = $this->userRep->getForCombo();
         return view('admin.rebukes.edit', compact('users', 'rebuke'));
     }

@@ -17,15 +17,15 @@ class PublicationsController extends Controller
     public function __construct(UserRepositoryInterface $userRep, PublicationRepositoryInterface $publicationRep)
     {
         //sync to publication policy
-        $this->authorizeResource(Publication::class, 'publication');
+        //$this->authorizeResource(Publication::class, 'publication');
 
         $this->userRep = $userRep;
         $this->publicationRep = $publicationRep;
     }
 
     public function paginate(){
-        $user = Auth::user();
-        $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
+        $user_id = Auth::user()->id;
+        $publications = $this->publicationRep->paginateForUser($user_id);
 
         return view('admin.publications.paginate', [
             'publications' => $publications,
@@ -61,14 +61,13 @@ class PublicationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function show($id)
+    public function show()
     {
         return abort(404);
     }
 
     public function edit(Publication $publication)
     {
-
         $users = $this->userRep->getForCombo();
 
         return view('admin.profile.publications.edit', compact('users', 'publication'));

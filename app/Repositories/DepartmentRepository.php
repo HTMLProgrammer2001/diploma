@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\DepartmentRepositoryInterface;
 
 class DepartmentRepository implements DepartmentRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Department::find($id);
+    }
+
     public function create($data)
     {
         $department = new Department();

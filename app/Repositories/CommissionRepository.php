@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\CommissionRepositoryInterface;
 
 class CommissionRepository implements CommissionRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Commission::find($id);
+    }
+
     public function create($data)
     {
         $commission = new Commission();

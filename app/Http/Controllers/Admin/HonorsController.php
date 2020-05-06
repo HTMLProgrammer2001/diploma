@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Honor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HonorsRequest;
 use App\Repositories\Interfaces\HonorRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\User;
 
 class HonorsController extends Controller
 {
@@ -54,8 +52,13 @@ class HonorsController extends Controller
         return abort(404);
     }
 
-    public function edit(Honor $honor)
+    public function edit($honor_id)
     {
+        $honor = $this->honorRep->getById($honor_id);
+
+        if(!$honor)
+            return abort(404);
+
         $users = $this->userRep->getForCombo();
         return view('admin.honors.edit', compact('users', 'honor'));
     }

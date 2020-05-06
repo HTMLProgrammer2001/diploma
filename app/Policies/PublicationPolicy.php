@@ -14,8 +14,6 @@ class PublicationPolicy
     {
         if($user->role <= User::ROLE_MODERATOR)
             return true;
-
-        dd(1);
     }
 
     /**

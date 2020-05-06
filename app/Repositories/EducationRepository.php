@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\EducationRepositoryInterface;
 
 class EducationRepository implements EducationRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Education::find($id);
+    }
+
     public function create($data)
     {
         $education = new Education();
@@ -43,5 +48,12 @@ class EducationRepository implements EducationRepositoryInterface
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
         return Education::paginate($size);
+    }
+
+    public function paginateForUser($user_id, ?int $size = null)
+    {
+        $size = $size ?? config('app.PAGINATE_SIZE', 10);
+
+        return Education::query()->where('user_id', $user_id)->paginate($size);
     }
 }

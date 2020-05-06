@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlacesRequest;
-use App\Place;
 use App\Repositories\Interfaces\PlaceRepositoryInterface;
-use Illuminate\Http\Request;
 
 class PlacesController extends Controller
 {
@@ -49,8 +47,13 @@ class PlacesController extends Controller
         return abort(404);
     }
 
-    public function edit(Place $place)
+    public function edit($place_id)
     {
+        $place = $this->placeRep->getById($place_id);
+
+        if(!$place)
+            return abort(404);
+
         return view('admin.places.edit', compact('place'));
     }
 

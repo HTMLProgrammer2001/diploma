@@ -4,14 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InternshipsRequest;
-use App\InternCategory;
-use App\Internship;
-use App\Place;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\InternshipRepositoryInterface;
 use App\Repositories\Interfaces\PlaceRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\User;
 
 class InternshipsController extends Controller
 {
@@ -64,13 +60,19 @@ class InternshipsController extends Controller
         return abort(404);
     }
 
-    public function edit(Internship $internship)
+    public function edit($internship_id)
     {
+        $internship = $this->internshipRep->getById($internship_id);
+
+        if(!$internship)
+            return abort(404);
+
         $users = $this->userRep->getForCombo();
         $categories = $this->categoryRep->getForCombo();
         $places = $this->placeRep->getForCombo();
 
-        return view('admin.internships.edit', compact('users', 'categories', 'places', 'internship'));
+        return view('admin.internships.edit', compact('users', 'categories', 'places',
+            'internship'));
     }
 
     public function update(InternshipsRequest $request, $internship_id)

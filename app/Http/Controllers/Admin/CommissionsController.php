@@ -46,12 +46,18 @@ class CommissionsController extends Controller
         return redirect()->route('commissions.index');
     }
 
-    public function show(Commission $commission)
+    public function show()
     {
+        return abort(404);
     }
 
-    public function edit(Commission $commission)
+    public function edit($commission_id)
     {
+        $commission = $this->commissionRep->getById($commission_id);
+
+        if(!$commission)
+            return abort(404);
+
         return view('admin.commissions.edit', [
             'commission' => $commission
         ]);

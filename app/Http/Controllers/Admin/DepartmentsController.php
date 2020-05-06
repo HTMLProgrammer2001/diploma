@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentsRequest;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
-use Illuminate\Http\Request;
 
 class DepartmentsController extends Controller
 {
@@ -47,12 +45,18 @@ class DepartmentsController extends Controller
         return redirect()->route('departments.index');
     }
 
-    public function show(Department $department)
+    public function show()
     {
+        return abort(404);
     }
 
-    public function edit(Department $department)
+    public function edit($department_id)
     {
+        $department = $this->departmentRep->getById($department_id);
+
+        if(!$department)
+            return abort(404);
+
         return view('admin.departments.edit', [
             'department' => $department
         ]);

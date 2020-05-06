@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\UserRequest;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
+use App\Repositories\Interfaces\EducationRepositoryInterface;
+use App\Repositories\Interfaces\HonorRepositoryInterface;
 use App\Repositories\Interfaces\InternshipRepositoryInterface;
+use App\Repositories\Interfaces\PublicationRepositoryInterface;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RankRepositoryInterface;
+use App\Repositories\Interfaces\RebukeRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Services\Interfaces\AvatarServiceInterface;
-use App\User;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
     private $commissionRep, $departmentRep, $rankRep, $userRep, $qualificationRep, $internshipRep,
-            $avatarService;
+            $avatarService, $rebukeRep, $honorRep, $educationRep, $publicationRep;
 
     public function __construct(CommissionRepositoryInterface $commissionRep,
                                 DepartmentRepositoryInterface $departmentRep,
@@ -24,6 +27,10 @@ class UsersController extends Controller
                                 UserRepositoryInterface $userRep,
                                 QualificationRepositoryInterface $qualificationRep,
                                 InternshipRepositoryInterface $internshipRep,
+                                RebukeRepositoryInterface $rebukeRep,
+                                HonorRepositoryInterface $honorRepository,
+                                PublicationRepositoryInterface $publicationRep,
+                                EducationRepositoryInterface $educationRepository,
                                 AvatarServiceInterface $avatarService)
     {
         $this->commissionRep = $commissionRep;
@@ -32,6 +39,10 @@ class UsersController extends Controller
         $this->userRep = $userRep;
         $this->qualificationRep = $qualificationRep;
         $this->internshipRep = $internshipRep;
+        $this->rebukeRep = $rebukeRep;
+        $this->honorRep = $honorRepository;
+        $this->educationRep = $educationRepository;
+        $this->publicationRep = $publicationRep;
         $this->avatarService = $avatarService;
     }
 
@@ -68,14 +79,19 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function show(User $user)
+    public function show($user_id)
     {
-        $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
-        $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
-        $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
-        $rebukes = $user->rebukes()->paginate(env('PAGINATE_SIZE', 10));
-        $honors = $user->honors()->paginate(env('PAGINATE_SIZE', 10));
-        $educations = $user->educations()->paginate(env('PAGINATE_SIZE', 10));
+        $user = $this->userRep->getById($user_id);
+
+        if(!$user)
+            return abort(404);
+
+        $publications = $this->publicationRep->paginateForUser($user_id);
+        $internships = $this->internshipRep->paginateForUser($user_id);
+        $qualifications = $this->qualificationRep->paginateForUser($user_id);
+        $rebukes = $this->rebukeRep->paginateForUser($user_id);
+        $honors = $this->honorRep->paginateForUser($user_id);
+        $educations = $this->educationRep->paginateForUser($user_id);
 
         $isProfile = false;
 
@@ -88,8 +104,13 @@ class UsersController extends Controller
                 'educations', 'isProfile', 'userQualification', 'internshipHours', 'nextQualification'));
     }
 
-    public function edit(User $user)
+    public function edit($user_id)
     {
+        $user = $this->userRep->getById($user_id);
+
+        if(!$user)
+            return abort(404);
+
         $departments = $this->departmentRep->getForCombo();
         $commissions = $this->commissionRep->getForCombo();
         $ranks = $this->rankRep->getForCombo();

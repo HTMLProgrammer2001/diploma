@@ -12,5 +12,7 @@ interface BaseRepositoryInterface
 
     public function destroy($id);
 
+    public function getById(int $id);
+
     public function paginate(?int $size);
 }

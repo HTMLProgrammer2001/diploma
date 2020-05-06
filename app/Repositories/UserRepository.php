@@ -17,6 +17,11 @@ class UserRepository implements UserRepositoryInterface
         $this->avatarService = $avatarService;
     }
 
+    public function getById(int $id)
+    {
+        return User::find($id);
+    }
+
     public function create($data)
     {
         $user = new User();
@@ -52,7 +57,7 @@ class UserRepository implements UserRepositoryInterface
         $this->avatarService->deleteAvatar($user->avatar ?? false);
         $user->avatar = $this->avatarService->uploadAvatar($data['avatar'] ?? false);
 
-        if($data['role'])
+        if($data['role'] ?? false)
             $user->role = $data['role'];
 
         $user->save();

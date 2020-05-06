@@ -8,38 +8,54 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Rank;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
+use App\Repositories\Interfaces\EducationRepositoryInterface;
+use App\Repositories\Interfaces\HonorRepositoryInterface;
 use App\Repositories\Interfaces\InternshipRepositoryInterface;
+use App\Repositories\Interfaces\PublicationRepositoryInterface;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RankRepositoryInterface;
+use App\Repositories\Interfaces\RebukeRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
-    private $departmentRep, $commissionRep, $rankRep, $qualificationRep, $internshipRep;
+    private $departmentRep, $commissionRep, $rankRep, $qualificationRep, $internshipRep, $userRep,
+            $publicationRep, $educationRep, $honorRep, $rebukeRep;
 
     public function __construct(DepartmentRepositoryInterface $departmentRep,
                                 CommissionRepositoryInterface $commissionRep,
                                 RankRepositoryInterface $rankRep,
                                 QualificationRepositoryInterface $qualificationRep,
-                                InternshipRepositoryInterface $internshipRep)
+                                InternshipRepositoryInterface $internshipRep,
+                                PublicationRepositoryInterface $publicationRep,
+                                EducationRepositoryInterface $educationRep,
+                                HonorRepositoryInterface $honorRep,
+                                RebukeRepositoryInterface $rebukeRep,
+                                UserRepositoryInterface $userRep)
     {
         $this->departmentRep = $departmentRep;
         $this->commissionRep = $commissionRep;
         $this->rankRep = $rankRep;
         $this->qualificationRep = $qualificationRep;
         $this->internshipRep = $internshipRep;
+        $this->userRep = $userRep;
+        $this->publicationRep = $publicationRep;
+        $this->educationRep = $educationRep;
+        $this->honorRep = $honorRep;
+        $this->rebukeRep = $rebukeRep;
     }
 
     public function index(Request $request){
         $user = $request->user();
-        $publications = $user->publications()->paginate(env('PAGINATE_SIZE', 10));
-        $internships = $user->internships()->paginate(env('PAGINATE_SIZE', 10));
-        $qualifications = $user->qualifications()->paginate(env('PAGINATE_SIZE', 10));
-        $educations = $user->educations()->paginate(env('PAGINATE_SIZE', 10));
-        $honors = $user->honors()->paginate(env('PAGINATE_SIZE', 10));
-        $rebukes = $user->rebukes()->paginate(env('PAGINATE_SIZE', 10));
+        $publications = $this->publicationRep->paginateForUser($user->id);
+        $internships = $this->internshipRep->paginateForUser($user->id);
+        $qualifications = $this->qualificationRep->paginateForUser($user->id);
+        $educations = $this->educationRep->paginateForUser($user->id);
+        $honors = $this->honorRep->paginateForUser($user->id);
+        $rebukes = $this->rebukeRep->paginateForUser($user->id);
 
         $isProfile = true;
 
@@ -63,22 +79,11 @@ class ProfileController extends Controller
     }
 
     public function update(ProfileUpdateRequest $request){
-        $user = $request->user();
+        $user_id = $request->user()->id;
 
-        $user->fill($request->all());
-
-        //generate secret values
-        $user->generatePassword($request->get('password'));
-        $user->cryptPassport($request->get('passport'));
-        $user->cryptCode($request->get('code'));
-
-        //relationships
-        $user->setDepartment($request->get('department'));
-        $user->setCommission($request->get('commission'));
-        $user->setRank($request->get('rank'));
-
-        $user->uploadAvatar($request->file('avatar'));
-        $user->save();
+        $data = $request->all();
+        $data['avatar'] = $request->file('avatar');
+        $this->userRep->update($user_id, $data);
 
         return redirect()->route('profile.show');
     }

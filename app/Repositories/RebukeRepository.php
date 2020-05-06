@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\RebukeRepositoryInterface;
 
 class RebukeRepository implements RebukeRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Rebuke::find($id);
+    }
+
     public function create($data)
     {
         $rebuke = new Rebuke();
@@ -48,5 +53,12 @@ class RebukeRepository implements RebukeRepositoryInterface
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
         return Rebuke::paginate($size);
+    }
+
+    public function paginateForUser($user_id, ?int $size = null)
+    {
+        $size = $size ?? config('app.PAGINATE_SIZE', 10);
+
+        return Rebuke::query()->where('user_id', $user_id)->paginate($size);
     }
 }

@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\CategoryRepositoryInterface;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return InternCategory::find($id);
+    }
+
     public function create($data)
     {
         $category = new InternCategory();

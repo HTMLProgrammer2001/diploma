@@ -9,6 +9,11 @@ use App\Repositories\Interfaces\HonorRepositoryInterface;
 
 class HonorRepository implements HonorRepositoryInterface
 {
+    public function getById(int $id)
+    {
+        return Honor::find($id);
+    }
+
     public function create($data)
     {
         $honor = new Honor();
@@ -48,5 +53,12 @@ class HonorRepository implements HonorRepositoryInterface
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
         return Honor::paginate($size);
+    }
+
+    public function paginateForUser($user_id, ?int $size = null)
+    {
+        $size = $size ?? config('app.PAGINATE_SIZE', 10);
+
+        return Honor::query()->where('user_id', $user_id)->paginate($size);
     }
 }
