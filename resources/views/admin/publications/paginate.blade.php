@@ -3,6 +3,7 @@
         <td>{{$publication->id}}</td>
         <td>{{$publication->title}}</td>
         <td>{{$publication->getAuthorsString()}}</td>
+        <td>{{$publication->date_of_publication}}</td>
         <td class="d-flex">
             @if($isProfile ?? false)
                 <a href="{{route('profile.publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
@@ -22,7 +23,7 @@
     </tr>
 @endforeach
 
-@if($publications->total() > 1)
+@if($publications->lastPage() > 1)
     <tr>
         <td colspan="5">
             <div class="pull-right publications-paginator">

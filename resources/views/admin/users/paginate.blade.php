@@ -12,21 +12,28 @@
             @can('moderate')
                 <a href="{{route('users.edit', $user->id)}}" class="fa fa-pencil"></a>
 
-                <a class="fa fa-remove user-delete" data-url="{{route('users.destroy', $user->id)}}"></a>
+                <a href="#" class="fa fa-remove user-delete" data-url="{{route('users.destroy', $user->id)}}"></a>
         @endcan
     </tr>
 @endforeach
 
-<tr>
-    <td colspan="5">
-        <div class="pull-right user-paginator">
-            {{$users->onEachSide(3)->links()}}
-        </div>
-    </td>
-</tr>
+@if($users->lastPage() > 1)
+    <tr>
+        <td colspan="5">
+            <div class="pull-right user-paginator">
+                {{$users->onEachSide(3)->links()}}
+            </div>
+        </td>
+    </tr>
+@endif
 
 <script>
-	paginate('.user-paginator', '.user-content', '{{route('users.paginate')}}');
+	paginate({
+        paginator: '.user-paginator',
+        content: '.user-content',
+        form: '.user-form',
+        url: '{{route('users.paginate')}}'
+    });
 
 	remover('.user-delete', '.crud-item');
 </script>

@@ -6,13 +6,17 @@ namespace App\Repositories;
 
 use App\Publication;
 use App\Repositories\Interfaces\PublicationRepositoryInterface;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class PublicationRepository implements PublicationRepositoryInterface
+class PublicationRepository extends BaseRepository implements PublicationRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = Publication::class;
+
+    public function getModel(): Model
     {
-        return Publication::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -29,7 +33,7 @@ class PublicationRepository implements PublicationRepositoryInterface
 
     public function update($id, $data)
     {
-        $publication = Publication::findOrFail($id);
+        $publication = Publication::query()->findOrFail($id);
         $publication->fill($data);
         $publication->save();
 
@@ -39,28 +43,16 @@ class PublicationRepository implements PublicationRepositoryInterface
         return $publication;
     }
 
-    public function destroy($id)
-    {
-        Publication::destroy($id);
-    }
-
     public function all()
     {
         return Publication::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE');
-
-        return Publication::paginate($size);
     }
 
     public function paginateForUser($user_id, ?int $size = null)
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
-        return Publication::query()->whereHas('authors', function ($q) use($user_id){
+        return Publication::query()->whereHas('authors', function (Builder $q) use($user_id){
             $q->where('user_id', $user_id);
         })->paginate($size);
     }

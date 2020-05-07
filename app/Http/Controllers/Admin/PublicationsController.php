@@ -6,6 +6,12 @@ use App\Http\Requests\PublicationRequest;
 use App\Repositories\Interfaces\PublicationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
+use App\Repositories\Rules\DateLessRule;
+use App\Repositories\Rules\DateMoreRule;
+use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\HasAssociateRule;
+use App\Repositories\Rules\LikeRule;
+use Illuminate\Http\Request;
 
 class PublicationsController extends Controller
 {
@@ -18,17 +24,36 @@ class PublicationsController extends Controller
         $this->userRep = $userRep;
     }
 
-    public function paginate(){
-        $publications = $this->publicationRep->paginate();
+    public function paginate(Request $request){
+        //create rules array
+        $rules = [];
+
+        if($request->input('title'))
+            $rules[] = new LikeRule('title', $request->input('title'));
+
+        if($request->input('user'))
+            $rules[] = new HasAssociateRule('authors',
+                new EqualRule('users.id', $request->input('user')));
+
+        if($request->input('start_date_of_publication'))
+            $rules[] = new DateMoreRule('date_of_publication',
+                $request->input('start_date_of_publication'));
+
+        if($request->input('end_date_of_publication'))
+            $rules[] = new DateLessRule('date_of_publication',
+                $request->input('end_date_of_publication'));
+
+        $publications = $this->publicationRep->filterPaginate($rules);
 
         return view('admin.publications.paginate', compact('publications'));
     }
 
     public function index()
     {
+        $users = $this->userRep->getForCombo();
         $publications = $this->publicationRep->paginate();
 
-        return view('admin.publications.index', compact('publications'));
+        return view('admin.publications.index', compact('publications', 'users'));
     }
 
     public function create()
