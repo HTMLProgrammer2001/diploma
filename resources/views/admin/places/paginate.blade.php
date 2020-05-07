@@ -3,12 +3,12 @@
         <td>{{$place->id}}</td>
         <td>{{$place->name}}</td>
         <td>{{$place->address}}</td>
-        <td style="display: flex">
+        <td class="d-flex">
 
             @can('moderate')
                 <a href="{{route('places.edit', $place->id)}}" class="fa fa-pencil"></a>
 
-                <a class="fa fa-remove delete-place" data-url="{{route('places.destroy',
+                <a href="#" class="fa fa-remove delete-place" data-url="{{route('places.destroy',
                     $place->id)}}"></a>
             @endcan
 
@@ -16,13 +16,15 @@
     </tr>
 @endforeach
 
-<tr>
-    <td colspan="5">
-        <div class="pull-right places-paginator">
-            {{$places->onEachSide(3)->links()}}
-        </div>
-    </td>
-</tr>
+@if($places->lastPage() > 1)
+    <tr>
+        <td colspan="5">
+            <div class="pull-right places-paginator">
+                {{$places->onEachSide(3)->links()}}
+            </div>
+        </td>
+    </tr>
+@endif
 
 <script>
 	paginate({

@@ -4,14 +4,14 @@
         <td>{{$rebuke->getUserName()}}</td>
         <td>{{$rebuke->title}}</td>
         <td>{{$rebuke->date_presentation}}</td>
-        <td style="display: flex">
+        <td class="d-flex">
 
             @if($isProfile ?? false)
                 <div></div>
             @else
                 @can('moderate')
                     <a href="{{route('rebukes.edit', $rebuke->id)}}" class="fa fa-pencil"></a>
-                    <a class="fa fa-remove delete-rebuke"
+                    <a href="#" class="fa fa-remove delete-rebuke"
                        data-url="{{route('rebukes.destroy', $rebuke->id)}}"></a>
                 @endcan
             @endif
@@ -20,16 +20,23 @@
     </tr>
 @endforeach
 
-<tr>
-    <td colspan="5">
-        <div class="pull-right rebukes_paginator">
-            {{$rebukes->onEachSide(3)->links()}}
-        </div>
-    </td>
-</tr>
+@if($rebukes->lastPage() > 1)
+    <tr>
+        <td colspan="5">
+            <div class="pull-right rebukes-paginator">
+                {{$rebukes->onEachSide(3)->links()}}
+            </div>
+        </td>
+    </tr>
+@endif
 
 <script>
-	paginate('.rebukes_paginator', '.rebuke-content', '{{route('rebukes.paginate')}}');
+	paginate({
+        paginator: '.rebukes-paginator',
+        content: '.rebukes-content',
+        form: '.rebukes-form',
+        url: '{{route('rebukes.paginate')}}'
+    });
 
 	remover('.delete-rebuke', '.crud-item');
 </script>

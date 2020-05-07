@@ -6,39 +6,15 @@ namespace App\Repositories;
 
 use App\Place;
 use App\Repositories\Interfaces\PlaceRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class PlaceRepository implements PlaceRepositoryInterface
+class PlaceRepository extends BaseRepository implements PlaceRepositoryInterface
 {
-    private function filterByAddress($q, $address)
+    private $model = Place::class;
+
+    public function getModel(): Model
     {
-        if(!$address)
-            return $q;
-
-        return $q->where('address', 'like', '%' . $address . '%');
-    }
-
-    private function filterByName($q, $name)
-    {
-        if(!$name)
-            return $q;
-
-        return $q->where('name', 'like', '%' . $name . '%');
-    }
-
-    public function filterPaginate(array $data, ?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        $placeQuery = Place::query();
-        $placeQuery = $this->filterByName($placeQuery, $data['name'] ?? false);
-        $placeQuery = $this->filterByAddress($placeQuery, $data['address'] ?? false);
-
-        return $placeQuery->paginate($size);
-    }
-
-    public function getById(int $id)
-    {
-        return Place::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -52,28 +28,16 @@ class PlaceRepository implements PlaceRepositoryInterface
 
     public function update($id, $data)
     {
-        $place = Place::findOrFail($id);
+        $place = Place::query()->findOrFail($id);
         $place->fill($data);
         $place->save();
 
         return $place;
     }
 
-    public function destroy($id)
-    {
-        Place::destroy($id);
-    }
-
     public function all()
     {
         return Place::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Place::paginate($size);
     }
 
     public function getForCombo()

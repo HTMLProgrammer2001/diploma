@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RebukesRequest;
 use App\Repositories\Interfaces\RebukeRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\Rules\DateLessRule;
+use App\Repositories\Rules\DateMoreRule;
+use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\LikeRule;
+use Illuminate\Http\Request;
 
 class RebukesController extends Controller
 {
@@ -17,8 +22,25 @@ class RebukesController extends Controller
         $this->rebukeRep = $rebukeRep;
     }
 
-    public function paginate(){
-        $rebukes = $this->rebukeRep->paginate();
+    public function paginate(Request $request){
+        //create rules for filter
+        $rules = [];
+
+        if($request->input('user'))
+            $rules[] = new EqualRule('user_id', $request->input('user'));
+
+        if($request->input('name'))
+            $rules[] = new LikeRule('title', $request->input('name'));
+
+        if($request->input('start_date_presentation'))
+            $rules[] = new DateMoreRule('date_presentation',
+                $request->input('start_date_presentation'));
+
+        if($request->input('end_date_presentation'))
+            $rules[] = new DateLessRule('date_presentation',
+                $request->input('end_date_presentation'));
+
+        $rebukes = $this->rebukeRep->filterPaginate($rules);
         $isProfile = false;
 
         return view('admin.rebukes.paginate', compact('rebukes', 'isProfile'));
@@ -27,8 +49,9 @@ class RebukesController extends Controller
     public function index()
     {
         $rebukes = $this->rebukeRep->paginate();
+        $users = $this->userRep->getForCombo();
 
-        return view('admin.rebukes.index', compact('rebukes'));
+        return view('admin.rebukes.index', compact('rebukes', 'users'));
     }
 
     public function create()

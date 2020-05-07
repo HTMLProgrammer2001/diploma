@@ -6,12 +6,15 @@ namespace App\Repositories;
 
 use App\Rebuke;
 use App\Repositories\Interfaces\RebukeRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class RebukeRepository implements RebukeRepositoryInterface
+class RebukeRepository extends BaseRepository implements RebukeRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = Rebuke::class;
+
+    public function getModel(): Model
     {
-        return Rebuke::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -38,21 +41,9 @@ class RebukeRepository implements RebukeRepositoryInterface
         return $rebuke;
     }
 
-    public function destroy($id)
-    {
-        Rebuke::destroy($id);
-    }
-
     public function all()
     {
         return Rebuke::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Rebuke::paginate($size);
     }
 
     public function paginateForUser($user_id, ?int $size = null)

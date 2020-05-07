@@ -6,12 +6,15 @@ namespace App\Repositories;
 
 use App\Honor;
 use App\Repositories\Interfaces\HonorRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class HonorRepository implements HonorRepositoryInterface
+class HonorRepository extends BaseRepository implements HonorRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = Honor::class;
+
+    public function getModel(): Model
     {
-        return Honor::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -28,7 +31,7 @@ class HonorRepository implements HonorRepositoryInterface
 
     public function update($id, $data)
     {
-        $honor = Honor::findOrFail($id);
+        $honor = Honor::query()->findOrFail($id);
         $honor->fill($data);
 
         $honor->setUser($data['user']);
@@ -38,21 +41,9 @@ class HonorRepository implements HonorRepositoryInterface
         return $honor;
     }
 
-    public function destroy($id)
-    {
-        Honor::destroy($id);
-    }
-
     public function all()
     {
         return Honor::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Honor::paginate($size);
     }
 
     public function paginateForUser($user_id, ?int $size = null)

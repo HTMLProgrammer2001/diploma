@@ -26,22 +26,17 @@
                         </div>
                     @endcan
 
-                        <div class="pull-right">
+                        <div class="pull-right mb-3">
                             <form class="form-inline places-form">
-                                <input type="text" name="name" class="form-control"
+                                <input type="text" name="name" class="form-control mr-2"
                                        placeholder="Пошук по назві закладу"/>
 
-                                <input type="text" name="address" class="form-control"
+                                <input type="text" name="address" class="form-control mr-2"
                                        placeholder="Пошук по адресі"/>
 
                                 <button class="btn btn-info">Пошук</button>
                             </form>
                         </div>
-
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
 
                     <table class="table table-bordered table-striped">
                         <thead>

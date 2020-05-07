@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlacesRequest;
 use App\Repositories\Interfaces\PlaceRepositoryInterface;
+use App\Repositories\Rules\LikeRule;
 use Illuminate\Http\Request;
 
 class PlacesController extends Controller
@@ -17,8 +18,16 @@ class PlacesController extends Controller
     }
 
     public function paginate(Request $request){
-        $data = $request->all();
-        $places = $this->placeRep->filterPaginate($data);
+        //create rules array for filter
+        $rules = [];
+
+        if($request->input('name'))
+            $rules[] = new LikeRule('name', $request->input('name'));
+
+        if($request->input('address'))
+            $rules[] = new LikeRule('address', $request->input('address'));
+
+        $places = $this->placeRep->filterPaginate($rules);
 
         return view('admin.places.paginate', compact('places'));
     }
