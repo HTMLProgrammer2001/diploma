@@ -4,7 +4,7 @@
         <td>{{$honor->getUserName()}}</td>
         <td>{{$honor->title}}</td>
         <td>{{$honor->date_presentation}}</td>
-        <td style="display: flex">
+        <td class="d-flex">
 
             @if($isProfile ?? false)
                 <div></div>
@@ -12,7 +12,7 @@
                 @can('moderate')
                     <a href="{{route('honors.edit', $honor->id)}}" class="fa fa-pencil"></a>
 
-                    <a class="fa fa-remove delete-honor" data-url="{{route('honors.destroy', $honor->id)}}"></a>
+                    <a href="#" class="fa fa-remove delete-honor" data-url="{{route('honors.destroy', $honor->id)}}"></a>
                 @endcan
             @endif
 
@@ -20,17 +20,23 @@
     </tr>
 @endforeach
 
-<tr>
-    <td colspan="10">
-        <div class="pull-right honors-paginator">
-            {{$honors->onEachSide(3)->links()}}
-        </div>
-    </td>
-</tr>
+@if($honors->lastPage() > 1)
+    <tr>
+        <td colspan="10">
+            <div class="pull-right honors-paginator">
+                {{$honors->onEachSide(3)->links()}}
+            </div>
+        </td>
+    </tr>
+@endif
 
 <script>
-	paginate('.honors-paginator', '.honors-content', '{{route('honors.paginate')}}');
+	paginate({
+       paginator: '.honors-paginator',
+       content: '.honors-content',
+       form: '.honors-form',
+       url: '{{route('honors.paginate')}}'
+    });
 
 	remover('.delete-honor', '.crud-item');
 </script>
-

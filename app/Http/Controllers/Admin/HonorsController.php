@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HonorsRequest;
 use App\Repositories\Interfaces\HonorRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\Rules\DateLessRule;
+use App\Repositories\Rules\DateMoreRule;
+use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\LikeRule;
+use Illuminate\Http\Request;
 
 class HonorsController extends Controller
 {
@@ -17,8 +22,25 @@ class HonorsController extends Controller
         $this->userRep = $userRep;
     }
 
-    public function paginate(){
-        $honors = $this->honorRep->paginate();
+    public function paginate(Request $request){
+        //create rules for filter
+        $rules = [];
+
+        if($request->input('user'))
+            $rules[] = new EqualRule('user_id', $request->input('user'));
+
+        if($request->input('name'))
+            $rules[] = new LikeRule('title', $request->input('name'));
+
+        if($request->input('start_date_presentation'))
+            $rules[] = new DateMoreRule('date_presentation',
+                $request->input('start_date_presentation'));
+
+        if($request->input('end_date_presentation'))
+            $rules[] = new DateLessRule('date_presentation',
+                $request->input('end_date_presentation'));
+
+        $honors = $this->honorRep->filterPaginate($rules);
         $isProfile = false;
 
         return view('admin.honors.paginate', compact('honors', 'isProfile'));
@@ -26,9 +48,10 @@ class HonorsController extends Controller
 
     public function index()
     {
+        $users = $this->userRep->getForCombo();
         $honors = $this->honorRep->paginate();
 
-        return view('admin.honors.index', compact('honors'));
+        return view('admin.honors.index', compact('honors', 'users'));
     }
 
     public function create()
