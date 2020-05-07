@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label for="user">Кваліфікація*</label>
                                 <select class="form-control select2" id="qualification" name="qualification">
-                                    @foreach(\App\Education::QUALIFICATIONS as $qualification)
+                                    @foreach($qualifications as $qualification)
                                         <option value="{{$qualification}}">{{$qualification}}</option>
                                     @endforeach
                                 </select>

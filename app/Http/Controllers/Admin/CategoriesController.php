@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoriesRequest;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Rules\LikeRule;
 use Illuminate\Http\Request;
 use App\InternCategory;
 
@@ -17,8 +18,14 @@ class CategoriesController extends Controller
         $this->categoryRep = $categoryRep;
     }
 
-    public function paginate(){
-        $categories = $this->categoryRep->paginate();
+    public function paginate(Request $request){
+        //fill rules array
+        $rules = [];
+
+        if($request->input('name'))
+            $rules[] = new LikeRule('name', $request->input('name'));
+
+        $categories = $this->categoryRep->filterPaginate($rules);
 
         return view('admin.categories.paginate', compact('categories'));
     }

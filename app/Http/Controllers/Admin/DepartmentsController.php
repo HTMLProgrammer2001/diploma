@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentsRequest;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
+use App\Repositories\Rules\LikeRule;
+use Illuminate\Http\Request;
 
 class DepartmentsController extends Controller
 {
@@ -15,9 +17,16 @@ class DepartmentsController extends Controller
         $this->departmentRep = $departmentRep;
     }
 
-    public function paginate()
+    public function paginate(Request $request)
     {
-        $departments = $this->departmentRep->paginate();
+        //create rules
+        $rules = [];
+
+        if($request->input('name'))
+            $rules[] = new LikeRule('name', $request->input('name'));
+
+        //filter
+        $departments = $this->departmentRep->filterPaginate($rules);
 
         return view('admin.departments.paginate', compact('departments'));
     }

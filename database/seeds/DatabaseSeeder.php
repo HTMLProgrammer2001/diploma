@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         factory(\App\Publication::class, 25)->create();
         factory(\App\Qualification::class, 7)->create();
         factory(\App\Rebuke::class, 10)->create();
+        factory(\App\Education::class, 20)->create();
     }
 }

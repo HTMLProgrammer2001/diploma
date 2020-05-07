@@ -6,12 +6,15 @@ namespace App\Repositories;
 
 use App\Department;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class DepartmentRepository implements DepartmentRepositoryInterface
+class DepartmentRepository extends BaseRepository implements DepartmentRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = Department::class;
+
+    public function getModel(): Model
     {
-        return Department::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -25,23 +28,11 @@ class DepartmentRepository implements DepartmentRepositoryInterface
 
     public function update($id, $data)
     {
-        $department = Department::findOrFail($id);
+        $department = Department::query()->findOrFail($id);
         $department->fill($data);
         $department->save();
 
         return $department;
-    }
-
-    public function destroy($id)
-    {
-        Department::destroy($id);
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Department::paginate($size);
     }
 
     public function getForCombo()

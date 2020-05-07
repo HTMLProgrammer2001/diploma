@@ -54,8 +54,8 @@
                         </div>
                         
                         <ul class="nav nav-tabs" id="profile_tab" role="tablist">
-                            <li class="nav-item active">
-                                <a class="nav-link" id="publications_tab" data-toggle="tab"
+                            <li class="nav-item">
+                                <a class="nav-link active" id="publications_tab" data-toggle="tab"
                                    href="#publications" role="tab">Публікації</a>
                             </li>
                             <li class="nav-item">
@@ -94,17 +94,18 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <a href="{{url()->previous()}}">
+                        <a href="{{url()->previous()}}" class="pull-left">
                             <button type="button" class="btn btn-default">Назад</button>
                         </a>
 
                         @if($isProfile)
-                            <a href="{{route('profile.edit')}}">
-                                <button class="btn btn-warning pull-right">Редагувати</button>
+                            <a href="{{route('profile.edit')}}" class="pull-right">
+                                <button class="btn btn-warning text-white">Редагувати</button>
                             </a>
+
                         @else
-                            <a href="{{route('users.edit', $user->id)}}">
-                                <button class="btn btn-warning pull-right">Редагувати</button>
+                            <a href="{{route('users.edit', $user->id)}}" class="pull-right">
+                                <button class="btn btn-warning text-white">Редагувати</button>
                             </a>
                         @endif
                     </div>

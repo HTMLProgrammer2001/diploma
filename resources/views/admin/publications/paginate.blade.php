@@ -3,17 +3,17 @@
         <td>{{$publication->id}}</td>
         <td>{{$publication->title}}</td>
         <td>{{$publication->getAuthorsString()}}</td>
-        <td style="display: flex">
+        <td class="d-flex">
             @if($isProfile ?? false)
                 <a href="{{route('profile.publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
 
-                <a class="fa fa-remove delete-publication" data-url="{{route('profile.publications.destroy',
+                <a href="#" class="fa fa-remove delete-publication" data-url="{{route('profile.publications.destroy',
                     $publication->id)}}"></a>
             @else
                 @can('moderate')
                     <a href="{{route('publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
 
-                    <a class="fa fa-remove delete-publication" data-url="{{route('publications.destroy',
+                    <a href="#" class="fa fa-remove delete-publication" data-url="{{route('publications.destroy',
                     $publication->id)}}"></a>
                 @endcan
             @endif
@@ -22,16 +22,23 @@
     </tr>
 @endforeach
 
-<tr>
-    <td colspan="5">
-        <div class="pull-right publications-paginator">
-            {{$publications->onEachSide(3)->links()}}
-        </div>
-    </td>
-</tr>
+@if($publications->total() > 1)
+    <tr>
+        <td colspan="5">
+            <div class="pull-right publications-paginator">
+                {{$publications->onEachSide(3)->links()}}
+            </div>
+        </td>
+    </tr>
+@endif
 
 <script>
-	paginate('.publications-paginator', '.publications-content', '{{route('publications.paginate')}}');
+	paginate({
+        paginator: '.publications-paginator',
+        content: '.publications-content',
+        url: '{{route('publications.paginate')}}',
+        form: '.publications-form'
+    });
 
 	remover('.delete-publication', '.crud-item');
 </script>

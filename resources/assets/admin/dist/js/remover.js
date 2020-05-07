@@ -28,3 +28,5 @@ function remover(deleteForm, item){
 		});
 	});
 }
+
+window.remover = remover;

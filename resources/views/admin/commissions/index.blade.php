@@ -26,19 +26,14 @@
                         </div>
                     @endcan
 
-                    <div class="pull-right">
-                        <form action="{{route('commissions.index')}}" class="form-inline">
-                            <input type="text" name="title" class="form-control"
+                    <div class="pull-right mb-3">
+                        <form class="form-inline commissions-form">
+                            <input type="text" name="name" class="form-control mr-2"
                                    placeholder="Пошук по назві"/>
 
                             <button class="btn btn-info">Пошук</button>
                         </form>
                     </div>
-
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
 
                     <table class="table table-bordered table-striped">
                         <thead>

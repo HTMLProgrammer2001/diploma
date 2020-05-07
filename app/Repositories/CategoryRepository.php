@@ -6,12 +6,15 @@ namespace App\Repositories;
 
 use App\InternCategory;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class CategoryRepository implements CategoryRepositoryInterface
+class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = InternCategory::class;
+
+    public function getModel(): Model
     {
-        return InternCategory::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -25,23 +28,11 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function update($id, $data)
     {
-        $category = InternCategory::findOrFail($id);
+        $category = InternCategory::query()->findOrFail($id);
         $category->fill($data);
         $category->save();
 
         return $category;
-    }
-
-    public function destroy($id)
-    {
-        InternCategory::destroy($id);
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return InternCategory::paginate($size);
     }
 
     public function getForCombo()

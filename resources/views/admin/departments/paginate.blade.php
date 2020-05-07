@@ -2,12 +2,12 @@
     <tr class="crud-item">
         <td>{{$department->id}}</td>
         <td>{{$department->name}}</td>
-        <td style="display: flex">
+        <td class="d-flex">
 
             @can('moderate')
                 <a href="{{route('departments.edit', $department->id)}}" class="fa fa-pencil"></a>
 
-                <a class="fa fa-remove delete-department" data-url="{{route('departments.destroy',
+                <a href="#" class="fa fa-remove delete-department" data-url="{{route('departments.destroy',
                     $department->id)}}"></a>
             @endcan
 
@@ -15,16 +15,23 @@
     </tr>
 @endforeach
 
-<tr>
-    <td colspan="10">
-        <div class="pull-right departments-paginator">
-            {{$departments->onEachSide(3)->links()}}
-        </div>
-    </td>
-</tr>
+@if($departments->lastPage() > 1)
+    <tr>
+        <td colspan="10">
+            <div class="pull-right departments-paginator">
+                {{$departments->onEachSide(3)->links()}}
+            </div>
+        </td>
+    </tr>
+@endif
 
 <script>
-	paginate('.departments-paginator', '.departments-content', '{{route('departments.paginate')}}');
+	paginate({
+        paginator: '.departments-paginator',
+        content: '.departments-content',
+        url: '{{route('departments.paginate')}}',
+        form: '.departments-form'
+    });
 
 	remover('.delete-department', '.crud-item');
 </script>

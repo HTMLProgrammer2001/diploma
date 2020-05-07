@@ -1,4 +1,4 @@
-<div class="tab-pane fade active in" id="publications" role="tabpanel"
+<div class="tab-pane active in" id="publications" role="tabpanel"
      aria-labelledby="home-tab">
     <h3>Публікації</h3>
 

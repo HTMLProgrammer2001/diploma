@@ -6,6 +6,7 @@ use App\Commission;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommissionsRequest;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
+use App\Repositories\Rules\LikeRule;
 use Illuminate\Http\Request;
 
 class CommissionsController extends Controller
@@ -17,9 +18,15 @@ class CommissionsController extends Controller
         $this->commissionRep = $commissionRep;
     }
 
-    public function paginate()
+    public function paginate(Request $request)
     {
-        $commissions = $this->commissionRep->paginate();
+        //fill rule array
+        $rules = [];
+
+        if($request->input('name'))
+            $rules[] = new LikeRule('name', $request->input('name'));
+
+        $commissions = $this->commissionRep->filterPaginate($rules);
 
         return view('admin.commissions.paginate', compact('commissions'));
     }

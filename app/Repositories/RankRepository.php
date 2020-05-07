@@ -6,12 +6,15 @@ namespace App\Repositories;
 
 use App\Rank;
 use App\Repositories\Interfaces\RankRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class RankRepository implements RankRepositoryInterface
+class RankRepository extends BaseRepository implements RankRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = Rank::class;
+
+    public function getModel(): Model
     {
-        return Rank::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -25,28 +28,16 @@ class RankRepository implements RankRepositoryInterface
 
     public function update($id, $data)
     {
-        $rank = Rank::findOrFail($id);
+        $rank = Rank::query()->findOrFail($id);
         $rank->fill($data);
         $rank->save();
 
         return $rank;
     }
 
-    public function destroy($id)
-    {
-        Rank::destroy($id);
-    }
-
     public function all()
     {
         return Rank::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Rank::paginate($size);
     }
 
     public function getForCombo()

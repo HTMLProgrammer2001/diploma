@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlacesRequest;
 use App\Repositories\Interfaces\PlaceRepositoryInterface;
+use Illuminate\Http\Request;
 
 class PlacesController extends Controller
 {
@@ -15,8 +16,9 @@ class PlacesController extends Controller
         $this->placeRep = $placeRep;
     }
 
-    public function paginate(){
-        $places = $this->placeRep->paginate();
+    public function paginate(Request $request){
+        $data = $request->all();
+        $places = $this->placeRep->filterPaginate($data);
 
         return view('admin.places.paginate', compact('places'));
     }

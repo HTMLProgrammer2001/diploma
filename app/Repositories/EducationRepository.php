@@ -6,12 +6,15 @@ namespace App\Repositories;
 
 use App\Education;
 use App\Repositories\Interfaces\EducationRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class EducationRepository implements EducationRepositoryInterface
+class EducationRepository extends BaseRepository implements EducationRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = Education::class;
+
+    public function getModel(): Model
     {
-        return Education::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -33,21 +36,9 @@ class EducationRepository implements EducationRepositoryInterface
         return $education;
     }
 
-    public function destroy($id)
-    {
-        Education::destroy($id);
-    }
-
     public function all()
     {
         return Education::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Education::paginate($size);
     }
 
     public function paginateForUser($user_id, ?int $size = null)

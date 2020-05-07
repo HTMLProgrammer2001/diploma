@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RanksRequest;
 use App\Repositories\Interfaces\RankRepositoryInterface;
+use App\Repositories\Rules\LikeRule;
+use Illuminate\Http\Request;
 
 class RanksController extends Controller
 {
@@ -15,9 +17,17 @@ class RanksController extends Controller
         $this->rankRep = $rankRep;
     }
 
-    public function paginate(){
-        $ranks = $this->rankRep->paginate();
+    public function paginate(Request $request){
+        //create rules
+        $rules = [];
 
+        if($request->input('name'))
+            $rules[] = new LikeRule('name', $request->input('name'));
+
+        //filter
+        $ranks = $this->rankRep->filterPaginate($rules);
+
+        //return result
         return view('admin.ranks.paginate', compact('ranks'));
     }
 

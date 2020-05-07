@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/admin.css">
     <title>Login</title>
 </head>
-<body style="display: flex">
-    <section class="content col-sm-6" style="justify-self: center">
+<body class="d-flex justify-content-center">
+    <section class="content col-sm-6">
     <!-- Default box -->
     <form action="{{route('login')}}" method="post">
         @csrf
@@ -20,7 +20,7 @@
                     Авторизація
                 </h3>
             </div>
-            <div class="box-body" style="display: flex; align-items: center; flex-direction: column">
+            <div class="box-body d-flex justify-content-center flex-column align-items-center">
                 @if(session('loginError'))
                     <div class="alert alert-danger">
                         {{session('loginError')}}

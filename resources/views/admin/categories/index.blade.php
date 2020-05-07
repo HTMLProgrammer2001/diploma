@@ -26,6 +26,15 @@
                         </div>
                     @endcan
 
+                        <div class="pull-right mb-3">
+                            <form class="form-inline categories-form">
+                                <input type="text" name="name" class="form-control mr-2"
+                                       placeholder="Пошук по назві"/>
+
+                                <button class="btn btn-info">Пошук</button>
+                            </form>
+                        </div>
+
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>

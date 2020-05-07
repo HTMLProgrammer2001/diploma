@@ -10,11 +10,15 @@ mix.styles([
 ], 'public/css/admin.css');
 
 mix.scripts([
+	'resources/assets/admin/bootstrap/js/jquery-2.2.4.min.js',
+	'resources/assets/admin/bootstrap/js/popper.min.js',
     'resources/assets/admin/bootstrap/js/bootstrap.min.js',
     'resources/assets/admin/plugins/select2/select2.full.min.js',
     'resources/assets/admin/plugins/datepicker/bootstrap-datepicker.js',
     'resources/assets/admin/dist/js/app.min.js',
-    'resources/assets/admin/dist/js/index.js'
+    'resources/assets/admin/dist/js/index.js',
+	'resources/assets/admin/dist/js/pagination.js',
+	'resources/assets/admin/dist/js/remover.js'
 ], 'public/js/admin.js');
 
 mix.copy('resources/assets/admin/bootstrap/fonts', 'public/fonts');
