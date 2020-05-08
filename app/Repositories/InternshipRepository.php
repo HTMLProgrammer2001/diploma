@@ -7,19 +7,20 @@ namespace App\Repositories;
 use App\Internship;
 use App\Repositories\Interfaces\InternshipRepositoryInterface;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
-class InternshipRepository implements InternshipRepositoryInterface
+class InternshipRepository extends BaseRepository implements InternshipRepositoryInterface
 {
-    private $qualificationRep;
+    private $qualificationRep, $model = Internship::class;
 
     public function __construct(QualificationRepositoryInterface $qualificationRep)
     {
         $this->qualificationRep = $qualificationRep;
     }
 
-    public function getById(int $id)
+    public function getModel(): Model
     {
-        return Internship::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -38,7 +39,7 @@ class InternshipRepository implements InternshipRepositoryInterface
 
     public function update($id, $data)
     {
-        $internship = Internship::findOrFail($id);
+        $internship = Internship::query()->findOrFail($id);
         $internship->fill($data);
 
         $internship->setCategory($data['category']);
@@ -50,20 +51,8 @@ class InternshipRepository implements InternshipRepositoryInterface
         return $internship;
     }
 
-    public function destroy($id)
-    {
-        Internship::destroy($id);
-    }
-
     public function all(){
         return Internship::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Internship::paginate($size);
     }
 
     public function getInternshipHoursOf(int $user_id): int

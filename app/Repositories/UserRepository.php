@@ -7,19 +7,20 @@ namespace App\Repositories;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Services\Interfaces\AvatarServiceInterface;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
-    private $avatarService;
+    private $avatarService, $model = User::class;
 
     public function __construct(AvatarServiceInterface $avatarService)
     {
         $this->avatarService = $avatarService;
     }
 
-    public function getById(int $id)
+    public function getModel(): Model
     {
-        return User::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -40,7 +41,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function update($id, $data)
     {
-        $user = User::findOrFail($id);
+        $user = User::query()->findOrFail($id);
         $user->fill($data);
 
         //generate secret values
@@ -74,13 +75,6 @@ class UserRepository implements UserRepositoryInterface
     public function all()
     {
         return User::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return User::paginate($size);
     }
 
     public function getForCombo()

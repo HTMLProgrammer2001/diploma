@@ -6,6 +6,10 @@ use App\Http\Requests\QualificationRequest;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
+use App\Repositories\Rules\DateLessRule;
+use App\Repositories\Rules\DateMoreRule;
+use App\Repositories\Rules\EqualRule;
+use Illuminate\Http\Request;
 
 class QualificationsController extends Controller
 {
@@ -18,8 +22,24 @@ class QualificationsController extends Controller
         $this->userRep = $userRep;
     }
 
-    public function paginate(){
-        $qualifications = $this->qualificationRep->paginate();
+    public function paginate(Request $request){
+        //create rules array
+        $rules = [];
+
+        //add rules
+        if($request->input('user'))
+            $rules[] = new EqualRule('user_id', $request->input('user'));
+
+        if($request->input('category'))
+            $rules[] = new EqualRule('name', $request->input('category'));
+
+        if($request->input('start_date'))
+            $rules[] = new DateMoreRule('date', $request->input('start_date'));
+
+        if($request->input('end_date'))
+            $rules[] = new DateLessRule('date', $request->input('end_date'));
+
+        $qualifications = $this->qualificationRep->filterPaginate($rules);
 
         return view('admin.qualifications.paginate', compact('qualifications'));
     }
@@ -27,8 +47,10 @@ class QualificationsController extends Controller
     public function index()
     {
         $qualifications = $this->qualificationRep->paginate();
+        $users = $this->userRep->getForCombo();
+        $categories = $this->qualificationRep->getQualificationNames();
 
-        return view('admin.qualifications.index', compact('qualifications'));
+        return view('admin.qualifications.index', compact('qualifications', 'categories', 'users'));
     }
 
     public function create()

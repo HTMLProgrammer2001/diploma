@@ -8,6 +8,13 @@ use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\InternshipRepositoryInterface;
 use App\Repositories\Interfaces\PlaceRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\Rules\DateLessRule;
+use App\Repositories\Rules\DateMoreRule;
+use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\LessEqualRule;
+use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\MoreEqualRule;
+use Illuminate\Http\Request;
 
 class InternshipsController extends Controller
 {
@@ -24,8 +31,33 @@ class InternshipsController extends Controller
         $this->placeRep = $placeRep;
     }
 
-    public function paginate(){
-        $internships = $this->internshipRep->paginate();
+    public function paginate(Request $request){
+        //create rules array
+        $rules = [];
+
+        //add rules
+        if($request->input('user'))
+            $rules[] = new EqualRule('user_id', $request->input('user'));
+
+        if($request->input('category'))
+            $rules[] = new EqualRule('category_id', $request->input('category'));
+
+        if($request->input('title'))
+            $rules[] = new LikeRule('title', $request->input('title'));
+
+        if($request->input('start_date'))
+            $rules[] = new DateMoreRule('to', $request->input('start_date'));
+
+        if($request->input('end_date'))
+            $rules[] = new DateLessRule('to', $request->input('end_date'));
+
+        if($request->input('start_hours'))
+            $rules[] = new MoreEqualRule('hours', $request->input('start_hours'));
+
+        if($request->input('end_hours'))
+            $rules[] = new LessEqualRule('hours', $request->input('end_hours'));
+
+        $internships = $this->internshipRep->filterPaginate($rules);
 
         return view('admin.internships.paginate', compact('internships'));
     }
@@ -33,8 +65,10 @@ class InternshipsController extends Controller
     public function index()
     {
         $internships = $this->internshipRep->paginate();
+        $users = $this->userRep->getForCombo();
+        $categories = $this->categoryRep->getForCombo();
 
-        return view('admin.internships.index', compact('internships'));
+        return view('admin.internships.index', compact('internships', 'users', 'categories'));
     }
 
     public function create()

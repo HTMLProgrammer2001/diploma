@@ -15,4 +15,6 @@ interface BaseRepositoryInterface
     public function getById(int $id);
 
     public function paginate(?int $size);
+
+    public function filterPaginate(array $rules, ?int $size = null);
 }

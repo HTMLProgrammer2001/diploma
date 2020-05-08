@@ -7,12 +7,15 @@ namespace App\Repositories;
 use App\Qualification;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
-class QualificationRepository implements QualificationRepositoryInterface
+class QualificationRepository extends BaseRepository implements QualificationRepositoryInterface
 {
-    public function getById(int $id)
+    private $model = Qualification::class;
+
+    public function getModel(): Model
     {
-        return Qualification::find($id);
+        return app($this->model);
     }
 
     public function create($data)
@@ -28,7 +31,7 @@ class QualificationRepository implements QualificationRepositoryInterface
 
     public function update($id, $data)
     {
-        $qualification = Qualification::findOrFail($id);
+        $qualification = Qualification::query()->findOrFail($id);
         $qualification->fill($data);
 
         $qualification->setUser($data['user']);
@@ -37,21 +40,9 @@ class QualificationRepository implements QualificationRepositoryInterface
         return $qualification;
     }
 
-    public function destroy($id)
-    {
-        Qualification::destroy($id);
-    }
-
     public function all()
     {
         return Qualification::all();
-    }
-
-    public function paginate(?int $size = null)
-    {
-        $size = $size ?? config('app.PAGINATE_SIZE', 10);
-
-        return Qualification::paginate($size);
     }
 
     public function paginateForUser($user_id, ?int $size = null)

@@ -48,7 +48,7 @@ class CommissionsController extends Controller
     public function store(CommissionsRequest $request)
     {
         //create new commission
-        $this->commissionRep->create($request);
+        $this->commissionRep->create($request->all());
 
         return redirect()->route('commissions.index');
     }
@@ -73,7 +73,7 @@ class CommissionsController extends Controller
     public function update(CommissionsRequest $request, $commission_id)
     {
         //update commission
-        $this->commissionRep->update($commission_id, $request);
+        $this->commissionRep->update($commission_id, $request->all());
 
         return redirect()->route('commissions.index');
     }

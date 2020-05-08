@@ -6,30 +6,37 @@
         <td>{{$qualification->date}}</td>
         <td>
             @if($isProfile ?? false)
-                <a class="fa fa-remove delete-qualification" data-url="{{route('profile.qualifications.destroy',
+                <a href="#" class="fa fa-remove delete-qualification" data-url="{{route('profile.qualifications.destroy',
                     $qualification->id)}}"></a>
             @else
                 @can('moderate')
                     <a href="{{route('qualifications.edit', $qualification->id)}}"
                         class="fa fa-pencil"></a>
 
-                    <a class="fa fa-remove delete-qualification" data-url="{{route('qualifications.destroy',
+                    <a href="#" class="fa fa-remove delete-qualification" data-url="{{route('qualifications.destroy',
                     $qualification->id)}}"></a>
                 @endcan
             @endif
     </tr>
 @endforeach
 
-<tr>
-    <td colspan="5">
-        <div class="pull-right qualifications-paginator">
-            {{$qualifications->onEachSide(3)->links()}}
-        </div>
-    </td>
-</tr>
+@if($qualifications->lastPage() > 1)
+    <tr>
+        <td colspan="5">
+            <div class="pull-right qualifications-paginator">
+                {{$qualifications->onEachSide(3)->links()}}
+            </div>
+        </td>
+    </tr>
+@endif
 
 <script>
-	paginate('.qualifications-paginator', '.qualifications-content', '{{route('qualifications.paginate')}}');
+	paginate({
+        paginator: '.qualifications-paginator',
+        content: '.qualifications-content',
+        form: '.qualifications-form',
+        url: '{{route('qualifications.paginate')}}'
+    });
 
 	remover('.delete-qualification', '.crud-item');
 </script>
