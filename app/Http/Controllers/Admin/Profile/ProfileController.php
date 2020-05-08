@@ -16,6 +16,7 @@ use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RankRepositoryInterface;
 use App\Repositories\Interfaces\RebukeRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Services\Storage\Interfaces\AvatarServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;

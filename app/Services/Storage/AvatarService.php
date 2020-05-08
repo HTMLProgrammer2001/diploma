@@ -1,13 +1,12 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\Storage;
 
 
-use App\Services\Interfaces\AvatarServiceInterface;
-use Illuminate\Http\UploadedFile;
+use App\Services\Storage\Interfaces\AvatarServiceInterface;
 
-class AvatarStorageService extends StorageService implements AvatarServiceInterface
+class AvatarService extends BaseStorage implements AvatarServiceInterface
 {
     const AVATAR_PATH = 'public/avatars/';
     const AVATAR_URL = '/storage/avatars/';

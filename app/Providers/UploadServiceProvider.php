@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Services\AvatarStorageService;
-use App\Services\Interfaces\AvatarServiceInterface;
+use App\Services\Storage\AvatarService;
+use App\Services\Storage\Interfaces\AvatarServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class UploadServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class UploadServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(AvatarServiceInterface::class, AvatarStorageService::class);
+        $this->app->singleton(AvatarServiceInterface::class, AvatarService::class);
     }
 
     /**

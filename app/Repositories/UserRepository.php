@@ -5,7 +5,7 @@ namespace App\Repositories;
 
 
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Services\Interfaces\AvatarServiceInterface;
+use App\Services\Storage\Interfaces\AvatarServiceInterface;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 

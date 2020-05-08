@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Services\Interfaces;
+namespace App\Services\Storage\Interfaces;
 
 
 interface FileServiceInterface

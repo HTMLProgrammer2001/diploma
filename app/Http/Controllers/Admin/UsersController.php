@@ -13,13 +13,17 @@ use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RankRepositoryInterface;
 use App\Repositories\Interfaces\RebukeRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Services\Interfaces\AvatarServiceInterface;
 use App\Http\Controllers\Controller;
+use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\RawRule;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
     private $commissionRep, $departmentRep, $rankRep, $userRep, $qualificationRep, $internshipRep,
-            $avatarService, $rebukeRep, $honorRep, $educationRep, $publicationRep;
+            $rebukeRep, $honorRep, $educationRep, $publicationRep;
 
     public function __construct(CommissionRepositoryInterface $commissionRep,
                                 DepartmentRepositoryInterface $departmentRep,
@@ -30,8 +34,7 @@ class UsersController extends Controller
                                 RebukeRepositoryInterface $rebukeRep,
                                 HonorRepositoryInterface $honorRepository,
                                 PublicationRepositoryInterface $publicationRep,
-                                EducationRepositoryInterface $educationRepository,
-                                AvatarServiceInterface $avatarService)
+                                EducationRepositoryInterface $educationRepository)
     {
         $this->commissionRep = $commissionRep;
         $this->departmentRep = $departmentRep;
@@ -43,11 +46,32 @@ class UsersController extends Controller
         $this->honorRep = $honorRepository;
         $this->educationRep = $educationRepository;
         $this->publicationRep = $publicationRep;
-        $this->avatarService = $avatarService;
     }
 
-    public function paginate(){
-        $users = $this->userRep->paginate();
+    public function paginate(Request $request){
+        //create rules
+        $rules = [];
+
+        if($request->input('name'))
+            $rules[] = new RawRule('CONCAT_WS(" ", `name`, `surname`, `patronymic`) like ?',
+                '%' . $request->input('name') . '%');
+
+        if($request->input('email'))
+            $rules[] = new LikeRule('email', $request->input('email'));
+
+        if($request->input('commission'))
+            $rules[] = new EqualRule('commission_id', $request->input('commission'));
+
+        if($request->input('department'))
+            $rules[] = new EqualRule('department_id', $request->input('department'));
+
+        if($request->input('rank'))
+            $rules[] = new EqualRule('rank_id', $request->input('rank'));
+
+        if($request->input('pedagogical'))
+            $rules[] = new LikeRule('pedagogical_title', $request->input('pedagogical'));
+
+        $users = $this->userRep->filterPaginate($rules);
 
         return view('admin.users.paginate', compact('users'));
     }
@@ -55,9 +79,13 @@ class UsersController extends Controller
     public function index()
     {
         $users = $this->userRep->paginate();
-        return view('admin.users.index', [
-            'users' => $users
-        ]);
+        $pedagogicals = $this->userRep->getPedagogicalTitles();
+        $commissions = $this->commissionRep->getForCombo();
+        $departments = $this->departmentRep->getForCombo();
+        $ranks = $this->rankRep->getForCombo();
+
+        return view('admin.users.index', compact('users', 'pedagogicals', 'commissions',
+            'departments', 'ranks'));
     }
 
     public function create()

@@ -1,14 +1,14 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\Storage;
 
 
-use App\Services\Interfaces\FileServiceInterface;
+use App\Services\Storage\Interfaces\FileServiceInterface;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class StorageService implements FileServiceInterface
+class BaseStorage implements FileServiceInterface
 {
     public function upload($file, string $path){
         if(!$file)

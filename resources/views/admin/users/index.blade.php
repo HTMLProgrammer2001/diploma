@@ -32,29 +32,60 @@
                                 <div class="row w-100">
                                     <div class="form-group col d-flex flex-column">
                                         <label for="name">Ім'я</label>
-                                        <input type="name" id="name" name="name" class="form-control"
-                                               placeholder="Назва публікації"/>
+                                        <input type="text" id="name" name="name" class="form-control"
+                                               placeholder="Ім'я викладача"/>
+                                    </div>
+
+                                    <div class="form-group col d-flex flex-column">
+                                        <label for="email">Email</label>
+                                        <input type="text" id="email" name="email" class="form-control"
+                                               placeholder="Email"/>
                                     </div>
                                 </div>
 
                                 <div class="row w-100">
                                     <div class="form-group d-flex flex-column col">
-                                        <label for="start_date_of_publication">З</label>
-
-                                        <input type="text" class="form-control pull-right calendar"
-                                               value="" name="start_date_of_publication"
-                                               id="start_date_of_publication" autocomplete="off">
+                                        <label for="commission">Циклова комісія</label>
+                                        <select class="form-control select2" id="commission" name="commission">
+                                            <option value="" selected>Всі</option>
+                                            @foreach($commissions as $commission)
+                                                <option value="{{$commission->id}}">{{$commission->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <div class="form-group d-flex flex-column col">
-                                        <label for="end_date_of_publication">До</label>
-
-                                        <input type="text" class="form-control pull-right calendar"
-                                               value="" name="end_date_of_publication"
-                                               id="end_date_of_publication" autocomplete="off">
+                                        <label for="department">Відділення</label>
+                                        <select class="form-control select2" id="department" name="department">
+                                            <option value="" selected>Всі</option>
+                                            @foreach($departments as $department)
+                                                <option value="{{$department->id}}">{{$department->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
+                                <div class="row w-100">
+                                    <div class="form-group d-flex flex-column col">
+                                        <label for="rank">Ранг</label>
+                                        <select class="form-control select2" id="rank" name="rank">
+                                            <option value="" selected>Всі</option>
+                                            @foreach($ranks as $rank)
+                                                <option value="{{$rank->id}}">{{$rank->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group d-flex flex-column col">
+                                        <label for="pedagogical">Педагогічне звання</label>
+                                        <select class="form-control select2" id="pedagogical" name="pedagogical">
+                                            <option value="" selected>Всі</option>
+                                            @foreach($pedagogicals as $pedagogical)
+                                                <option value="{{$pedagogical}}">{{$pedagogical}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <button class="btn btn-info w-50">Пошук</button>
                             </form>
