@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EducationsRequest;
 use App\Repositories\Interfaces\EducationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\LikeRule;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EducationsController extends Controller
@@ -18,9 +21,22 @@ class EducationsController extends Controller
         $this->educationRep = $educationRep;
     }
 
-    public function paginate(){
-        $user_id = Auth::user()->id;
-        $educations = $this->educationRep->paginateForUser($user_id);
+    public function paginate(Request $request){
+        //create rules array
+        $rules = [];
+
+        $rules[] = new EqualRule('user_id', Auth::user()->id);
+
+        if($request->input('qualification'))
+            $rules[] = new EqualRule('qualification', $request->input('qualification'));
+
+        if($request->input('name'))
+            $rules[] = new LikeRule('institution', $request->input('name'));
+
+        if($request->input('graduate_year'))
+            $rules[] = new EqualRule('graduate_year', $request->input('graduate_year'));
+
+        $educations = $this->educationRep->filterPaginate($rules);
 
         return view('admin.educations.paginate', [
             'educations' => $educations,

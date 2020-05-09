@@ -35,7 +35,7 @@
        paginator: '.honors-paginator',
        content: '.honors-content',
        form: '.honors-form',
-       url: '{{route('honors.paginate')}}'
+       url: '{{isset($isProfile) ? route('profile.honors.paginate') : route('honors.paginate')}}'
     });
 
 	remover('.delete-honor', '.crud-item');

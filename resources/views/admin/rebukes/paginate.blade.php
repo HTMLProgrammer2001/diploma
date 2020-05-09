@@ -35,7 +35,7 @@
         paginator: '.rebukes-paginator',
         content: '.rebukes-content',
         form: '.rebukes-form',
-        url: '{{route('rebukes.paginate')}}'
+        url: '{{isset($isProfile) ? route('profile.rebukes.paginate') : route('rebukes.paginate')}}'
     });
 
 	remover('.delete-rebuke', '.crud-item');

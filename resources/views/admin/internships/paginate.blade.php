@@ -37,7 +37,7 @@
         paginator: '.internships-paginator',
         content: '.internships-content',
         form: '.internships-form',
-        url: '{{route('internships.paginate')}}'
+        url: '{{isset($isProfile) ? route('profile.internships.paginate') : route('internships.paginate')}}'
     });
 
 	remover('.delete-internship', '.crud-item');

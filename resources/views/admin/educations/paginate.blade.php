@@ -40,7 +40,7 @@
         paginator: '.educations-paginator',
         content: '.educations-content',
         form: '.educations-form',
-        url: '{{route('educations.paginate')}}'
+        url: '{{isset($isProfile) ? route('profile.educations.paginate') : route('educations.paginate')}}'
     });
 
 	remover('.delete-education', '.crud-item');

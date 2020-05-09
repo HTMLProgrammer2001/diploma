@@ -35,7 +35,7 @@
         paginator: '.qualifications-paginator',
         content: '.qualifications-content',
         form: '.qualifications-form',
-        url: '{{route('qualifications.paginate')}}'
+        url: '{{isset($isProfile) ? route('profile.qualifications.paginate') : route('qualifications.paginate')}}'
     });
 
 	remover('.delete-qualification', '.crud-item');

@@ -7,7 +7,13 @@ use App\Http\Requests\PublicationRequest;
 use App\Publication;
 use App\Repositories\Interfaces\PublicationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\Rules\DateLessRule;
+use App\Repositories\Rules\DateMoreRule;
+use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\HasAssociateRule;
+use App\Repositories\Rules\LikeRule;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PublicationsController extends Controller
@@ -23,9 +29,23 @@ class PublicationsController extends Controller
         $this->publicationRep = $publicationRep;
     }
 
-    public function paginate(){
-        $user_id = Auth::user()->id;
-        $publications = $this->publicationRep->paginateForUser($user_id);
+    public function paginate(Request $request){
+        //create rules
+        $rules = [];
+
+        $rules[] = new HasAssociateRule('authors',
+            new EqualRule('users.id', Auth::user()->id));
+
+        if($request->input('title'))
+            $rules[] = new LikeRule('title', $request->input('title'));
+
+        if($request->input('start_date_of_publication'))
+            $rules[] = new DateMoreRule('date_of_publication', $request->input('start_date_of_publication'));
+
+        if($request->input('end_date_of_publication'))
+            $rules[] = new DateLessRule('date_of_publication', $request->input('end_date_of_publication'));
+
+        $publications = $this->publicationRep->filterPaginate($rules);
 
         return view('admin.publications.paginate', [
             'publications' => $publications,

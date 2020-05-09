@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\QualificationRequest;
 use App\Qualification;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
+use App\Repositories\Rules\DateLessRule;
+use App\Repositories\Rules\DateMoreRule;
+use App\Repositories\Rules\EqualRule;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class QualificationsController extends Controller
@@ -19,9 +23,23 @@ class QualificationsController extends Controller
         $this->qualificationRep = $qualificationRep;
     }
 
-    public function paginate(){
-        $user_id = Auth::user()->id;
-        $qualifications = $this->qualificationRep->paginateForUser($user_id);
+    public function paginate(Request $request){
+        //create rules array
+        $rules = [];
+
+        //add rules
+        $rules[] = new EqualRule('user_id', Auth::user()->id);
+
+        if($request->input('category'))
+            $rules[] = new EqualRule('name', $request->input('category'));
+
+        if($request->input('start_date'))
+            $rules[] = new DateMoreRule('date', $request->input('start_date'));
+
+        if($request->input('end_date'))
+            $rules[] = new DateLessRule('date', $request->input('end_date'));
+
+        $qualifications = $this->qualificationRep->filterPaginate($rules);
 
         return view('admin.qualifications.paginate', [
            'qualifications' => $qualifications,

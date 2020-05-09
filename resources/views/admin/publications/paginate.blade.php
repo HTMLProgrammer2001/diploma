@@ -37,7 +37,7 @@
 	paginate({
         paginator: '.publications-paginator',
         content: '.publications-content',
-        url: '{{route('publications.paginate')}}',
+        url: '{{isset($isProfile) ? route('profile.publications.paginate') : route('publications.paginate')}}',
         form: '.publications-form'
     });
 
