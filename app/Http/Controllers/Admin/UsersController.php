@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Education;
 use App\Http\Requests\UserRequest;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
 use App\Repositories\Interfaces\EducationRepositoryInterface;
@@ -23,7 +25,7 @@ use Illuminate\Support\Facades\DB;
 class UsersController extends Controller
 {
     private $commissionRep, $departmentRep, $rankRep, $userRep, $qualificationRep, $internshipRep,
-            $rebukeRep, $honorRep, $educationRep, $publicationRep;
+            $rebukeRep, $honorRep, $educationRep, $publicationRep, $categoryRep;
 
     public function __construct(CommissionRepositoryInterface $commissionRep,
                                 DepartmentRepositoryInterface $departmentRep,
@@ -34,7 +36,8 @@ class UsersController extends Controller
                                 RebukeRepositoryInterface $rebukeRep,
                                 HonorRepositoryInterface $honorRepository,
                                 PublicationRepositoryInterface $publicationRep,
-                                EducationRepositoryInterface $educationRepository)
+                                EducationRepositoryInterface $educationRepository,
+                                CategoryRepositoryInterface $categoryRep)
     {
         $this->commissionRep = $commissionRep;
         $this->departmentRep = $departmentRep;
@@ -46,6 +49,7 @@ class UsersController extends Controller
         $this->honorRep = $honorRepository;
         $this->educationRep = $educationRepository;
         $this->publicationRep = $publicationRep;
+        $this->categoryRep = $categoryRep;
     }
 
     public function paginate(Request $request){
@@ -120,16 +124,20 @@ class UsersController extends Controller
         $rebukes = $this->rebukeRep->paginateForUser($user_id);
         $honors = $this->honorRep->paginateForUser($user_id);
         $educations = $this->educationRep->paginateForUser($user_id);
+        $categories = $this->categoryRep->getForCombo();
 
         $isProfile = false;
 
         $userQualification = $this->qualificationRep->getQualificationNameOf($user->id);
         $internshipHours = $this->internshipRep->getInternshipHoursOf($user->id);
         $nextQualification = $this->qualificationRep->getNextQualificationDateOf($user->id);
+        $qCategories = $this->qualificationRep->getQualificationNames();
+        $qNames = Education::QUALIFICATIONS;
 
         return view('admin.profile.show.index',
             compact('user', 'publications', 'internships', 'qualifications', 'rebukes', 'honors',
-                'educations', 'isProfile', 'userQualification', 'internshipHours', 'nextQualification'));
+                'educations', 'isProfile', 'userQualification', 'internshipHours', 'nextQualification', 'categories',
+                'qCategories', 'qNames'));
     }
 
     public function edit($user_id)

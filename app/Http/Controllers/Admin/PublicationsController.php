@@ -74,7 +74,8 @@ class PublicationsController extends Controller
 
     public function show($id)
     {
-        return abort(404);
+        $publication = $this->publicationRep->getById($id);
+        return view('admin.publications.show', compact('publication'));
     }
 
     public function edit($publication_id)

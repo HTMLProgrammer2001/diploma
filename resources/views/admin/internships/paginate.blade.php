@@ -9,10 +9,15 @@
         <td>
 
             @if($isProfile ?? false)
+                <a href="{{route('internships.show', $internship->id)}}" class="fa fa-eye"></a>
                 <a href="{{route('profile.internships.edit', $internship->id)}}" class="fa fa-pencil"></a>
                 <a href="#" class="fa fa-remove delete-internship" data-url="{{route('profile.internships.destroy',
                     $internship->id)}}"></a>
             @else
+                @can('view')
+                    <a href="{{route('internships.show', $internship->id)}}" class="fa fa-eye"></a>
+                @endcan
+
                 @can('moderate')
                     <a href="{{route('internships.edit', $internship->id)}}" class="fa fa-pencil"></a>
                     <a href="#" class="fa fa-remove delete-internship" data-url="{{route('internships.destroy',

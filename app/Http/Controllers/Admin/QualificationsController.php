@@ -72,7 +72,9 @@ class QualificationsController extends Controller
 
     public function show($id)
     {
-        return abort(404);
+        $qualification = $this->qualificationRep->getById($id);
+
+        return view('admin.qualifications.show', compact('qualification'));
     }
 
     public function edit($qualification_id)

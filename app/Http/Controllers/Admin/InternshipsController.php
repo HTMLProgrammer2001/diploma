@@ -91,7 +91,9 @@ class InternshipsController extends Controller
 
     public function show($id)
     {
-        return abort(404);
+        $internship = $this->internshipRep->getById($id);
+
+        return view('admin.internships.show', compact('internship'));
     }
 
     public function edit($internship_id)
