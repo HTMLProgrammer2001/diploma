@@ -58,7 +58,8 @@
 
                                 <div class="form-group">
                                     <label for="description">Опис</label>
-                                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control" name="description" id="description"
+                                              cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>

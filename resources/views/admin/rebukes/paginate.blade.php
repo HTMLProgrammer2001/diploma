@@ -7,8 +7,12 @@
         <td class="d-flex">
 
             @if($isProfile ?? false)
-                <div></div>
+                <a href="{{route('rebukes.show', $rebuke->id)}}" class="fa fa-eye"></a>
             @else
+                @can('view')
+                    <a href="{{route('rebukes.show', $rebuke->id)}}" class="fa fa-eye"></a>
+                @endcan
+
                 @can('moderate')
                     <a href="{{route('rebukes.edit', $rebuke->id)}}" class="fa fa-pencil"></a>
                     <a href="#" class="fa fa-remove delete-rebuke"

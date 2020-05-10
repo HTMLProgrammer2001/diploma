@@ -7,8 +7,12 @@
         <td class="d-flex">
 
             @if($isProfile ?? false)
-                <div></div>
+                <a href="{{route('honors.show', $honor->id)}}" class="fa fa-eye"></a>
             @else
+                @can('view')
+                    <a href="{{route('honors.show', $honor->id)}}" class="fa fa-eye"></a>
+                @endcan
+
                 @can('moderate')
                     <a href="{{route('honors.edit', $honor->id)}}" class="fa fa-pencil"></a>
 

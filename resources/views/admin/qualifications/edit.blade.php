@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <label for="description">Опис</label>
-                                <textarea name="description" id="description" cols="30" rows="10">
+                                <textarea class="form-control" name="description" id="description" cols="30" rows="10">
                                     {!! $qualification->description !!}
                                 </textarea>
                             </div>

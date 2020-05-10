@@ -72,7 +72,9 @@ class HonorsController extends Controller
 
     public function show($id)
     {
-        return abort(404);
+        $honor = $this->honorRep->getById($id);
+
+        return view('admin.honors.show', compact('honor'));
     }
 
     public function edit($honor_id)

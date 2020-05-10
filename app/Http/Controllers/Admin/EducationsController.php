@@ -68,9 +68,11 @@ class EducationsController extends Controller
         return redirect()->route('educations.index');
     }
 
-    public function show()
+    public function show($id)
     {
-        return abort(404);
+        $education = $this->educationRep->getById($id);
+
+        return view('admin.educations.show', compact('education'));
     }
 
     public function edit($education_id)

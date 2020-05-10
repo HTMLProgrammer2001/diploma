@@ -8,11 +8,17 @@
         <td class="d-flex">
 
             @if($isProfile ?? false)
+                <a href="{{route('educations.show', $education->id)}}" class="fa fa-eye"></a>
+
                 <a href="{{route('profile.educations.edit', $education->id)}}"
                    class="fa fa-pencil"></a>
 
                 <a href="#" class="fa fa-remove delete-education" data-url="{{route('profile.educations.destroy', $education->id)}}"></a>
             @else
+                @can('view')
+                    <a href="{{route('educations.show', $education->id)}}" class="fa fa-eye"></a>
+                @endcan
+
                 @can('moderate')
                     <a href="{{route('educations.edit', $education->id)}}" class="fa fa-pencil"></a>
 

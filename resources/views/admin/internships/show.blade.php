@@ -54,9 +54,15 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <a href="{{url()->previous()}}">
+                    <a href="{{url()->previous()}}" class="pull-left">
                         <button type="button" class="btn btn-default">Назад</button>
                     </a>
+
+                    @can('moderate')
+                        <a href="{{route('internships.edit', $internship->id)}}" class="pull-right">
+                            <button type="button" class="btn btn-warning">Редагувати</button>
+                        </a>
+                    @endcan
                 </div>
                 <!-- /.box-footer-->
             </div>

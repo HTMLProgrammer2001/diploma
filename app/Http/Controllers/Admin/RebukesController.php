@@ -71,7 +71,9 @@ class RebukesController extends Controller
 
     public function show($id)
     {
-        return abort(404);
+        $rebuke = $this->rebukeRep->getById($id);
+
+        return view('admin.rebukes.show', compact('rebuke'));
     }
 
     public function edit($rebuke_id)
