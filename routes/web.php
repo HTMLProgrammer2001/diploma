@@ -61,6 +61,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
+        Route::get('/users/import', 'UsersController@getImport')->name('users.import');
+        Route::post('/users/import', 'UsersController@postImport');
+
         Route::resource('users', 'UsersController');
         Route::resource('commissions', 'CommissionsController');
         Route::resource('departments', 'DepartmentsController');

@@ -22,8 +22,12 @@
                 <div class="box-body">
 
                     @can('moderate')
-                        <div class="form-group">
+                        <div class="pull-left">
                             <a href="{{route('users.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+
+                        <div class="pull-right">
+                            <a href="{{route('users.import')}}" class="btn btn-info">Імпорт</a>
                         </div>
                     @endcan
 

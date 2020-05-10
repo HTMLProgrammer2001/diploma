@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Education;
 use App\Http\Requests\UserRequest;
+use App\Imports\UsersImport;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
@@ -20,7 +21,7 @@ use App\Repositories\Rules\EqualRule;
 use App\Repositories\Rules\LikeRule;
 use App\Repositories\Rules\RawRule;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
@@ -173,5 +174,19 @@ class UsersController extends Controller
         return response()->json([
             'status' => 'OK'
         ]);
+    }
+
+    public function getImport(){
+        return view('admin.users.import');
+    }
+
+    public function postImport(Request $request){
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xlsx'
+        ]);
+
+        Excel::import(new UsersImport,request()->file('file'));
+
+        return redirect()->back()->with('successMsg', 'Дані імпортовано');
     }
 }

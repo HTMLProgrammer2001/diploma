@@ -37,6 +37,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         $user->avatar = $this->avatarService->uploadAvatar($data['avatar'] ?? false);
         $user->save();
+
+        return $user;
     }
 
     public function update($id, $data)
