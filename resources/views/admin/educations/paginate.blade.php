@@ -8,7 +8,7 @@
         <td class="d-flex">
 
             @if($isProfile ?? false)
-                <a href="{{route('educations.show', $education->id)}}" class="fa fa-eye"></a>
+                <a href="{{route('profile.educations.show', $education->id)}}" class="fa fa-eye"></a>
 
                 <a href="{{route('profile.educations.edit', $education->id)}}"
                    class="fa fa-pencil"></a>

@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3928da75-97ac-4069-84af-e8aab5331d72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Diploma.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Diploma.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsPaginateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/InternshipsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/InternshipsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/PublicationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/QualificationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/QualificationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesPaginateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,10 +59,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/users/import.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+            <state relative-caret-position="192">
+              <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -80,29 +84,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Services/Storage/BaseStorage.php" />
-        <option value="$PROJECT_DIR$/app/Services/Storage/ImportService.php" />
         <option value="$PROJECT_DIR$/app/Providers/UploadServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Repositories/Rules/RawSelectRule.php" />
         <option value="$PROJECT_DIR$/app/Repositories/Rules/RawRule.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/profile/show/publications.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/PublicationsController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/profile/show/internships.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/InternshipsController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/profile/show/qualifications.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/QualificationsController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/profile/show/rebukes.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsPaginateController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesPaginateController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/ProfileController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/publications/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/PublicationsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/InternshipsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/QualificationsController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/qualifications/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/qualifications/edit.blade.php" />
@@ -111,11 +107,7 @@
         <option value="$PROJECT_DIR$/resources/views/admin/profile/qualifications/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/HonorsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/RebukesController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/EducationsController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/rebukes/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/qualifications/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/publications/show.blade.php" />
@@ -123,7 +115,6 @@
         <option value="$PROJECT_DIR$/resources/views/admin/honors/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/educations/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/config/excel.php" />
         <option value="$PROJECT_DIR$/app/Repositories/UserRepository.php" />
@@ -131,6 +122,19 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/errors.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/users/import.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/InternshipsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/QualificationsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/PublicationsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php" />
       </list>
     </option>
   </component>
@@ -293,7 +297,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="rebukes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -314,19 +318,19 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Repositories\Rules" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\storage\public\avatars\" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\storage\public\avatars" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\views\admin" />
-      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Http\Controllers\Admin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Services\Storage" />
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Services\Interfaces" />
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\assets\admin\plugins" />
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\admin\plugins" />
       <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\assets\admin\dist\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Repositories\Rules" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\storage\public\avatars\" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\storage\public\avatars" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\resources\views\admin" />
+      <recent name="D:\OSPanel\OSPanel\domains\Diploma\app\Http\Controllers\Admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -351,7 +355,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25642964" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2602118" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -364,7 +368,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.6649573" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.494705" visible="true" weight="0.33504274" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.494705" visible="true" weight="0.07521368" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.505295" side_tool="true" weight="0.13846155" />
       <window_info anchor="bottom" id="Database Console" order="11" weight="0.15897436" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -452,58 +456,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/honors.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="34" column="10" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="34" selection-end-column="10" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/rebukes.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="45" column="16" lean-forward="true" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsPaginateController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="40" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesPaginateController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="69" column="26" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="69" selection-end-column="26" />
-          <folding>
-            <element signature="e#890#3431#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/show/educations.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
           <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -610,13 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="8" column="97" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/QualificationsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1296">
@@ -628,48 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="76" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="11" column="95" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-192">
-          <caret line="12" column="91" selection-start-line="12" selection-start-column="91" selection-end-line="12" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="85" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="18" column="97" selection-start-line="18" selection-start-column="97" selection-end-line="18" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/EducationsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -715,13 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/ranks/index.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -746,13 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
           <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="64" column="67" selection-start-line="64" selection-start-column="67" selection-end-line="64" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -787,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="189" column="51" selection-start-line="189" selection-start-column="51" selection-end-line="189" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/errors.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -805,6 +691,118 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="191" column="1" lean-forward="true" selection-start-line="191" selection-start-column="1" selection-end-line="191" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/EducationsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="74" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/EducationsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="62" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/internships/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/educations/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/InternshipsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/PublicationsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="87" column="71" selection-start-line="87" selection-start-column="71" selection-end-line="87" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/QualificationsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/qualifications/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/publications/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/HonorsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Profile/RebukesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="143" column="34" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/honors/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/rebukes/paginate.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
         </state>
       </provider>
     </entry>

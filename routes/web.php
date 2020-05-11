@@ -131,11 +131,17 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::post('/educations/paginate', 'EducationsController@paginate')
             ->name('profile.educations.paginate');
 
-        Route::post('/rebukes/paginate', 'RebukesPaginateController')
+        Route::post('/rebukes/paginate', 'RebukesController@paginate')
             ->name('profile.rebukes.paginate');
 
-        Route::post('/honors/paginate', 'HonorsPaginateController')
+        Route::get('/rebukes/{id}', 'RebukesController@show')
+            ->name('profile.rebukes.show');
+
+        Route::post('/honors/paginate', 'HonorsController@paginate')
             ->name('profile.honors.paginate');
+
+        Route::get('/honors/{id}', 'HonorsController@show')
+            ->name('profile.honors.show');
 
         //user profile page routes
         Route::get('/', 'ProfileController@index')->name('profile.show');

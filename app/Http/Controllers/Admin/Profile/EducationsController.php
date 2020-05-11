@@ -56,6 +56,12 @@ class EducationsController extends Controller
         return redirect()->route('profile.show');
     }
 
+    public function show($id){
+        $education = $this->educationRep->getById($id);
+
+        return view('admin.educations.show', compact('education'));
+    }
+
     public function edit($education_id){
         $education = $this->educationRep->getById($education_id);
 

@@ -6,7 +6,7 @@
         <td>{{$qualification->date}}</td>
         <td>
             @if($isProfile ?? false)
-                <a href="{{route('qualifications.show', $qualification->id)}}" class="fa fa-eye"></a>
+                <a href="{{route('profile.qualifications.show', $qualification->id)}}" class="fa fa-eye"></a>
                 <a href="#" class="fa fa-remove delete-qualification" data-url="{{route('profile.qualifications.destroy',
                     $qualification->id)}}"></a>
             @else

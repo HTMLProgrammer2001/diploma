@@ -69,9 +69,11 @@ class QualificationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function show()
+    public function show($id)
     {
-        return abort(404);
+        $qualification = $this->qualificationRep->getById($id);
+
+        return view('admin.qualifications.show', compact('qualification'));
     }
 
     public function edit()

@@ -7,7 +7,7 @@
         <td class="d-flex">
 
             @if($isProfile ?? false)
-                <a href="{{route('rebukes.show', $rebuke->id)}}" class="fa fa-eye"></a>
+                <a href="{{route('profile.rebukes.show', $rebuke->id)}}" class="fa fa-eye"></a>
             @else
                 @can('view')
                     <a href="{{route('rebukes.show', $rebuke->id)}}" class="fa fa-eye"></a>

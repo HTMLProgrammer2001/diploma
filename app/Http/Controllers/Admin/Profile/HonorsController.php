@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Interfaces\RebukeRepositoryInterface;
+use App\Repositories\Interfaces\HonorRepositoryInterface;
 use App\Repositories\Rules\DateLessRule;
 use App\Repositories\Rules\DateMoreRule;
 use App\Repositories\Rules\EqualRule;
@@ -11,9 +11,22 @@ use App\Repositories\Rules\LikeRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RebukesPaginateController extends Controller
+class HonorsController extends Controller
 {
-    public function __invoke(Request $request, RebukeRepositoryInterface $rebukeRepository)
+    private $honorRep;
+
+    public function __construct(HonorRepositoryInterface $honorRep)
+    {
+        $this->honorRep = $honorRep;
+    }
+
+    public function show($id){
+        $honor = $this->honorRep->getById($id);
+
+        return view('admin.honors.show', compact('honor'));
+    }
+
+    public function paginate(Request $request)
     {
         //create rules for filter
         $rules = [];
@@ -31,10 +44,10 @@ class RebukesPaginateController extends Controller
             $rules[] = new DateLessRule('date_presentation',
                 $request->input('end_date_presentation'));
 
-        $rebukes = $rebukeRepository->filterPaginate($rules);
+        $honors = $this->honorRep->filterPaginate($rules);
 
-        return view('admin.rebukes.paginate', [
-            'rebukes' => $rebukes,
+        return view('admin.honors.paginate', [
+            'honors' => $honors,
             'isProfile' => true
         ]);
     }

@@ -81,9 +81,11 @@ class PublicationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function show()
+    public function show($id)
     {
-        return abort(404);
+        $publication = $this->publicationRep->getById($id);
+
+        return view('admin.publications.show', compact('publication'));
     }
 
     public function edit(Publication $publication)
