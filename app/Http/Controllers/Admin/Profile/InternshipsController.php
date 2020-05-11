@@ -30,7 +30,7 @@ class InternshipsController extends Controller
                                 CategoryRepositoryInterface $categoryRep,
                                 InternshipRepositoryInterface $internshipRep)
     {
-        //$this->authorizeResource(Internship::class, 'internship');
+        $this->authorizeResource(Internship::class, 'internship');
 
         $this->userRep = $userRep;
         $this->placeRep = $placeRep;
@@ -97,16 +97,12 @@ class InternshipsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function show($id){
-        $internship = $this->internshipRep->getById($id);
-
+    public function show(Internship $internship){
         return view('admin.internships.show', compact('internship'));
     }
 
-    public function edit($internship_id)
+    public function edit(Internship $internship)
     {
-        $internship = $this->internshipRep->getById($internship_id);
-
         if(!$internship)
             return abort(404);
 
@@ -118,18 +114,18 @@ class InternshipsController extends Controller
             compact('internship', 'places', 'users', 'categories'));
     }
 
-    public function update(InternshipsRequest $request, $internship_id)
+    public function update(InternshipsRequest $request, Internship $internship)
     {
         $data = $request->all();
         $data['user'] = Auth::user()->id;
-        $this->internshipRep->update($internship_id, $data);
+        $this->internshipRep->update($internship->id, $data);
 
         return redirect()->route('profile.show');
     }
 
-    public function destroy($internship_id)
+    public function destroy(Internship $internship)
     {
-        $this->internshipRep->destroy($internship_id);
+        $this->internshipRep->destroy($internship->id);
 
         return response()->json([
             'status' => 'OK'

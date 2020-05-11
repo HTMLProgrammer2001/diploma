@@ -2,6 +2,15 @@
 
 namespace App\Providers;
 
+use App\Internship;
+use App\Policies\InternshipPolicy;
+use App\Policies\PublicationPolicy;
+use App\Policies\QualificationPolicy;
+use App\Policies\RebukePolicy;
+use App\Publication;
+
+use App\Qualification;
+use App\Rebuke;
 use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -14,9 +23,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Publication' => 'App\Policies\PublicationPolicy',
-        'App\Internship' => 'App\Policies\InternshipPolicy',
-        'App\Qualification' => 'App\Policies\QualificationPolicy',
+        Publication::class => PublicationPolicy::class,
+        Internship::class => InternshipPolicy::class,
+        Qualification::class => QualificationPolicy::class,
+        Rebuke::class, RebukePolicy::class
     ];
 
     /**

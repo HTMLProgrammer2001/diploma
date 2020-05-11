@@ -23,41 +23,43 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
 
     //paginators
-    Route::post('/commissions/paginate', 'CommissionsController@paginate')
-        ->name('commissions.paginate');
+    Route::group(['middleware' => 'can:view'], function() {
+        Route::post('/commissions/paginate', 'CommissionsController@paginate')
+            ->name('commissions.paginate');
 
-    Route::post('/departments/paginate', 'DepartmentsController@paginate')
-        ->name('departments.paginate');
+        Route::post('/departments/paginate', 'DepartmentsController@paginate')
+            ->name('departments.paginate');
 
-    Route::post('/publications/paginate', 'PublicationsController@paginate')
-        ->name('publications.paginate');
+        Route::post('/publications/paginate', 'PublicationsController@paginate')
+            ->name('publications.paginate');
 
-    Route::post('/users/paginate', 'UsersController@paginate')
-        ->name('users.paginate');
+        Route::post('/users/paginate', 'UsersController@paginate')
+            ->name('users.paginate');
 
-    Route::post('/categories/paginate', 'CategoriesController@paginate')
-        ->name('categories.paginate');
+        Route::post('/categories/paginate', 'CategoriesController@paginate')
+            ->name('categories.paginate');
 
-    Route::post('/internships/paginate', 'InternshipsController@paginate')
-        ->name('internships.paginate');
+        Route::post('/internships/paginate', 'InternshipsController@paginate')
+            ->name('internships.paginate');
 
-    Route::post('/qualifications/paginate', 'QualificationsController@paginate')
-        ->name('qualifications.paginate');
+        Route::post('/qualifications/paginate', 'QualificationsController@paginate')
+            ->name('qualifications.paginate');
 
-    Route::post('/places/paginate', 'PlacesController@paginate')
-        ->name('places.paginate');
+        Route::post('/places/paginate', 'PlacesController@paginate')
+            ->name('places.paginate');
 
-    Route::post('/honors/paginate', 'HonorsController@paginate')
-        ->name('honors.paginate');
+        Route::post('/honors/paginate', 'HonorsController@paginate')
+            ->name('honors.paginate');
 
-    Route::post('/rebukes/paginate', 'RebukesController@paginate')
-        ->name('rebukes.paginate');
+        Route::post('/rebukes/paginate', 'RebukesController@paginate')
+            ->name('rebukes.paginate');
 
-    Route::post('/ranks/paginate', 'RanksController@paginate')
-        ->name('ranks.paginate');
+        Route::post('/ranks/paginate', 'RanksController@paginate')
+            ->name('ranks.paginate');
 
-    Route::post('/educations/paginate', 'EducationsController@paginate')
-        ->name('educations.paginate');
+        Route::post('/educations/paginate', 'EducationsController@paginate')
+            ->name('educations.paginate');
+    });
 
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){

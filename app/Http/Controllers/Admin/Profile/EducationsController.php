@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Profile;
 
+use App\Education;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EducationsRequest;
 use App\Repositories\Interfaces\EducationRepositoryInterface;
@@ -17,6 +18,8 @@ class EducationsController extends Controller
 
     public function __construct(UserRepositoryInterface $userRep, EducationRepositoryInterface $educationRep)
     {
+        $this->authorizeResource(Education::class);
+
         $this->userRep = $userRep;
         $this->educationRep = $educationRep;
     }
@@ -56,31 +59,27 @@ class EducationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function show($id){
-        $education = $this->educationRep->getById($id);
-
+    public function show(Education $education){
         return view('admin.educations.show', compact('education'));
     }
 
-    public function edit($education_id){
-        $education = $this->educationRep->getById($education_id);
-
+    public function edit(Education $education){
         if(!$education)
             return abort(404);
 
         return view('admin.profile.educations.edit', compact('education'));
     }
 
-    public function update(EducationsRequest $request, $education_id){
+    public function update(EducationsRequest $request, Education $education){
         $data = $request->all();
         $data['user'] = Auth::user()->id;
-        $this->educationRep->update($education_id, $data);
+        $this->educationRep->update($education->id, $data);
 
         return redirect()->route('profile.show');
     }
 
-    public function destroy($education_id){
-        $this->educationRep->destroy($education_id);
+    public function destroy(Education $education){
+        $this->educationRep->destroy($education->id);
 
         return response()->json([
             'result' => 'OK'

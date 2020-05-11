@@ -23,7 +23,7 @@ class PublicationsController extends Controller
     public function __construct(UserRepositoryInterface $userRep, PublicationRepositoryInterface $publicationRep)
     {
         //sync to publication policy
-        //$this->authorizeResource(Publication::class, 'publication');
+        $this->authorizeResource(Publication::class);
 
         $this->userRep = $userRep;
         $this->publicationRep = $publicationRep;
@@ -81,10 +81,8 @@ class PublicationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function show($id)
+    public function show(Publication $publication)
     {
-        $publication = $this->publicationRep->getById($id);
-
         return view('admin.publications.show', compact('publication'));
     }
 
@@ -95,7 +93,7 @@ class PublicationsController extends Controller
         return view('admin.profile.publications.edit', compact('users', 'publication'));
     }
 
-    public function update(PublicationRequest $request, $publication_id)
+    public function update(PublicationRequest $request, Publication $publication)
     {
         //check if current user in authors
         if(!in_array($request->user()->id, $request->get('authors')))
@@ -105,14 +103,14 @@ class PublicationsController extends Controller
 
         //create publication
         $data = $request->all();
-        $this->publicationRep->update($publication_id, $data);
+        $this->publicationRep->update($publication->id, $data);
 
         return redirect()->route('profile.show');
     }
 
-    public function destroy($publication_id)
+    public function destroy(Publication $publication)
     {
-        $this->publicationRep->destroy($publication_id);
+        $this->publicationRep->destroy($publication->id);
 
         return response()->json([
             'status' => 'OK'

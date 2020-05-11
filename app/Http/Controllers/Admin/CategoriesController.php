@@ -7,7 +7,6 @@ use App\Http\Requests\CategoriesRequest;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Rules\LikeRule;
 use Illuminate\Http\Request;
-use App\InternCategory;
 
 class CategoriesController extends Controller
 {

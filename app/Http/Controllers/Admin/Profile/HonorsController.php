@@ -23,6 +23,8 @@ class HonorsController extends Controller
     public function show($id){
         $honor = $this->honorRep->getById($id);
 
+        $this->authorize('view', $honor);
+
         return view('admin.honors.show', compact('honor'));
     }
 

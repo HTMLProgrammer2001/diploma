@@ -16,6 +16,9 @@ class RebukesController extends Controller
     public function show($id, RebukeRepositoryInterface $rebukeRepository){
         $rebuke = $rebukeRepository->getById($id);
 
+        //check root
+        $this->authorize('view', $rebuke);
+
         return view('admin.rebukes.show', compact('rebuke'));
     }
 

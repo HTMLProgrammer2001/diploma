@@ -18,7 +18,7 @@ class QualificationsController extends Controller
 
     public function __construct(QualificationRepositoryInterface $qualificationRep)
     {
-        //$this->authorizeResource(Qualification::class, 'qualification');
+        $this->authorizeResource(Qualification::class, 'qualification');
 
         $this->qualificationRep = $qualificationRep;
     }
@@ -69,10 +69,8 @@ class QualificationsController extends Controller
         return redirect()->route('profile.show');
     }
 
-    public function show($id)
+    public function show(Qualification $qualification)
     {
-        $qualification = $this->qualificationRep->getById($id);
-
         return view('admin.qualifications.show', compact('qualification'));
     }
 
@@ -86,9 +84,9 @@ class QualificationsController extends Controller
         return abort(404);
     }
 
-    public function destroy($qualification_id)
+    public function destroy(Qualification $qualification)
     {
-        $this->qualificationRep->destroy($qualification_id);
+        $this->qualificationRep->destroy($qualification->id);
 
         return response()->json([
             'status' => 'OK'
