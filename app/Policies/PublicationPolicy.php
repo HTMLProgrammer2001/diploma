@@ -12,13 +12,13 @@ class PublicationPolicy
 
     public function before(User $user)
     {
-        if($user->role <= User::ROLE_MODERATOR)
+        if($user->can('moderate'))
             return true;
     }
 
-    public function viewAny()
+    public function viewAny(User $user)
     {
-        return false;
+        return $user->can('view');
     }
 
     public function view(User $user, Publication $publication)

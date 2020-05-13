@@ -72,11 +72,41 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Викладач</th>
-                            <th>Заклад освіти</th>
-                            <th>Рік випуску</th>
-                            <th>Кваліфікація</th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>ID</span>
+                                    <span data-state="0" data-name="sortID"
+                                          class="educations-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Викладач</span>
+                                    <span data-state="0" data-name="sortUser"
+                                          class="educations-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Заклад освіти</span>
+                                    <span data-state="0" data-name="sortInstitution"
+                                          class="educations-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Рік випуску</span>
+                                    <span data-state="0" data-name="sortYear"
+                                          class="educations-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Кваліфікація</span>
+                                    <span data-state="0" data-name="sortQualification"
+                                          class="educations-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
                             <th>Дії</th>
                         </tr>
                         </thead>

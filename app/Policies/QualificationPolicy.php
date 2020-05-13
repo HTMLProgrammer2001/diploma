@@ -11,13 +11,13 @@ class QualificationPolicy
     use HandlesAuthorization;
 
     public function before(User $user, $abilities){
-        if($user->role <= User::ROLE_MODERATOR)
+        if($user->can('moderate'))
             return true;
     }
 
     public function viewAny(User $user)
     {
-        return false;
+        return $user->can('view');
     }
 
     public function view(User $user, Qualification $qualification)

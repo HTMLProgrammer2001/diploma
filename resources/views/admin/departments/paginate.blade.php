@@ -26,10 +26,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
         paginator: '.departments-paginator',
         content: '.departments-content',
         url: '{{route('departments.paginate')}}',
+        sort: '.departments-sort',
         form: '.departments-form'
     });
 

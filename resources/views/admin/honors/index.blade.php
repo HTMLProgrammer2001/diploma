@@ -72,10 +72,34 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Викладач</th>
-                            <th>Назва нагороди</th>
-                            <th>Дата видачі</th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>ID</span>
+                                    <span data-state="0" data-name="sortID"
+                                          class="honors-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Викладач</span>
+                                    <span data-state="0" data-name="sortUser"
+                                          class="honors-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Назва нагороди</span>
+                                    <span data-state="0" data-name="sortName"
+                                          class="honors-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Дата видачі</span>
+                                    <span data-state="0" data-name="sortDate"
+                                          class="honors-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
                             <th>Дії</th>
                         </tr>
                         </thead>

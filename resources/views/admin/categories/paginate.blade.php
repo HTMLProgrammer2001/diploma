@@ -24,10 +24,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
         paginator: '.categories-paginator',
         content: '.categories-content',
         url: '{{route('categories.paginate')}}',
+        sort: '.categories-sort',
         form: '.categories-form'
     });
 

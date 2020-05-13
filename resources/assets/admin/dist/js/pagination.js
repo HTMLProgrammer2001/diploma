@@ -1,6 +1,8 @@
-function paginate({paginator, content, url, form, callback}){
-	if($(form))
-		$(form).one('submit', function (e) {
+function table({paginator, content, url, form, sort, callback}){
+	if($(form)) {
+		$(form).off('submit');
+
+		$(form).on('submit', function (e) {
 			e.preventDefault();
 
 			$(paginator).find('.active').toggleClass('active');
@@ -8,6 +10,33 @@ function paginate({paginator, content, url, form, callback}){
 
 			getData(url, 1, content, new FormData(this));
 		});
+	}
+
+	if($(sort)) {
+		$(sort).off('click');
+
+		$(sort).on('click', function (e) {
+			let state = +$(this).attr('data-state');
+			state = (state + 1) % 3;
+
+			switch (state) {
+				case 0:
+					$(this).addClass('opacity-5').addClass('fa-sort-amount-asc').removeClass('fa-sort-amount-desc');
+					break;
+				case 1:
+					$(this).removeClass('opacity-5');
+					break;
+				default:
+					$(this).removeClass('fa-sort-amount-asc').addClass('fa-sort-amount-desc');
+			}
+
+			$(this).attr('data-state', state);
+
+			getData(url, 1, content, new FormData($(form)[0]));
+
+			$(this).off('click');
+		});
+	}
 
 	$(paginator).find('.page-link').on('click', (e) => {
 		e.preventDefault();
@@ -30,7 +59,17 @@ function paginate({paginator, content, url, form, callback}){
 		$(e.target).closest('.page-item').addClass('active');
 	});
 
+	function addSortData(formData){
+		let sortValues = $(sort).filter(':not([data-state=0])');
+
+		sortValues.each((index, elem) => {
+			formData.append($(elem).attr('data-name'), $(elem).attr('data-state'));
+		});
+	}
+
 	function getData(url, page, table, data){
+		addSortData(data);
+
 		$(table).empty().html('Загрузка...');
 
 		$.ajax({
@@ -55,4 +94,4 @@ function paginate({paginator, content, url, form, callback}){
 	}
 }
 
-window.paginate = paginate;
+window.table = table;

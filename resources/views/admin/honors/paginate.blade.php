@@ -35,10 +35,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
        paginator: '.honors-paginator',
        content: '.honors-content',
        form: '.honors-form',
+       sort: '.honors-sort',
        url: '{{isset($isProfile) ? route('profile.honors.paginate') : route('honors.paginate')}}'
     });
 

@@ -42,8 +42,7 @@ class User extends Authenticatable
     //User roles
     const ROLE_ADMIN = 1;
     const ROLE_MODERATOR = 10;
-    const ROLE_DEPARTMENT_DIRECTORY = 20;
-    const ROLE_COMMISSION_DIRECTORY = 30;
+    const ROLE_VIEWER = 30;
     const ROLE_USER = 50;
 
     //Relations
@@ -149,33 +148,16 @@ class User extends Authenticatable
     }
 
     public function getRoleString(){
-        switch ($this->role){
-            case self::ROLE_ADMIN:
-                return 'Адміністратор';
+        $roles = self::getRolesArray();
 
-            case self::ROLE_MODERATOR:
-                return 'Модератор';
-
-            case self::ROLE_DEPARTMENT_DIRECTORY:
-                return 'Голова відділення';
-
-            case self::ROLE_COMMISSION_DIRECTORY:
-                return 'Голова циклової комісії';
-
-            case self::ROLE_USER:
-                return 'Користувач';
-
-            default:
-                return null;
-        }
+        return $roles[$this->role] ?? null;
     }
 
     public static function getRolesArray(){
         return [
           self::ROLE_ADMIN => 'Адміністратор',
           self::ROLE_MODERATOR => 'Модератор',
-          self::ROLE_DEPARTMENT_DIRECTORY => 'Голова відділу',
-          self::ROLE_COMMISSION_DIRECTORY => 'Голова циклової комісії',
+          self::ROLE_VIEWER => 'Переглядач',
           self::ROLE_USER => 'Користувач',
         ];
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentsRequest;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
 use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 
 class DepartmentsController extends Controller
@@ -24,6 +25,12 @@ class DepartmentsController extends Controller
 
         if($request->input('name'))
             $rules[] = new LikeRule('name', $request->input('name'));
+
+        if($request->input('sortID'))
+            $rules[] = new SortRule('id', $request->input('sortID') == 1 ? 'ASC' : 'DESC');
+
+        if($request->input('sortName'))
+            $rules[] = new SortRule('name', $request->input('sortName') == 1 ? 'ASC' : 'DESC');
 
         //filter
         $departments = $this->departmentRep->filterPaginate($rules);

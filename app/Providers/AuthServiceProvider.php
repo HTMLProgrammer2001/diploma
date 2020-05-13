@@ -43,7 +43,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('view', function(User $user){
-            return $user->role <= User::ROLE_COMMISSION_DIRECTORY;
+            return $user->role <= User::ROLE_VIEWER;
         });
     }
 }
