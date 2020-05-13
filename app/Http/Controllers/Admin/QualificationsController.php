@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Rules\DateLessRule;
 use App\Repositories\Rules\DateMoreRule;
 use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\SortAssociateRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 
 class QualificationsController extends Controller
@@ -22,23 +24,41 @@ class QualificationsController extends Controller
         $this->userRep = $userRep;
     }
 
-    public function paginate(Request $request){
-        //create rules array
+    private function createRule(array $data): array {
         $rules = [];
 
         //add rules
-        if($request->input('user'))
-            $rules[] = new EqualRule('user_id', $request->input('user'));
+        if($data['user'] ?? false)
+            $rules[] = new EqualRule('user_id', $data['user']);
 
-        if($request->input('category'))
-            $rules[] = new EqualRule('name', $request->input('category'));
+        if($data['category'] ?? false)
+            $rules[] = new EqualRule('name', $data['category']);
 
-        if($request->input('start_date'))
-            $rules[] = new DateMoreRule('date', $request->input('start_date'));
+        if($data['start_date'] ?? false)
+            $rules[] = new DateMoreRule('date', $data['start_date']);
 
-        if($request->input('end_date'))
-            $rules[] = new DateLessRule('date', $request->input('end_date'));
+        if($data['end_date'] ?? false)
+            $rules[] = new DateLessRule('date', $data['end_date']);
 
+        if($data['sortID'] ?? false)
+            $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortUser'] ?? false)
+            $rules[] = new SortAssociateRule(['users', 'users.id', '=', 'qualifications.user_id'],
+                'qualifications.*', 'users.surname', $data['sortUser'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortCategory'] ?? false)
+            $rules[] = new SortRule('name', $data['sortCategory'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortDate'] ?? false)
+            $rules[] = new SortRule('date', $data['sortDate'] == 1 ? 'ASC' : 'DESC');
+
+        return $rules;
+    }
+
+    public function paginate(Request $request){
+        //create rules array
+        $rules = $this->createRule($request->input());
         $qualifications = $this->qualificationRep->filterPaginate($rules);
 
         return view('admin.qualifications.paginate', compact('qualifications'));

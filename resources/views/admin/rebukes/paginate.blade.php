@@ -35,10 +35,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
         paginator: '.rebukes-paginator',
         content: '.rebukes-content',
         form: '.rebukes-form',
+        sort: '.rebukes-sort',
         url: '{{isset($isProfile) ? route('profile.rebukes.paginate') : route('rebukes.paginate')}}'
     });
 

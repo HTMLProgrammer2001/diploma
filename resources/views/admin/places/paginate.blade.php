@@ -27,10 +27,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
        paginator: '.places-paginator',
        content: '.places-content',
        form: '.places-form',
+       sort: '.places-sort',
        url: '{{route('places.paginate')}}'
     });
 

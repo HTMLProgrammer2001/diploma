@@ -38,8 +38,20 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Назва розряду</th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>ID</span>
+                                    <span data-state="0" data-name="sortID"
+                                          class="ranks-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Назва розряду</span>
+                                    <span data-state="0" data-name="sortName"
+                                          class="ranks-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
                             <th>Дії</th>
                         </tr>
                         </thead>

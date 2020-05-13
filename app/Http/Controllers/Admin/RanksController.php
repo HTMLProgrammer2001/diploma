@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RanksRequest;
 use App\Repositories\Interfaces\RankRepositoryInterface;
 use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 
 class RanksController extends Controller
@@ -23,6 +24,12 @@ class RanksController extends Controller
 
         if($request->input('name'))
             $rules[] = new LikeRule('name', $request->input('name'));
+
+        if($request->input('sortID'))
+            $rules[] = new SortRule('id', $request->input('sortID') == 1 ? 'ASC' : 'DESC');
+
+        if($request->input('sortName'))
+            $rules[] = new SortRule('name', $request->input('sortName') == 1 ? 'ASC' : 'DESC');
 
         //filter
         $ranks = $this->rankRep->filterPaginate($rules);

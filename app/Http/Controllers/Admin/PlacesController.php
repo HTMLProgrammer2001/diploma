@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PlacesRequest;
 use App\Repositories\Interfaces\PlaceRepositoryInterface;
 use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 
 class PlacesController extends Controller
@@ -26,6 +27,15 @@ class PlacesController extends Controller
 
         if($request->input('address'))
             $rules[] = new LikeRule('address', $request->input('address'));
+
+        if($request->input('sortID'))
+            $rules[] = new SortRule('id', $request->input('sortID') == 1 ? 'ASC' : 'DESC');
+
+        if($request->input('sortName'))
+            $rules[] = new SortRule('name', $request->input('sortName') == 1 ? 'ASC' : 'DESC');
+
+        if($request->input('sortAddress'))
+            $rules[] = new SortRule('address', $request->input('sortAddress') == 1 ? 'ASC' : 'DESC');
 
         $places = $this->placeRep->filterPaginate($rules);
 

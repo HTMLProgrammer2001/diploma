@@ -24,10 +24,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
        paginator: '.ranks-paginator',
        content: '.ranks-content',
        url: '{{route('ranks.paginate')}}',
+       sort: '.ranks-sort',
        form: '.ranks-form'
     });
 

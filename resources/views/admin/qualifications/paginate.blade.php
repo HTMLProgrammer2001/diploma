@@ -36,10 +36,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
         paginator: '.qualifications-paginator',
         content: '.qualifications-content',
         form: '.qualifications-form',
+        sort: '.qualifications-sort',
         url: '{{isset($isProfile) ? route('profile.qualifications.paginate') : route('qualifications.paginate')}}'
     });
 

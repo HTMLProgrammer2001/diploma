@@ -41,9 +41,27 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Назва закладу</th>
-                            <th>Адреса закладу</th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>ID</span>
+                                    <span data-state="0" data-name="sortID"
+                                          class="places-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Назва закладу</span>
+                                    <span data-state="0" data-name="sortName"
+                                          class="places-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Адреса</span>
+                                    <span data-state="0" data-name="sortAddress"
+                                          class="places-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
                             <th>Дії</th>
                         </tr>
                         </thead>
