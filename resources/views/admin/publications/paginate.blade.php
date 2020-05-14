@@ -38,11 +38,12 @@
 @endif
 
 <script>
-	paginate({
+	table({
         paginator: '.publications-paginator',
         content: '.publications-content',
         url: '{{isset($isProfile) ? route('profile.publications.paginate') : route('publications.paginate')}}',
-        form: '.publications-form'
+        form: '.publications-form',
+        sort: '.publications-sort'
     });
 
 	remover('.delete-publication', '.crud-item');

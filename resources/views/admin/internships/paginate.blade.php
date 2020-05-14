@@ -38,10 +38,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
         paginator: '.internships-paginator',
         content: '.internships-content',
         form: '.internships-form',
+        sort: '.internships-sort',
         url: '{{isset($isProfile) ? route('profile.internships.paginate') : route('internships.paginate')}}'
     });
 

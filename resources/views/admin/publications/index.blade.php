@@ -72,10 +72,28 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Назва</th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>ID</span>
+                                    <span data-state="0" data-name="sortID"
+                                          class="publications-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Назва</span>
+                                    <span data-state="0" data-name="sortName"
+                                          class="publications-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
                             <th>Автори</th>
-                            <th>Дата публікації</th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Дата публікації</span>
+                                    <span data-state="0" data-name="sortDate"
+                                          class="publications-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
                             <th>Дії</th>
                         </tr>
                         </thead>

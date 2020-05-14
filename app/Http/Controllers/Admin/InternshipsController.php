@@ -14,6 +14,8 @@ use App\Repositories\Rules\EqualRule;
 use App\Repositories\Rules\LessEqualRule;
 use App\Repositories\Rules\LikeRule;
 use App\Repositories\Rules\MoreEqualRule;
+use App\Repositories\Rules\SortAssociateRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 
 class InternshipsController extends Controller
@@ -31,32 +33,58 @@ class InternshipsController extends Controller
         $this->placeRep = $placeRep;
     }
 
-    public function paginate(Request $request){
-        //create rules array
+    private function createRule(array $data): array {
         $rules = [];
 
         //add rules
-        if($request->input('user'))
-            $rules[] = new EqualRule('user_id', $request->input('user'));
+        if($data['user'] ?? false)
+            $rules[] = new EqualRule('user_id', $data['user']);
 
-        if($request->input('category'))
-            $rules[] = new EqualRule('category_id', $request->input('category'));
+        if($data['category'] ?? false)
+            $rules[] = new EqualRule('category_id', $data['category']);
 
-        if($request->input('title'))
-            $rules[] = new LikeRule('title', $request->input('title'));
+        if($data['title'] ?? false)
+            $rules[] = new LikeRule('title', $data['title']);
 
-        if($request->input('start_date'))
-            $rules[] = new DateMoreRule('to', $request->input('start_date'));
+        if($data['start_date'] ?? false)
+            $rules[] = new DateMoreRule('to', $data['start_date']);
 
-        if($request->input('end_date'))
-            $rules[] = new DateLessRule('to', $request->input('end_date'));
+        if($data['end_date'] ?? false)
+            $rules[] = new DateLessRule('to', $data['end_date']);
 
-        if($request->input('start_hours'))
-            $rules[] = new MoreEqualRule('hours', $request->input('start_hours'));
+        if($data['start_hours'] ?? false)
+            $rules[] = new MoreEqualRule('hours', $data['start_hours']);
 
-        if($request->input('end_hours'))
-            $rules[] = new LessEqualRule('hours', $request->input('end_hours'));
+        if($data['end_hours'] ?? false)
+            $rules[] = new LessEqualRule('hours', $data['end_hours']);
 
+        if($data['sortID'] ?? false)
+            $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortUser'] ?? false)
+            $rules[] = new SortAssociateRule(['users', 'users.id', '=', 'internships.user_id'], 'internships.*',
+                'users.surname', $data['sortUser'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortCategory'] ?? false)
+            $rules[] = new SortAssociateRule(
+                ['internship_categories', 'internship_categories.id', '=', 'internships.category_id'],
+                'internships.*', 'internship_categories.name', $data['sortCategory'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortName'] ?? false)
+            $rules[] = new SortRule('title', $data['sortName'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortHours'] ?? false)
+            $rules[] = new SortRule('hours', $data['sortHours'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortDate'] ?? false)
+            $rules[] = new SortRule('to', $data['sortDate'] == 1 ? 'ASC' : 'DESC');
+
+        return $rules;
+    }
+
+    public function paginate(Request $request){
+        //create rules array
+        $rules = $this->createRule($request->input());
         $internships = $this->internshipRep->filterPaginate($rules);
 
         return view('admin.internships.paginate', compact('internships'));

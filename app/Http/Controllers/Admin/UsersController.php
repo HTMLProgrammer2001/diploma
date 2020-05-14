@@ -20,6 +20,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Rules\EqualRule;
 use App\Repositories\Rules\LikeRule;
 use App\Repositories\Rules\RawRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -53,29 +54,43 @@ class UsersController extends Controller
         $this->categoryRep = $categoryRep;
     }
 
-    public function paginate(Request $request){
-        //create rules
+    private function createRule(array $data): array {
         $rules = [];
 
-        if($request->input('name'))
+        if($data['name'] ?? false)
             $rules[] = new RawRule('CONCAT_WS(" ", `name`, `surname`, `patronymic`) like ?',
-                '%' . $request->input('name') . '%');
+                '%' . $data['name'] . '%');
 
-        if($request->input('email'))
-            $rules[] = new LikeRule('email', $request->input('email'));
+        if($data['email'] ?? false)
+            $rules[] = new LikeRule('email', $data['email']);
 
-        if($request->input('commission'))
-            $rules[] = new EqualRule('commission_id', $request->input('commission'));
+        if($data['commission'] ?? false)
+            $rules[] = new EqualRule('commission_id', $data['commission']);
 
-        if($request->input('department'))
-            $rules[] = new EqualRule('department_id', $request->input('department'));
+        if($data['department'] ?? false)
+            $rules[] = new EqualRule('department_id', $data['department']);
 
-        if($request->input('rank'))
-            $rules[] = new EqualRule('rank_id', $request->input('rank'));
+        if($data['rank'] ?? false)
+            $rules[] = new EqualRule('rank_id', $data['rank']);
 
-        if($request->input('pedagogical'))
-            $rules[] = new LikeRule('pedagogical_title', $request->input('pedagogical'));
+        if($data['pedagogical'] ?? false)
+            $rules[] = new LikeRule('pedagogical_title', $data['pedagogical']);
 
+        if($data['sortID'] ?? false)
+            $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortName'] ?? false)
+            $rules[] = new SortRule('name', $data['sortName'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortEmail'] ?? false)
+            $rules[] = new SortRule('email', $data['sortEmail'] == 1 ? 'ASC' : 'DESC');
+
+        return $rules;
+    }
+
+    public function paginate(Request $request){
+        //create rules
+        $rules = $this->createRule($request->input());
         $users = $this->userRep->filterPaginate($rules);
 
         return view('admin.users.paginate', compact('users'));

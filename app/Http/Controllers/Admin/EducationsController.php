@@ -54,7 +54,7 @@ class EducationsController extends Controller
             $rules[] = new SortRule('qualification',
                 $data['sortQualification'] == 1 ? 'ASC' : 'DESC');
 
-        if($data['sortUser'])
+        if($data['sortUser'] ?? false)
             $rules[] = new SortAssociateRule(['users', 'users.id', '=', 'educations.user_id'], 'educations.*',
                 'users.surname', $data['sortUser'] == 1 ? 'ASC' : 'DESC');
 

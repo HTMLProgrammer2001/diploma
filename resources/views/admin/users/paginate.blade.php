@@ -28,10 +28,11 @@
 @endif
 
 <script>
-	paginate({
+	table({
         paginator: '.user-paginator',
         content: '.user-content',
         form: '.user-form',
+        sort: '.users-sort',
         url: '{{route('users.paginate')}}'
     });
 

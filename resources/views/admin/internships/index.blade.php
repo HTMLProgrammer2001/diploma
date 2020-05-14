@@ -103,12 +103,48 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Користувач</th>
-                            <th>Категорія</th>
-                            <th>Тема</th>
-                            <th>Кількість годин</th>
-                            <th>Дата закінчення</th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>ID</span>
+                                    <span data-state="0" data-name="sortID"
+                                          class="internships-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Користувач</span>
+                                    <span data-state="0" data-name="sortUser"
+                                          class="internships-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Категорія</span>
+                                    <span data-state="0" data-name="sortCategory"
+                                          class="internships-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Тема</span>
+                                    <span data-state="0" data-name="sortName"
+                                          class="internships-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Кількість годин</span>
+                                    <span data-state="0" data-name="sortHours"
+                                          class="internships-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span>Дата закінчення</span>
+                                    <span data-state="0" data-name="sortDate"
+                                          class="internships-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
                             <th>Дії</th>
                         </tr>
                         </thead>

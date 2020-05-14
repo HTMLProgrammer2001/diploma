@@ -11,6 +11,7 @@ use App\Repositories\Rules\DateMoreRule;
 use App\Repositories\Rules\EqualRule;
 use App\Repositories\Rules\HasAssociateRule;
 use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 
 class PublicationsController extends Controller
@@ -24,25 +25,39 @@ class PublicationsController extends Controller
         $this->userRep = $userRep;
     }
 
-    public function paginate(Request $request){
-        //create rules array
+    private function createRule(array $data): array {
         $rules = [];
 
-        if($request->input('title'))
-            $rules[] = new LikeRule('title', $request->input('title'));
+        if($data['title'] ?? false)
+            $rules[] = new LikeRule('title', $data['title']);
 
-        if($request->input('user'))
+        if($data['user'] ?? false)
             $rules[] = new HasAssociateRule('authors',
-                new EqualRule('users.id', $request->input('user')));
+                new EqualRule('users.id', $data['user']));
 
-        if($request->input('start_date_of_publication'))
+        if($data['start_date_of_publication'] ?? false)
             $rules[] = new DateMoreRule('date_of_publication',
-                $request->input('start_date_of_publication'));
+                $data['start_date_of_publication']);
 
-        if($request->input('end_date_of_publication'))
+        if($data['end_date_of_publication'] ?? false)
             $rules[] = new DateLessRule('date_of_publication',
-                $request->input('end_date_of_publication'));
+                $data['end_date_of_publication']);
 
+        if($data['sortID'] ?? false)
+            $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortName'] ?? false)
+            $rules[] = new SortRule('title', $data['sortName'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortDate'] ?? false)
+            $rules[] = new SortRule('date_of_publication', $data['sortDate'] == 1 ? 'ASC' : 'DESC');
+
+        return $rules;
+    }
+
+    public function paginate(Request $request){
+        //create rules array
+        $rules = $this->createRule($request->input());
         $publications = $this->publicationRep->filterPaginate($rules);
 
         return view('admin.publications.paginate', compact('publications'));
