@@ -37,10 +37,28 @@
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>
+                <div class="d-flex justify-content-between w-100">
+                    <span>ID</span>
+                    <span data-state="0" data-name="sortID"
+                          class="rebukes-sort fa fa-sort-amount-asc opacity-5"></span>
+                </div>
+            </th>
             <th>Викладач</th>
-            <th>Назва догани</th>
-            <th>Дата отримання</th>
+            <th>
+                <div class="d-flex justify-content-between w-100">
+                    <span>Назва догани</span>
+                    <span data-state="0" data-name="sortName"
+                          class="rebukes-sort fa fa-sort-amount-asc opacity-5"></span>
+                </div>
+            </th>
+            <th>
+                <div class="d-flex justify-content-between w-100">
+                    <span>Дата отримання</span>
+                    <span data-state="0" data-name="sortDate"
+                          class="rebukes-sort fa fa-sort-amount-asc opacity-5"></span>
+                </div>
+            </th>
             <th>Дії</th>
         </tr>
         </thead>

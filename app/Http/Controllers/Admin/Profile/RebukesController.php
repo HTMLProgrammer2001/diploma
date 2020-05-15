@@ -8,6 +8,7 @@ use App\Repositories\Rules\DateLessRule;
 use App\Repositories\Rules\DateMoreRule;
 use App\Repositories\Rules\EqualRule;
 use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,6 +40,15 @@ class RebukesController extends Controller
         if($request->input('end_date_presentation'))
             $rules[] = new DateLessRule('date_presentation',
                 $request->input('end_date_presentation'));
+
+        if($request->input('sortID'))
+            $rules[] = new SortRule('id', $request->input('sortID') == 1 ? 'ASC' : 'DESC');
+
+        if($request->input('sortName'))
+            $rules[] = new SortRule('title', $request->input('sortName') == 1 ? 'ASC' : 'DESC');
+
+        if($request->input('sortDate'))
+            $rules[] = new SortRule('date_presentation', $request->input('sortDate') == 1 ? 'ASC' : 'DESC');
 
         $rebukes = $rebukeRepository->filterPaginate($rules);
 

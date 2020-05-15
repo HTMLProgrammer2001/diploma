@@ -9,6 +9,7 @@ use App\Repositories\Interfaces\EducationRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\Rules\EqualRule;
 use App\Repositories\Rules\LikeRule;
+use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,21 +25,38 @@ class EducationsController extends Controller
         $this->educationRep = $educationRep;
     }
 
-    public function paginate(Request $request){
+    private function createRule(array $data): array {
         //create rules array
         $rules = [];
 
         $rules[] = new EqualRule('user_id', Auth::user()->id);
 
-        if($request->input('qualification'))
-            $rules[] = new EqualRule('qualification', $request->input('qualification'));
+        if($data['qualification'] ?? false)
+            $rules[] = new EqualRule('qualification', $data['qualification']);
 
-        if($request->input('name'))
-            $rules[] = new LikeRule('institution', $request->input('name'));
+        if($data['name'] ?? false)
+            $rules[] = new LikeRule('institution', $data['name']);
 
-        if($request->input('graduate_year'))
-            $rules[] = new EqualRule('graduate_year', $request->input('graduate_year'));
+        if($data['graduate_year'] ?? false)
+            $rules[] = new EqualRule('graduate_year', $data['graduate_year']);
 
+        if($data['sortID'] ?? false)
+            $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortInstitution'] ?? false)
+            $rules[] = new SortRule('institution', $data['sortInstitution'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortYear'] ?? false)
+            $rules[] = new SortRule('graduate_year', $data['sortYear'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortQualification'] ?? false)
+            $rules[] = new SortRule('qualification', $data['sortQualification'] == 1 ? 'ASC' : 'DESC');
+
+        return $rules;
+    }
+
+    public function paginate(Request $request){
+        $rules = $this->createRule($request->input());
         $educations = $this->educationRep->filterPaginate($rules);
 
         return view('admin.educations.paginate', [
