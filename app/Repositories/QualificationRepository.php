@@ -20,6 +20,8 @@ class QualificationRepository extends BaseRepository implements QualificationRep
 
     public function create($data)
     {
+        $data['date'] = from_locale_date($data['date']);
+
         $qualification = new Qualification();
         $qualification->fill($data);
 
@@ -31,6 +33,8 @@ class QualificationRepository extends BaseRepository implements QualificationRep
 
     public function update($id, $data)
     {
+        $data['date'] = from_locale_date($data['date']);
+
         $qualification = Qualification::query()->findOrFail($id);
         $qualification->fill($data);
 

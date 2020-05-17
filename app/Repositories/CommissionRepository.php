@@ -42,4 +42,9 @@ class CommissionRepository extends BaseRepository implements CommissionRepositor
     public function getForCombo(){
         return Commission::all('id', 'name');
     }
+
+    public function getForExportList()
+    {
+        return to_export_list(Commission::all('id', 'name')->toArray());
+    }
 }

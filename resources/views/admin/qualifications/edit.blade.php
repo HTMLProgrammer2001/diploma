@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label for="date">Дата Встановлення категорії*</label>
                                 <input type="text" class="form-control pull-right calendar"
-                                       value="{{$qualification->date}}"
+                                       value="{{to_locale_date($qualification->date)}}"
                                        name="date" id="date" autocomplete="off">
                             </div>
 

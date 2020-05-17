@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <label for="to">Дата кінця стажування*</label>
                                     <input type="text" class="form-control pull-right calendar"
-                                           value="{{$internship->to}}"
+                                           value="{{to_locale_date($internship->to)}}"
                                            name="to" id="to" autocomplete="off">
                                 </div>
 

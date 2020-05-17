@@ -25,6 +25,9 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
 
     public function create($data)
     {
+        $data['from'] = from_locale_date($data['from']);
+        $data['to'] = from_locale_date($data['to']);
+
         $internship = new Internship();
         $internship->fill($data);
 
@@ -39,6 +42,9 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
 
     public function update($id, $data)
     {
+        $data['from'] = from_locale_date($data['from']);
+        $data['to'] = from_locale_date($data['to']);
+
         $internship = Internship::query()->findOrFail($id);
         $internship->fill($data);
 

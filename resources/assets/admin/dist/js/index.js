@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('.calendar').datepicker({
-		format: 'yyyy-mm-dd'
+		format: 'dd.mm.yyyy'
 	});
     $('.select2').select2();
 });

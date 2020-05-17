@@ -25,6 +25,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function create($data)
     {
+        $data['birthday'] = from_locale_date($data['birthday']);
+
         $user = new User();
         $user->fill($data);
 
@@ -43,6 +45,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function update($id, $data)
     {
+        $data['birthday'] = from_locale_date($data['birthday']);
+
         $user = User::query()->findOrFail($id);
         $user->fill($data);
 

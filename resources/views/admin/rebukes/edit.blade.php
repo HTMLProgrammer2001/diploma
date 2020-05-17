@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="date_presentation">Дата отримання*</label>
                                     <input type="text" class="form-control pull-right calendar"
-                                           value="{{$rebuke->date_presentation}}"
+                                           value="{{to_locale_date($rebuke->date_presentation)}}"
                                            name="date_presentation" id="date_presentation" autocomplete="off">
                                 </div>
 

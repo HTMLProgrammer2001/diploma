@@ -44,4 +44,9 @@ class RankRepository extends BaseRepository implements RankRepositoryInterface
     {
         return Rank::all('id', 'name');
     }
+
+    public function getForExportList()
+    {
+        return to_export_list(Rank::all('id', 'name')->toArray());
+    }
 }

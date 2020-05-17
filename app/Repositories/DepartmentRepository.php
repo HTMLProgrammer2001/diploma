@@ -39,4 +39,9 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
     {
         return Department::all('id', 'name');
     }
+
+    public function getForExportList()
+    {
+        return to_export_list(Department::all('id', 'name')->toArray());
+    }
 }

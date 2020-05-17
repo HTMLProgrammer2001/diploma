@@ -3,7 +3,7 @@
         <td>{{$qualification->id}}</td>
         <td>{{$qualification->getUserShortName()}}</td>
         <td>{{$qualification->name}}</td>
-        <td>{{$qualification->date}}</td>
+        <td>{{to_locale_date($qualification->date)}}</td>
         <td>
             @if($isProfile ?? false)
                 <a href="{{route('profile.qualifications.show', $qualification->id)}}" class="fa fa-eye"></a>

@@ -74,13 +74,15 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="from">Дата початку стажування*</label>
-                                    <input type="text" class="form-control pull-right calendar" value="{{$internship->from}}"
+                                    <input type="text" class="form-control pull-right calendar"
+                                           value="{{to_locale_date($internship->from)}}"
                                            name="from" id="from" autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="to">Дата кінця стажування*</label>
-                                    <input type="text" class="form-control pull-right calendar" value="{{$internship->to}}"
+                                    <input type="text" class="form-control pull-right calendar"
+                                           value="{{to_locale_date($internship->to)}}"
                                            name="to" id="to" autocomplete="off">
                                 </div>
 

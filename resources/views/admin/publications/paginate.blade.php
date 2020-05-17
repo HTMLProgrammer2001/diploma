@@ -3,7 +3,7 @@
         <td>{{$publication->id}}</td>
         <td>{{$publication->title}}</td>
         <td>{{$publication->getAuthorsString()}}</td>
-        <td>{{$publication->date_of_publication}}</td>
+        <td>{{to_locale_date($publication->date_of_publication)}}</td>
         <td class="d-flex">
             @if($isProfile ?? false)
                 <a href="{{route('profile.publications.show', $publication->id)}}" class="fa fa-eye"></a>

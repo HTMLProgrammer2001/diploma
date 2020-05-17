@@ -19,6 +19,8 @@ class HonorRepository extends BaseRepository implements HonorRepositoryInterface
 
     public function create($data)
     {
+        $data['date_presentation'] = from_locale_date($data['date_presentation']);
+
         $honor = new Honor();
         $honor->fill($data);
 
@@ -31,6 +33,8 @@ class HonorRepository extends BaseRepository implements HonorRepositoryInterface
 
     public function update($id, $data)
     {
+        $data['date_presentation'] = from_locale_date($data['date_presentation']);
+
         $honor = Honor::query()->findOrFail($id);
         $honor->fill($data);
 

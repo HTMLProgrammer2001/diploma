@@ -49,7 +49,7 @@
                                 <label for="date_of_publication">Дата виходу</label>
 
                                 <input type="text" class="form-control pull-right calendar"
-                                       value="{{$publication->date_of_publication}}" name="date_of_publication"
+                                       value="{{to_locale_date($publication->date_of_publication)}}" name="date_of_publication"
                                        id="date_of_publication" autocomplete="off">
                             </div>
 

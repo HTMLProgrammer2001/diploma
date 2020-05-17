@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="date_presentation">Дата вручення*</label>
                                     <input type="text" class="form-control pull-right calendar"
-                                           value="{{$honor->date_presentation}}"
+                                           value="{{to_locale_date($honor->date_presentation)}}"
                                            name="date_presentation" id="date_presentation" autocomplete="off">
                                 </div>
 

@@ -3,7 +3,7 @@
         <td>{{$rebuke->id}}</td>
         <td>{{$rebuke->getUserName()}}</td>
         <td>{{$rebuke->title}}</td>
-        <td>{{$rebuke->date_presentation}}</td>
+        <td>{{to_locale_date($rebuke->date_presentation)}}</td>
         <td class="d-flex">
 
             @if($isProfile ?? false)

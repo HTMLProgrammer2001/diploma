@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', function(){
+   return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\UserExampleExporter(), 'users.xlsx');
+});
+
+
 
 Route::get('/', 'LoginController@index')->name('login');
 Route::post('/', 'LoginController@login');

@@ -3,7 +3,7 @@
         <td>{{$honor->id}}</td>
         <td>{{$honor->getUserName()}}</td>
         <td>{{$honor->title}}</td>
-        <td>{{$honor->date_presentation}}</td>
+        <td>{{to_locale_date($honor->date_presentation)}}</td>
         <td class="d-flex">
 
             @if($isProfile ?? false)
