@@ -32,7 +32,7 @@
                 <div class="box">
                     <div class="box-body d-flex justify-content-center">
                         <div class="col-md-6 d-flex flex-column align-items-center">
-                            <div class="form-group w-100">
+                            <div class="form-group w-100 d-flex flex-column align-items-center">
                                 <div class="custom-file">
                                     <label for="file" class="text-center custom-file-label">
                                         Файл в форматі csv чи xlsx
@@ -40,6 +40,10 @@
 
                                     <input type="file" class="custom-file-input" id="file" name="file">
                                 </div>
+
+                                <a href="{{route('users.example')}}" download="" class="d-block mt-3">
+                                    Завантажити зразок
+                                </a>
                             </div>
 
 

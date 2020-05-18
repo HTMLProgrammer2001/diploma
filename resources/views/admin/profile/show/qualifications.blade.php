@@ -1,5 +1,5 @@
 <div class="tab-pane fade" id="qualifications" role="tabpanel">
-    <h3>Встановлення/Підтвердження кваліфікацій</h3>
+    <h3>Встановлення/Підтвердження категорій</h3>
 
     <div class="w-100 my-3 d-flex justify-content-center">
         <form class="qualifications-form col-lg-8 d-flex flex-column align-items-center">
@@ -71,7 +71,7 @@
         </tbody>
     </table>
 
-    <b>Термін наступного підтвердження: {{$nextQualification}}</b>
+    <b>Термін наступного підтвердження: {{to_locale_date($nextQualification)}}</b>
 
     <div class="mt-2">
         <a href="{{route('profile.qualifications.create')}}" class="btn-block pull-left">

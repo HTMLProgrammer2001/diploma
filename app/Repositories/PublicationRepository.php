@@ -21,7 +21,8 @@ class PublicationRepository extends BaseRepository implements PublicationReposit
 
     public function create($data)
     {
-        $data['date_of_publication'] = from_locale_date($data['date_of_publication']);
+        if($data['date_of_publication'] ?? false)
+            $data['date_of_publication'] = from_locale_date($data['date_of_publication']);
 
         $publication = new Publication();
         $publication->fill($data);
@@ -35,7 +36,8 @@ class PublicationRepository extends BaseRepository implements PublicationReposit
 
     public function update($id, $data)
     {
-        $data['date_of_publication'] = from_locale_date($data['date_of_publication']);
+        if($data['date_of_publication'] ?? false)
+            $data['date_of_publication'] = from_locale_date($data['date_of_publication']);
 
         $publication = Publication::query()->findOrFail($id);
         $publication->fill($data);

@@ -88,7 +88,9 @@
 
                                 <div class="form-group">
                                     <label for="department">Дата народження</label>
-                                    <input type="text" class="form-control pull-right" value="{{$user->birthday}}" name="birthday" id="calendar" autocomplete="off">
+                                    <input type="text" class="form-control pull-right calendar"
+                                           value="{{to_locale_date($user->birthday)}}" name="birthday"
+                                           id="calendar" autocomplete="off">
                                 </div>
 
                                 <div class="form-group">

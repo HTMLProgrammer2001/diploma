@@ -25,7 +25,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function create($data)
     {
-        $data['birthday'] = from_locale_date($data['birthday']);
+        if($data['birthday'] ?? false)
+            $data['birthday'] = from_locale_date($data['birthday']);
 
         $user = new User();
         $user->fill($data);
@@ -37,6 +38,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $user->setDepartment($data['department']);
         $user->setCommission($data['commission']);
 
+        if($data['rank'] ?? false)
+            $user->setRank($data['rank']);
+
         $user->avatar = $this->avatarService->uploadAvatar($data['avatar'] ?? false);
         $user->save();
 
@@ -45,7 +49,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function update($id, $data)
     {
-        $data['birthday'] = from_locale_date($data['birthday']);
+        if($data['birthday'] ?? false)
+            $data['birthday'] = from_locale_date($data['birthday']);
 
         $user = User::query()->findOrFail($id);
         $user->fill($data);

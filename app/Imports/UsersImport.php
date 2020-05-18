@@ -26,8 +26,10 @@ class UsersImport implements ToModel
             'surname' => $row[1],
             'patronymic' => $row[2],
             'email' => $row[3],
-            'commission' => $row[4],
-            'department' => $row[5],
+            'commission' => from_export_item($row[4])[0],
+            'department' => from_export_item($row[5])[0],
+            'rank' => from_export_item($row[6])[0],
+            'pedagogical_title' => $row[7],
             'password' => '123456'
         ];
 

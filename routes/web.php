@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/test', function(){
-   return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\UserExampleExporter(), 'users.xlsx');
+   return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\UsersExampleExporter(), 'users.xlsx');
 });
 
 
@@ -68,8 +68,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
-        Route::get('/users/import', 'UsersController@getImport')->name('users.import');
-        Route::post('/users/import', 'UsersController@postImport');
+        //import users
+        Route::get('/users/import', 'UsersImportController@getImport')->name('users.import');
+        Route::post('/users/import', 'UsersImportController@postImport');
+        Route::get('/users/importExample', 'UsersImportController@getExample')
+            ->name('users.example');
 
         Route::resource('users', 'UsersController');
         Route::resource('commissions', 'CommissionsController');

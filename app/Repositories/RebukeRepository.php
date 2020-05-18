@@ -19,7 +19,8 @@ class RebukeRepository extends BaseRepository implements RebukeRepositoryInterfa
 
     public function create($data)
     {
-        $data['date_presentation'] = from_locale_date($data['date_presentation']);
+        if($data['date_presentation'] ?? false)
+            $data['date_presentation'] = from_locale_date($data['date_presentation']);
 
         $rebuke = new Rebuke();
         $rebuke->fill($data);
@@ -33,7 +34,8 @@ class RebukeRepository extends BaseRepository implements RebukeRepositoryInterfa
 
     public function update($id, $data)
     {
-        $data['date_presentation'] = from_locale_date($data['date_presentation']);
+        if($data['date_presentation'] ?? false)
+            $data['date_presentation'] = from_locale_date($data['date_presentation']);
 
         $rebuke = Rebuke::findOrFail($id);
         $rebuke->fill($data);

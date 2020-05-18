@@ -190,18 +190,4 @@ class UsersController extends Controller
             'status' => 'OK'
         ]);
     }
-
-    public function getImport(){
-        return view('admin.users.import');
-    }
-
-    public function postImport(Request $request){
-        $this->validate($request, [
-            'file' => 'required|mimes:csv,xlsx'
-        ]);
-
-        Excel::import(new UsersImport,request()->file('file'));
-
-        return redirect()->back()->with('successMsg', 'Дані імпортовано');
-    }
 }

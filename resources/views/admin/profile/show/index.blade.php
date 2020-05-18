@@ -27,7 +27,7 @@
 
                             <div class="col-sm-7 col-sm-offset-1">
                                 <div>Ім'я: {{$user->getFullName()}}</div>
-                                <div>Дата народження: {{$user->birthday}}</div>
+                                <div>Дата народження: {{to_locale_date($user->birthday)}}</div>
                                 <div>Email: {{$user->email}}</div>
 
                                 @if($user->address)
@@ -64,7 +64,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="qualifications_tab" data-toggle="tab"
-                                   href="#qualifications" role="tab">Встановлення/Підтвердження кваліфікацій</a>
+                                   href="#qualifications" role="tab">Встановлення/Підтвердження категорій</a>
                             </li>
 
                             <li class="nav-item">
