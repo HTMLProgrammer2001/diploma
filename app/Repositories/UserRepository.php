@@ -8,6 +8,7 @@ use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Services\Storage\Interfaces\AvatarServiceInterface;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
@@ -101,5 +102,17 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     public function getPedagogicalTitles(): array
     {
         return User::getPedagogicalTitles();
+    }
+
+    public function getForExportList(): array
+    {
+        $users = User::all('id', 'surname', 'name', 'patronymic')->toArray();
+
+        $users = array_map(function($user){
+            $user = array_values($user);
+            return [$user[0], implode(' ', array_slice($user, 1))];
+        }, $users);
+
+        return to_export_list($users);
     }
 }

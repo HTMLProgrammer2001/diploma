@@ -13,4 +13,6 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     public function getRoles(): array;
 
     public function getPedagogicalTitles(): array;
+
+    public function getForExportList(): array;
 }

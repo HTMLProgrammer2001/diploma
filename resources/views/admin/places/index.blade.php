@@ -21,12 +21,18 @@
                 <div class="box-body">
 
                     @can('moderate')
-                        <div class="form-group">
-                            <a href="{{route('places.create')}}" class="btn btn-success">Додати</a>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group">
+                                <a href="{{route('places.create')}}" class="btn btn-success">Додати</a>
+                            </div>
+
+                            <div class="form-group">
+                                <a href="{{route('places.import')}}" class="btn btn-info">Імпорт</a>
+                            </div>
                         </div>
                     @endcan
 
-                        <div class="pull-right mb-3">
+                        <div class="d-flex justify-content-end my-3">
                             <form class="form-inline places-form">
                                 <input type="text" name="name" class="form-control mr-2"
                                        placeholder="Пошук по назві закладу"/>

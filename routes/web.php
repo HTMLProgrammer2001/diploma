@@ -68,11 +68,35 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
-        //import users
-        Route::get('/users/import', 'UsersImportController@getImport')->name('users.import');
-        Route::post('/users/import', 'UsersImportController@postImport');
-        Route::get('/users/importExample', 'UsersImportController@getExample')
-            ->name('users.example');
+
+        Route::group(['namespace' => 'Import'], function(){
+            //import users
+            Route::get('/users/import', 'UsersImportController@getImport')->name('users.import');
+            Route::post('/users/import', 'UsersImportController@postImport');
+            Route::get('/users/importExample', 'UsersImportController@getExample')
+                ->name('users.example');
+
+            //import internships
+            Route::get('/internships/import', 'InternshipsImportController@getImport')
+                ->name('internships.import');
+            Route::post('/internships/import', 'InternshipsImportController@postImport');
+            Route::get('/internships/importExample', 'InternshipsImportController@getExample')
+                ->name('internships.example');
+
+            //import places
+            Route::get('/places/import', 'PlacesImportController@getImport')
+                ->name('places.import');
+            Route::post('/places/import', 'PlacesImportController@postImport');
+            Route::get('/places/importExample', 'PlacesImportController@getExample')
+                ->name('places.example');
+
+            //import publications
+            Route::get('/publications/import', 'PublicationsImportController@getImport')
+                ->name('publications.import');
+            Route::post('/publications/import', 'PublicationsImportController@postImport');
+            Route::get('/publications/importExample', 'PublicationsImportController@getExample')
+                ->name('publications.example');
+        });
 
         Route::resource('users', 'UsersController');
         Route::resource('commissions', 'CommissionsController');

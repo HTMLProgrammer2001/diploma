@@ -39,4 +39,9 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         return InternCategory::all('id', 'name');
     }
+
+    public function getForExportList(): array
+    {
+        return to_export_list(InternCategory::all('id', 'name')->toArray());
+    }
 }

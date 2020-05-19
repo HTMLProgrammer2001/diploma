@@ -44,4 +44,9 @@ class PlaceRepository extends BaseRepository implements PlaceRepositoryInterface
     {
         return Place::all('id', 'name');
     }
+
+    public function getForExportList(): array
+    {
+        return to_export_list(Place::all('id', 'name')->toArray());
+    }
 }
