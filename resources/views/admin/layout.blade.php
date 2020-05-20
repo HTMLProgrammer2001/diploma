@@ -114,7 +114,7 @@
                     <li>
                         <a href="{{route('users.index')}}">
                             <i class="fa fa-users"></i>
-                            <span>Користувачі</span></a>
+                            <span>Викладачі</span></a>
                     </li>
 
                     <li>

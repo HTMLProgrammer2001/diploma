@@ -68,7 +68,7 @@
         </tbody>
     </table>
 
-    <a href="{{route('profile.publications.create')}}" class="pull-left">
-        <button class="btn btn-success margin-bottom">Додати</button>
-    </a>
+{{--    <a href="{{route('profile.publications.create')}}" class="pull-left">--}}
+{{--        <button class="btn btn-success margin-bottom">Додати</button>--}}
+{{--    </a>--}}
 </div>

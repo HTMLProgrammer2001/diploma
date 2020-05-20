@@ -113,9 +113,9 @@
 
     <b>Годин з останнього підвищення кваліфікації: {{$internshipHours}}</b>
 
-    <div style="margin-top: 20px">
-        <a href="{{route('profile.internships.create')}}" class="btn-block pull-left">
-            <button class="btn btn-success margin-bottom">Додати</button>
-        </a>
-    </div>
+{{--    <div style="margin-top: 20px">--}}
+{{--        <a href="{{route('profile.internships.create')}}" class="btn-block pull-left">--}}
+{{--            <button class="btn btn-success margin-bottom">Додати</button>--}}
+{{--        </a>--}}
+{{--    </div>--}}
 </div>

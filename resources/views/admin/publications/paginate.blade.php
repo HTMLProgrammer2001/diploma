@@ -7,9 +7,9 @@
         <td class="d-flex">
             @if($isProfile ?? false)
                 <a href="{{route('profile.publications.show', $publication->id)}}" class="fa fa-eye"></a>
-                <a href="{{route('profile.publications.edit', $publication->id)}}" class="fa fa-pencil"></a>
-                <a href="#" class="fa fa-remove delete-publication" data-url="{{route('profile.publications.destroy',
-                    $publication->id)}}"></a>
+{{--                <a href="{{route('profile.publications.edit', $publication->id)}}" class="fa fa-pencil"></a>--}}
+{{--                <a href="#" class="fa fa-remove delete-publication" data-url="{{route('profile.publications.destroy',--}}
+{{--                    $publication->id)}}"></a>--}}
             @else
                 @can('view')
                     <a href="{{route('publications.show', $publication->id)}}" class="fa fa-eye"></a>

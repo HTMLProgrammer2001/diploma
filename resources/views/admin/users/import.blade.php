@@ -4,12 +4,12 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Імпорт користувачів
+                Імпорт викладачів
             </h1>
 
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('users.index')}}">Користувачі</a></li>
+                <li><a href="{{route('users.index')}}">Викладачі</a></li>
                 <li><a href="{{route('users.import')}}">Імпорт</a></li>
             </ol>
         </section>

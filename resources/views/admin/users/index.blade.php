@@ -5,11 +5,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Користувачі
+                Викладачі
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('users.index')}}">Користувачі</a></li>
+                <li><a href="{{route('users.index')}}">Викладачі</a></li>
             </ol>
         </section>
 
@@ -89,6 +89,16 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                </div>
+
+                                <div class="form-group d-flex flex-column w-50">
+                                    <label for="category">Категорія</label>
+                                    <select class="form-control select2" id="category" name="category">
+                                        <option value="" selected>Всі</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category}}">{{$category}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <button class="btn btn-info w-50">Пошук</button>

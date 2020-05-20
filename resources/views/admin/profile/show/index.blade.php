@@ -41,7 +41,7 @@
                                 <div>Роль: {{$user->getRoleString()}}</div>
                                 <div>Відділ: {{$user->getDepartmentName()}}</div>
                                 <div>Циклова комісія: {{$user->getCommissionName()}}</div>
-                                <div>Кваліфікація: {{$userQualification}}</div>
+                                <div>Категорія: {{$userQualification}}</div>
                                 <div>Розряд: {{$user->getRankName()}}</div>
 
                                 @if($user->hiring_year)

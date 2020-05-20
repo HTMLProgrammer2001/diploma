@@ -18,6 +18,7 @@ use App\Repositories\Interfaces\RebukeRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Repositories\Rules\EqualRule;
+use App\Repositories\Rules\HasAssociateRule;
 use App\Repositories\Rules\LikeRule;
 use App\Repositories\Rules\RawRule;
 use App\Repositories\Rules\SortRule;
@@ -76,6 +77,10 @@ class UsersController extends Controller
         if($data['pedagogical'] ?? false)
             $rules[] = new LikeRule('pedagogical_title', $data['pedagogical']);
 
+        if($data['category'] ?? false)
+            $rules[] = new RawRule('(SELECT qualifications.name from qualifications 
+                where qualifications.user_id = users.id order by date desc limit 0,1) = ?', $data['category']);
+
         if($data['sortID'] ?? false)
             $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
 
@@ -103,9 +108,10 @@ class UsersController extends Controller
         $commissions = $this->commissionRep->getForCombo();
         $departments = $this->departmentRep->getForCombo();
         $ranks = $this->rankRep->getForCombo();
+        $categories = $this->qualificationRep->getQualificationNames();
 
         return view('admin.users.index', compact('users', 'pedagogicals', 'commissions',
-            'departments', 'ranks'));
+            'departments', 'ranks', 'categories'));
     }
 
     public function create()

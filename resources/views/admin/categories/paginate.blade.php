@@ -13,7 +13,7 @@
     </tr>
 @endforeach
 
-@if($categories->total() > 1)
+@if($categories->lastPage() > 1)
     <tr>
         <td colspan="10">
             <div class="pull-right categories-paginator">

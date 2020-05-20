@@ -5,12 +5,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Додати користувача
+                Додати викладача
             </h1>
 
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('users.index')}}">Користувачі</a></li>
+                <li><a href="{{route('users.index')}}">Викладачі</a></li>
                 <li><a href="{{route('users.create')}}">Додати</a></li>
             </ol>
         </section>

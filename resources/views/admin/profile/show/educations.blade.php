@@ -74,9 +74,9 @@
         </tbody>
     </table>
 
-    <div class="mt-2">
-        <a href="{{route('profile.educations.create')}}" class="btn-block pull-left">
-            <button class="btn btn-success margin-bottom">Додати</button>
-        </a>
-    </div>
+{{--    <div class="mt-2">--}}
+{{--        <a href="{{route('profile.educations.create')}}" class="btn-block pull-left">--}}
+{{--            <button class="btn btn-success margin-bottom">Додати</button>--}}
+{{--        </a>--}}
+{{--    </div>--}}
 </div>

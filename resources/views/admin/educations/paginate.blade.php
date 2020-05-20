@@ -10,10 +10,10 @@
             @if($isProfile ?? false)
                 <a href="{{route('profile.educations.show', $education->id)}}" class="fa fa-eye"></a>
 
-                <a href="{{route('profile.educations.edit', $education->id)}}"
-                   class="fa fa-pencil"></a>
+{{--                <a href="{{route('profile.educations.edit', $education->id)}}"--}}
+{{--                   class="fa fa-pencil"></a>--}}
 
-                <a href="#" class="fa fa-remove delete-education" data-url="{{route('profile.educations.destroy', $education->id)}}"></a>
+{{--                <a href="#" class="fa fa-remove delete-education" data-url="{{route('profile.educations.destroy', $education->id)}}"></a>--}}
             @else
                 @can('view')
                     <a href="{{route('educations.show', $education->id)}}" class="fa fa-eye"></a>
