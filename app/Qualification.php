@@ -28,13 +28,4 @@ class Qualification extends Model
 
         return $this->user->getShortName();
     }
-
-    public static function getQualificationNames(){
-        return [
-            'Спеціаліст',
-            'Спеціаліст 2 категорії',
-            'Спеціаліст 1 категорії',
-            'Спеціаліст вищої категорії'
-        ];
-    }
 }

@@ -4,11 +4,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Розряди
+                Посади
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('ranks.index')}}">Розряди</a></li>
+                <li><a href="{{route('ranks.index')}}">Посади</a></li>
             </ol>
         </section>
 
@@ -47,7 +47,7 @@
                             </th>
                             <th>
                                 <div class="d-flex justify-content-between w-100">
-                                    <span>Назва розряду</span>
+                                    <span>Назва посади</span>
                                     <span data-state="0" data-name="sortName"
                                           class="ranks-sort fa fa-sort-amount-asc opacity-5"></span>
                                 </div>

@@ -71,7 +71,7 @@
 
                                 <div class="row w-100">
                                     <div class="form-group d-flex flex-column col">
-                                        <label for="rank">Ранг</label>
+                                        <label for="rank">Посада</label>
                                         <select class="form-control select2" id="rank" name="rank">
                                             <option value="" selected>Всі</option>
                                             @foreach($ranks as $rank)

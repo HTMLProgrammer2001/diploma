@@ -60,7 +60,12 @@ class QualificationRepository extends BaseRepository implements QualificationRep
 
     public function getQualificationNames(): array
     {
-        return Qualification::getQualificationNames();
+        return [
+            'Спеціаліст',
+            'Спеціаліст 2 категорії',
+            'Спеціаліст 1 категорії',
+            'Спеціаліст вищої категорії'
+        ];
     }
 
     public function getLastQualificationDateOf(int $user_id)

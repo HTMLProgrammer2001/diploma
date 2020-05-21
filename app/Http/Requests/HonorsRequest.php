@@ -27,6 +27,7 @@ class HonorsRequest extends FormRequest
             'title' => 'required|string|max:255',
             'user' => 'required|exists:users,id',
             'order' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
             'date_presentation' => 'required'
         ];
     }

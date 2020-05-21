@@ -95,6 +95,13 @@
                             </th>
                             <th>
                                 <div class="d-flex justify-content-between w-100">
+                                    <span>Тип нагороди</span>
+                                    <span data-state="0" data-name="sortType"
+                                          class="honors-sort fa fa-sort-amount-asc opacity-5"></span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="d-flex justify-content-between w-100">
                                     <span>Дата видачі</span>
                                     <span data-state="0" data-name="sortDate"
                                           class="honors-sort fa fa-sort-amount-asc opacity-5"></span>

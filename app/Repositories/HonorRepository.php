@@ -58,4 +58,21 @@ class HonorRepository extends BaseRepository implements HonorRepositoryInterface
 
         return Honor::query()->where('user_id', $user_id)->paginate($size);
     }
+
+    public function getTypes(): array{
+        return [
+            'МОН',
+            'Президента',
+            'КМУ',
+            'Ректора ОНПУ',
+            'Директора коледжу',
+            'Облдержадміністрації',
+            'Управління освіти',
+            'МАН',
+            'Спортивні досягнення',
+            'Облради',
+            'Олімпіади та конкурси',
+            'Інші'
+        ];
+    }
 }

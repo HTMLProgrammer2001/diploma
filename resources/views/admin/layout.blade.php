@@ -162,7 +162,7 @@
                     <li>
                         <a href="{{route('ranks.index')}}">
                             <i class="fa fa-list"></i>
-                            <span>Розряди</span>
+                            <span>Посади</span>
                         </a>
                     </li>
 

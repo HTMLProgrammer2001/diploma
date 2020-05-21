@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Honor extends Model
 {
-    public $fillable = ['order', 'title', 'date_presentation'];
+    public $fillable = ['order', 'title', 'date_presentation', 'type'];
 
     //relations
     public function user(){

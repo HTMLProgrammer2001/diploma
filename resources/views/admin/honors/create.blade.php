@@ -44,6 +44,15 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="type">Тип нагороди*</label>
+                                <select class="form-control select2" id="type" name="type">
+                                    @foreach($types as $type)
+                                        <option value="{{$type}}">{{$type}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="order">Номер нагороди*</label>
                                 <input type="text" class="form-control" id="order" name="order" value="{{old('order')}}">
                             </div>

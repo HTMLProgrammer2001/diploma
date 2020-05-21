@@ -75,8 +75,9 @@ class HonorsController extends Controller
     public function create()
     {
         $users = $this->userRep->getForCombo();
+        $types = $this->honorRep->getTypes();
 
-        return view('admin.honors.create', compact('users'));
+        return view('admin.honors.create', compact('users', 'types'));
     }
 
     public function store(HonorsRequest $request)
@@ -103,7 +104,8 @@ class HonorsController extends Controller
             return abort(404);
 
         $users = $this->userRep->getForCombo();
-        return view('admin.honors.edit', compact('users', 'honor'));
+        $types = $this->honorRep->getTypes();
+        return view('admin.honors.edit', compact('users', 'honor', 'types'));
     }
 
     public function update(HonorsRequest $request, $honor_id)

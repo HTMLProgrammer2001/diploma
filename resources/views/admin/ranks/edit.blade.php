@@ -4,12 +4,12 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Редагувати розряд
+                Редагувати посаду
             </h1>
 
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i>Головна</a></li>
-                <li><a href="{{route('ranks.index')}}">Розряди</a></li>
+                <li><a href="{{route('ranks.index')}}">Посади</a></li>
                 <li><a href="{{route('ranks.edit', $rank->id)}}">Редагувати</a></li>
             </ol>
         </section>

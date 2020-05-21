@@ -3,6 +3,7 @@
         <td>{{$honor->id}}</td>
         <td>{{$honor->getUserName()}}</td>
         <td>{{$honor->title}}</td>
+        <td>{{$honor->type}}</td>
         <td>{{to_locale_date($honor->date_presentation)}}</td>
         <td class="d-flex">
 
