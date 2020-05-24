@@ -91,14 +91,33 @@
                                     </div>
                                 </div>
 
+                                <div class="row w-100">
+                                    <div class="form-group d-flex flex-column col">
+                                        <label for="honorTypes">Має нагороди</label>
+                                        <select class="form-control select2" id="honorTypes" name="honorTypes[]" multiple>
+                                            @foreach($types as $type)
+                                                <option value="{{$type}}">{{$type}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group d-flex flex-column col">
+                                        <label for="category">Категорія</label>
+                                        <select class="form-control select2" id="category" name="category">
+                                            <option value="" selected>Всі</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category}}">{{$category}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="form-group d-flex flex-column w-50">
-                                    <label for="category">Категорія</label>
-                                    <select class="form-control select2" id="category" name="category">
-                                        <option value="" selected>Всі</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{$category}}">{{$category}}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="birthday">Дата народження</label>
+
+                                    <input type="text" class="form-control pull-right calendar"
+                                           value="" name="birthday"
+                                           id="birthday" autocomplete="off">
                                 </div>
 
                                 <button class="btn btn-info w-50">Пошук</button>

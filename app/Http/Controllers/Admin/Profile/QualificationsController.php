@@ -35,10 +35,10 @@ class QualificationsController extends Controller
             $rules[] = new EqualRule('name', $data['category']);
 
         if($data['start_date'] ?? false)
-            $rules[] = new DateMoreRule('date', $data['start_date']);
+            $rules[] = new DateMoreRule('date', from_locale_date($data['start_date']));
 
         if($data['end_date'] ?? false)
-            $rules[] = new DateLessRule('date', $data['end_date']);
+            $rules[] = new DateLessRule('date', from_locale_date($data['end_date']));
 
         if($data['sortID'] ?? false)
             $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');

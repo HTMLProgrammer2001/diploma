@@ -30,61 +30,31 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">Ім'я</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="surname">Прізвище</label>
-                                    <input type="text" class="form-control" id="surname" name="surname" value="{{$user->surname}}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="patronymic">По-батькові</label>
-                                    <input type="text" class="form-control" id="patronymic" name="patronymic" value="{{$user->patronymic}}">
-                                </div>
-
-                                <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}">
+                                    <input type="text" class="form-control" id="email" name="email"
+                                           value="{{$user->email}}">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">Пароль</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="">
+                                    <input type="password" class="form-control" id="password"
+                                           name="password" placeholder="">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password_confirmation">Повторіть пароль</label>
-                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="">
+                                    <input type="password" class="form-control" id="password_confirmation"
+                                           name="password_confirmation" placeholder="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Телефон</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" pattern="^+38\d{10}$"
+                                           value="{{$user->phone}}">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label for="department">Відділ</label>
-                                    <select class="form-control select2" id="department" name="department" value="{{$user->getDepartmentID()}}">
-                                        <option value="">Немає</option>
-
-                                        @foreach($departments as $department)
-                                            <option value="{{$department->id}}"
-                                                    {{$user->getDepartmentID() == $department->id ? ' selected' : ''}}>{{$department->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="commission">Циклова комісія</label>
-                                    <select class="form-control select2" id="commission" name="commission">
-                                        <option value="">Нет</option>
-
-                                        @foreach($commissions as $commission)
-                                            <option value="{{$commission->id}}"
-                                                    {{$user->getCommissionID() == $commission->id ? ' selected' : ''}}>{{$commission->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
 
                                 <div class="form-group">
                                     <label for="department">Дата народження</label>
@@ -99,21 +69,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="patronymic">Ідентифікаційний код</label>
-                                    <input type="text" class="form-control" id="patronymic" name="code" value="">
+                                    <label for="code">Ідентифікаційний код</label>
+                                    <input type="text" class="form-control" id="code" name="code" value="">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="rank">Розряд</label>
-                                    <select class="form-control select2" id="rank" name="rank">
-                                        <option value="">Нет</option>
-
-                                        @foreach($ranks as $rank)
-                                            <option value="{{$rank->id}}"
-                                                    {{$user->getRankID() == $rank->id ? ' selected' : ''}}>
-                                                {{$rank->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="address">Адреса</label>
+                                    <input type="text" class="form-control" id="address"
+                                           name="address" value="{{$user->address}}">
                                 </div>
                             </div>
                         </div>

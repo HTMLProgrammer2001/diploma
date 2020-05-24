@@ -34,10 +34,10 @@ class RebukesController extends Controller
             $rules[] = new LikeRule('title', $data['name']);
 
         if($data['start_date_presentation'] ?? false)
-            $rules[] = new DateMoreRule('date_presentation', $data['start_date_presentation']);
+            $rules[] = new DateMoreRule('date_presentation', from_locale_date($data['start_date_presentation']));
 
         if($data['end_date_presentation'] ?? false)
-            $rules[] = new DateLessRule('date_presentation', $data['end_date_presentation']);
+            $rules[] = new DateLessRule('date_presentation', from_locale_date($data['end_date_presentation']));
 
         if($data['sortID'] ?? false)
             $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');

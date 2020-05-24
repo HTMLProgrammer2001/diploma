@@ -25,17 +25,13 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'surname' => 'required',
-            'patronymic' => 'required',
             'password' => 'nullable|confirmed|min:8',
             'avatar' => 'nullable|image',
-            'department' => 'nullable|exists:departments,id',
-            'commission' => 'nullable|exists:commissions,id',
             'birthday' => 'nullable|date',
             'passport' => 'nullable',
             'code' => 'nullable',
-            'rank' => 'nullable|exists:ranks,id'
+            'phone' => 'nullable|string|max:13|min:10',
+            'address' => 'nullable|string|max:255'
         ];
     }
 }

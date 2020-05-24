@@ -37,11 +37,11 @@ class PublicationsController extends Controller
 
         if($data['start_date_of_publication'] ?? false)
             $rules[] = new DateMoreRule('date_of_publication',
-                $data['start_date_of_publication']);
+                from_locale_date($data['start_date_of_publication']));
 
         if($data['end_date_of_publication'] ?? false)
             $rules[] = new DateLessRule('date_of_publication',
-                $data['end_date_of_publication']);
+                from_locale_date($data['end_date_of_publication']));
 
         if($data['sortID'] ?? false)
             $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');

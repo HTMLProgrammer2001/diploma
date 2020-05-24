@@ -29,8 +29,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         if($data['birthday'] ?? false)
             $data['birthday'] = from_locale_date($data['birthday']);
 
-        $user = new User();
-        $user->fill($data);
+        $user = $this->getModel()->query()->newModelInstance($data);
 
         //generate secret values
         $user->generatePassword($data['password']);
@@ -53,18 +52,18 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         if($data['birthday'] ?? false)
             $data['birthday'] = from_locale_date($data['birthday']);
 
-        $user = User::query()->findOrFail($id);
+        $user = $this->getModel()->query()->findOrFail($id);
         $user->fill($data);
 
         //generate secret values
-        $user->generatePassword($data['password']);
-        $user->cryptPassport($data['passport']);
-        $user->cryptCode($data['code']);
+        $user->generatePassword($data['password'] ?? false);
+        $user->cryptPassport($data['passport'] ?? false);
+        $user->cryptCode($data['code'] ?? false);
 
         //relationships
-        $user->setDepartment($data['department']);
-        $user->setCommission($data['commission']);
-        $user->setRank($data['rank']);
+        $user->setDepartment($data['department'] ?? false);
+        $user->setCommission($data['commission'] ?? false);
+        $user->setRank($data['rank'] ?? false);
 
         //set new avatar
         $this->avatarService->deleteAvatar($user->avatar ?? false);
@@ -78,35 +77,35 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = $this->getModel()->query()->findOrFail($id);
         $this->avatarService->deleteAvatar($user->avatar);
 
-        User::destroy($id);
+        $this->getModel()->destroy($id);
     }
 
     public function all()
     {
-        return User::all();
+        return $this->getModel()->all();
     }
 
     public function getForCombo()
     {
-        return User::all('id', 'name', 'surname', 'patronymic');
+        return $this->getModel()->all('id', 'name', 'surname', 'patronymic');
     }
 
     public function getRoles(): array
     {
-        return User::getRolesArray();
+        return $this->getModel()->getRolesArray();
     }
 
     public function getPedagogicalTitles(): array
     {
-        return User::getPedagogicalTitles();
+        return $this->getModel()->getPedagogicalTitles();
     }
 
     public function getForExportList(): array
     {
-        $users = User::all('id', 'surname', 'name', 'patronymic')->toArray();
+        $users = $this->getModel()->all('id', 'surname', 'name', 'patronymic')->toArray();
 
         $users = array_map(function($user){
             $user = array_values($user);
@@ -114,5 +113,20 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         }, $users);
 
         return to_export_list($users);
+    }
+
+    public function getAcademicStatusList(): array{
+        return [
+            'Кандидат наук',
+            'Доктор наук'
+        ];
+    }
+
+    public function getScientificDegreeList(): array{
+        return [
+            'Доцент',
+            'Старший дослідник',
+            'Професор'
+        ];
     }
 }

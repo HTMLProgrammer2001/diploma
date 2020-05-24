@@ -18,7 +18,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'surname', 'patronymic', 'email', 'birthday', 'pedagogical_title', 'address', 'phone',
-            'hiring_year', 'experience'
+            'hiring_year', 'experience', 'academic_status', 'academic_status_year', 'scientific_degree',
+            'scientific_degree_year'
     ];
 
     /**
@@ -167,7 +168,7 @@ class User extends Authenticatable
     }
 
     public function getShortName(){
-        return $this->surname . ' ' . substr($this->name, 0, 1);
+        return $this->surname . ' ' . mb_substr($this->name, 0, 1);
     }
 
     public function getAvatar(){

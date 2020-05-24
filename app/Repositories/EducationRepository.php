@@ -19,16 +19,14 @@ class EducationRepository extends BaseRepository implements EducationRepositoryI
 
     public function create($data)
     {
-        $education = new Education();
-
-        $education->fill($data);
+        $education = $this->getModel()->query()->newModelInstance($data);
         $education->setUser($data['user']);
         $education->save();
     }
 
     public function update($id, $data)
     {
-        $education = Education::findOrFail($id);
+        $education = $this->getModel()->query()->findOrFail($id);
         $education->fill($data);
         $education->setUser($data['user']);
         $education->save();
@@ -38,13 +36,23 @@ class EducationRepository extends BaseRepository implements EducationRepositoryI
 
     public function all()
     {
-        return Education::all();
+        return $this->getModel()->all();
     }
 
     public function paginateForUser($user_id, ?int $size = null)
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
-        return Education::query()->where('user_id', $user_id)->paginate($size);
+        return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
+    }
+
+    public function getUserString(int $user_id): string {
+        $educations = $this->getModel()->query()->where('user_id', $user_id)->get();
+
+        $educationsString = $educations->reduce(function(string $acc, $item){
+            return $acc . implode(', ', [$item->institution, $item->graduate_year, $item->qualification]) . ';';
+        }, '');
+
+        return $educationsString ? $educationsString : 'Немає інформації';
     }
 }

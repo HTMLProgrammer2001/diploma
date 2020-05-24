@@ -31,9 +31,7 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
         if($data['to'] ?? false)
             $data['to'] = from_locale_date($data['to']);
 
-        $internship = new Internship();
-        $internship->fill($data);
-
+        $internship = $this->getModel()->query()->newModelInstance($data);
         $internship->setCategory($data['category']);
         $internship->setUser($data['user']);
         $internship->setPlace($data['place']);
@@ -51,7 +49,7 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
         if($data['to'] ?? false)
             $data['to'] = from_locale_date($data['to']);
 
-        $internship = Internship::query()->findOrFail($id);
+        $internship = $this->getModel()->query()->findOrFail($id);
         $internship->fill($data);
 
         $internship->setCategory($data['category']);
@@ -64,7 +62,7 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
     }
 
     public function all(){
-        return Internship::all();
+        return $this->getModel()->all();
     }
 
     public function getInternshipHoursOf(int $user_id): int
@@ -77,7 +75,7 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
             $from = '1970-01-01';
 
         //get hours sum from last qualification update
-        $hours = Internship::query()->where('user_id', $user_id)
+        $hours = $this->getModel()->query()->where('user_id', $user_id)
             ->whereDate('from', '>', $from)->sum('hours');
 
         return $hours;
@@ -87,6 +85,6 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
-        return Internship::query()->where('user_id', $user_id)->paginate($size);
+        return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
     }
 }

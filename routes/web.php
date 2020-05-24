@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test', function(){
-   return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\UsersExampleExporter(), 'users.xlsx');
-});
-
-
 
 Route::get('/', 'LoginController@index')->name('login');
 Route::post('/', 'LoginController@login');
@@ -25,7 +20,6 @@ Route::get('logout', 'LoginController@logout')->name('logout');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', 'HomeController@index')->name('admin');
-
 
     //paginators
     Route::group(['middleware' => 'can:view'], function() {
@@ -96,6 +90,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
             Route::post('/publications/import', 'PublicationsImportController@postImport');
             Route::get('/publications/importExample', 'PublicationsImportController@getExample')
                 ->name('publications.example');
+
+            //import qualifications
+            Route::get('/qualifications/import', 'QualificationsImportController@getImport')
+                ->name('qualifications.import');
+            Route::post('/qualifications/import', 'QualificationsImportController@postImport');
+            Route::get('/qualifications/importExample', 'QualificationsImportController@getExample')
+                ->name('qualifications.example');
         });
 
         Route::resource('users', 'UsersController');

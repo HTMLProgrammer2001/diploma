@@ -19,8 +19,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
     public function create($data)
     {
-        $category = new InternCategory();
-        $category->fill($data);
+        $category = $this->getModel()->query()->newModelInstance($data);
         $category->save();
 
         return $category;
@@ -28,7 +27,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
     public function update($id, $data)
     {
-        $category = InternCategory::query()->findOrFail($id);
+        $category = $this->getModel()->query()->findOrFail($id);
         $category->fill($data);
         $category->save();
 
@@ -37,11 +36,11 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
     public function getForCombo()
     {
-        return InternCategory::all('id', 'name');
+        return $this->getModel()->all('id', 'name');
     }
 
     public function getForExportList(): array
     {
-        return to_export_list(InternCategory::all('id', 'name')->toArray());
+        return to_export_list($this->getModel()->all('id', 'name')->toArray());
     }
 }

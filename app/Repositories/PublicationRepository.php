@@ -24,7 +24,7 @@ class PublicationRepository extends BaseRepository implements PublicationReposit
         if($data['date_of_publication'] ?? false)
             $data['date_of_publication'] = from_locale_date($data['date_of_publication']);
 
-        $publication = new Publication();
+        $publication = $this->getModel()->query()->newModelInstance($data);
         $publication->fill($data);
         $publication->save();
 
@@ -39,7 +39,7 @@ class PublicationRepository extends BaseRepository implements PublicationReposit
         if($data['date_of_publication'] ?? false)
             $data['date_of_publication'] = from_locale_date($data['date_of_publication']);
 
-        $publication = Publication::query()->findOrFail($id);
+        $publication = $this->getModel()->query()->findOrFail($id);
         $publication->fill($data);
         $publication->save();
 
@@ -51,14 +51,14 @@ class PublicationRepository extends BaseRepository implements PublicationReposit
 
     public function all()
     {
-        return Publication::all();
+        return $this->getModel()->all();
     }
 
     public function paginateForUser($user_id, ?int $size = null)
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
-        return Publication::query()->whereHas('authors', function (Builder $q) use($user_id){
+        return $this->getModel()->query()->whereHas('authors', function (Builder $q) use($user_id){
             $q->where('user_id', $user_id);
         })->paginate($size);
     }

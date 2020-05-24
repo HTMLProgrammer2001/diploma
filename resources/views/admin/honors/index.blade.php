@@ -64,6 +64,18 @@
                                     </div>
                                 </div>
 
+                                <div class="row w-100">
+                                    <div class="form-group d-flex flex-column col">
+                                        <label for="type">Тип нагороди</label>
+                                        <select class="form-control select2" id="type" name="type">
+                                            <option value="" selected>Всі</option>
+                                            @foreach($types as $type)
+                                                <option value="{{$type}}">{{$type}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
 
                                 <button class="btn btn-info w-50">Пошук</button>
                             </form>

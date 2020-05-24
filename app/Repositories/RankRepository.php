@@ -19,8 +19,7 @@ class RankRepository extends BaseRepository implements RankRepositoryInterface
 
     public function create($data)
     {
-        $rank = new Rank();
-        $rank->fill($data);
+        $rank = $this->getModel()->query()->newModelInstance($data);
         $rank->save();
 
         return $rank;
@@ -28,7 +27,7 @@ class RankRepository extends BaseRepository implements RankRepositoryInterface
 
     public function update($id, $data)
     {
-        $rank = Rank::query()->findOrFail($id);
+        $rank = $this->getModel()->query()->findOrFail($id);
         $rank->fill($data);
         $rank->save();
 
@@ -37,16 +36,16 @@ class RankRepository extends BaseRepository implements RankRepositoryInterface
 
     public function all()
     {
-        return Rank::all();
+        return $this->getModel()->all();
     }
 
     public function getForCombo()
     {
-        return Rank::all('id', 'name');
+        return $this->getModel()->all('id', 'name');
     }
 
     public function getForExportList()
     {
-        return to_export_list(Rank::all('id', 'name')->toArray());
+        return to_export_list($this->getModel()->all('id', 'name')->toArray());
     }
 }

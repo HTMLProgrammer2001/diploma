@@ -19,8 +19,7 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
 
     public function create($data)
     {
-        $department = new Department();
-        $department->fill($data);
+        $department = $this->getModel()->query()->newModelInstance($data);
         $department->save();
 
         return $department;
@@ -28,7 +27,7 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
 
     public function update($id, $data)
     {
-        $department = Department::query()->findOrFail($id);
+        $department = $this->getModel()->query()->findOrFail($id);
         $department->fill($data);
         $department->save();
 
@@ -37,11 +36,11 @@ class DepartmentRepository extends BaseRepository implements DepartmentRepositor
 
     public function getForCombo()
     {
-        return Department::all('id', 'name');
+        return $this->getModel()->all('id', 'name');
     }
 
     public function getForExportList()
     {
-        return to_export_list(Department::all('id', 'name')->toArray());
+        return to_export_list($this->getModel()->all('id', 'name')->toArray());
     }
 }

@@ -30,6 +30,12 @@ class UsersImport implements ToModel
             'department' => from_export_item($row[5])[0],
             'rank' => from_export_item($row[6])[0],
             'pedagogical_title' => $row[7],
+            'hiring_year' => $row[8],
+            'experience' => $row[9],
+            'scientific_degree' => $row[10],
+            'scientific_degree_year' => $row[11],
+            'academic_status' => $row[12],
+            'academic_status_year' => $row[13],
             'password' => '123456'
         ];
 

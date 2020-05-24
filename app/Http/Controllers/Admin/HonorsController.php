@@ -34,10 +34,13 @@ class HonorsController extends Controller
             $rules[] = new LikeRule('title', $data['name']);
 
         if($data['start_date_presentation'] ?? false)
-            $rules[] = new DateMoreRule('date_presentation', $data['start_date_presentation']);
+            $rules[] = new DateMoreRule('date_presentation', from_locale_date($data['start_date_presentation']));
 
         if($data['end_date_presentation'] ?? false)
-            $rules[] = new DateLessRule('date_presentation', $data['end_date_presentation']);
+            $rules[] = new DateLessRule('date_presentation', from_locale_date($data['end_date_presentation']));
+
+        if($data['type'] ?? false)
+            $rules[] = new EqualRule('type', $data['type']);
 
         if($data['sortID'] ?? false)
             $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
@@ -52,6 +55,10 @@ class HonorsController extends Controller
         if($data['sortDate'] ?? false)
             $rules[] = new SortRule('date_presentation',
                 $data['sortDate'] == 1 ? 'ASC' : 'DESC');
+
+        if($data['sortType'] ?? false)
+            $rules[] = new SortRule('type',
+                $data['sortType'] == 1 ? 'ASC' : 'DESC');
 
         return $rules;
     }
@@ -68,8 +75,9 @@ class HonorsController extends Controller
     {
         $users = $this->userRep->getForCombo();
         $honors = $this->honorRep->paginate();
+        $types = $this->honorRep->getTypes();
 
-        return view('admin.honors.index', compact('honors', 'users'));
+        return view('admin.honors.index', compact('honors', 'users', 'types'));
     }
 
     public function create()

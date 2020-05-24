@@ -19,8 +19,7 @@ class CommissionRepository extends BaseRepository implements CommissionRepositor
 
     public function create($data)
     {
-        $commission = new Commission();
-        $commission->fill($data);
+        $commission = $this->getModel()->query()->newModelInstance($data);
         $commission->save();
 
         return $commission;
@@ -28,7 +27,7 @@ class CommissionRepository extends BaseRepository implements CommissionRepositor
 
     public function update($id, $data)
     {
-        $commission = Commission::query()->findOrFail($id);
+        $commission = $this->getModel()->query()->findOrFail($id);
         $commission->fill($data);
         $commission->save();
 
@@ -36,15 +35,15 @@ class CommissionRepository extends BaseRepository implements CommissionRepositor
     }
 
     public function all(){
-        return Commission::all();
+        return $this->getModel()->all();
     }
 
     public function getForCombo(){
-        return Commission::all('id', 'name');
+        return $this->getModel()->all('id', 'name');
     }
 
     public function getForExportList()
     {
-        return to_export_list(Commission::all('id', 'name')->toArray());
+        return to_export_list($this->getModel()->all('id', 'name')->toArray());
     }
 }

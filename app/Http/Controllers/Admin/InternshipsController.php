@@ -47,10 +47,10 @@ class InternshipsController extends Controller
             $rules[] = new LikeRule('title', $data['title']);
 
         if($data['start_date'] ?? false)
-            $rules[] = new DateMoreRule('to', $data['start_date']);
+            $rules[] = new DateMoreRule('to', from_locale_date($data['start_date']));
 
         if($data['end_date'] ?? false)
-            $rules[] = new DateLessRule('to', $data['end_date']);
+            $rules[] = new DateLessRule('to', from_locale_date($data['end_date']));
 
         if($data['start_hours'] ?? false)
             $rules[] = new MoreEqualRule('hours', $data['start_hours']);

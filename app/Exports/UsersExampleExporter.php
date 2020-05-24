@@ -36,7 +36,9 @@ class UsersExampleExporter implements FromCollection, WithHeadings, WithEvents
 
     public function headings(): array
     {
-        return ['Ім\'я', 'Прізвище', 'По-батькові', 'Email', 'Комісія', 'Відділення', 'Посада', 'Педагогічне звання'];
+        return ['Ім\'я', 'Прізвище', 'По-батькові', 'Email', 'Комісія', 'Відділення', 'Посада', 'Педагогічне звання',
+            'Рік прийняття на роботу', 'Трудовий стаж на 2020 рік', 'Вчене звання', 'Рік встановлення вченого звання',
+            'Наукова ступінь', 'Рік встановлення наукової ступені'];
     }
 
     public function createRanges($sheet){
@@ -45,8 +47,16 @@ class UsersExampleExporter implements FromCollection, WithHeadings, WithEvents
         $departments = $this->departmentRep->getForExportList();
         $pedagogicals = $this->userRep->getPedagogicalTitles();
         $ranks = $this->rankRep->getForExportList();
+        $academics = $this->userRep->getAcademicStatusList();
+        $scientifics = $this->userRep->getScientificDegreeList();
 
         //set data to cells
+        for($i = 1; $i <= sizeof($academics); $i++)
+            $sheet->getCell("U$i")->setValue($academics[$i - 1]);
+
+        for($i = 1; $i <= sizeof($scientifics); $i++)
+            $sheet->getCell("V$i")->setValue($scientifics[$i - 1]);
+
         for($i = 1; $i <= sizeof($commissions); $i++)
             $sheet->getCell("W$i")->setValue($commissions[$i - 1]);
 
@@ -60,6 +70,12 @@ class UsersExampleExporter implements FromCollection, WithHeadings, WithEvents
             $sheet->getCell("Z$i")->setValue($ranks[$i - 1]);
 
         //create ranges
+        $sheet->getParent()->addNamedRange( new NamedRange('scientifics',
+            $sheet->getDelegate(), "V1:V" . sizeof($scientifics)) );
+
+        $sheet->getParent()->addNamedRange( new NamedRange('academics',
+            $sheet->getDelegate(), "U1:U" . sizeof($academics)) );
+
         $sheet->getParent()->addNamedRange( new NamedRange('commissions',
             $sheet->getDelegate(), "W1:W" . sizeof($commissions)) );
 
@@ -75,6 +91,14 @@ class UsersExampleExporter implements FromCollection, WithHeadings, WithEvents
 
     public function setRanges($sheet, $validation){
         for($i = 3; $i <= $this->countRows; $i++){
+            $val = clone $validation;
+            $val->setFormula1('scientifics');
+            $sheet->getCell("K$i")->setDataValidation($val);
+
+            $val = clone $validation;
+            $val->setFormula1('academics');
+            $sheet->getCell("M$i")->setDataValidation($val);
+
             $val = clone $validation;
             $val->setFormula1('commissions');
             $sheet->getCell("E$i")->setDataValidation($val);

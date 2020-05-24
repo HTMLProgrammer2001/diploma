@@ -22,9 +22,7 @@ class RebukeRepository extends BaseRepository implements RebukeRepositoryInterfa
         if($data['date_presentation'] ?? false)
             $data['date_presentation'] = from_locale_date($data['date_presentation']);
 
-        $rebuke = new Rebuke();
-        $rebuke->fill($data);
-
+        $rebuke = $this->getModel()->query()->newModelInstance($data);
         $rebuke->changeActive(true);
         $rebuke->setUser($data['user']);
         $rebuke->save();
@@ -37,7 +35,7 @@ class RebukeRepository extends BaseRepository implements RebukeRepositoryInterfa
         if($data['date_presentation'] ?? false)
             $data['date_presentation'] = from_locale_date($data['date_presentation']);
 
-        $rebuke = Rebuke::findOrFail($id);
+        $rebuke = $this->getModel()->query()->findOrFail($id);
         $rebuke->fill($data);
 
         $rebuke->changeActive(true);
@@ -49,13 +47,13 @@ class RebukeRepository extends BaseRepository implements RebukeRepositoryInterfa
 
     public function all()
     {
-        return Rebuke::all();
+        return $this->getModel()->all();
     }
 
     public function paginateForUser($user_id, ?int $size = null)
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
-        return Rebuke::query()->where('user_id', $user_id)->paginate($size);
+        return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
     }
 }

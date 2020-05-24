@@ -21,8 +21,12 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     @can('moderate')
-                        <div class="form-group">
+                        <div class="pull-left">
                             <a href="{{route('qualifications.create')}}" class="btn btn-success">Додати</a>
+                        </div>
+
+                        <div class="pull-right">
+                            <a href="{{route('qualifications.import')}}" class="btn btn-info">Імпорт</a>
                         </div>
                     @endcan
 

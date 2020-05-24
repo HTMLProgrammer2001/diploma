@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Education;
 use App\Http\Requests\UserRequest;
-use App\Imports\UsersImport;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\CommissionRepositoryInterface;
 use App\Repositories\Interfaces\DepartmentRepositoryInterface;
@@ -19,11 +18,11 @@ use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
 use App\Repositories\Rules\EqualRule;
 use App\Repositories\Rules\HasAssociateRule;
+use App\Repositories\Rules\InRule;
 use App\Repositories\Rules\LikeRule;
 use App\Repositories\Rules\RawRule;
 use App\Repositories\Rules\SortRule;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
@@ -81,6 +80,12 @@ class UsersController extends Controller
             $rules[] = new RawRule('(SELECT qualifications.name from qualifications 
                 where qualifications.user_id = users.id order by date desc limit 0,1) = ?', $data['category']);
 
+        if($data['birthday'] ?? false)
+            $rules[] = new EqualRule('birthday', from_locale_date($data['birthday']));
+
+        if($data['honorTypes'] ?? false)
+            $rules[] = new HasAssociateRule('honors', new InRule('type', $data['honorTypes']));
+
         if($data['sortID'] ?? false)
             $rules[] = new SortRule('id', $data['sortID'] == 1 ? 'ASC' : 'DESC');
 
@@ -109,9 +114,11 @@ class UsersController extends Controller
         $departments = $this->departmentRep->getForCombo();
         $ranks = $this->rankRep->getForCombo();
         $categories = $this->qualificationRep->getQualificationNames();
+        $types = $this->honorRep->getTypes();
+        $educationRep = $this->educationRep;
 
         return view('admin.users.index', compact('users', 'pedagogicals', 'commissions',
-            'departments', 'ranks', 'categories'));
+            'departments', 'ranks', 'categories', 'types', 'educationRep'));
     }
 
     public function create()
@@ -174,9 +181,11 @@ class UsersController extends Controller
         $ranks = $this->rankRep->getForCombo();
         $roles = $this->userRep->getRoles();
         $pedagogicals = $this->userRep->getPedagogicalTitles();
+        $academics = $this->userRep->getAcademicStatusList();
+        $scientifics = $this->userRep->getScientificDegreeList();
 
         return view('admin.users.edit', compact('departments', 'commissions', 'user',
-            'ranks', 'roles', 'pedagogicals'));
+            'ranks', 'roles', 'pedagogicals', 'academics', 'scientifics'));
     }
 
     public function update(UserRequest $request, $user_id)

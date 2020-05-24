@@ -22,9 +22,7 @@ class HonorRepository extends BaseRepository implements HonorRepositoryInterface
         if($data['date_presentation'] ?? false)
             $data['date_presentation'] = from_locale_date($data['date_presentation']);
 
-        $honor = new Honor();
-        $honor->fill($data);
-
+        $honor = $this->getModel()->query()->newModelInstance($data);
         $honor->setUser($data['user']);
         $honor->changeActive(true);
         $honor->save();
@@ -37,7 +35,7 @@ class HonorRepository extends BaseRepository implements HonorRepositoryInterface
         if($data['date_presentation'] ?? false)
             $data['date_presentation'] = from_locale_date($data['date_presentation']);
 
-        $honor = Honor::query()->findOrFail($id);
+        $honor = $this->getModel()->query()->findOrFail($id);
         $honor->fill($data);
 
         $honor->setUser($data['user']);
@@ -49,14 +47,14 @@ class HonorRepository extends BaseRepository implements HonorRepositoryInterface
 
     public function all()
     {
-        return Honor::all();
+        return $this->getModel()->all();
     }
 
     public function paginateForUser($user_id, ?int $size = null)
     {
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
-        return Honor::query()->where('user_id', $user_id)->paginate($size);
+        return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
     }
 
     public function getTypes(): array{

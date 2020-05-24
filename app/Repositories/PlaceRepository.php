@@ -19,7 +19,7 @@ class PlaceRepository extends BaseRepository implements PlaceRepositoryInterface
 
     public function create($data)
     {
-        $place = new Place();
+        $place = $this->getModel()->query()->newModelInstance($data);
         $place->fill($data);
         $place->save();
 
@@ -28,7 +28,7 @@ class PlaceRepository extends BaseRepository implements PlaceRepositoryInterface
 
     public function update($id, $data)
     {
-        $place = Place::query()->findOrFail($id);
+        $place = $this->getModel()->query()->findOrFail($id);
         $place->fill($data);
         $place->save();
 
@@ -37,16 +37,16 @@ class PlaceRepository extends BaseRepository implements PlaceRepositoryInterface
 
     public function all()
     {
-        return Place::all();
+        return $this->getModel()->all();
     }
 
     public function getForCombo()
     {
-        return Place::all('id', 'name');
+        return $this->getModel()->all('id', 'name');
     }
 
     public function getForExportList(): array
     {
-        return to_export_list(Place::all('id', 'name')->toArray());
+        return to_export_list($this->getModel()->all('id', 'name')->toArray());
     }
 }

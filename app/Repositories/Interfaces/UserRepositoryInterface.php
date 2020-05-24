@@ -15,4 +15,8 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     public function getPedagogicalTitles(): array;
 
     public function getForExportList(): array;
+
+    public function getAcademicStatusList(): array;
+
+    public function getScientificDegreeList(): array;
 }

@@ -35,11 +35,11 @@ class RebukesController extends Controller
 
         if($request->input('start_date_presentation'))
             $rules[] = new DateMoreRule('date_presentation',
-                $request->input('start_date_presentation'));
+                from_locale_date($request->input('start_date_presentation')));
 
         if($request->input('end_date_presentation'))
             $rules[] = new DateLessRule('date_presentation',
-                $request->input('end_date_presentation'));
+                from_locale_date($request->input('end_date_presentation')));
 
         if($request->input('sortID'))
             $rules[] = new SortRule('id', $request->input('sortID') == 1 ? 'ASC' : 'DESC');
