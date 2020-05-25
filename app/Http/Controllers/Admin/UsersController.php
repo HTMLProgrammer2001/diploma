@@ -116,9 +116,11 @@ class UsersController extends Controller
         $categories = $this->qualificationRep->getQualificationNames();
         $types = $this->honorRep->getTypes();
         $educationRep = $this->educationRep;
+        $qualificationRep = $this->qualificationRep;
+        $internshipRep = $this->internshipRep;
 
         return view('admin.users.index', compact('users', 'pedagogicals', 'commissions',
-            'departments', 'ranks', 'categories', 'types', 'educationRep'));
+            'departments', 'ranks', 'categories', 'types', 'educationRep', 'qualificationRep', 'internshipRep'));
     }
 
     public function create()

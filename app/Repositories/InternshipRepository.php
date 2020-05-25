@@ -87,4 +87,19 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
 
         return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
     }
+
+    public function getUserString(int $user_id): string {
+        //get  all educations
+        $internships = $this->getModel()->query()->where('user_id', $user_id)->get();
+
+        //parse string
+        $internshipsString = $internships->reduce(function(string $acc, $item){
+            return $acc . implode(', ', [$item->title, to_locale_date($item->from),
+                    to_locale_date($item->to), $item->getPlaceName(), $item->getCategoryName(),
+                    $item->hours . ' годин']) . ';';
+        }, '');
+
+        //return info
+        return $internshipsString ? $internshipsString : 'Немає інформації';
+    }
 }

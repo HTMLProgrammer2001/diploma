@@ -11,4 +11,6 @@ interface InternshipRepositoryInterface extends BaseRepositoryInterface
     public function getInternshipHoursOf(int $user_id): int;
 
     public function paginateForUser($user_id, ?int $size = null);
+
+    public function getUserString(int $user_id): string;
 }

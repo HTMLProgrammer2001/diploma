@@ -57,6 +57,21 @@ class HonorRepository extends BaseRepository implements HonorRepositoryInterface
         return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
     }
 
+    public function getUserString(int $user_id): string
+    {
+        //get all honors
+        $honors = $this->getModel()->query()->where('user_id', $user_id)->get();
+
+        //parse string
+        $honorsString = $honors->reduce(function(string $acc, $item){
+            return $acc . implode(', ', [$item->title, $item->type,
+                    to_locale_date($item->date_presentation), $item->order]) . ';';
+        }, '');
+
+        //return info
+        return $honorsString ? $honorsString : 'Немає інформації';
+    }
+
     public function getTypes(): array{
         return [
             'МОН',

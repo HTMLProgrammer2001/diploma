@@ -56,4 +56,19 @@ class RebukeRepository extends BaseRepository implements RebukeRepositoryInterfa
 
         return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
     }
+
+    public function getUserString(int $user_id): string
+    {
+        //get all rebukes
+        $rebukes = $this->getModel()->query()->where('user_id', $user_id)->get();
+
+        //parse string
+        $rebukesString = $rebukes->reduce(function(string $acc, $item){
+            return $acc . implode(', ', [$item->title, $item->type,
+                    to_locale_date($item->date_presentation), $item->order]) . ';';
+        }, '');
+
+        //return info
+        return $rebukesString ? $rebukesString : 'Немає інформації';
+    }
 }

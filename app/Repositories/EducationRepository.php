@@ -47,12 +47,15 @@ class EducationRepository extends BaseRepository implements EducationRepositoryI
     }
 
     public function getUserString(int $user_id): string {
+        //get  all educations
         $educations = $this->getModel()->query()->where('user_id', $user_id)->get();
 
+        //parse string
         $educationsString = $educations->reduce(function(string $acc, $item){
             return $acc . implode(', ', [$item->institution, $item->graduate_year, $item->qualification]) . ';';
         }, '');
 
+        //return info
         return $educationsString ? $educationsString : 'Немає інформації';
     }
 }
