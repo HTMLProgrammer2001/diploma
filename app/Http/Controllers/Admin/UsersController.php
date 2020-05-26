@@ -54,7 +54,7 @@ class UsersController extends Controller
         $this->categoryRep = $categoryRep;
     }
 
-    private function createRule(array $data): array {
+    public static function createRule(array $data): array {
         $rules = [];
 
         if($data['name'] ?? false)
@@ -102,8 +102,12 @@ class UsersController extends Controller
         //create rules
         $rules = $this->createRule($request->input());
         $users = $this->userRep->filterPaginate($rules);
+        $educationRep = $this->educationRep;
+        $qualificationRep = $this->qualificationRep;
+        $internshipRep = $this->internshipRep;
 
-        return view('admin.users.paginate', compact('users'));
+        return view('admin.users.paginate', compact('users', 'educationRep', 'qualificationRep',
+                'internshipRep'));
     }
 
     public function index()

@@ -5,6 +5,8 @@ namespace App\Repositories;
 
 
 use App\Repositories\Interfaces\BaseRepositoryInterface;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseRepository implements BaseRepositoryInterface
@@ -30,8 +32,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
         return $this->filterPaginate([], $size);
     }
 
-    public function filterPaginate(array $rules, ?int $size = null)
-    {
+    public function filter(array $rules): Builder{
         //create query builder
         $query = $this->getModel()->query();
 
@@ -39,10 +40,25 @@ abstract class BaseRepository implements BaseRepositoryInterface
         foreach ($rules as $rule)
             $query = $rule->apply($query);
 
+        return $query;
+    }
+
+    public function filterPaginate(array $rules, ?int $size = null)
+    {
+        //filter query
+        $query = $this->filter($rules);
+
         //set size of pagination
         $size = $size ?? config('app.PAGINATE_SIZE', 10);
 
         //return pagination
         return $query->paginate($size);
+    }
+
+    public function filterGet(array $rules): Collection{
+        //filter query
+        $query = $this->filter($rules);
+
+        return $query->get();
     }
 }

@@ -62,7 +62,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
     //Admin and moderator only controllers
     Route::group(['middleware' => 'can:moderate'], function(){
-        Route::get('/export', 'Export\\ExportController')->name('export');
+        Route::post('/export', 'Export\\ExportController')->name('export');
 
 
         Route::group(['namespace' => 'Import'], function(){

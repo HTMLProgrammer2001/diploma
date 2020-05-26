@@ -7,6 +7,8 @@ use App\Repositories\Interfaces\HonorRepositoryInterface;
 use App\Repositories\Interfaces\InternshipRepositoryInterface;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RebukeRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserRepository;
 use App\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -15,14 +17,17 @@ use Maatwebsite\Excel\Events\AfterSheet;
 
 class Export implements FromCollection, WithHeadings, WithEvents
 {
-    private $educationRep, $qualificationRep, $internshipRep, $honorRep, $rebukeRep;
-    public function __construct()
+    private $educationRep, $qualificationRep, $internshipRep, $honorRep, $rebukeRep, $userRep, $rules;
+    public function __construct(array $rules)
     {
         $this->educationRep = app(EducationRepositoryInterface::class);
         $this->qualificationRep = app(QualificationRepositoryInterface::class);
         $this->internshipRep = app(InternshipRepositoryInterface::class);
         $this->honorRep = app(HonorRepositoryInterface::class);
         $this->rebukeRep = app(RebukeRepositoryInterface::class);
+        $this->userRep = app(UserRepositoryInterface::class);
+
+        $this->rules = $rules;
     }
 
     public function headings(): array
@@ -36,7 +41,7 @@ class Export implements FromCollection, WithHeadings, WithEvents
     public function collection()
     {
         //parse data
-        $result = User::all()->map(function($item){
+        $result = $this->userRep->filterGet($this->rules)->map(function($item){
             return [
                 $item->getFullName(),
                 to_locale_date($item->birthday),

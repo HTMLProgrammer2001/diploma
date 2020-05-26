@@ -55,7 +55,7 @@ class Internship extends Model
         if($this->category)
             return $this->category->name;
 
-        return null;
+        return 'Не встановлено';
     }
 
     public function getPlaceName(){

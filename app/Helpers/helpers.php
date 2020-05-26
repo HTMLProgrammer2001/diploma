@@ -29,7 +29,10 @@ if(!function_exists('to_export_list')){
 }
 
 if(!function_exists('from_export_item')){
-    function from_export_item(string $item){
+    function from_export_item(?string $item){
+        if(!$item)
+            return [null, null];
+
         return explode(' - ', $item);
     }
 }

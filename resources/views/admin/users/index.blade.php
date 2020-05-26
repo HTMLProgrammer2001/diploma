@@ -28,7 +28,7 @@
 
                         <div class="pull-right">
                             <a href="{{route('users.import')}}" class="btn btn-info">Імпорт</a>
-                            <a href="{{route('export')}}" class="btn btn-info">Експорт</a>
+                            <a href="{{route('export')}}" class="btn btn-info export-users">Експорт</a>
                         </div>
                     @endcan
 

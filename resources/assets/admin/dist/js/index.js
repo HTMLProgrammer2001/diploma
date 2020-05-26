@@ -3,19 +3,34 @@ $(document).ready(function () {
 		format: 'dd.mm.yyyy'
 	});
     $('.select2').select2();
-});
 
-// $('.daterange').daterangepicker({
-// 	ranges: {
-// 		'Today': [moment(), moment()],
-// 		'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-// 		'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-// 		'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-// 		'This Month': [moment().startOf('month'), moment().endOf('month')],
-// 		'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-// 	},
-// 	startDate: moment().subtract(29, 'days'),
-// 	endDate: moment()
-// }, function (start, end) {
-// 	window.alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-// });
+    //export users
+    if($('.export-users')){
+    	$('.export-users').on('click', function (e) {
+    		e.preventDefault();
+
+    		if($('.user-form')){
+    			let data = new FormData($('.user-form')[0]);
+
+    			$.ajax({
+					url: $(this).attr('href'),
+					type: 'post',
+					data,
+					contentType: false,
+					processData: false,
+					responseType: 'blob',
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+					},
+					success: function(response, status, xhr) {
+						let a = document.createElement("a");
+							a.href = xhr.responseText;
+							a.download = 'report.xlsx';
+							document.body.appendChild(a);
+							a.click();
+						}
+				});
+			}
+		});
+	}
+});

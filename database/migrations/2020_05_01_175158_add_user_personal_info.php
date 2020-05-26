@@ -15,7 +15,7 @@ class AddUserPersonalInfo extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->year('hiring_year')->nullable();
-            $table->string('pedagogical_title')->default('Відсутнє');
+            $table->string('pedagogical_title')->default('Немає');
             $table->integer('experience')->default(0);
             $table->string('address', 255)->nullable();
             $table->string('phone', 20)->nullable()->unique();
