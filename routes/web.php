@@ -99,6 +99,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
             Route::post('/qualifications/import', 'QualificationsImportController@postImport');
             Route::get('/qualifications/importExample', 'QualificationsImportController@getExample')
                 ->name('qualifications.example');
+
+            //import honors
+            Route::get('/honors/import', 'HonorsImportController@getImport')
+                ->name('honors.import');
+            Route::post('/honors/import', 'HonorsImportController@postImport');
+            Route::get('/honors/importExample', 'HonorsImportController@getExample')
+                ->name('honors.example');
+
+            //import rebukes
+            Route::get('/rebukes/import', 'RebukesImportController@getImport')
+                ->name('rebukes.import');
+            Route::post('/rebukes/import', 'RebukesImportController@postImport');
+            Route::get('/rebukes/importExample', 'RebukesImportController@getExample')
+                ->name('rebukes.example');
         });
 
         Route::resource('users', 'UsersController');

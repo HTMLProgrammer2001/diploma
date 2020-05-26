@@ -8,8 +8,6 @@ use App\Repositories\Interfaces\InternshipRepositoryInterface;
 use App\Repositories\Interfaces\QualificationRepositoryInterface;
 use App\Repositories\Interfaces\RebukeRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Repositories\UserRepository;
-use App\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -35,7 +33,7 @@ class Export implements FromCollection, WithHeadings, WithEvents
         return ['ФІО', 'Дата народження', 'Освіта', 'Рік прийому на роботу', 'Вислуга', 'Особисті дані',
                     'Посада', 'Категорія, рік встановлення', 'Педагогічне звання',
                     'Вчене звання, рік встановлення', 'Науковий ступінь, рік встановлення', 'Стажування',
-                    'Нагороди', 'Догани'];
+                    'Годин стажувань', 'Нагороди', 'Догани'];
     }
 
     public function collection()
@@ -56,6 +54,7 @@ class Export implements FromCollection, WithHeadings, WithEvents
                 $item->scientific_degree . ', ' . $item->scientific_degree_year,
                 $item->academic_status . ', ' . $item->academic_status_year,
                 $this->internshipRep->getUserString($item->id),
+                $this->internshipRep->getInternshipHoursOf($item->id),
                 $this->honorRep->getUserString($item->id),
                 $this->rebukeRep->getUserString($item->id)
             ];
@@ -74,8 +73,12 @@ class Export implements FromCollection, WithHeadings, WithEvents
                 $sheet = $event->sheet;
 
                 //set auto size
-                foreach (range('A', 'Z') as $col)
-                    $sheet->getColumnDimension($col)->setAutoSize(true);
+                foreach (range('A', 'Z') as $col) {
+                    $sheet->getColumnDimension($col)->setWidth(32);
+
+                    foreach (range(1, 500) as $row)
+                        $sheet->getStyle($col . $row)->getAlignment()->setWrapText(true);
+                }
             }
         ];
     }

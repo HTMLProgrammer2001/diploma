@@ -64,8 +64,7 @@ class RebukeRepository extends BaseRepository implements RebukeRepositoryInterfa
 
         //parse string
         $rebukesString = $rebukes->reduce(function(string $acc, $item){
-            return $acc . implode(', ', [$item->title, $item->type,
-                    to_locale_date($item->date_presentation), $item->order]) . ';';
+            return $acc . implode(', ', [$item->title, to_locale_date($item->date_presentation), $item->order]) . ';';
         }, '');
 
         //return info
