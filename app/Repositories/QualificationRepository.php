@@ -92,4 +92,9 @@ class QualificationRepository extends BaseRepository implements QualificationRep
 
         return $name ?? null;
     }
+
+    public function getLastQualificationOf(int $user_id){
+        return $this->getModel()->query()->where('user_id', $user_id)
+            ->orderBy('date', 'desc')->first();
+    }
 }

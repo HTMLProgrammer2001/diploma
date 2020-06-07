@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\PublicationsImport;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PublicationsImportController extends Controller
@@ -22,7 +23,8 @@ class PublicationsImportController extends Controller
 
         Excel::import(new PublicationsImport(),request()->file('file'));
 
-        return redirect()->back()->with('successMsg', 'Дані імпортовано');
+        session()->flash('imported', true);
+        return redirect()->back();
     }
 
     public function getExample(){

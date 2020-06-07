@@ -17,4 +17,6 @@ interface QualificationRepositoryInterface extends BaseRepositoryInterface
     public function getNextQualificationDateOf(int $user_id);
 
     public function getQualificationNameOf(int $user_id);
+
+    public function getLastQualificationOf(int $user_id);
 }

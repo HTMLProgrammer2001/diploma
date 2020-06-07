@@ -19,11 +19,10 @@
             <!-- Default box -->
             <form action="{{route('internships.import')}}" method="post" class="import-form"
                   enctype="multipart/form-data">
-                @if(isset($successMsg))
+
+                @if(session()->pull('imported', false))
                     <div class="alert alert-success">
-                        <ul>
-                            {{$successMsg}}
-                        </ul>
+                        Дані імпортовано
                     </div>
                 @endif
 

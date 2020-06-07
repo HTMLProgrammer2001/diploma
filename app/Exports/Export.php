@@ -40,6 +40,9 @@ class Export implements FromCollection, WithHeadings, WithEvents
     {
         //parse data
         $result = $this->userRep->filterGet($this->rules)->map(function($item){
+            $lastQualification = $this->qualificationRep->getLastQualificationOf($item->id);
+            $internships = $this->internshipRep->getInternshipsFor($item->id);
+
             return [
                 $item->getFullName(),
                 to_locale_date($item->birthday),
@@ -48,13 +51,12 @@ class Export implements FromCollection, WithHeadings, WithEvents
                 $item->experience,
                 $item->email . ', ' . $item->phone . ', ' . $item->address,
                 $item->getRankName(),
-                $this->qualificationRep->getQualificationNameOf($item->id) . ', ' .
-                    to_locale_date($this->qualificationRep->getLastQualificationDateOf($item->id)),
+                ($lastQualification->name ?? 'Немає') . ', ' . to_locale_date($lastQualification->date ?? null),
                 $item->pedagogical_title,
                 $item->scientific_degree . ', ' . $item->scientific_degree_year,
                 $item->academic_status . ', ' . $item->academic_status_year,
-                $this->internshipRep->getUserString($item->id),
-                $this->internshipRep->getInternshipHoursOf($item->id),
+                $this->internshipRep->getUserString($internships),
+                $this->internshipRep->getInternshipHoursOf($internships),
                 $this->honorRep->getUserString($item->id),
                 $this->rebukeRep->getUserString($item->id)
             ];

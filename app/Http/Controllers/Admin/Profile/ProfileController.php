@@ -66,7 +66,9 @@ class ProfileController extends Controller
         $isProfile = true;
 
         $userQualification = $this->qualificationRep->getQualificationNameOf($user->id);
-        $internshipHours = $this->internshipRep->getInternshipHoursOf($user->id);
+        $internshipHours = $this->internshipRep->getInternshipHoursOf(
+            $this->internshipRep->getInternshipsFor($user->id)
+        );
         $nextQualification = $this->qualificationRep->getNextQualificationDateOf($user->id);
         $qCategories = $this->qualificationRep->getQualificationNames();
         $qNames = Education::QUALIFICATIONS;

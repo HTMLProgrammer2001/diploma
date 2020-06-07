@@ -68,6 +68,12 @@
         </tbody>
     </table>
 
+    <div>
+        <a href="{{route('publications.import')}}" class="btn btn-success">
+            Імпорт
+        </a>
+    </div>
+
 {{--    <a href="{{route('profile.publications.create')}}" class="pull-left">--}}
 {{--        <button class="btn btn-success margin-bottom">Додати</button>--}}
 {{--    </a>--}}

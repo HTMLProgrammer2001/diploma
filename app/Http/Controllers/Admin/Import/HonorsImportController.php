@@ -21,7 +21,8 @@ class HonorsImportController extends Controller
 
         Excel::import(new HonorsImport(),request()->file('file'));
 
-        return redirect()->back()->with('successMsg', 'Дані імпортовано');
+        session()->flash('imported', true);
+        return redirect()->back();
     }
 
     public function getExample(){

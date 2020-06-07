@@ -65,18 +65,10 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
         return $this->getModel()->all();
     }
 
-    public function getInternshipHoursOf(int $user_id): int
+    public function getInternshipHoursOf($internships): int
     {
-        //get date of last qualification update of this user
-        $from = $this->qualificationRep->getLastQualificationDateOf($user_id);
-
-        //set default value
-        if(!$from)
-            $from = '1970-01-01';
-
         //get hours sum from last qualification update
-        $hours = $this->getModel()->query()->where('user_id', $user_id)
-            ->whereDate('from', '>', $from)->sum('hours');
+        $hours = $internships->sum('hours');
 
         return $hours;
     }
@@ -88,10 +80,7 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
         return $this->getModel()->query()->where('user_id', $user_id)->paginate($size);
     }
 
-    public function getUserString(int $user_id): string {
-        //get  all educations
-        $internships = $this->getModel()->query()->where('user_id', $user_id)->get();
-
+    public function getUserString($internships): string {
         //parse string
         $internshipsString = $internships->reduce(function(string $acc, $item){
             return $acc . implode(', ', [$item->title, to_locale_date($item->from),
@@ -101,5 +90,17 @@ class InternshipRepository extends BaseRepository implements InternshipRepositor
 
         //return info
         return $internshipsString ? $internshipsString : 'Немає інформації';
+    }
+
+    public function getInternshipsFor(int $user_id){
+        //get date of last qualification update of this user
+        $from = $this->qualificationRep->getLastQualificationDateOf($user_id);
+
+        //set default value
+        if(!$from)
+            $from = '1970-01-01';
+
+        return $this->getModel()->query()->where('user_id', $user_id)
+            ->whereDate('to', '>', $from)->with('category', 'place')->get();
     }
 }

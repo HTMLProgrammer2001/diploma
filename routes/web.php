@@ -21,6 +21,13 @@ Route::get('logout', 'LoginController@logout')->name('logout');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', 'HomeController@index')->name('admin');
 
+    //import publications
+    Route::get('/publications/import', 'Import\PublicationsImportController@getImport')
+        ->name('publications.import');
+    Route::post('/publications/import', 'Import\PublicationsImportController@postImport');
+    Route::get('/publications/importExample', 'Import\PublicationsImportController@getExample')
+        ->name('publications.example');
+
     //paginators
     Route::group(['middleware' => 'can:view'], function() {
         Route::post('/commissions/paginate', 'CommissionsController@paginate')
@@ -85,13 +92,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
             Route::post('/places/import', 'PlacesImportController@postImport');
             Route::get('/places/importExample', 'PlacesImportController@getExample')
                 ->name('places.example');
-
-            //import publications
-            Route::get('/publications/import', 'PublicationsImportController@getImport')
-                ->name('publications.import');
-            Route::post('/publications/import', 'PublicationsImportController@postImport');
-            Route::get('/publications/importExample', 'PublicationsImportController@getExample')
-                ->name('publications.example');
 
             //import qualifications
             Route::get('/qualifications/import', 'QualificationsImportController@getImport')
@@ -198,22 +198,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         Route::get('/', 'ProfileController@index')->name('profile.show');
         Route::get('/update', 'ProfileController@edit')->name('profile.edit');
         Route::put('/update', 'ProfileController@update')->name('profile.update');
-
-        //data CRUD routes
-        Route::resource('publications', 'PublicationsController', [
-            'as' => 'profile'
-        ]);
-
-        Route::resource('internships', 'InternshipsController', [
-            'as' => 'profile'
-        ]);
-
-        Route::resource('qualifications', 'QualificationsController', [
-            'as' => 'profile'
-        ]);
-
-        Route::resource('educations', 'EducationsController', [
-            'as' => 'profile'
-        ]);
     });
 });
